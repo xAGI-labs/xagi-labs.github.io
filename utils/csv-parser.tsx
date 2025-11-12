@@ -135,9 +135,10 @@ function parseCSV(csvText: string): PortfolioItem[] {
 
     // Map values to properties
     headers.forEach((header, index) => {
-      const key = columnMap[header]
+      const key = columnMap[header] as keyof PortfolioItem
       if (key && index < values.length) {
-        item[key] = values[index]
+        // Type assertion to handle the assignment properly
+        (item as any)[key] = values[index]
       }
     })
 
