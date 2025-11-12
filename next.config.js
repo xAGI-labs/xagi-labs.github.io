@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // Remove 'output: export' for server deployment
+  // Add it back only for GitHub Pages static export if needed
   images: {
     unoptimized: true,
   },
