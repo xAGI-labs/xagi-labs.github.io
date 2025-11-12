@@ -2,13 +2,18 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-sm">
@@ -32,13 +37,15 @@ export default function Header() {
             <Link href="/process" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Process
             </Link>
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+            )}
             <Link
               href="/contact"
               className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-lg font-medium hover:opacity-90 transition-opacity"
@@ -75,6 +82,22 @@ export default function Header() {
             <Link href="/contact" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Contact
             </Link>
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center text-sm font-medium"
+              >
+                {theme === "dark" ? (
+                  <>
+                    <Sun className="h-5 w-5 mr-2" /> Light Mode
+                  </>
+                ) : (
+                  <>
+                    <Moon className="h-5 w-5 mr-2" /> Dark Mode
+                  </>
+                )}
+              </button>
+            )}
           </nav>
         </div>
       )}
