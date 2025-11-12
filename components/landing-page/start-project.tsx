@@ -22,7 +22,7 @@ export default function StartProject() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.addedNodes.length) {
-          const iframe = document.querySelector("iframe[data-tally-src]")
+          const iframe = document.querySelector("iframe[data-tally-src]") as HTMLIFrameElement | null
           if (iframe) {
             // Set a data attribute on the iframe that can be used in CSS
             iframe.setAttribute("data-theme", resolvedTheme || "light")
