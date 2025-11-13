@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Brain, Zap, Rocket, Users, TrendingUp, Award } from "lucide-react"
+import ThemeToggle from "../landing-page/theme-toggle"
 
 export default function HomePage() {
   return (
@@ -37,6 +38,7 @@ export default function HomePage() {
               >
                 Contact
               </Link>
+              <ThemeToggle />
             </nav>
           </div>
         </div>
