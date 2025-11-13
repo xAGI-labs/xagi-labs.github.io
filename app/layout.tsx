@@ -100,6 +100,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <StructuredData />
+        <script
+          data-goatcounter="https://xagi-labs.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        />
       </head>
       <body className={outfit.className}>
         <Suspense fallback={null}>
