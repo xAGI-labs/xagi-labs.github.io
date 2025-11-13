@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
 import StructuredData from "@/components/structured-data"
 import TawkTo from "@/components/tawk-to"
+import MicrosoftClarity from "@/components/microsoft-clarity"
 import "@/components/landing-page/styles.css"
 import { Suspense } from "react"
 import "./globals.css"
@@ -114,6 +115,7 @@ export default function RootLayout({
           </ThemeProvider>
           <Analytics />
           <TawkTo />
+          <MicrosoftClarity />
         </Suspense>
       </body>
     </html>
