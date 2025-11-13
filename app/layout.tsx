@@ -4,7 +4,6 @@ import { Outfit } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
 import StructuredData from "@/components/structured-data"
-import TawkTo from "@/components/tawk-to"
 import MicrosoftClarity from "@/components/microsoft-clarity"
 import "@/components/landing-page/styles.css"
 import { Suspense } from "react"
@@ -114,7 +113,6 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
           <Analytics />
-          <TawkTo />
           <MicrosoftClarity />
         </Suspense>
       </body>
