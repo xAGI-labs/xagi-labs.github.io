@@ -28,9 +28,9 @@ export default function HomePage() {
               <Link href="/process" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
                 Process
               </Link>
-              <Link href="/pricing" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+              {/* <Link href="/pricing" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
                 Pricing
-              </Link>
+              </Link> */}
               <Link
                 href="/contact"
                 className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-lg font-medium hover:opacity-90 transition-opacity"
