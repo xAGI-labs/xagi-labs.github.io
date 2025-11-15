@@ -7,10 +7,12 @@ import SlidePreview from './components/SlidePreview'
 import SlideEditor from './components/SlideEditor'
 import ExportButton from './components/ExportButton'
 import ThemeCustomizer from './components/ThemeCustomizer'
+import AIGeneratorModal from './components/AIGeneratorModal'
 
 export default function LinkedInCarouselGenerator() {
   const [carousel, setCarousel] = useState<Carousel>(defaultCarousel)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false)
   const slideRefs = useRef<React.RefObject<HTMLDivElement>[]>([])
 
   // Initialize refs for each slide
@@ -109,6 +111,14 @@ export default function LinkedInCarouselGenerator() {
     reader.readAsText(file)
   }
 
+  const handleAIGenerate = (generatedSlides: Slide[]) => {
+    setCarousel((prev) => ({
+      ...prev,
+      slides: generatedSlides,
+    }))
+    setActiveSlideIndex(0)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
@@ -124,6 +134,25 @@ export default function LinkedInCarouselGenerator() {
               </p>
             </div>
             <div className="flex gap-2">
+              <button
+                onClick={() => setIsAIModalOpen(true)}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium flex items-center gap-2"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+                AI Generate
+              </button>
               <label className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-sm font-medium">
                 Load
                 <input
@@ -277,6 +306,13 @@ export default function LinkedInCarouselGenerator() {
           </p>
         </div>
       </footer>
+
+      {/* AI Generator Modal */}
+      <AIGeneratorModal
+        isOpen={isAIModalOpen}
+        onClose={() => setIsAIModalOpen(false)}
+        onGenerate={handleAIGenerate}
+      />
     </div>
   )
 }
