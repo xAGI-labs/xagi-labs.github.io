@@ -58,6 +58,11 @@ export default function Footer() {
                   MSDE Pitch
                 </Link>
               </li>
+              <li>
+                <Link href="/ai-agents-erp" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  AI Agents in ERP
+                </Link>
+              </li>
             </ul>
           </div>
 
