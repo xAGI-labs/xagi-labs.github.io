@@ -30,7 +30,11 @@ export default function TeamPage() {
     { name: "Alen Yohannan", role: "Software Engineer - Automation", github: "https://github.com/AlenVelocity" },
     { name: "Nilesh Agarwal", role: "Software Engineer", linkedin: "https://www.linkedin.com/in/nilesh-aggarwal-507552191/" },
     { name: "Niranjan Gaonkar", role: "Software Engineer - Frontend", github: "https://github.com/Niranjangkr" },
-    { name: "Aditya Vernekar", role: "Software Engineer - DevOps", github: "https://github.com/AdityaVernekar" }
+    { name: "Aditya Vernekar", role: "Software Engineer - DevOps", github: "https://github.com/AdityaVernekar" },
+    { name: "Sai Tulasi Chilakapati", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/saitulasichilakapati" },
+    { name: "Dhananjay Pawar", role: "Software Engineer", github: "https://github.com/Dhananjay2601" },
+    { name: "Chandramani Shukla", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/chandramani-shukla-31531b227" },
+    { name: "Aditya Rajawat", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/aditya-rajawat" }
   ]
 
   return (
