@@ -12,7 +12,7 @@ export default function TeamPage() {
       role: "Chief Executive Officer & Co-Founder",
       bio: "Product visionary and technical architect with a proven track record of launching successful AI-first products. Led development of 5+ products reaching 15,000+ combined users.",
       portfolio: "https://sauravtom.github.io/",
-      achievements: ["Led Likeo to acquisition within 18 months", "Built FavcyNavigator to 10K+ users", "Advised 20+ startups on AI strategy"]
+      achievements: ["Built FavcyNavigator to 10K+ users", "Advised 20+ startups on AI strategy"]
     },
     {
       name: "Udit Kumar",

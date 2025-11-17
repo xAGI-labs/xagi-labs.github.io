@@ -99,21 +99,11 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <Phone className="h-6 w-6 mr-4 text-green-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Phone</h3>
-                    <a href="tel:+15551234567" className="text-gray-600 dark:text-gray-400 hover:underline">
-                      +1 (555) 123-4567
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
                   <MapPin className="h-6 w-6 mr-4 text-red-600 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      San Francisco, CA
+                      San Francisco, CA / Bangalore / Noida
                     </p>
                   </div>
                 </div>
@@ -244,25 +234,34 @@ export default function ContactPage() {
 
       {/* Office Locations */}
       <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-4xl font-bold text-center mb-16">Our Offices</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <MapPin className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-              <h3 className="text-xl font-bold mb-2">San Francisco Headquarters</h3>
+              <h3 className="text-xl font-bold mb-2">San Francisco</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                415 Mission St<br />
-                San Francisco, CA 94105<br />
+                San Francisco, California<br />
                 United States
               </p>
             </div>
 
             <div className="text-center">
               <MapPin className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-              <h3 className="text-xl font-bold mb-2">Remote Team</h3>
+              <h3 className="text-xl font-bold mb-2">Bangalore</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                We have team members distributed globally,<br />
-                enabling 24/7 development cycles
+                3rd Floor, 732, Chinmaya Mission Hospital Rd,<br />
+                Indira Nagar 1st Stage, Stage 1, Indiranagar,<br />
+                Bengaluru, Karnataka 560038
+              </p>
+            </div>
+
+            <div className="text-center">
+              <MapPin className="h-12 w-12 mx-auto mb-4 text-blue-600" />
+              <h3 className="text-xl font-bold mb-2">Noida</h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                Floor 19, C-001/A2, Sector 16B,<br />
+                Noida, Uttar Pradesh 201301
               </p>
             </div>
           </div>
