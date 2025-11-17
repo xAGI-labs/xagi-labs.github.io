@@ -53,6 +53,11 @@ export default function Footer() {
                   Team
                 </Link>
               </li>
+              <li>
+                <Link href="/Ministry-of-Skill-Development-and-Entrepreneurship-pitch" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  MSDE Pitch
+                </Link>
+              </li>
             </ul>
           </div>
 
