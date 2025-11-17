@@ -155,7 +155,7 @@ export default function VoiceAIPage() {
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               Powering India&apos;s businesses with autonomous{" "}
-              <strong className="text-gray-900 dark:text-white">XAGI voice agents</strong> for end-to-end customer
+              <strong className="text-gray-900 dark:text-white">xAGI voice agents</strong> for end-to-end customer
               service, outbound sales, recruitment, and more. Handle thousands of inbound and outbound calls every
               minute with natural, fluid, and{" "}
               <strong className="text-gray-900 dark:text-white">multilingual intelligence</strong> that truly
@@ -191,16 +191,16 @@ export default function VoiceAIPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-sm font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-4">
-                INTRODUCING XAGI voice
+                INTRODUCING xAGI voice
               </p>
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                Seamlessly Build, Test, Deploy, and Scale Conversational XAGI voice Agents.
+                Seamlessly Build, Test, Deploy, and Scale Conversational xAGI voice Agents.
               </h2>
             </div>
             <div className="prose prose-lg dark:prose-invert mx-auto">
               <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
                 Go from a simple idea to a fully functional, autonomous AI voice agent in{" "}
-                <strong>minutes, not weeks.</strong> XAGI voice provides the complete platform for both developers and
+                <strong>minutes, not weeks.</strong> xAGI voice provides the complete platform for both developers and
                 business teams to create, test, and deploy intelligent, human-like voice bots.
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
@@ -222,7 +222,7 @@ export default function VoiceAIPage() {
                 Agents That Do More Than Talk
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Create XAGI voice agents for India that do more than just talk—they understand, adapt, and act. Our
+                Create xAGI voice agents for India that do more than just talk—they understand, adapt, and act. Our
                 agents comprehend complex context, regional accents, and speak multiple Indian languages including{" "}
                 <strong className="text-gray-900 dark:text-white">
                   Hindi, Tamil, Telugu, Bengali, Marathi, &amp; Hinglish.
@@ -277,7 +277,7 @@ export default function VoiceAIPage() {
                 Everything You Need to Scale Voice AI
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                With integrated speech recognition (ASR), large language models (LLMs), and cloud telephony APIs, XAGI
+                With integrated speech recognition (ASR), large language models (LLMs), and cloud telephony APIs, xAGI
                 voice provides a comprehensive, end-to-end toolkit to move from idea to live deployment quickly and
                 securely.
               </p>
@@ -310,7 +310,7 @@ export default function VoiceAIPage() {
                 Trusted by Leading Institutions
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                See how Pratham Institute of Technology leverages XAGI voice to automate their admissions process and
+                See how Pratham Institute of Technology leverages xAGI voice to automate their admissions process and
                 improve student engagement.
               </p>
             </div>
@@ -323,7 +323,7 @@ export default function VoiceAIPage() {
                     Pratham Institute of Technology
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-lg italic leading-relaxed">
-                    &ldquo;XAGI voice transformed our admissions outreach. We were able to qualify thousands of student
+                    &ldquo;xAGI voice transformed our admissions outreach. We were able to qualify thousands of student
                     leads in days, not months, and provide 24/7 support for their queries, which was impossible with
                     our human team.&rdquo;
                   </p>
@@ -367,7 +367,7 @@ export default function VoiceAIPage() {
               Effortlessly Integrate with Your Stack
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-12">
-              XAGI voice works hand-in-hand with the leading platforms you already use. Plug our voice AI into your
+              xAGI voice works hand-in-hand with the leading platforms you already use. Plug our voice AI into your
               existing CRM, telephony provider, and workflow tools to scale without friction. Connect to{" "}
               <strong className="text-gray-900 dark:text-white">
                 Twilio, Plivo, Salesforce, HubSpot, Zapier,
@@ -404,7 +404,7 @@ export default function VoiceAIPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Build Smarter Voice Agents?</h2>
             <p className="text-xl text-purple-100 mb-8">
-              Connect with our team for a personalized demo and see how XAGI voice can automate your customer support,
+              Connect with our team for a personalized demo and see how xAGI voice can automate your customer support,
               supercharge your sales, or streamline your recruitment.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
