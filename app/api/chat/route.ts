@@ -1,17 +1,11 @@
-import { GoogleGenerativeAI } from '@google/generative-ai'
 import { NextRequest, NextResponse } from 'next/server'
+
+// OpenRouter API configuration (same as LinkedIn carousel generator)
+const OPENROUTER_API_KEY = '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'
+const OPENROUTER_MODEL = 'zhipu/glm-4-flash'
 
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.GEMINI
-
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: 'API key not configured' },
-        { status: 500 }
-      )
-    }
-
     const { messages, message } = await request.json()
 
     if (!message) {
@@ -21,26 +15,58 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey)
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
-
-    // Build conversation history for context
-    const history = messages?.map((msg: { role: string; content: string }) => ({
-      role: msg.role === 'user' ? 'user' : 'model',
-      parts: [{ text: msg.content }],
+    // Build conversation history for OpenRouter
+    const conversationHistory = messages?.map((msg: { role: string; content: string }) => ({
+      role: msg.role === 'user' ? 'user' : 'assistant',
+      content: msg.content,
     })) || []
 
-    const chat = model.startChat({
-      history,
-      generationConfig: {
-        maxOutputTokens: 2048,
-        temperature: 0.7,
-      },
+    // Add the current message
+    conversationHistory.push({
+      role: 'user',
+      content: message,
     })
 
-    const result = await chat.sendMessage(message)
-    const response = await result.response
-    const text = response.text()
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://xagi-labs.github.io',
+        'X-Title': 'xAGI Labs Chat',
+      },
+      body: JSON.stringify({
+        model: OPENROUTER_MODEL,
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a helpful AI assistant. Provide clear, concise, and informative responses to user questions. Be friendly and professional.',
+          },
+          ...conversationHistory,
+        ],
+        temperature: 0.7,
+        max_tokens: 2048,
+      }),
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      console.error('OpenRouter API Error:', errorData)
+      return NextResponse.json(
+        { error: errorData.error?.message || 'Failed to generate response' },
+        { status: response.status }
+      )
+    }
+
+    const data = await response.json()
+    const text = data.choices?.[0]?.message?.content || ''
+
+    if (!text) {
+      return NextResponse.json(
+        { error: 'No response received from AI' },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json({ response: text })
   } catch (error) {
