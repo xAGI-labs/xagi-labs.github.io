@@ -49,6 +49,11 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
+                <Link href="/ai-news" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  AI News
+                </Link>
+              </li>
+              <li>
                 <Link href="/portfolio" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   Portfolio
                 </Link>
