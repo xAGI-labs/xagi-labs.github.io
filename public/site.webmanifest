@@ -1,0 +1,27 @@
+{
+  "name": "xAGI Labs - AI-First Development Agency",
+  "short_name": "xAGI Labs",
+  "description": "Transform your vision into intelligence-first products. We build production-ready AI systems from prototypes to full-scale applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["business", "productivity", "development"],
+  "icons": [
+    {
+      "src": "/xagi-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/xagi-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
