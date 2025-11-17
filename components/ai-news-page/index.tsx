@@ -33,7 +33,10 @@ export default function AiNewsPage() {
       const items = xmlDoc.querySelectorAll("item")
       const newsItems: NewsItem[] = []
 
-      items.forEach((item) => {
+      // Limit to top 10 items from the RSS feed
+      const topItems = Array.from(items).slice(0, 10)
+
+      topItems.forEach((item) => {
         const title = item.querySelector("title")?.textContent || ""
         const link = item.querySelector("link")?.textContent || ""
         // Use content:encoded for full content, fallback to description
