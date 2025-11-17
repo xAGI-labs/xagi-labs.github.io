@@ -8,10 +8,6 @@ interface AIGeneratorModalProps {
   onGenerate: (slides: any[]) => void
 }
 
-// OpenRouter API key for ZAI GLM model (free tier)
-const OPENROUTER_API_KEY = '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'
-const OPENROUTER_MODEL = 'zhipu/glm-4-flash'
-
 export default function AIGeneratorModal({
   isOpen,
   onClose,
@@ -32,106 +28,29 @@ export default function AIGeneratorModal({
     setError('')
 
     try {
-      const systemPrompt = `You are a professional LinkedIn content creator. Generate ${slideCount} carousel slides based on the user's prompt.
-
-The first slide should be an engaging intro slide with a catchy title and subtitle.
-The middle slides (2 to ${slideCount - 1}) should be content slides with informative titles, subtitles, and detailed content.
-The last slide should be an outro/CTA slide with a call to action.
-
-Return ONLY a valid JSON array of slides in this exact format:
-[
-  {
-    "type": "intro",
-    "title": "Engaging Title",
-    "subtitle": "Compelling subtitle",
-    "content": "",
-    "backgroundColor": "#0A66C2"
-  },
-  {
-    "type": "content",
-    "title": "Key Point Title",
-    "subtitle": "Brief context",
-    "content": "Detailed content for this slide. Make it informative and engaging.",
-    "backgroundColor": "#0A66C2"
-  },
-  {
-    "type": "outro",
-    "title": "Thank You!",
-    "subtitle": "Call to action",
-    "content": "Follow for more insights",
-    "backgroundColor": "#0A66C2"
-  }
-]
-
-Important:
-- Return ONLY the JSON array, no additional text or markdown
-- Each slide must have all fields: type, title, subtitle, content, backgroundColor
-- Use professional LinkedIn-style language
-- Keep titles under 60 characters
-- Keep subtitles under 80 characters
-- Keep content under 300 characters per slide
-- Use #0A66C2 (LinkedIn blue) as default backgroundColor`
-
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      const response = await fetch('/api/generate-slides', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': typeof window !== 'undefined' ? window.location.origin : 'https://xagi-labs.github.io',
-          'X-Title': 'LinkedIn Carousel Generator',
         },
         body: JSON.stringify({
-          model: OPENROUTER_MODEL,
-          messages: [
-            {
-              role: 'system',
-              content: systemPrompt,
-            },
-            {
-              role: 'user',
-              content: prompt,
-            },
-          ],
-          temperature: 0.7,
-          max_tokens: 4000,
+          prompt: prompt.trim(),
+          slideCount,
         }),
       })
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}))
-        throw new Error(errorData.error?.message || `API request failed with status ${response.status}`)
+        throw new Error(errorData.error || `API request failed with status ${response.status}`)
       }
 
       const data = await response.json()
-      const text = data.choices?.[0]?.message?.content || ''
 
-      if (!text) {
-        throw new Error('No response received from AI')
+      if (!data.slides || !Array.isArray(data.slides)) {
+        throw new Error('Invalid response format from API')
       }
 
-      // Try to extract JSON from the response
-      let slides
-      try {
-        // Remove markdown code blocks if present
-        const cleanedText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
-        slides = JSON.parse(cleanedText)
-      } catch (parseError) {
-        console.error('Failed to parse AI response:', text)
-        throw new Error('Failed to parse AI response. Please try again.')
-      }
-
-      // Validate that we got an array of slides
-      if (!Array.isArray(slides)) {
-        throw new Error('Invalid response format from AI')
-      }
-
-      // Add unique IDs to each slide
-      const slidesWithIds = slides.map((slide, index) => ({
-        ...slide,
-        id: `slide-${Date.now()}-${index}`,
-      }))
-
-      onGenerate(slidesWithIds)
+      onGenerate(data.slides)
       setPrompt('')
       setSlideCount(5)
       onClose()

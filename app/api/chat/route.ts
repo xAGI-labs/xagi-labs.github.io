@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// OpenRouter API configuration (same as LinkedIn carousel generator)
-const OPENROUTER_API_KEY = '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'
+// OpenRouter API configuration
 const OPENROUTER_MODEL = 'zhipu/glm-4-flash'
 
 export async function POST(request: NextRequest) {
@@ -12,6 +11,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Message is required' },
         { status: 400 }
+      )
+    }
+
+    const apiKey = process.env.OPENROUTER_API_KEY
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: 'OpenRouter API key not configured. Please set OPENROUTER_API_KEY environment variable.' },
+        { status: 500 }
       )
     }
 
@@ -30,7 +37,7 @@ export async function POST(request: NextRequest) {
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
         'HTTP-Referer': 'https://xagi-labs.github.io',
         'X-Title': 'xAGI Labs Chat',

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+
+// OpenRouter API configuration
+const OPENROUTER_MODEL = 'zhipu/glm-4-flash'
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,16 +14,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const apiKey = process.env.GEMINI
+    const apiKey = process.env.OPENROUTER_API_KEY
     if (!apiKey) {
       return NextResponse.json(
-        { error: 'Gemini API key not configured' },
+        { error: 'OpenRouter API key not configured. Please set OPENROUTER_API_KEY environment variable.' },
         { status: 500 }
       )
     }
-
-    const genAI = new GoogleGenerativeAI(apiKey)
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
 
     const systemPrompt = `You are a professional LinkedIn content creator. Generate ${slideCount} carousel slides based on the user's prompt.
 
@@ -63,9 +62,49 @@ Important:
 - Keep content under 300 characters per slide
 - Use #0A66C2 (LinkedIn blue) as default backgroundColor`
 
-    const result = await model.generateContent(`${systemPrompt}\n\nUser prompt: ${prompt}`)
-    const response = await result.response
-    const text = response.text()
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://xagi-labs.github.io',
+        'X-Title': 'LinkedIn Carousel Generator',
+      },
+      body: JSON.stringify({
+        model: OPENROUTER_MODEL,
+        messages: [
+          {
+            role: 'system',
+            content: systemPrompt,
+          },
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+        temperature: 0.7,
+        max_tokens: 4000,
+      }),
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      console.error('OpenRouter API Error:', errorData)
+      return NextResponse.json(
+        { error: errorData.error?.message || `API request failed with status ${response.status}` },
+        { status: response.status }
+      )
+    }
+
+    const data = await response.json()
+    const text = data.choices?.[0]?.message?.content || ''
+
+    if (!text) {
+      return NextResponse.json(
+        { error: 'No response received from AI' },
+        { status: 500 }
+      )
+    }
 
     // Try to extract JSON from the response
     let slides
