@@ -23,8 +23,12 @@ export default function TeamPage() {
     }
   ]
 
+  const productManagers = [
+    { name: "Abhishek Sukumar", role: "Product Manager", portfolio: "https://abhishek-sukumar-port--folio.vercel.app/" },
+    { name: "Chandramani Shukla", role: "Product Manager", linkedin: "https://in.linkedin.com/in/chandramani-shukla-31531b227" }
+  ]
+
   const team = [
-    { name: "Abhishek Sukumar", role: "Senior Software Engineer", portfolio: "https://abhishek-sukumar-port--folio.vercel.app/" },
     { name: "Basab Jha", role: "Software Engineer - Backend", github: "https://github.com/comethrusws" },
     { name: "Ujjwal Puri", role: "Software Engineer - AI/ML", github: "https://github.com/UzitheI" },
     { name: "Alen Yohannan", role: "Software Engineer - Automation", github: "https://github.com/AlenVelocity" },
@@ -33,7 +37,6 @@ export default function TeamPage() {
     { name: "Aditya Vernekar", role: "Software Engineer - DevOps", github: "https://github.com/AdityaVernekar" },
     { name: "Sai Tulasi Chilakapati", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/saitulasichilakapati" },
     { name: "Dhananjay Pawar", role: "Software Engineer", github: "https://github.com/Dhananjay2601" },
-    { name: "Chandramani Shukla", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/chandramani-shukla-31531b227" },
     { name: "Aditya Rajawat", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/aditya-rajawat" }
   ]
 
@@ -86,8 +89,35 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Engineering Team */}
+      {/* Product Managers */}
       <section className="py-20">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-4xl font-bold mb-16 text-center">Product Managers</h2>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {productManagers.map((member, index) => (
+              <div key={index} className="bg-gray-50 dark:bg-[#111111] rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+                <h3 className="text-xl font-bold mb-2">{member.name}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">{member.role}</p>
+                <div className="flex gap-3">
+                  {member.portfolio && (
+                    <a href={member.portfolio} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                      <ExternalLink className="h-5 w-5" />
+                    </a>
+                  )}
+                  {member.linkedin && (
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Engineering Team */}
+      <section className="py-20 bg-gray-50 dark:bg-[#111111]">
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-4xl font-bold mb-16 text-center">Engineering Team</h2>
           <div className="grid md:grid-cols-3 gap-6">
