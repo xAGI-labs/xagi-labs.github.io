@@ -39,11 +39,32 @@ export default function AIGeneratorModal({
         }),
       })
 
-      const data = await response.json()
-
+      // Check response status first before parsing JSON
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to generate slides')
+        // Try to get error message from JSON response, but handle HTML responses gracefully
+        const contentType = response.headers.get('content-type')
+        if (contentType && contentType.includes('application/json')) {
+          const errorData = await response.json()
+          throw new Error(errorData.error || 'Failed to generate slides')
+        } else {
+          // Server returned HTML (error page) instead of JSON
+          if (response.status === 500) {
+            throw new Error('Server error: API key may not be configured. Please contact support.')
+          } else if (response.status === 404) {
+            throw new Error('API endpoint not found')
+          } else {
+            throw new Error(`Server error: ${response.status} ${response.statusText}`)
+          }
+        }
       }
+
+      // Verify response is JSON before parsing
+      const contentType = response.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Invalid response format from server')
+      }
+
+      const data = await response.json()
 
       onGenerate(data.slides)
       setPrompt('')
