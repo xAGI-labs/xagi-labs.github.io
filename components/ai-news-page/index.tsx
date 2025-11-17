@@ -164,9 +164,10 @@ export default function AiNewsPage() {
                       )}
 
                       {item.description && (
-                        <p className="text-gray-600 dark:text-gray-400 line-clamp-3">
-                          {stripHtml(item.description)}
-                        </p>
+                        <div
+                          className="text-gray-600 dark:text-gray-400 prose prose-sm dark:prose-invert max-w-none"
+                          dangerouslySetInnerHTML={{ __html: item.description }}
+                        />
                       )}
 
                       <a
