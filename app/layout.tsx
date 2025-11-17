@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   verification: {
-    google: "your-google-verification-code", // Replace with actual Google Search Console verification code
+    google: "LdV3UFHGC7ODHeM_y3khalq5gKgW8tq5WHhHNegVO48",
   },
   category: "technology",
   classification: "Business",
