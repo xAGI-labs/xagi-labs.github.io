@@ -1,12 +1,15 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 
 interface AIGeneratorModalProps {
   isOpen: boolean
   onClose: () => void
   onGenerate: (slides: any[]) => void
 }
+
+const API_KEY_STORAGE_KEY = 'gemini-api-key'
 
 export default function AIGeneratorModal({
   isOpen,
@@ -17,6 +20,32 @@ export default function AIGeneratorModal({
   const [slideCount, setSlideCount] = useState(5)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState('')
+  const [apiKey, setApiKey] = useState('')
+  const [showApiKeyInput, setShowApiKeyInput] = useState(false)
+
+  // Load API key from localStorage on mount
+  useEffect(() => {
+    const savedKey = localStorage.getItem(API_KEY_STORAGE_KEY)
+    if (savedKey) {
+      setApiKey(savedKey)
+    } else {
+      setShowApiKeyInput(true)
+    }
+  }, [])
+
+  const handleSaveApiKey = () => {
+    if (apiKey.trim()) {
+      localStorage.setItem(API_KEY_STORAGE_KEY, apiKey.trim())
+      setShowApiKeyInput(false)
+      setError('')
+    }
+  }
+
+  const handleClearApiKey = () => {
+    localStorage.removeItem(API_KEY_STORAGE_KEY)
+    setApiKey('')
+    setShowApiKeyInput(true)
+  }
 
   const handleGenerate = async () => {
     if (!prompt.trim()) {
@@ -24,54 +53,96 @@ export default function AIGeneratorModal({
       return
     }
 
+    if (!apiKey.trim()) {
+      setError('Please enter your Gemini API key')
+      setShowApiKeyInput(true)
+      return
+    }
+
     setIsGenerating(true)
     setError('')
 
     try {
-      const response = await fetch('/api/generate-slides', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          prompt: prompt.trim(),
-          slideCount,
-        }),
-      })
+      const genAI = new GoogleGenerativeAI(apiKey.trim())
+      const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
 
-      // Check response status first before parsing JSON
-      if (!response.ok) {
-        // Try to get error message from JSON response, but handle HTML responses gracefully
-        const contentType = response.headers.get('content-type')
-        if (contentType && contentType.includes('application/json')) {
-          const errorData = await response.json()
-          throw new Error(errorData.error || 'Failed to generate slides')
-        } else {
-          // Server returned HTML (error page) instead of JSON
-          if (response.status === 500) {
-            throw new Error('Server error: API key may not be configured. Please contact support.')
-          } else if (response.status === 404) {
-            throw new Error('API endpoint not found')
-          } else {
-            throw new Error(`Server error: ${response.status} ${response.statusText}`)
-          }
-        }
+      const systemPrompt = `You are a professional LinkedIn content creator. Generate ${slideCount} carousel slides based on the user's prompt.
+
+The first slide should be an engaging intro slide with a catchy title and subtitle.
+The middle slides (2 to ${slideCount - 1}) should be content slides with informative titles, subtitles, and detailed content.
+The last slide should be an outro/CTA slide with a call to action.
+
+Return ONLY a valid JSON array of slides in this exact format:
+[
+  {
+    "type": "intro",
+    "title": "Engaging Title",
+    "subtitle": "Compelling subtitle",
+    "content": "",
+    "backgroundColor": "#0A66C2"
+  },
+  {
+    "type": "content",
+    "title": "Key Point Title",
+    "subtitle": "Brief context",
+    "content": "Detailed content for this slide. Make it informative and engaging.",
+    "backgroundColor": "#0A66C2"
+  },
+  {
+    "type": "outro",
+    "title": "Thank You!",
+    "subtitle": "Call to action",
+    "content": "Follow for more insights",
+    "backgroundColor": "#0A66C2"
+  }
+]
+
+Important:
+- Return ONLY the JSON array, no additional text or markdown
+- Each slide must have all fields: type, title, subtitle, content, backgroundColor
+- Use professional LinkedIn-style language
+- Keep titles under 60 characters
+- Keep subtitles under 80 characters
+- Keep content under 300 characters per slide
+- Use #0A66C2 (LinkedIn blue) as default backgroundColor`
+
+      const result = await model.generateContent(`${systemPrompt}\n\nUser prompt: ${prompt}`)
+      const response = await result.response
+      const text = response.text()
+
+      // Try to extract JSON from the response
+      let slides
+      try {
+        // Remove markdown code blocks if present
+        const cleanedText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
+        slides = JSON.parse(cleanedText)
+      } catch (parseError) {
+        console.error('Failed to parse AI response:', text)
+        throw new Error('Failed to parse AI response. Please try again.')
       }
 
-      // Verify response is JSON before parsing
-      const contentType = response.headers.get('content-type')
-      if (!contentType || !contentType.includes('application/json')) {
-        throw new Error('Invalid response format from server')
+      // Validate that we got an array of slides
+      if (!Array.isArray(slides)) {
+        throw new Error('Invalid response format from AI')
       }
 
-      const data = await response.json()
+      // Add unique IDs to each slide
+      const slidesWithIds = slides.map((slide, index) => ({
+        ...slide,
+        id: `slide-${Date.now()}-${index}`,
+      }))
 
-      onGenerate(data.slides)
+      onGenerate(slidesWithIds)
       setPrompt('')
       setSlideCount(5)
       onClose()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
+    } catch (err: any) {
+      if (err.message?.includes('API key')) {
+        setError('Invalid API key. Please check your Gemini API key.')
+        setShowApiKeyInput(true)
+      } else {
+        setError(err instanceof Error ? err.message : 'An error occurred')
+      }
     } finally {
       setIsGenerating(false)
     }
@@ -88,7 +159,7 @@ export default function AIGeneratorModal({
       />
 
       {/* Modal */}
-      <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl p-6 z-10">
+      <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl p-6 z-10 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
             Generate Slides with AI
@@ -115,6 +186,57 @@ export default function AIGeneratorModal({
         </div>
 
         <div className="space-y-4">
+          {/* API Key Input */}
+          {showApiKeyInput ? (
+            <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Gemini API Key
+              </label>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                Get your free API key from{' '}
+                <a
+                  href="https://makersuite.google.com/app/apikey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  Google AI Studio
+                </a>
+              </p>
+              <div className="flex gap-2">
+                <input
+                  type="password"
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  placeholder="Enter your Gemini API key"
+                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+                <button
+                  onClick={handleSaveApiKey}
+                  disabled={!apiKey.trim()}
+                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-medium"
+                >
+                  Save
+                </button>
+              </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                Your API key is stored locally in your browser and never sent to our servers.
+              </p>
+            </div>
+          ) : (
+            <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+              <span className="text-sm text-green-700 dark:text-green-400">
+                ✓ API key configured
+              </span>
+              <button
+                onClick={handleClearApiKey}
+                className="text-xs text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400"
+              >
+                Change key
+              </button>
+            </div>
+          )}
+
           {/* Prompt Input */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -159,7 +281,7 @@ export default function AIGeneratorModal({
           <div className="flex gap-3 pt-4">
             <button
               onClick={handleGenerate}
-              disabled={isGenerating || !prompt.trim()}
+              disabled={isGenerating || !prompt.trim() || !apiKey.trim()}
               className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors font-medium flex items-center justify-center gap-2"
             >
               {isGenerating ? (
