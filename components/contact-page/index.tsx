@@ -103,7 +103,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      San Francisco, CA / Bangalore / Noida
+                      Hayward, CA / Bangalore / Noida
                     </p>
                   </div>
                 </div>
@@ -239,9 +239,9 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <MapPin className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-              <h3 className="text-xl font-bold mb-2">San Francisco</h3>
+              <h3 className="text-xl font-bold mb-2">Hayward</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                San Francisco, California<br />
+                Artistic Pl, Hayward, CA 94541<br />
                 United States
               </p>
             </div>

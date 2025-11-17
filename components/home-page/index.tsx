@@ -300,7 +300,7 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">Contact</h4>
               <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
                 <p>Email: saurav@xagi.in</p>
-                <p>Location: San Francisco, CA</p>
+                <p>Location: Hayward, CA</p>
               </div>
             </div>
           </div>
