@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import React, { useState } from 'react'
 
 interface AIGeneratorModalProps {
   isOpen: boolean
@@ -9,7 +8,9 @@ interface AIGeneratorModalProps {
   onGenerate: (slides: any[]) => void
 }
 
-const API_KEY_STORAGE_KEY = 'gemini-api-key'
+// OpenRouter API key for ZAI GLM model (free tier)
+const OPENROUTER_API_KEY = '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'
+const OPENROUTER_MODEL = 'zhipu/glm-4-flash'
 
 export default function AIGeneratorModal({
   isOpen,
@@ -20,32 +21,6 @@ export default function AIGeneratorModal({
   const [slideCount, setSlideCount] = useState(5)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState('')
-  const [apiKey, setApiKey] = useState('')
-  const [showApiKeyInput, setShowApiKeyInput] = useState(false)
-
-  // Load API key from localStorage on mount
-  useEffect(() => {
-    const savedKey = localStorage.getItem(API_KEY_STORAGE_KEY)
-    if (savedKey) {
-      setApiKey(savedKey)
-    } else {
-      setShowApiKeyInput(true)
-    }
-  }, [])
-
-  const handleSaveApiKey = () => {
-    if (apiKey.trim()) {
-      localStorage.setItem(API_KEY_STORAGE_KEY, apiKey.trim())
-      setShowApiKeyInput(false)
-      setError('')
-    }
-  }
-
-  const handleClearApiKey = () => {
-    localStorage.removeItem(API_KEY_STORAGE_KEY)
-    setApiKey('')
-    setShowApiKeyInput(true)
-  }
 
   const handleGenerate = async () => {
     if (!prompt.trim()) {
@@ -53,19 +28,10 @@ export default function AIGeneratorModal({
       return
     }
 
-    if (!apiKey.trim()) {
-      setError('Please enter your Gemini API key')
-      setShowApiKeyInput(true)
-      return
-    }
-
     setIsGenerating(true)
     setError('')
 
     try {
-      const genAI = new GoogleGenerativeAI(apiKey.trim())
-      const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
-
       const systemPrompt = `You are a professional LinkedIn content creator. Generate ${slideCount} carousel slides based on the user's prompt.
 
 The first slide should be an engaging intro slide with a catchy title and subtitle.
@@ -106,9 +72,42 @@ Important:
 - Keep content under 300 characters per slide
 - Use #0A66C2 (LinkedIn blue) as default backgroundColor`
 
-      const result = await model.generateContent(`${systemPrompt}\n\nUser prompt: ${prompt}`)
-      const response = await result.response
-      const text = response.text()
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': typeof window !== 'undefined' ? window.location.origin : 'https://xagi-labs.github.io',
+          'X-Title': 'LinkedIn Carousel Generator',
+        },
+        body: JSON.stringify({
+          model: OPENROUTER_MODEL,
+          messages: [
+            {
+              role: 'system',
+              content: systemPrompt,
+            },
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+          temperature: 0.7,
+          max_tokens: 4000,
+        }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.error?.message || `API request failed with status ${response.status}`)
+      }
+
+      const data = await response.json()
+      const text = data.choices?.[0]?.message?.content || ''
+
+      if (!text) {
+        throw new Error('No response received from AI')
+      }
 
       // Try to extract JSON from the response
       let slides
@@ -137,12 +136,7 @@ Important:
       setSlideCount(5)
       onClose()
     } catch (err: any) {
-      if (err.message?.includes('API key')) {
-        setError('Invalid API key. Please check your Gemini API key.')
-        setShowApiKeyInput(true)
-      } else {
-        setError(err instanceof Error ? err.message : 'An error occurred')
-      }
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setIsGenerating(false)
     }
@@ -186,56 +180,12 @@ Important:
         </div>
 
         <div className="space-y-4">
-          {/* API Key Input */}
-          {showApiKeyInput ? (
-            <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Gemini API Key
-              </label>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                Get your free API key from{' '}
-                <a
-                  href="https://makersuite.google.com/app/apikey"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  Google AI Studio
-                </a>
-              </p>
-              <div className="flex gap-2">
-                <input
-                  type="password"
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="Enter your Gemini API key"
-                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <button
-                  onClick={handleSaveApiKey}
-                  disabled={!apiKey.trim()}
-                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-medium"
-                >
-                  Save
-                </button>
-              </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                Your API key is stored locally in your browser and never sent to our servers.
-              </p>
-            </div>
-          ) : (
-            <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-              <span className="text-sm text-green-700 dark:text-green-400">
-                ✓ API key configured
-              </span>
-              <button
-                onClick={handleClearApiKey}
-                className="text-xs text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400"
-              >
-                Change key
-              </button>
-            </div>
-          )}
+          {/* AI Model Info */}
+          <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+            <span className="text-sm text-blue-700 dark:text-blue-400">
+              Powered by ZAI GLM (via OpenRouter)
+            </span>
+          </div>
 
           {/* Prompt Input */}
           <div>
@@ -281,7 +231,7 @@ Important:
           <div className="flex gap-3 pt-4">
             <button
               onClick={handleGenerate}
-              disabled={isGenerating || !prompt.trim() || !apiKey.trim()}
+              disabled={isGenerating || !prompt.trim()}
               className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors font-medium flex items-center justify-center gap-2"
             >
               {isGenerating ? (
