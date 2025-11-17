@@ -61,7 +61,7 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Contact</h4>
             <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
               <p>Email: saurav@xagi.in</p>
-              <p>Location: San Francisco, CA / Bangalore / Noida</p>
+              <p>Location: Hayward, CA / Bangalore / Noida</p>
             </div>
           </div>
         </div>
