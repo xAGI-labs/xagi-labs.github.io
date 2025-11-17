@@ -9,8 +9,10 @@ export default function StructuredData() {
     "email": "saurav@xagi.in",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "San Francisco",
+      "streetAddress": "Artistic Pl",
+      "addressLocality": "Hayward",
       "addressRegion": "CA",
+      "postalCode": "94541",
       "addressCountry": "US"
     },
     "sameAs": [
