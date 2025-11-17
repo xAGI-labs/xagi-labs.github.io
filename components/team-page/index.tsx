@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
-import { ExternalLink, Github, Linkedin } from "lucide-react"
+import { ExternalLink, Github, Linkedin, Twitter } from "lucide-react"
 
 export default function TeamPage() {
   const leadership = [
@@ -30,7 +30,9 @@ export default function TeamPage() {
     { name: "Alen Yohannan", role: "Software Engineer - Automation", github: "https://github.com/AlenVelocity" },
     { name: "Nilesh Agarwal", role: "Software Engineer", linkedin: "https://www.linkedin.com/in/nilesh-aggarwal-507552191/" },
     { name: "Niranjan Gaonkar", role: "Software Engineer - Frontend", github: "https://github.com/Niranjangkr" },
-    { name: "Aditya Vernekar", role: "Software Engineer - DevOps", github: "https://github.com/AdityaVernekar" }
+    { name: "Aditya Vernekar", role: "Software Engineer - DevOps", github: "https://github.com/AdityaVernekar" },
+    { name: "Neerajha", role: "Software Engineer", github: "https://github.com/jha-niraj" },
+    { name: "Harsh Gawas", role: "Software Engineer", twitter: "https://x.com/HarshGawas25" }
   ]
 
   return (
@@ -105,6 +107,11 @@ export default function TeamPage() {
                   {member.linkedin && (
                     <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
                       <Linkedin className="h-5 w-5" />
+                    </a>
+                  )}
+                  {member.twitter && (
+                    <a href={member.twitter} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                      <Twitter className="h-5 w-5" />
                     </a>
                   )}
                 </div>
