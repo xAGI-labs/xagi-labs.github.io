@@ -27,6 +27,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/chat" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Chat
+                </Link>
+              </li>
+              <li>
                 <Link href="/apps/linkedin-carousel-generator" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   LinkedIn Carousel Generator
                 </Link>
@@ -70,6 +75,9 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+              <Link href="/contact" className="block hover:text-gray-900 dark:hover:text-white transition-colors">
+                Contact Us
+              </Link>
               <p>Email: saurav@xagi.in</p>
               <p>Location: Hayward, CA / Bangalore / Noida</p>
             </div>
