@@ -37,6 +37,15 @@ export default function Footer() {
           Your AI-first development partner building high-quality, scalable platforms.
         </p>
 
+        <div className="mb-6">
+          <Link
+            href="/tools/linkedin-carousel-generator"
+            className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            LinkedIn Carousel Generator
+          </Link>
+        </div>
+
         <p className="text-sm text-gray-500 dark:text-gray-400">
           © {new Date().getFullYear()} Automatic. All rights reserved.
         </p>
