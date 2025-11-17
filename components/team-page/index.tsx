@@ -126,11 +126,6 @@ export default function TeamPage() {
                 <h3 className="text-xl font-bold mb-2">{member.name}</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">{member.role}</p>
                 <div className="flex gap-3">
-                  {member.portfolio && (
-                    <a href={member.portfolio} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
-                      <ExternalLink className="h-5 w-5" />
-                    </a>
-                  )}
                   {member.github && (
                     <a href={member.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
                       <Github className="h-5 w-5" />
