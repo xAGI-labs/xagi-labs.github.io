@@ -36,7 +36,9 @@ export default function AiNewsPage() {
       items.forEach((item) => {
         const title = item.querySelector("title")?.textContent || ""
         const link = item.querySelector("link")?.textContent || ""
-        const description = item.querySelector("description")?.textContent || ""
+        // Use content:encoded for full content, fallback to description
+        const contentEncoded = item.getElementsByTagName("content:encoded")[0]?.textContent || ""
+        const description = contentEncoded || item.querySelector("description")?.textContent || ""
         const pubDate = item.querySelector("pubDate")?.textContent || ""
         const guid = item.querySelector("guid")?.textContent || link
 
