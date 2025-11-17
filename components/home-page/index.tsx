@@ -1,51 +1,14 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { ArrowRight, Brain, Zap, Rocket, Users, TrendingUp, Award } from "lucide-react"
-import ThemeToggle from "../landing-page/theme-toggle"
+import Header from "../shared/header"
+import Footer from "../shared/footer"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#0a0a0a]">
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image src="/xagi-icon.png" alt="xAGI Labs" width={32} height={32} />
-              <span className="text-xl font-bold">xAGI Labs</span>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/tutor" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                AI Tutor
-              </Link>
-              <Link href="/services" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Services
-              </Link>
-              <Link href="/portfolio" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Portfolio
-              </Link>
-              <Link href="/team" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Team
-              </Link>
-              <Link href="/process" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Process
-              </Link>
-              {/* <Link href="/pricing" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Pricing
-              </Link> */}
-              <Link
-                href="/contact"
-                className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-lg font-medium hover:opacity-90 transition-opacity"
-              >
-                Contact
-              </Link>
-              <ThemeToggle />
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-20 md:py-32">
@@ -236,79 +199,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 dark:border-gray-800 py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Brand */}
-            <div className="md:col-span-1">
-              <Link href="/" className="flex items-center space-x-2">
-                <Image src="/xagi-icon.png" alt="xAGI Labs" width={32} height={32} />
-                <span className="text-xl font-bold">xAGI Labs</span>
-              </Link>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                Building the Intelligence Layer for Modern Business
-              </p>
-            </div>
-
-            {/* Products */}
-            <div>
-              <h4 className="font-semibold mb-4">Products</h4>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                <li>
-                  <Link href="/tutor" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                    AI Tutor
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/apps/linkedin-carousel-generator" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                    LinkedIn Carousel Generator
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                <li>
-                  <a
-                    href="https://youtube.com/your-pitch-video"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    Ministry of Entrepreneurship Pitch
-                  </a>
-                </li>
-                <li>
-                  <Link href="/portfolio" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                    Portfolio
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                    Services
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
-                <p>Email: saurav@xagi.in</p>
-                <p>Location: San Francisco, CA</p>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-600 dark:text-gray-400">
-            © 2025 xAGI Labs. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
