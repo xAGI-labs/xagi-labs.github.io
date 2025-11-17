@@ -2,10 +2,15 @@
 
 import Link from "next/link"
 import { ArrowRight, BookOpen, CheckCircle, ChevronRight, Cpu, Shield, Users } from "lucide-react"
+import Header from "../shared/header"
+import Footer from "../shared/footer"
 
 export default function TutorPage() {
   return (
-    <div className="bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-200">
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0a]">
+      <Header />
+
+      <div className="bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-200">
       {/* Hero Section */}
       <section className="text-center py-20 px-4">
         <h1 className="text-5xl md:text-6xl font-bold mb-4">
@@ -184,6 +189,9 @@ export default function TutorPage() {
           </Link>
         </div>
       </section>
+      </div>
+
+      <Footer />
     </div>
   )
 }
