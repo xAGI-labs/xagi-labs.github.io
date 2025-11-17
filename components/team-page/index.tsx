@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
-import { ExternalLink, Github, Linkedin } from "lucide-react"
+import { ExternalLink, Github, Linkedin, Twitter } from "lucide-react"
 
 export default function TeamPage() {
   const leadership = [
@@ -37,7 +37,11 @@ export default function TeamPage() {
     { name: "Aditya Vernekar", role: "Software Engineer - DevOps", github: "https://github.com/AdityaVernekar" },
     { name: "Sai Tulasi Chilakapati", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/saitulasichilakapati" },
     { name: "Dhananjay Pawar", role: "Software Engineer", github: "https://github.com/Dhananjay2601" },
-    { name: "Aditya Rajawat", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/aditya-rajawat" }
+    { name: "Aditya Rajawat", role: "Software Engineer", linkedin: "https://in.linkedin.com/in/aditya-rajawat" },
+    { name: "Satyam Sharma", role: "AI Research & Forward Deployed Engineer", linkedin: "https://in.linkedin.com/in/satyam-sharma-6632a61b4" },
+    { name: "Aviraj Khare", role: "Staff Engineer", portfolio: "https://www.aviraj.dev/" },
+    { name: "Sujant Kumar", role: "Forward Deployed Engineer", linkedin: "https://in.linkedin.com/in/sujan-kumaar-h-1955551b5" },
+    { name: "Tulsi Soni", role: "Marketing and Growth", twitter: "https://x.com/shedntcare_" }
   ]
 
   return (
@@ -134,6 +138,16 @@ export default function TeamPage() {
                   {member.linkedin && (
                     <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
                       <Linkedin className="h-5 w-5" />
+                    </a>
+                  )}
+                  {member.portfolio && (
+                    <a href={member.portfolio} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                      <ExternalLink className="h-5 w-5" />
+                    </a>
+                  )}
+                  {member.twitter && (
+                    <a href={member.twitter} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                      <Twitter className="h-5 w-5" />
                     </a>
                   )}
                 </div>
