@@ -166,9 +166,9 @@ export default function MSDEPitchPage() {
                 </div>
                 <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
                   <p className="text-sm text-blue-800 dark:text-blue-200">
-                    <strong>Strategic Opportunity:</strong> The ministry is actively seeking &quot;proof points&quot; for its new strategy.
-                    This presents a unique opportunity to position not as a vendor, but as a <strong>strategic pilot partner</strong> whose
-                    success can be championed nationally.
+                    <strong>xAGI Labs Partnership:</strong> As a <strong>strategic pilot partner</strong>, xAGI Labs is positioned
+                    to deliver proof-of-concept implementations that can be championed nationally, demonstrating the
+                    viability of AI-driven solutions for India&apos;s skill development ecosystem.
                   </p>
                 </div>
               </div>
@@ -212,12 +212,11 @@ export default function MSDEPitchPage() {
                     </p>
                   </div>
                 </div>
-                <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-                  <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                    <strong>Key Insight:</strong> The implementation bottleneck is not the desire to teach these courses, but the
-                    <strong> how</strong>—specifically, the lack of scalable, high-quality digital content and trained faculty.
-                    Additionally, an &quot;AI-powered entrepreneurship-enabler tool&quot; (e.g., Gen-AI for business plan generation)
-                    is more aligned than job matching platforms.
+                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <p className="text-sm text-blue-800 dark:text-blue-200">
+                    <strong>xAGI Labs Value Proposition:</strong> We provide scalable, high-quality AI-generated digital content
+                    and faculty training solutions. Our AI-powered entrepreneurship-enabler tools (including Gen-AI for
+                    business plan generation) directly support the entrepreneurship mandate of PMKVY 4.0.
                   </p>
                 </div>
               </div>
@@ -268,12 +267,12 @@ export default function MSDEPitchPage() {
                       </li>
                     </ul>
                   </div>
-                  <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border border-red-200 dark:border-red-800">
-                    <h4 className="font-semibold text-red-800 dark:text-red-200 mb-3">Critical Strategy:</h4>
-                    <p className="text-sm text-red-700 dark:text-red-300">
-                      A proposal to <strong>replace</strong> SIDH would be a fatal pitching error. The correct approach is to frame
-                      solutions as <strong>&quot;plug-ins&quot; or &quot;modules&quot;</strong> that integrate with and enhance SIDH—de-risking
-                      the project and making it an easier &quot;yes.&quot;
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
+                    <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-3">Our Approach:</h4>
+                    <p className="text-sm text-blue-700 dark:text-blue-300">
+                      xAGI Labs solutions are designed as <strong>&quot;plug-ins&quot; or &quot;modules&quot;</strong> that integrate with and enhance SIDH,
+                      ensuring seamless deployment within existing infrastructure while adding advanced AI capabilities
+                      for content delivery and assessment.
                     </p>
                   </div>
                 </div>
@@ -322,15 +321,15 @@ export default function MSDEPitchPage() {
                     </ul>
                   </div>
                   <div className="bg-white dark:bg-[#0a0a0a] p-6 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">🎯 The Critical Bottleneck</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">xAGI Labs Solution</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                      The primary challenge will not be student interest—it will be the <strong>teachers</strong>. Most government
-                      school educators are not AI experts.
+                      Our comprehensive approach addresses both student and teacher needs, recognizing that
+                      <strong> educator training</strong> is essential for program success.
                     </p>
                     <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded border border-green-200 dark:border-green-800">
                       <p className="text-sm text-green-800 dark:text-green-200">
-                        <strong>Strategic Pitch:</strong> An AI-powered &quot;Training of Trainers&quot; (ToT) platform that trains and
-                        certifies teachers is more strategic than student-facing content alone.
+                        <strong>Key Offering:</strong> AI-powered &quot;Training of Trainers&quot; (ToT) platform that trains and
+                        certifies teachers at scale, complemented by engaging student-facing content.
                       </p>
                     </div>
                   </div>
@@ -354,13 +353,12 @@ export default function MSDEPitchPage() {
                   demand-driven model. As of March 2025, <strong>776 District Skill Committees (DSCs)</strong> are
                   mandated to create annual data-driven DSDPs.
                 </p>
-                <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-                  <h4 className="font-semibold text-orange-800 dark:text-orange-200 mb-2">The Implementation Challenge:</h4>
-                  <p className="text-sm text-orange-700 dark:text-orange-300">
-                    This framework dumps complex data-gathering and analysis tasks onto hundreds of district-level
-                    officials who are not trained data scientists. This ministry-wide problem is a prime opportunity
-                    for an <strong>&quot;AI-powered DSDP Augmentation Tool&quot;</strong> that assists 700+ DSCs in auto-generating
-                    their data-driven plans.
+                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">xAGI Labs Solution:</h4>
+                  <p className="text-sm text-blue-700 dark:text-blue-300">
+                    Our <strong>&quot;AI-powered DSDP Augmentation Tool&quot;</strong> assists 700+ DSCs in streamlining
+                    complex data-gathering and analysis tasks, enabling district officials to auto-generate
+                    comprehensive, data-driven skill development plans efficiently.
                   </p>
                 </div>
               </div>
@@ -431,35 +429,35 @@ export default function MSDEPitchPage() {
                   It targets youth aged 14-35 with skills &quot;relevant to the employers.&quot;
                 </p>
                 <div className="bg-white dark:bg-[#0a0a0a] p-6 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Effective Pitch Structure:</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Our Proposed Approach:</h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    The most effective pitch is for a <strong>&quot;National-State-District Pilot&quot;</strong>:
-                    &quot;Run a pilot of our AI-skilling platform in Western UP, in direct partnership with UPSDM and
-                    the District Skill Committees of Gautam Buddh Nagar and Meerut.&quot; This respects federal structure
-                    and makes the ask clear and actionable.
+                    We propose a <strong>&quot;National-State-District Pilot&quot;</strong> model:
+                    Implementing our AI-skilling platform in Western UP, in direct partnership with UPSDM and
+                    the District Skill Committees of Gautam Buddh Nagar and Meerut. This respects the federal structure
+                    while enabling rapid, measurable impact.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Critical AI Dashboard Intelligence */}
+            {/* AI Dashboard Integration */}
             <div className="mb-16">
-              <div className="bg-red-50 dark:bg-red-900/10 border-2 border-red-200 dark:border-red-800 rounded-xl p-8">
+              <div className="bg-blue-50 dark:bg-blue-900/10 border-2 border-blue-200 dark:border-blue-800 rounded-xl p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="bg-red-100 dark:bg-red-900/30 p-3 rounded-lg">
-                    <Database className="w-6 h-6 text-red-600 dark:text-red-400" />
+                  <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
+                    <Database className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                   </div>
-                  <h3 className="text-2xl font-bold text-red-800 dark:text-red-200">
-                    CRITICAL INTELLIGENCE: UPSDM&apos;s Existing AI-Powered Dashboard
+                  <h3 className="text-2xl font-bold text-blue-800 dark:text-blue-200">
+                    Integration with UPSDM&apos;s AI-Powered Dashboard
                   </h3>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 mb-6">
-                  UPSDM has <strong>already launched</strong> an &quot;AI-powered UP Skill Gap dashboard&quot;—a first in the state.
-                  This tool uses ML algorithms and data analytics to diagnose district-specific growth sectors.
+                  UPSDM&apos;s pioneering &quot;AI-powered UP Skill Gap dashboard&quot; is a state-of-the-art tool that uses
+                  ML algorithms and data analytics to diagnose district-specific growth sectors.
                 </p>
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="bg-white dark:bg-[#0a0a0a] p-6 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">What It Does:</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Current Capabilities:</h4>
                     <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                       <li>• Provides district-wise needs assessments</li>
                       <li>• Identifies top industries per district (e.g., sugar/paper/steel in Bijnor)</li>
@@ -468,19 +466,19 @@ export default function MSDEPitchPage() {
                     </ul>
                   </div>
                   <div className="bg-white dark:bg-[#0a0a0a] p-6 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">The Sophisticated Gap:</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">xAGI Labs Enhancement:</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      The dashboard is <strong>diagnostic</strong>—it analyzes existing sectors based on historical data.
-                      It cannot analyze skill gaps for &quot;greenfield&quot; sectors like Semiconductor ATMP in factories that don&apos;t exist yet.
+                      We complement the dashboard&apos;s <strong>diagnostic</strong> capabilities by adding <strong>predictive analytics</strong> for
+                      emerging &quot;greenfield&quot; sectors like Semiconductor ATMP where historical data is limited.
                     </p>
                   </div>
                 </div>
                 <div className="p-4 bg-green-100 dark:bg-green-900/30 rounded-lg border border-green-300 dark:border-green-700">
-                  <h4 className="font-bold text-green-800 dark:text-green-200 mb-2">✅ THE WINNING PITCH:</h4>
+                  <h4 className="font-bold text-green-800 dark:text-green-200 mb-2">Our Proposal:</h4>
                   <p className="text-green-700 dark:text-green-300">
-                    <strong>Augmentation, not replacement.</strong> &quot;Your existing AI dashboard is world-class for diagnostic
-                    analysis. We propose building a <strong>predictive analytics module</strong> that plugs into it. Our module
-                    will forecast future skill needs for emerging sectors, like the 15,000 new jobs at the Noida EMC 2.0.&quot;
+                    <strong>Augmentation approach:</strong> We propose building a <strong>predictive analytics module</strong> that
+                    integrates seamlessly with your existing dashboard. This module will forecast future skill needs for
+                    emerging sectors, such as the 15,000 new jobs projected at the Noida EMC 2.0.
                   </p>
                 </div>
               </div>
@@ -566,10 +564,10 @@ export default function MSDEPitchPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Part 3: Hyper-Local Opportunities
+                Part 3: Regional Implementation Focus
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                A Grant-Seeker&apos;s Guide to Western UP
+                Western Uttar Pradesh Pilot Opportunities
               </p>
             </div>
 
@@ -585,7 +583,7 @@ export default function MSDEPitchPage() {
                       3.1 Gautam Buddh Nagar (Noida/Greater Noida)
                     </h3>
                     <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                      The High-Tech &quot;Greenfield&quot; - HIGHEST PRIORITY TARGET
+                      High-Tech Manufacturing Hub
                     </span>
                   </div>
                 </div>
@@ -612,15 +610,15 @@ export default function MSDEPitchPage() {
                     </ul>
                   </div>
                   <div className="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-lg">
-                    <h4 className="font-semibold text-emerald-800 dark:text-emerald-200 mb-3">The Skill Gap Problem:</h4>
+                    <h4 className="font-semibold text-emerald-800 dark:text-emerald-200 mb-3">Workforce Development Need:</h4>
                     <p className="text-sm text-emerald-700 dark:text-emerald-300 mb-4">
-                      This is a 15,000-job problem in sectors where local trained workforce doesn&apos;t exist. Local ITI
-                      faculty are not equipped to teach &quot;semiconductor cleanroom protocols&quot; or &quot;medical device assembly.&quot;
+                      15,000 new jobs require specialized training in areas such as semiconductor cleanroom protocols
+                      and medical device assembly—skills not currently available in the local workforce.
                     </p>
                     <div className="p-3 bg-white dark:bg-[#0a0a0a] rounded">
                       <p className="text-xs font-medium text-gray-900 dark:text-white">
-                        <strong>Strategic Pitch:</strong> AI-driven &quot;Training of Trainers&quot; (ToT) platform for EMC 2.0 is
-                        exponentially more valuable than student-facing courses.
+                        <strong>xAGI Labs Solution:</strong> AI-driven &quot;Training of Trainers&quot; (ToT) platform for EMC 2.0
+                        to rapidly upskill local faculty in high-tech manufacturing curricula.
                       </p>
                     </div>
                   </div>
@@ -752,11 +750,10 @@ export default function MSDEPitchPage() {
                     </ul>
                   </div>
                   <div className="bg-white dark:bg-[#0a0a0a] p-6 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">The Pitch Angle:</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 italic">
-                      &quot;Your existing dashboard is best-in-class for diagnosing current needs. Our module gives it
-                      <strong> foresight</strong>. It turns your dashboard from diagnostic to predictive, allowing you to
-                      prepare the workforce for the 15,000 new jobs at the Noida EMC today.&quot;
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Value Proposition:</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                      This module transforms UPSDM&apos;s diagnostic dashboard into a <strong>predictive intelligence platform</strong>,
+                      enabling proactive workforce preparation for emerging sectors like the 15,000 new jobs at the Noida EMC 2.0.
                     </p>
                     <div className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded">
                       <p className="text-xs text-purple-800 dark:text-purple-200">
@@ -806,11 +803,11 @@ export default function MSDEPitchPage() {
                     </ul>
                   </div>
                   <div className="bg-white dark:bg-[#0a0a0a] p-6 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">The Pitch Angle:</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 italic">
-                      &quot;We help you scale high-quality technical training to every village in Uttar Pradesh, in the local
-                      language, by using Gen-AI to do the work of 1,000 content creators. This solves the content bottleneck
-                      for the JSS scheme and PMKVY 4.0&apos;s digital mandate.&quot;
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Value Proposition:</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                      Scale high-quality technical training to every village in Uttar Pradesh in local languages.
+                      Gen-AI automates content creation at scale, addressing the content bottleneck for the JSS scheme
+                      and PMKVY 4.0&apos;s digital mandate.
                     </p>
                     <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded">
                       <p className="text-xs text-green-800 dark:text-green-200">
@@ -822,7 +819,7 @@ export default function MSDEPitchPage() {
               </div>
             </div>
 
-            {/* Proposal 3 - THE STRONGEST */}
+            {/* Proposal 3 - Flagship */}
             <div className="mb-12">
               <div className="bg-gradient-to-r from-pink-100 to-rose-100 dark:from-pink-900/30 dark:to-rose-900/30 rounded-xl p-8 border-4 border-pink-400 dark:border-pink-600">
                 <div className="flex items-center justify-between mb-6">
@@ -833,12 +830,12 @@ export default function MSDEPitchPage() {
                         Project SOAR-Praveen (West UP)
                       </h3>
                       <span className="text-sm font-medium text-pink-600 dark:text-pink-400">
-                        The Implementation Pitch
+                        Flagship Implementation Program
                       </span>
                     </div>
                   </div>
                   <div className="bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-bold">
-                    ⭐ STRONGEST PITCH
+                    Flagship Proposal
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-8">
@@ -865,20 +862,20 @@ export default function MSDEPitchPage() {
                     </ul>
                   </div>
                   <div className="bg-white dark:bg-[#0a0a0a] p-6 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">The Pitch Angle:</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 italic">
-                      &quot;We are your &apos;one-stop-shop&apos; to make UP&apos;s Project Praveen the flagship success story for the national
-                      SOAR initiative. We don&apos;t just provide student content; we solve your <strong>teacher training bottleneck</strong>,
-                      which is the only thing that can stop this project from scaling.&quot;
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Value Proposition:</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                      xAGI Labs provides a comprehensive &quot;one-stop-shop&quot; solution to make UP&apos;s Project Praveen a flagship success story
+                      for the national SOAR initiative. Beyond student content, we solve the <strong>teacher training scalability challenge</strong>,
+                      ensuring sustainable program growth.
                     </p>
                     <div className="p-3 bg-pink-50 dark:bg-pink-900/30 rounded">
                       <p className="text-xs text-pink-800 dark:text-pink-200">
                         <strong>Alignment:</strong> SOAR Initiative (₹500 crore), Project Praveen, Centre of Excellence in AI
                       </p>
                     </div>
-                    <div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/30 rounded border border-yellow-200 dark:border-yellow-700">
-                      <p className="text-xs font-bold text-yellow-800 dark:text-yellow-200">
-                        Why Strongest: Immediate deadline, highest funding, minister&apos;s flagship priority, solves critical bottleneck
+                    <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/30 rounded border border-green-200 dark:border-green-700">
+                      <p className="text-xs font-bold text-green-800 dark:text-green-200">
+                        Key Benefits: Immediate implementation readiness, high-impact scalability, comprehensive ToT solution
                       </p>
                     </div>
                   </div>
@@ -924,11 +921,11 @@ export default function MSDEPitchPage() {
                     </ul>
                   </div>
                   <div className="bg-white dark:bg-[#0a0a0a] p-6 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">The Pitch Angle:</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 italic">
-                      &quot;We will be the R&amp;D and technology skilling arm for your SportEdge Meerut project. We will give
-                      Meerut MSMEs the AI-design tools they need to compete globally, creating a high-profile success story
-                      for your international partners.&quot;
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Value Proposition:</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                      xAGI Labs serves as the R&amp;D and technology skilling arm for the SportEdge Meerut project, equipping
+                      Meerut MSMEs with AI-design tools to compete globally while creating a high-profile success story
+                      for international partnership objectives.
                     </p>
                     <div className="p-3 bg-amber-50 dark:bg-amber-900/30 rounded">
                       <p className="text-xs text-amber-800 dark:text-amber-200">
@@ -943,90 +940,65 @@ export default function MSDEPitchPage() {
         </div>
       </section>
 
-      {/* Part 5: Strategic Guidance */}
+      {/* Part 5: Implementation Approach */}
       <section className="py-20 bg-gray-50 dark:bg-[#111111]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Part 5: Strategic Guidance
+                Part 5: Implementation Approach
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                Engagement and Funding Navigation
+                Partnership Framework and Next Steps
               </p>
             </div>
 
-            {/* Framing the Pitch */}
+            {/* Our Approach */}
             <div className="mb-16">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                5.1 Framing the Pitch: Solving the Ministry&apos;s Problems
+                5.1 Our Partnership Philosophy
               </h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border border-red-200 dark:border-red-800">
-                  <h4 className="font-semibold text-red-800 dark:text-red-200 mb-4">❌ WRONG PITCH:</h4>
-                  <p className="text-sm text-red-700 dark:text-red-300 italic mb-4">
-                    &quot;Hi, I&apos;m an AI engineer. I&apos;m very smart and build great AI platforms. I heard you have a 4-year plan.
-                    I can build you cool AI tools. Do you have any grants for me?&quot;
-                  </p>
-                  <p className="text-sm text-red-700 dark:text-red-300">
-                    <strong>Why it&apos;s wrong:</strong> Arrogant, tech-focused, vague, places burden on minister to find a problem for the solution.
-                  </p>
-                </div>
-                <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 border border-green-200 dark:border-green-800">
-                  <h4 className="font-semibold text-green-800 dark:text-green-200 mb-4">✅ RIGHT PITCH:</h4>
-                  <p className="text-sm text-green-700 dark:text-green-300 italic mb-4">
-                    &quot;Hon&apos;ble Minister, I&apos;ve analyzed your strategic agenda, specifically PMKVY 4.0 and the new SOAR initiative.
-                    I understand your implementation challenge is scaling high-quality content and solving the teacher training bottleneck.
-                    I have a solution: a &apos;SOAR-Praveen Implementation Package&apos; for Western UP, aligning with Project Praveen&apos;s October deadline.
-                    We can provide a scalable model for the whole country.&quot;
-                  </p>
-                  <p className="text-sm text-green-700 dark:text-green-300">
-                    <strong>Why it&apos;s right:</strong> Demonstrates research, uses ministry language, identifies specific bottleneck, offers concrete solution.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-8 bg-white dark:bg-[#0a0a0a] rounded-xl p-8">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Key Pitching Principles:</h4>
+              <div className="bg-white dark:bg-[#0a0a0a] rounded-xl p-8">
                 <div className="grid md:grid-cols-3 gap-6">
-                  <div className="bg-gray-50 dark:bg-[#111111] p-4 rounded-lg">
-                    <h5 className="font-medium text-gray-900 dark:text-white mb-2">Use Their Language</h5>
+                  <div className="bg-gray-50 dark:bg-[#111111] p-6 rounded-lg">
+                    <h5 className="font-medium text-gray-900 dark:text-white mb-3">Deep Alignment</h5>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Fluency in acronyms: PMKVY 4.0, SIDH, DSDP, SOAR, Project Praveen, ATMP
+                      Solutions designed specifically for MSDE priorities: PMKVY 4.0, SIDH integration, DSDP support, SOAR initiative, and Project Praveen
                     </p>
                   </div>
-                  <div className="bg-gray-50 dark:bg-[#111111] p-4 rounded-lg">
-                    <h5 className="font-medium text-gray-900 dark:text-white mb-2">Be a Problem-Solver</h5>
+                  <div className="bg-gray-50 dark:bg-[#111111] p-6 rounded-lg">
+                    <h5 className="font-medium text-gray-900 dark:text-white mb-3">Problem-Focused</h5>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Frame around solving documented, high-priority problems (ToT bottleneck, predictive gap, vernacular content gap)
+                      Addressing documented implementation challenges: ToT scalability, predictive analytics gaps, and vernacular content needs
                     </p>
                   </div>
-                  <div className="bg-gray-50 dark:bg-[#111111] p-4 rounded-lg">
-                    <h5 className="font-medium text-gray-900 dark:text-white mb-2">Align with Hero Projects</h5>
+                  <div className="bg-gray-50 dark:bg-[#111111] p-6 rounded-lg">
+                    <h5 className="font-medium text-gray-900 dark:text-white mb-3">Measurable Impact</h5>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Tie to minister&apos;s high-profile initiatives (SOAR, SportEdge Meerut, Noida EMC 2.0)
+                      Pilot programs in Western UP aligned with strategic projects: SOAR, SportEdge Meerut, and Noida EMC 2.0
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Funding Pathways */}
+            {/* Engagement Framework */}
             <div className="mb-16">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                5.2 Funding Pathways
+                5.2 Engagement Framework
               </h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white dark:bg-[#0a0a0a] rounded-xl p-6 shadow-sm">
                   <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg w-fit mb-4">
                     <Briefcase className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                   </div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Unsolicited Proposal</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Strategic Pilot Partnership</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                    Goal of ministerial &quot;connect&quot; is to acquire a &quot;Project Champion&quot; who guides proposal through formal system.
+                    Joint pilot implementation in Western UP districts with UPSDM and District Skill Committees.
                   </p>
                   <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
                     <p className="text-xs text-blue-800 dark:text-blue-200">
-                      Leverage minister&apos;s blessing for pilot programs
+                      Scalable model for national replication
                     </p>
                   </div>
                 </div>
@@ -1034,13 +1006,13 @@ export default function MSDEPitchPage() {
                   <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-lg w-fit mb-4">
                     <FileText className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   </div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">RFP/EoI Response</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Formal Engagement</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                    Monitor MSDE and UPSDM websites for formal Requests for Proposals and Expressions of Interest.
+                    Prepared to respond to RFPs and Expressions of Interest from MSDE and UPSDM.
                   </p>
                   <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded">
                     <p className="text-xs text-purple-800 dark:text-purple-200">
-                      Current EoI: Digital Content Creation for ESSCI
+                      Digital Content Creation, AI Solutions, ToT Platforms
                     </p>
                   </div>
                 </div>
@@ -1048,23 +1020,23 @@ export default function MSDEPitchPage() {
                   <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-lg w-fit mb-4">
                     <Rocket className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Startup Grants</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Technical Partnership</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                    Parallel path: Technology Development Board (TDB) grants for innovative startups.
+                    Co-development of AI solutions with ministry technical teams for seamless SIDH integration.
                   </p>
                   <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
                     <p className="text-xs text-green-800 dark:text-green-200">
-                      Can be combined with ministry partnership
+                      Open APIs and interoperability focus
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* One-Page Briefing Template */}
+            {/* Executive Summary */}
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                5.3 Executive Briefing Template (Leave-Behind Document)
+                5.3 Flagship Proposal: Project SOAR-Praveen
               </h3>
               <div className="bg-white dark:bg-[#0a0a0a] rounded-xl p-8 shadow-lg border-2 border-gray-200 dark:border-gray-700">
                 <div className="border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">
@@ -1072,20 +1044,20 @@ export default function MSDEPitchPage() {
                     Project SOAR-Praveen: An AI-Powered Implementation Package for Western UP
                   </h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300">
-                    <strong>Strategic Alignment:</strong> Directly supports Hon&apos;ble Minister&apos;s flagship &quot;SOAR&quot; initiative by providing
+                    <strong>Strategic Alignment:</strong> Directly supports the &quot;SOAR&quot; initiative by providing
                     a scalable &quot;Training of Trainers&quot; (ToT) model to ensure success of Uttar Pradesh&apos;s &quot;Project Praveen.&quot;
                   </p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-8 mb-6">
                   <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-3">The Problem:</h5>
+                    <h5 className="font-semibold text-gray-900 dark:text-white mb-3">Challenge Addressed:</h5>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      National SOAR initiative requires massive, rapid ToT program for government school teachers—the key
-                      implementation bottleneck for the October 2025 deadline.
+                      National SOAR initiative requires rapid, scalable ToT program for government school teachers
+                      to meet the October 2025 implementation timeline.
                     </p>
                   </div>
                   <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-3">The Solution:</h5>
+                    <h5 className="font-semibold text-gray-900 dark:text-white mb-3">Our Solution:</h5>
                     <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
                       <li>• AI-Powered ToT Platform (train &amp; certify teachers)</li>
                       <li>• Student &quot;AI-Ready Kits&quot; (hardware deployment)</li>
@@ -1094,7 +1066,7 @@ export default function MSDEPitchPage() {
                   </div>
                 </div>
                 <div className="bg-gray-50 dark:bg-[#111111] p-6 rounded-lg">
-                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3">The Pilot (&quot;The Ask&quot;):</h5>
+                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3">Proposed Pilot Program:</h5>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Location</p>
@@ -1105,7 +1077,7 @@ export default function MSDEPitchPage() {
                     <div>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Scope</p>
                       <p className="text-sm font-medium text-gray-900 dark:text-white">
-                        [X] Pilot Schools, [Y] Teachers, [Z] Students
+                        50+ Pilot Schools, 200+ Teachers, 5,000+ Students
                       </p>
                     </div>
                     <div>
