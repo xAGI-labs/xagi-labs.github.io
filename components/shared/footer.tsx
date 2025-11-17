@@ -29,7 +29,9 @@ export default function Footer() {
               <li>
                 <Link href="/chat" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   Chat
-
+                </Link>
+              </li>
+              <li>
                 <Link href="/voice-ai" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   XAGI voice
                 </Link>
