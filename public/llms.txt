@@ -1,0 +1,106 @@
+# xAGI Labs - AI-First Development Agency
+
+> Transform your vision into intelligence-first products. We build production-ready AI systems from prototypes to full-scale applications in 4-6 weeks.
+
+## About xAGI Labs
+
+xAGI Labs is an AI-First Development Agency specializing in building production-ready AI systems. Founded by Saurav Kumar (CEO) and Udit Kumar (CTO), we help businesses leverage artificial intelligence to solve complex problems and create innovative products.
+
+**Location:** Hayward, CA 94541, US
+**Website:** https://xagi.in
+**Email:** saurav@xagi.in
+**Social:** [@xAGILabs](https://twitter.com/xAGILabs) | [GitHub](https://github.com/xAGI-labs)
+
+## Core Services
+
+- **AI Product Development** - End-to-end AI application development
+- **LLM Applications** - Custom GPT-4, Claude, and OpenAI integrations
+- **AI Agents** - Autonomous agent development and deployment
+- **RAG Systems** - Retrieval-Augmented Generation implementations
+- **AI Consulting** - Strategic AI adoption and implementation guidance
+- **AI Automation** - Business process automation using AI
+- **Machine Learning** - Custom ML model development and training
+
+## Main Pages
+
+- https://xagi.in/ - Home page with overview of AI development services
+- https://xagi.in/services - Comprehensive AI development services offered
+- https://xagi.in/portfolio - Showcase of AI products and successful projects
+- https://xagi.in/pricing - Transparent, predictable pricing structure
+- https://xagi.in/process - Proven development process from idea to production
+- https://xagi.in/team - Meet the xAGI Labs team
+- https://xagi.in/contact - Get in touch for project inquiries
+
+## Featured Products & Projects
+
+### AI-Powered Solutions
+- https://xagi.in/portfolio/sample-saas-platform - TaskFlow Pro: AI-powered task management platform
+- https://xagi.in/portfolio/ai-content-generator - ContentAI Studio: AI content creation for marketers
+- https://xagi.in/portfolio/ecommerce-marketplace - ShopConnect: Multi-vendor marketplace with AI recommendations
+- https://xagi.in/portfolio/fintech-dashboard - WealthTracker: Personal finance management with AI insights
+- https://xagi.in/portfolio/healthcare-platform - MedConnect: HIPAA-compliant telemedicine platform
+- https://xagi.in/portfolio/blockchain-analytics - CryptoInsights: Blockchain analytics for crypto investors
+
+### Specialized Solutions
+- https://xagi.in/voice-ai - XAGI Voice: Voice AI Call Center solution built for India with multilingual support
+- https://xagi.in/ai-agents-erp - AI Agents in ERP: Enterprise resource planning with AI integration
+- https://xagi.in/ai-events - AI Events Calendar: Upcoming AI conferences and events for Q1-Q2 2026
+
+## Interactive Tools
+
+- https://xagi.in/chat - AI-powered chat interface for consultations
+- https://xagi.in/apps/linkedin-carousel-generator - LinkedIn Carousel Generator: Create professional carousel posts
+
+## Key Expertise
+
+- **Large Language Models (LLMs)**: GPT-4, Claude, Gemini, Llama
+- **AI Frameworks**: LangChain, LlamaIndex, Semantic Kernel
+- **Vector Databases**: Pinecone, Weaviate, Chroma, Qdrant
+- **Cloud Platforms**: AWS, Google Cloud, Azure, Vercel
+- **Frontend**: React, Next.js, TypeScript
+- **Backend**: Node.js, Python, PostgreSQL, MongoDB
+
+## Development Process
+
+1. **Discovery & Strategy** - Understanding your AI vision and requirements
+2. **Architecture Design** - Planning scalable AI system architecture
+3. **Rapid Prototyping** - Building proof-of-concept in weeks
+4. **Production Development** - Full-scale AI product development
+5. **Deployment & Scaling** - Cloud deployment and infrastructure setup
+6. **Monitoring & Optimization** - Continuous AI model improvement
+
+## Target Industries
+
+- SaaS & Enterprise Software
+- E-commerce & Retail
+- Healthcare & Telemedicine
+- FinTech & Banking
+- Education & EdTech
+- Marketing & Content Creation
+- Government & Public Sector
+
+## Why Choose xAGI Labs
+
+- **Fast Delivery**: Production-ready AI systems in 4-6 weeks
+- **Expert Team**: Experienced AI engineers and product developers
+- **End-to-End Service**: From strategy to deployment and maintenance
+- **Transparent Pricing**: Clear, value-driven pricing models
+- **Production Focus**: We build for scale, not just demos
+
+## Contact Information
+
+For AI development projects, consulting, or partnership inquiries:
+
+- **Email:** saurav@xagi.in
+- **Website:** https://xagi.in/contact
+- **Social Media:** Follow @xAGILabs on Twitter for AI insights and updates
+
+---
+
+*xAGI Labs - Building the future with AI-first solutions*
+
+## Optional
+
+- Privacy Policy: Available on request
+- Terms of Service: Available on request
+- API Documentation: Available for enterprise clients

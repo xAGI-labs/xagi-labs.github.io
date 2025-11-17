@@ -50,6 +50,12 @@ export const metadata: Metadata = {
     apple: [{ url: "/xagi-icon.png" }],
     shortcut: ["/xagi-icon.png"],
   },
+  manifest: "/site.webmanifest",
+  verification: {
+    google: "your-google-verification-code", // Replace with actual Google Search Console verification code
+  },
+  category: "technology",
+  classification: "Business",
   openGraph: {
     type: "website",
     locale: "en_US",
