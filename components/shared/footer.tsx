@@ -20,8 +20,24 @@ export default function Footer() {
             <p>Location: San Francisco, CA</p>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-600 dark:text-gray-400">
-          © 2025 xAGI Labs. All rights reserved.
+        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+          <div className="mb-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/apps/linkedin-carousel-generator"
+              className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              LinkedIn Carousel Generator
+            </Link>
+            <Link
+              href="/tutor"
+              className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              AI Tutor
+            </Link>
+          </div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">
+            © 2025 xAGI Labs. All rights reserved.
+          </div>
         </div>
       </div>
     </footer>
