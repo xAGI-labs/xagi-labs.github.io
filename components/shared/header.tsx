@@ -28,6 +28,9 @@ export default function Header() {
             <Link href="/tutor" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               AI Tutor
             </Link>
+            <Link href="/voice-ai" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+              XAGI voice
+            </Link>
             <Link href="/services" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Services
             </Link>
@@ -72,6 +75,9 @@ export default function Header() {
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <Link href="/tutor" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               AI Tutor
+            </Link>
+            <Link href="/voice-ai" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              XAGI voice
             </Link>
             <Link href="/services" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Services

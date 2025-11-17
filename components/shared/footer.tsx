@@ -27,6 +27,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/voice-ai" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  XAGI voice
+                </Link>
+              </li>
+              <li>
                 <Link href="/apps/linkedin-carousel-generator" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   LinkedIn Carousel Generator
                 </Link>
