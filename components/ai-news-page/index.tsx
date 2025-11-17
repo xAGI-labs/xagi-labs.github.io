@@ -67,15 +67,18 @@ export default function AiNewsPage() {
       const date = new Date(dateString)
       return date.toLocaleDateString("en-US", {
         year: "numeric",
-        month: "short",
+        month: "long",
         day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
       })
     } catch {
       return dateString
     }
   }
+
+  // Filter out entries with "not much happened today" in the title
+  const filteredNews = news.filter(
+    (item) => !item.title.toLowerCase().includes("not much happened today")
+  )
 
   const stripHtml = (html: string) => {
     const tmp = document.createElement("div")
@@ -131,37 +134,37 @@ export default function AiNewsPage() {
                 </div>
               )}
 
-              {!loading && !error && news.length === 0 && (
+              {!loading && !error && filteredNews.length === 0 && (
                 <div className="text-center py-12">
                   <p className="text-gray-600 dark:text-gray-400">No news available at the moment.</p>
                 </div>
               )}
 
-              {!loading && !error && news.length > 0 && (
+              {!loading && !error && filteredNews.length > 0 && (
                 <div className="space-y-8">
-                  {news.map((item) => (
+                  {filteredNews.map((item) => (
                     <article
                       key={item.guid}
                       className="bg-gray-50 dark:bg-[#111111] rounded-lg p-6 border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors"
                     >
+                      {item.pubDate && (
+                        <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                          <Calendar className="w-5 h-5" />
+                          {formatDate(item.pubDate)}
+                        </h2>
+                      )}
+
                       <a
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group"
                       >
-                        <h2 className="text-xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-start gap-2">
+                        <h3 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-start gap-2">
                           {item.title}
                           <ExternalLink className="w-4 h-4 mt-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                        </h2>
+                        </h3>
                       </a>
-
-                      {item.pubDate && (
-                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-500 mb-3">
-                          <Calendar className="w-4 h-4" />
-                          {formatDate(item.pubDate)}
-                        </div>
-                      )}
 
                       {item.description && (
                         <div
