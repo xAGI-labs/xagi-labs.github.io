@@ -1,13 +1,19 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Send, Trash2, MessageSquare, Bot, User, Loader2 } from 'lucide-react'
+import { Send, Trash2, MessageSquare, Bot, User, Loader2, Menu, X } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
 
 interface Message {
   id: string
   role: 'user' | 'assistant'
   content: string
   timestamp: number
+  usage?: {
+    prompt_tokens: number
+    completion_tokens: number
+    total_tokens: number
+  }
 }
 
 interface Chat {
@@ -26,6 +32,7 @@ export default function ChatInterface() {
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
@@ -160,6 +167,7 @@ export default function ChatInterface() {
         role: 'assistant',
         content: data.response,
         timestamp: Date.now(),
+        usage: data.usage,
       }
 
       setChats(prev =>
@@ -197,16 +205,38 @@ export default function ChatInterface() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-80px)] bg-gray-50 dark:bg-gray-900">
+    <div className="flex h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 relative">
+      {/* Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <div className="w-64 bg-gray-100 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
-        <div className="p-4">
+      <div className={`
+        fixed lg:relative inset-y-0 left-0 z-50
+        w-64 bg-gray-100 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700
+        flex flex-col transform transition-transform duration-300 ease-in-out
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
+        <div className="p-4 flex items-center justify-between gap-2">
           <button
-            onClick={createNewChat}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            onClick={() => {
+              createNewChat()
+              setIsSidebarOpen(false)
+            }}
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             <MessageSquare size={18} />
             New Chat
+          </button>
+          <button
+            onClick={() => setIsSidebarOpen(false)}
+            className="lg:hidden p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          >
+            <X size={20} />
           </button>
         </div>
 
@@ -217,7 +247,10 @@ export default function ChatInterface() {
               className={`group flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 ${
                 chat.id === currentChatId ? 'bg-gray-200 dark:bg-gray-700' : ''
               }`}
-              onClick={() => setCurrentChatId(chat.id)}
+              onClick={() => {
+                setCurrentChatId(chat.id)
+                setIsSidebarOpen(false)
+              }}
             >
               <span className="text-sm truncate flex-1 text-gray-700 dark:text-gray-300">
                 {chat.title}
@@ -248,7 +281,17 @@ export default function ChatInterface() {
       </div>
 
       {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          >
+            <Menu size={24} />
+          </button>
+        </div>
+
         {/* Messages */}
         <div className="flex-1 overflow-y-auto p-4">
           {!currentChat || currentChat.messages.length === 0 ? (
@@ -280,7 +323,18 @@ export default function ChatInterface() {
                         : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700'
                     }`}
                   >
-                    <div className="whitespace-pre-wrap">{message.content}</div>
+                    {message.role === 'assistant' && message.usage && (
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 pb-2 border-b border-gray-200 dark:border-gray-600">
+                        Tokens: {message.usage.prompt_tokens} prompt + {message.usage.completion_tokens} completion = {message.usage.total_tokens} total
+                      </div>
+                    )}
+                    <div className={message.role === 'user' ? 'whitespace-pre-wrap' : 'prose prose-sm dark:prose-invert max-w-none'}>
+                      {message.role === 'user' ? (
+                        message.content
+                      ) : (
+                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                      )}
+                    </div>
                     <div
                       className={`text-xs mt-1 ${
                         message.role === 'user'
@@ -349,7 +403,7 @@ export default function ChatInterface() {
               </button>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
-              Powered by Google Gemini AI. Press Enter to send, Shift+Enter for new line.
+              Press Enter to send, Shift+Enter for new line.
             </p>
           </div>
         </div>

@@ -8,11 +8,13 @@ import SlideEditor from './components/SlideEditor'
 import ExportButton from './components/ExportButton'
 import ThemeCustomizer from './components/ThemeCustomizer'
 import AIGeneratorModal from './components/AIGeneratorModal'
+import Header from '@/components/shared/header'
 
 export default function LinkedInCarouselGenerator() {
   const [carousel, setCarousel] = useState<Carousel>(defaultCarousel)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const [isAIModalOpen, setIsAIModalOpen] = useState(false)
+  const [isExporting, setIsExporting] = useState(false)
   const slideRefs = useRef<React.RefObject<HTMLDivElement>[]>([])
 
   // Initialize refs for each slide
@@ -121,16 +123,19 @@ export default function LinkedInCarouselGenerator() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Header */}
-      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4">
+      {/* Shared Header */}
+      <Header />
+
+      {/* Page Header */}
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+        <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
                 LinkedIn Carousel Generator
               </h1>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                Create engaging LinkedIn carousels with ease
+                Create engaging LinkedIn carousels and export as PDF (1080x1350px @ 300 DPI)
               </p>
             </div>
             <div className="flex gap-2">
@@ -171,7 +176,7 @@ export default function LinkedInCarouselGenerator() {
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
@@ -279,21 +284,30 @@ export default function LinkedInCarouselGenerator() {
             {/* Export Section */}
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
               <h2 className="text-xl font-semibold mb-4">Export</h2>
-              <ExportButton slides={slideRefs.current} />
+              <ExportButton
+                slides={slideRefs.current}
+                isExporting={isExporting}
+                setIsExporting={setIsExporting}
+              />
             </div>
 
             {/* All Slides Preview (Hidden, for export) */}
-            <div className="hidden">
-              {carousel.slides.map((slide, index) => (
-                <div key={slide.id} ref={slideRefs.current[index]}>
-                  <SlidePreview
-                    slide={slide}
-                    index={index}
-                    carousel={carousel}
-                  />
+            {isExporting && (
+              <div className="fixed top-0 left-0 w-full h-full z-[-1] opacity-0">
+                <div className="grid grid-cols-1 gap-4 p-4">
+                  {carousel.slides.map((slide, index) => (
+                    <div key={slide.id} ref={slideRefs.current[index]}>
+                      <SlidePreview
+                        slide={slide}
+                        index={index}
+                        carousel={carousel}
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            )}
+
           </div>
         </div>
       </div>
