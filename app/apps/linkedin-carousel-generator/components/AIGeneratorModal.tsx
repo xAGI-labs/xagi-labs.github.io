@@ -8,9 +8,8 @@ interface AIGeneratorModalProps {
   onGenerate: (slides: any[]) => void
 }
 
-// OpenRouter API key for ZAI GLM model (free tier)
-const OPENROUTER_API_KEY = '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'
-const OPENROUTER_MODEL = 'zhipu/glm-4-flash'
+// New API endpoint
+const API_ENDPOINT = 'https://placeholder.sauravalgs.workers.dev/linkedin-json'
 
 export default function AIGeneratorModal({
   isOpen,
@@ -32,98 +31,170 @@ export default function AIGeneratorModal({
     setError('')
 
     try {
-      const systemPrompt = `You are a professional LinkedIn content creator. Generate ${slideCount} carousel slides based on the user's prompt.
+      // Build a concise prompt to fit more slides in the token limit
+      // The API has a ~256 token limit, so we need to be very concise
+      const fullPrompt = `Create ${slideCount} slides for LinkedIn carousel about: ${prompt}. Return only JSON with format: {"slides":[{"slideNumber":1,"title":"","content":"","description":""}]}. Keep each field under 50 words.`
 
-The first slide should be an engaging intro slide with a catchy title and subtitle.
-The middle slides (2 to ${slideCount - 1}) should be content slides with informative titles, subtitles, and detailed content.
-The last slide should be an outro/CTA slide with a call to action.
+      // Call the new API
+      const url = new URL(API_ENDPOINT)
+      url.searchParams.set('prompt', fullPrompt)
 
-Return ONLY a valid JSON array of slides in this exact format:
-[
-  {
-    "type": "intro",
-    "title": "Engaging Title",
-    "subtitle": "Compelling subtitle",
-    "content": "",
-    "backgroundColor": "#0A66C2"
-  },
-  {
-    "type": "content",
-    "title": "Key Point Title",
-    "subtitle": "Brief context",
-    "content": "Detailed content for this slide. Make it informative and engaging.",
-    "backgroundColor": "#0A66C2"
-  },
-  {
-    "type": "outro",
-    "title": "Thank You!",
-    "subtitle": "Call to action",
-    "content": "Follow for more insights",
-    "backgroundColor": "#0A66C2"
-  }
-]
-
-Important:
-- Return ONLY the JSON array, no additional text or markdown
-- Each slide must have all fields: type, title, subtitle, content, backgroundColor
-- Use professional LinkedIn-style language
-- Keep titles under 60 characters
-- Keep subtitles under 80 characters
-- Keep content under 300 characters per slide
-- Use #0A66C2 (LinkedIn blue) as default backgroundColor`
-
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': typeof window !== 'undefined' ? window.location.origin : 'https://xagi-labs.github.io',
-          'X-Title': 'LinkedIn Carousel Generator',
-        },
-        body: JSON.stringify({
-          model: OPENROUTER_MODEL,
-          messages: [
-            {
-              role: 'system',
-              content: systemPrompt,
-            },
-            {
-              role: 'user',
-              content: prompt,
-            },
-          ],
-          temperature: 0.7,
-          max_tokens: 4000,
-        }),
+      const response = await fetch(url.toString(), {
+        method: 'GET',
       })
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}))
-        throw new Error(errorData.error?.message || `API request failed with status ${response.status}`)
+        throw new Error(`API request failed with status ${response.status}`)
       }
 
       const data = await response.json()
-      const text = data.choices?.[0]?.message?.content || ''
 
-      if (!text) {
-        throw new Error('No response received from AI')
+      // The API returns: { title, description, slides: [], rawResponse: { response, usage } }
+      // We need to parse the JSON from rawResponse.response
+      const rawResponseText = data.rawResponse?.response || ''
+
+      if (!rawResponseText) {
+        throw new Error('No response received from API')
       }
 
       // Try to extract JSON from the response
-      let slides
+      let carouselData
       try {
         // Remove markdown code blocks if present
-        const cleanedText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
-        slides = JSON.parse(cleanedText)
+        let cleanedText = rawResponseText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
+
+        // Try to find the JSON object boundaries
+        const jsonStart = cleanedText.indexOf('{')
+        if (jsonStart !== -1) {
+          cleanedText = cleanedText.substring(jsonStart)
+        }
+
+        // Handle trailing commas in JSON (common AI output issue)
+        cleanedText = cleanedText.replace(/,(\s*[}\]])/g, '$1')
+
+        // Try to parse - if it fails due to truncation, we'll handle incomplete JSON
+        try {
+          carouselData = JSON.parse(cleanedText)
+        } catch (e) {
+          // If parsing fails, try to extract what we can from the incomplete JSON
+          // Look for slide objects even if the JSON is incomplete
+          const extractedSlides = []
+
+          // Improved regex to capture slide objects more reliably
+          // This pattern looks for objects with slideNumber and handles nested quotes better
+          const slideRegex = /\{\s*"slideNumber"\s*:\s*(\d+)\s*,\s*"title"\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)"\s*,\s*"content"\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)"\s*(?:,\s*"description"\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)")?\s*\}/g
+
+          let match
+          while ((match = slideRegex.exec(cleanedText)) !== null) {
+            extractedSlides.push({
+              slideNumber: parseInt(match[1]),
+              title: match[2],
+              content: match[3],
+              description: match[4] || ''
+            })
+          }
+
+          // If the regex approach didn't work, try a more aggressive extraction
+          if (extractedSlides.length === 0) {
+            // Split by slide objects more aggressively
+            const slideObjectPattern = /\{\s*"slideNumber"/g
+            const positions = []
+            let m
+            while ((m = slideObjectPattern.exec(cleanedText)) !== null) {
+              positions.push(m.index)
+            }
+
+            for (let i = 0; i < positions.length; i++) {
+              const start = positions[i]
+              const end = i < positions.length - 1 ? positions[i + 1] : cleanedText.length
+              let objStr = cleanedText.substring(start, end).trim()
+
+              // Try to close the object if it's incomplete
+              if (!objStr.endsWith('}')) {
+                // Find the last complete field
+                const lastQuote = objStr.lastIndexOf('"')
+                if (lastQuote > -1) {
+                  objStr = objStr.substring(0, lastQuote + 1) + '}'
+                }
+              }
+
+              // Remove trailing commas before closing brace
+              objStr = objStr.replace(/,\s*\}/, '}')
+
+              try {
+                const slideObj = JSON.parse(objStr)
+                if (slideObj.slideNumber && slideObj.title) {
+                  extractedSlides.push({
+                    slideNumber: slideObj.slideNumber,
+                    title: slideObj.title,
+                    content: slideObj.content || '',
+                    description: slideObj.description || ''
+                  })
+                }
+              } catch (parseErr) {
+                console.warn('Could not parse slide object:', objStr)
+              }
+            }
+          }
+
+          if (extractedSlides.length > 0) {
+            carouselData = { slides: extractedSlides }
+          } else {
+            throw new Error('Could not parse response')
+          }
+        }
       } catch (parseError) {
-        console.error('Failed to parse AI response:', text)
+        console.error('Failed to parse AI response:', rawResponseText)
         throw new Error('Failed to parse AI response. Please try again.')
       }
 
-      // Validate that we got an array of slides
-      if (!Array.isArray(slides)) {
-        throw new Error('Invalid response format from AI')
+      // Extract slides from the carousel data
+      const apiSlides = carouselData.slides || []
+
+      if (!Array.isArray(apiSlides) || apiSlides.length === 0) {
+        throw new Error('No slides generated. Please try again.')
       }
+
+      // If we got fewer slides than requested, pad with template slides
+      let slidesToUse = [...apiSlides]
+      if (apiSlides.length < slideCount && apiSlides.length >= 2) {
+        console.log(`API returned ${apiSlides.length}/${slideCount} slides. Adding template slides for the rest.`)
+
+        // Add template slides in the middle (before the outro)
+        const lastSlide = slidesToUse.pop() // Remove the last slide temporarily
+        const slidesToAdd = slideCount - apiSlides.length
+
+        for (let i = 0; i < slidesToAdd; i++) {
+          const slideNum = slidesToUse.length + 1
+          slidesToUse.push({
+            slideNumber: slideNum,
+            title: `Point ${slideNum}`,
+            content: `Add your content here for slide ${slideNum}.`,
+            description: 'Edit this slide to add your own content.'
+          })
+        }
+
+        // Add the last slide back
+        if (lastSlide) {
+          slidesToUse.push(lastSlide)
+        }
+      }
+
+      // Transform API slides to our format
+      const slides = slidesToUse.map((slide: any, index: number) => {
+        // Determine slide type based on position
+        let type = 'content'
+        if (index === 0) type = 'intro'
+        if (index === slidesToUse.length - 1) type = 'outro'
+
+        return {
+          type,
+          title: slide.title || `Slide ${index + 1}`,
+          subtitle: slide.description || '',
+          content: slide.content || '',
+          backgroundColor: '#0A66C2', // LinkedIn blue
+        }
+      })
 
       // Add unique IDs to each slide
       const slidesWithIds = slides.map((slide, index) => ({
@@ -183,7 +254,7 @@ Important:
           {/* AI Model Info */}
           <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
             <span className="text-sm text-blue-700 dark:text-blue-400">
-              Powered by ZAI GLM (via OpenRouter)
+              Powered by AI
             </span>
           </div>
 

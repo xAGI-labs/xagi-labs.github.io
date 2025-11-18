@@ -20,13 +20,14 @@ export const SlidePreview: React.FC<SlidePreviewProps> = ({
 
   return (
     <div
-      className={`relative w-full aspect-square flex flex-col justify-center items-center p-12 rounded-lg shadow-lg transition-all ${
+      className={`relative w-full flex flex-col justify-center items-center p-12 rounded-lg shadow-lg transition-all ${
         isActive ? 'ring-4 ring-blue-500' : ''
       }`}
       style={{
         backgroundColor: slide.backgroundColor || theme.primaryColor,
         color: theme.textColor,
         fontFamily: theme.fontFamily,
+        aspectRatio: '4/5', // LinkedIn carousel ratio (1080x1350)
       }}
     >
       {/* Page Number */}
@@ -49,7 +50,7 @@ export const SlidePreview: React.FC<SlidePreviewProps> = ({
       )}
 
       {slide.type === 'content' && (
-        <div className="space-y-6 w-full">
+        <div className="space-y-6 w-full text-center">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight break-words">
             {slide.title}
           </h2>
