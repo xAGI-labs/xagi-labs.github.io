@@ -54,8 +54,8 @@ export default function TeamPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Meet the Team</h1>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              Builders. Innovators. Problem Solvers.<br />
-              We're a team of engineers and entrepreneurs who've shipped real products to real users. We don't just consult—we build.
+              Builders. Innovators. Researchers.<br />
+              We're a team of engineers, entrepreneurs, and scientists who build products, publish research, and push the boundaries of what's possible with AI.
             </p>
           </div>
         </div>

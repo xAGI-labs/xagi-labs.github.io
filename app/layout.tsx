@@ -19,14 +19,16 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://xagi.in'),
   title: {
-    default: "xAGI Labs - AI-First Development Agency",
+    default: "xAGI Labs - AI Product Studio & Research Lab",
     template: "%s | xAGI Labs"
   },
   description:
-    "Transform your vision into intelligence-first products. We build production-ready AI systems from prototypes to full-scale applications in 4-6 weeks.",
+    "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
   keywords: [
     "AI development",
     "AI agency",
+    "AI research lab",
+    "AI product studio",
     "artificial intelligence",
     "machine learning",
     "AI products",
@@ -40,7 +42,11 @@ export const metadata: Metadata = {
     "custom AI solutions",
     "AI automation",
     "RAG systems",
-    "AI integration"
+    "AI integration",
+    "AI research papers",
+    "language model research",
+    "multilingual AI",
+    "on-device AI"
   ],
   authors: [{ name: "xAGI Labs" }],
   creator: "xAGI Labs",
@@ -61,9 +67,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://xagi.in",
     siteName: "xAGI Labs",
-    title: "xAGI Labs - AI-First Development Agency",
+    title: "xAGI Labs - AI Product Studio & Research Lab",
     description:
-      "Transform your vision into intelligence-first products. We build production-ready AI systems from prototypes to full-scale applications in 4-6 weeks.",
+      "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
     images: [
       {
         url: "/xagi-icon.png",
@@ -75,9 +81,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "xAGI Labs - AI-First Development Agency",
+    title: "xAGI Labs - AI Product Studio & Research Lab",
     description:
-      "Transform your vision into intelligence-first products. We build production-ready AI systems from prototypes to full-scale applications in 4-6 weeks.",
+      "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
     images: ["/xagi-icon.png"],
     creator: "@xAGILabs",
   },

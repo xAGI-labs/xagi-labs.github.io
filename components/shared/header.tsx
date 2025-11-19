@@ -34,6 +34,9 @@ export default function Header() {
             <Link href="/ai-news" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               AI News
             </Link>
+            <Link href="/research" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+              Research
+            </Link>
             <Link href="/services" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Services
             </Link>
@@ -84,6 +87,9 @@ export default function Header() {
             </Link>
             <Link href="/ai-news" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               AI News
+            </Link>
+            <Link href="/research" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              Research
             </Link>
             <Link href="/services" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Services
