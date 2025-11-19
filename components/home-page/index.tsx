@@ -18,7 +18,7 @@ export default function HomePage() {
               Transform Your Vision into Intelligence-First Products
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8">
-              Partner with an AI-native development team to build the future of your business
+              Partner with an AI-native product studio and research lab building the future of intelligence
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -45,7 +45,7 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">What We Do</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              We build production-ready AI systems that create measurable business value—from intelligent automation to fully autonomous AI agents.
+              We're more than a consultancy—we're a product studio and AI research lab. We build production-ready AI systems, publish cutting-edge research, and create products that push the boundaries of what's possible with intelligence.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">

@@ -13,7 +13,7 @@ export default function Footer() {
               <span className="text-xl font-bold">xAGI Labs</span>
             </Link>
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-              Building the Intelligence Layer for Modern Business
+              Product Studio & AI Research Lab
             </p>
           </div>
 
@@ -48,6 +48,11 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>
+                <Link href="/research" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Research
+                </Link>
+              </li>
               <li>
                 <Link href="/ai-news" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   AI News

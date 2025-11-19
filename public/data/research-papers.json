@@ -1,0 +1,45 @@
+[
+  {
+    "id": "sage-nano-inverse-reasoning",
+    "title": "Thinking About Thinking: SAGE-nano's Inverse Reasoning for Self-Aware Language Models",
+    "authors": "xAGI Labs Research Team",
+    "date": "2025-07",
+    "arxivId": "2507.00092",
+    "arxivUrl": "https://arxiv.org/abs/2507.00092",
+    "abstract": "We present SAGE-nano's inverse reasoning framework for developing self-aware language models. This work explores how language models can develop metacognitive capabilities through inverse reasoning patterns.",
+    "category": "LLM Architecture",
+    "tags": ["Self-Awareness", "Metacognition", "Inverse Reasoning", "Language Models"]
+  },
+  {
+    "id": "fragile-mastery",
+    "title": "Fragile Mastery: Are Domain-Specific Trade-Offs Undermining On-Device Language Models?",
+    "authors": "xAGI Labs Research Team",
+    "date": "2025-03",
+    "arxivId": "2503.22698",
+    "arxivUrl": "https://arxiv.org/abs/2503.22698",
+    "abstract": "This paper investigates the trade-offs in domain-specific optimization for on-device language models. We demonstrate how specialization in one domain can lead to unexpected performance degradation in related tasks, challenging conventional wisdom about model fine-tuning.",
+    "category": "On-Device AI",
+    "tags": ["On-Device Models", "Domain Adaptation", "Model Optimization", "Performance Trade-offs"]
+  },
+  {
+    "id": "rosetta-paradox",
+    "title": "The Rosetta Paradox: Domain-Specific Performance Inversions in Large Language Models",
+    "authors": "xAGI Labs Research Team",
+    "date": "2024-12",
+    "arxivId": "2412.17821",
+    "arxivUrl": "https://arxiv.org/abs/2412.17821",
+    "abstract": "We identify and analyze a surprising phenomenon where large language models exhibit performance inversions across domains. Models optimized for one domain can paradoxically perform worse than baseline models in related domains, revealing fundamental questions about transfer learning and model generalization.",
+    "category": "LLM Performance",
+    "tags": ["Performance Analysis", "Domain Transfer", "Model Generalization", "Benchmarking"]
+  },
+  {
+    "id": "babel-effect",
+    "title": "The Babel Effect: Analyzing Multilingual Performance Discrepancies in Large Language Models",
+    "authors": "xAGI Labs Research Team",
+    "date": "2024",
+    "pdfUrl": "https://www.wecmelive.com/open-access/the-babel-effect-analyzing-multilingual-performance-discrepancies-in-large-language-models.pdf",
+    "abstract": "This research examines performance discrepancies in multilingual large language models. We analyze how language models perform across different languages and identify systematic biases and performance gaps that emerge in multilingual contexts.",
+    "category": "Multilingual AI",
+    "tags": ["Multilingual Models", "Language Bias", "Cross-lingual Transfer", "Performance Analysis"]
+  }
+]
