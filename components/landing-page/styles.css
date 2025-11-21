@@ -51,6 +51,9 @@
 
   html {
     scroll-behavior: smooth;
+    /* Better text rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1 {

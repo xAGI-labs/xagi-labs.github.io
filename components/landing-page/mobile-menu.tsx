@@ -69,7 +69,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     <div className="fixed inset-0 z-[100] bg-black/50 md:hidden" style={{ display: isOpen ? "block" : "none" }}>
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white dark:bg-[#111111] shadow-xl overflow-y-auto"
+        className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white dark:bg-[#111111] shadow-xl overflow-y-auto overscroll-behavior-contain"
+        style={{ WebkitOverflowScrolling: 'touch' }}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111111]">
           <Link href="/" className="flex items-center" onClick={onClose}>
@@ -87,7 +88,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </Link>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Close menu"
           >
             <X className="h-6 w-6 text-gray-600 dark:text-gray-400" />

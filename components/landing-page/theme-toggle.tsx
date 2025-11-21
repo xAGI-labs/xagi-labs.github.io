@@ -26,7 +26,7 @@ export default function ThemeToggle({ className = "" }: ThemeToggleProps) {
   return (
     <button
       onClick={() => setTheme(isDarkMode ? "light" : "dark")}
-      className={`p-2 rounded-full transition-colors bg-transparent ${
+      className={`p-2 rounded-full transition-colors bg-transparent min-w-[44px] min-h-[44px] flex items-center justify-center ${
         isDarkMode ? "hover:bg-gray-800/20" : "hover:bg-gray-200/50"
       } ${className}`}
       aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}

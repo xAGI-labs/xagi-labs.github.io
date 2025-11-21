@@ -18,6 +18,11 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://xagi.in'),
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
   title: {
     default: "xAGI Labs - AI Product Studio & Research Lab",
     template: "%s | xAGI Labs"
