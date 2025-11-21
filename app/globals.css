@@ -86,8 +86,44 @@
   * {
     border-color: hsl(var(--border));
   }
+
+  html {
+    /* Better text rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent font size adjustment on mobile */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Smooth scrolling on mobile Safari */
+    -webkit-overflow-scrolling: touch;
+  }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+    /* Better touch handling */
+    touch-action: manipulation;
+    /* Safe area insets for notched devices */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Improve tap highlight on mobile */
+  a, button {
+    -webkit-tap-highlight-color: rgba(122, 127, 238, 0.1);
+  }
+
+  /* Ensure images and media are responsive */
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent text overflow on mobile */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }

@@ -63,6 +63,7 @@ export default function Header() {
         className={`sticky top-0 z-40 w-full transition-all duration-200 ${
           isScrolled ? "bg-white/90 dark:bg-[#111111]/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
         }`}
+        style={{ WebkitBackdropFilter: isScrolled ? 'blur(8px)' : 'none' }}
       >
         <div className="container py-4">
           <div className="flex items-center justify-between">
@@ -126,7 +127,7 @@ export default function Header() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 rounded-md bg-transparent hover:bg-gray-200/50 dark:hover:bg-gray-800/20 md:hidden"
+                className="p-2 rounded-md bg-transparent hover:bg-gray-200/50 dark:hover:bg-gray-800/20 md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center"
                 aria-label="Toggle menu"
               >
                 <Menu className="h-6 w-6 text-black dark:text-white" />
