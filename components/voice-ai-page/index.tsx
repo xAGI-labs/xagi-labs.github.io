@@ -168,19 +168,6 @@ export default function VoiceAIPage() {
               Book a Demo
               <ArrowRight className="w-5 h-5" />
             </Link>
-
-            {/* Social Proof */}
-            <div className="mt-12 inline-flex items-center gap-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
-              <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
-                <Zap className="w-5 h-5 text-black" />
-              </div>
-              <div className="text-left">
-                <p className="font-semibold text-gray-900 dark:text-white text-sm">
-                  India&apos;s most promising startups of 2025
-                </p>
-                <p className="text-gray-600 dark:text-gray-400 text-xs">YourStory Tech30 2025</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
