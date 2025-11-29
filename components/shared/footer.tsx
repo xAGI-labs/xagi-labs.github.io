@@ -33,7 +33,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/voice-ai" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                  XAGI voice
+                  xAGI Voice
                 </Link>
               </li>
               <li>
@@ -48,11 +48,6 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-              <li>
-                <Link href="/research" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                  Research
-                </Link>
-              </li>
               <li>
                 <Link href="/ai-news" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   AI News
