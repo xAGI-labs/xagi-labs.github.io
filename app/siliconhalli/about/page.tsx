@@ -22,43 +22,43 @@ export default function AboutPage() {
           </Link>
         </div>
 
-        <article className="prose prose-invert prose-lg prose-green max-w-none text-slate-200">
+        <article className="prose prose-invert prose-green max-w-none">
           <h1 className="text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-8">
             About SiliconHalli
           </h1>
 
-          <h2 className="text-white">The Game</h2>
-          <p className="text-slate-200">
+          <h2>The Game</h2>
+          <p>
             SiliconHalli is a satirical idle clicker game that captures the beautiful chaos of building a startup in Bangalore, India's Silicon Valley. From navigating Silk Board traffic to pitching skeptical investors, from managing team drama to the eternal quest for decent filter coffee – this game is a love letter to everyone who's ever tried to build something in this crazy ecosystem.
           </p>
 
-          <h2 className="text-white">The Origin Story</h2>
-          <p className="text-slate-200">
+          <h2>The Origin Story</h2>
+          <p>
             This started as a fun experiment. I saw a Y Combinator-themed idle game making rounds on LinkedIn and thought, "Why not Bangalore?"
           </p>
-          <p className="text-slate-200">
+          <p>
             Four prompts and less than 10 minutes later (thanks, Claude!), SiliconHalli was born. What began as a quick fork turned into something that resonated with founders, developers, and startup folks across the city. Turns out, we all share the same beautiful struggles.
           </p>
 
-          <h2 className="text-white">What's Next: The Board Game</h2>
-          <p className="text-slate-200">
+          <h2>What's Next: The Board Game</h2>
+          <p>
             SiliconHalli is evolving. The next iteration will be a physical board game that brings the startup journey to your table.
           </p>
 
-          <h3 className="text-green-400">The Vision</h3>
-          <p className="text-slate-200">
+          <h3>The Vision</h3>
+          <p>
             Imagine a board game where 2-6 players compete to build the next unicorn out of Bangalore. Here's how it could work:
           </p>
 
-          <p><strong className="text-white">Game Board Layout:</strong></p>
-          <ul className="text-slate-200">
+          <p><strong>Game Board Layout:</strong></p>
+          <ul>
             <li>A map of Bangalore with key locations: Koramangala (startup hub), Indiranagar (client meetings), Whitefield (tech parks), MG Road (investor offices), Electronic City (operations), and of course, Silk Board (the dreaded bottleneck)</li>
             <li>Funding round tracks: Pre-seed → Seed → Series A → Series B → Unicorn</li>
             <li>Resource meters: Cash, Team Morale, Product Quality, Market Traction</li>
           </ul>
 
-          <p><strong className="text-white">Game Mechanics:</strong></p>
-          <ul className="text-slate-200">
+          <p><strong>Game Mechanics:</strong></p>
+          <ul>
             <li><strong>Movement:</strong> Roll dice to move around the city. Land on different locations to trigger events</li>
             <li><strong>Cards:</strong> Three decks
               <ul>
@@ -70,15 +70,15 @@ export default function AboutPage() {
             <li><strong>Resources to Manage:</strong> Cash (obviously), Team tokens (hire developers, designers, marketers), Morale points (keep your team from burning out), Product development tokens (ship features to gain traction)</li>
           </ul>
 
-          <p><strong className="text-white">Win Conditions:</strong></p>
-          <ul className="text-slate-200">
+          <p><strong>Win Conditions:</strong></p>
+          <ul>
             <li>First to raise Series B with positive unit economics, OR</li>
             <li>Highest valuation after 12 rounds (quarters), OR</li>
             <li>Achieve profitability with 50+ employees</li>
           </ul>
 
-          <p><strong className="text-white">Special Bangalore Mechanics:</strong></p>
-          <ul className="text-slate-200">
+          <p><strong>Special Bangalore Mechanics:</strong></p>
+          <ul>
             <li><strong>Traffic Tax:</strong> Certain routes cost you extra turns (looking at you, Silk Board)</li>
             <li><strong>Chai Break:</strong> Land on select spaces to recover morale points</li>
             <li><strong>WeWork Wednesdays:</strong> Community events where players can form alliances</li>
@@ -86,8 +86,8 @@ export default function AboutPage() {
             <li><strong>Pivot Power:</strong> Once per game, completely change your startup's direction</li>
           </ul>
 
-          <p><strong className="text-white">Sample Scenarios:</strong></p>
-          <ul className="text-slate-200">
+          <p><strong>Sample Scenarios:</strong></p>
+          <ul>
             <li>"Your developer got a 2x offer from a FAANG. Pay ₹5L retention bonus or lose 2 product tokens"</li>
             <li>"You met an investor at a Koramangala cafe. Roll 6+ to schedule a meeting"</li>
             <li>"Traffic jam on Outer Ring Road. Miss your investor meeting. Lose one turn"</li>
@@ -95,8 +95,8 @@ export default function AboutPage() {
             <li>"Co-founder wants to relocate to Goa. Resolve or split equity"</li>
           </ul>
 
-          <p><strong className="text-white">Physical Components:</strong></p>
-          <ul className="text-slate-200">
+          <p><strong>Physical Components:</strong></p>
+          <ul>
             <li>Game board (map of Bangalore)</li>
             <li>Player tokens (different startup archetypes: SaaS, D2C, Fintech, EdTech, etc.)</li>
             <li>Resource tokens (cash, team, morale chips)</li>
@@ -106,8 +106,8 @@ export default function AboutPage() {
             <li>Player dashboards to manage resources</li>
           </ul>
 
-          <p><strong className="text-white">Expansion Packs (future):</strong></p>
-          <ul className="text-slate-200">
+          <p><strong>Expansion Packs (future):</strong></p>
+          <ul>
             <li><em>The Delhi Pack:</em> Navigate government regulations and enterprise sales</li>
             <li><em>The Mumbai Pack:</em> Bollywood partnerships and consumer market dynamics</li>
             <li><em>The Global Pack:</em> International expansion challenges</li>
@@ -117,10 +117,10 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold mb-4 text-green-400">Created By</h2>
             <div className="mb-4">
               <strong className="text-lg text-white">Saurav Kumar</strong>
-              <p className="text-slate-300 text-sm">Builder, tinkerer, and apparent game designer now.</p>
+              <p className="text-slate-400 text-sm">Builder, tinkerer, and apparent game designer now.</p>
             </div>
 
-            <p className="mb-4 text-slate-200">
+            <p className="mb-4 text-slate-300">
               I spend my days working on interesting problems in tech. Nights are for experiments like this. SiliconHalli came together in a creative sprint, and I'm excited to see where it goes next.
             </p>
 
@@ -136,14 +136,14 @@ export default function AboutPage() {
 
           <div className="mt-12 not-prose">
             <h2 className="text-2xl font-bold mb-6 text-green-400">Want to Contribute?</h2>
-            <p className="mb-6 text-slate-200">
+            <p className="mb-6 text-slate-300">
               This is a work in progress, and I'd love your input! Whether you want to collaborate on the board game, have feedback on the digital version, or just want to chat about startups and game design – I'm all ears!
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-slate-800 p-4 rounded border border-slate-700">
                 <h3 className="font-bold text-white mb-2">Ways to contribute</h3>
-                <ul className="text-sm text-slate-300 space-y-2 list-disc pl-4">
+                <ul className="text-sm text-slate-400 space-y-2 list-disc pl-4">
                   <li><strong>Game Design:</strong> Ideas for mechanics/scenarios?</li>
                   <li><strong>Playtesting:</strong> Break the prototype!</li>
                   <li><strong>Art & Design:</strong> Bring it to life visually.</li>
@@ -155,19 +155,19 @@ export default function AboutPage() {
               <div className="bg-slate-800 p-4 rounded border border-slate-700">
                  <h3 className="font-bold text-white mb-2">Reach out</h3>
                  <div className="flex flex-col space-y-3">
-                    <a href="mailto:your-email@example.com" className="flex items-center text-slate-300 hover:text-white transition-colors">
+                    <a href="mailto:your-email@example.com" className="flex items-center text-slate-400 hover:text-white transition-colors">
                       <Mail size={18} className="mr-3" />
                       <span>Email</span>
                     </a>
-                    {/* <a href="#" className="flex items-center text-slate-300 hover:text-white transition-colors">
+                    {/* <a href="#" className="flex items-center text-slate-400 hover:text-white transition-colors">
                       <Twitter size={18} className="mr-3" />
                       <span>Twitter</span>
                     </a> */}
-                    {/* <a href="#" className="flex items-center text-slate-300 hover:text-white transition-colors">
+                    {/* <a href="#" className="flex items-center text-slate-400 hover:text-white transition-colors">
                       <Linkedin size={18} className="mr-3" />
                       <span>LinkedIn</span>
                     </a> */}
-                    <a href="https://github.com/sauravtom" target="_blank" rel="noopener noreferrer" className="flex items-center text-slate-300 hover:text-white transition-colors">
+                    <a href="https://github.com/sauravtom" target="_blank" rel="noopener noreferrer" className="flex items-center text-slate-400 hover:text-white transition-colors">
                       <Github size={18} className="mr-3" />
                       <span>@sauravtom</span>
                     </a>

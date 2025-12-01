@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import Link from 'next/link';
-import { Terminal, Users, Cpu, Coffee, Zap, DollarSign, TrendingUp, Building, Server, Globe, Info } from 'lucide-react';
+import { Terminal, Users, Cpu, Coffee, Zap, DollarSign, TrendingUp, Building, Server, Globe } from 'lucide-react';
 
 // --- Game Data & Lore ---
 
@@ -333,9 +332,6 @@ export default function SiliconHalli() {
             <div className="text-xs font-bold uppercase tracking-wider">Valuation</div>
             <div className="text-xl font-black">{formatCompactCurrency(valuation)}</div>
           </div>
-          <Link href="/siliconhalli/about" className="p-2 bg-slate-700 hover:bg-slate-600 text-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center" title="About the Game">
-            <Info size={20} />
-          </Link>
         </div>
       </div>
 
