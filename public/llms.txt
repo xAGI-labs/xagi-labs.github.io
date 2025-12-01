@@ -50,6 +50,7 @@ xAGI Labs is an AI-First Development Agency specializing in building production-
 
 - https://xagi.in/chat - AI-powered chat interface for consultations
 - https://xagi.in/apps/linkedin-carousel-generator - LinkedIn Carousel Generator: Create professional carousel posts
+- https://xagi.in/siliconhalli - SiliconHalli: Bangalore Startup Simulator Game
 
 ## Key Expertise
 
