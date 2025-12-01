@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import SiliconHalliGame from './SiliconHalliGame';
+import SiliconHalliGame from './Game';
 
 export const metadata: Metadata = {
   title: 'SiliconHalli - Bangalore Startup Simulator',
