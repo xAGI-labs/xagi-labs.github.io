@@ -184,6 +184,8 @@ interface FloatingTextData {
   text: string;
 }
 
+const SAVE_KEY = 'siliconhalli_save_v1';
+
 export default function SiliconHalli() {
   // Game State
   const [balance, setBalance] = useState(1000); // Starting cash
@@ -193,10 +195,57 @@ export default function SiliconHalli() {
   const [inventory, setInventory] = useState<Record<string, number>>({});
   const [logs, setLogs] = useState<string[]>(["Welcome to SiliconHalli. Start coding."]);
   const [clickCount, setClickCount] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // UI State
   const [floatingTexts, setFloatingTexts] = useState<FloatingTextData[]>([]);
   const laptopRef = useRef<HTMLDivElement>(null);
+
+  // Load Game
+  useEffect(() => {
+    const savedData = localStorage.getItem(SAVE_KEY);
+    if (savedData) {
+      try {
+        const parsed = JSON.parse(savedData);
+        setBalance(parsed.balance ?? 1000);
+        setEquity(parsed.equity ?? 100);
+        setInventory(parsed.inventory ?? {});
+        setLogs(parsed.logs ?? ["Welcome back to SiliconHalli."]);
+        setClickCount(parsed.clickCount ?? 0);
+
+        // Recalculate MRR to ensure consistency
+        const loadedInventory = parsed.inventory || {};
+        let calculatedMrr = 0;
+        UPGRADES.forEach(u => {
+            const count = loadedInventory[u.id] || 0;
+            calculatedMrr += count * u.baseIncome;
+        });
+        setMrr(calculatedMrr);
+
+        // Valuation will be updated by the tick loop, but we can set initial
+        setValuation(parsed.valuation ?? 0);
+      } catch (e) {
+        console.error("Failed to load save", e);
+      }
+    }
+    setIsLoaded(true);
+  }, []);
+
+  // Auto Save
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    const saveData = {
+        balance,
+        mrr, // We save it, but recalculate on load just in case
+        equity,
+        valuation,
+        inventory,
+        logs,
+        clickCount
+    };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(saveData));
+  }, [balance, mrr, equity, valuation, inventory, logs, clickCount, isLoaded]);
 
   // Derived Stats
   const clickPower = 100 + (mrr * 0.1); // Click power scales slightly with MRR
