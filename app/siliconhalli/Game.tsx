@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Terminal, Users, Cpu, Coffee, Zap, DollarSign, TrendingUp, Building, Server, Globe } from 'lucide-react';
+import Link from 'next/link';
+import { Terminal, Users, Cpu, Coffee, Zap, DollarSign, TrendingUp, Building, Server, Globe, Info } from 'lucide-react';
 
 // --- Game Data & Lore ---
 
@@ -381,6 +382,9 @@ export default function SiliconHalli() {
             <div className="text-xs font-bold uppercase tracking-wider">Valuation</div>
             <div className="text-xl font-black">{formatCompactCurrency(valuation)}</div>
           </div>
+          <Link href="/siliconhalli/about" className="text-slate-400 hover:text-white transition-colors">
+            <Info size={24} />
+          </Link>
         </div>
       </div>
 
@@ -494,6 +498,30 @@ export default function SiliconHalli() {
               onComplete={() => removeFloatingText(ft.id)}
             />
           ))}
+
+          {/* Peerlist Widget */}
+          <div className="mt-8">
+            <a href="https://peerlist.io/saurav007/project/siliconhalli" target="_blank" rel="noreferrer">
+              <img
+                src="https://peerlist.io/api/v1/projects/embed/PRJHBARGDGJJG7R6P3ORMNE9LMBMGK?showUpvote=true&theme=dark"
+                alt="SiliconHalli"
+                style={{ width: 'auto', height: '72px' }}
+              />
+            </a>
+          </div>
+
+          {/* Footer */}
+          <div className="mt-4 text-xs text-slate-500 font-mono">
+            Made with <span className="text-red-500">❤️</span> in India by{' '}
+            <a
+              href="https://sauravtom.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 hover:underline"
+            >
+              sauravtom.github.io
+            </a>
+          </div>
         </div>
 
         {/* RIGHT COLUMN: CAPITAL RAISING */}
