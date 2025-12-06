@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Terminal, Users, Cpu, Coffee, Zap, DollarSign, TrendingUp, Building, Server, Globe } from 'lucide-react';
+import Link from 'next/link';
+import { Terminal, Users, Cpu, Coffee, Zap, DollarSign, TrendingUp, Building, Server, Globe, Info } from 'lucide-react';
 
 // --- Game Data & Lore ---
 
@@ -184,6 +185,8 @@ interface FloatingTextData {
   text: string;
 }
 
+const SAVE_KEY = 'siliconhalli_save_v1';
+
 export default function SiliconHalli() {
   // Game State
   const [balance, setBalance] = useState(1000); // Starting cash
@@ -193,10 +196,57 @@ export default function SiliconHalli() {
   const [inventory, setInventory] = useState<Record<string, number>>({});
   const [logs, setLogs] = useState<string[]>(["Welcome to SiliconHalli. Start coding."]);
   const [clickCount, setClickCount] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // UI State
   const [floatingTexts, setFloatingTexts] = useState<FloatingTextData[]>([]);
   const laptopRef = useRef<HTMLDivElement>(null);
+
+  // Load Game
+  useEffect(() => {
+    const savedData = localStorage.getItem(SAVE_KEY);
+    if (savedData) {
+      try {
+        const parsed = JSON.parse(savedData);
+        setBalance(parsed.balance ?? 1000);
+        setEquity(parsed.equity ?? 100);
+        setInventory(parsed.inventory ?? {});
+        setLogs(parsed.logs ?? ["Welcome back to SiliconHalli."]);
+        setClickCount(parsed.clickCount ?? 0);
+
+        // Recalculate MRR to ensure consistency
+        const loadedInventory = parsed.inventory || {};
+        let calculatedMrr = 0;
+        UPGRADES.forEach(u => {
+            const count = loadedInventory[u.id] || 0;
+            calculatedMrr += count * u.baseIncome;
+        });
+        setMrr(calculatedMrr);
+
+        // Valuation will be updated by the tick loop, but we can set initial
+        setValuation(parsed.valuation ?? 0);
+      } catch (e) {
+        console.error("Failed to load save", e);
+      }
+    }
+    setIsLoaded(true);
+  }, []);
+
+  // Auto Save
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    const saveData = {
+        balance,
+        mrr, // We save it, but recalculate on load just in case
+        equity,
+        valuation,
+        inventory,
+        logs,
+        clickCount
+    };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(saveData));
+  }, [balance, mrr, equity, valuation, inventory, logs, clickCount, isLoaded]);
 
   // Derived Stats
   const clickPower = 100 + (mrr * 0.1); // Click power scales slightly with MRR
@@ -332,6 +382,9 @@ export default function SiliconHalli() {
             <div className="text-xs font-bold uppercase tracking-wider">Valuation</div>
             <div className="text-xl font-black">{formatCompactCurrency(valuation)}</div>
           </div>
+          <Link href="/siliconhalli/about" className="text-slate-400 hover:text-white transition-colors">
+            <Info size={24} />
+          </Link>
         </div>
       </div>
 
@@ -445,6 +498,30 @@ export default function SiliconHalli() {
               onComplete={() => removeFloatingText(ft.id)}
             />
           ))}
+
+          {/* Peerlist Widget */}
+          <div className="mt-8">
+            <a href="https://peerlist.io/saurav007/project/siliconhalli" target="_blank" rel="noreferrer">
+              <img
+                src="https://peerlist.io/api/v1/projects/embed/PRJHBARGDGJJG7R6P3ORMNE9LMBMGK?showUpvote=true&theme=dark"
+                alt="SiliconHalli"
+                style={{ width: 'auto', height: '72px' }}
+              />
+            </a>
+          </div>
+
+          {/* Footer */}
+          <div className="mt-4 text-xs text-slate-500 font-mono">
+            Made with <span className="text-red-500">❤️</span> in India by{' '}
+            <a
+              href="https://sauravtom.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 hover:underline"
+            >
+              sauravtom.github.io
+            </a>
+          </div>
         </div>
 
         {/* RIGHT COLUMN: CAPITAL RAISING */}
