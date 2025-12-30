@@ -74,6 +74,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/ai-cto" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  AI CTO Services
+                </Link>
+              </li>
+              <li>
                 <Link href="/Ministry-of-Skill-Development-and-Entrepreneurship-pitch" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   MSDE Pitch
                 </Link>
