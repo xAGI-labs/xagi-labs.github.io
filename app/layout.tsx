@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
 import StructuredData from "@/components/structured-data"
 import MicrosoftClarity from "@/components/microsoft-clarity"
+import GeoGreeting from "@/components/shared/GeoGreeting"
 import "@/components/landing-page/styles.css"
 import { Suspense } from "react"
 import "./globals.css"
@@ -128,6 +129,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             {children}
+            <GeoGreeting />
           </ThemeProvider>
           <Analytics />
           <MicrosoftClarity />
