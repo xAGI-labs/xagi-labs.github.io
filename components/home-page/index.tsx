@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Brain, Zap, Rocket, Users, TrendingUp, Award } from "lucide-react"
+import { ArrowRight, Brain, Zap, Rocket, Users, TrendingUp, Award, Gamepad2, Mic, Newspaper } from "lucide-react"
 import Header from "../shared/header"
 import Footer from "../shared/footer"
 
@@ -35,6 +35,74 @@ export default function HomePage() {
                 View Our Work
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trending Section */}
+      <section className="py-12 border-b border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-[#0a0a0a]/50">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-2 mb-8">
+            <TrendingUp className="h-6 w-6 text-red-500" />
+            <h2 className="text-2xl font-bold">Trending Now</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Silicon Halli */}
+            <Link
+              href="/siliconhalli"
+              className="group block p-6 bg-white dark:bg-[#111111] rounded-xl border border-gray-200 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                  <Gamepad2 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                Silicon Halli
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Build your startup empire in Bangalore. Play our popular strategy simulation game.
+              </p>
+            </Link>
+
+            {/* xAGI Voice */}
+            <Link
+              href="/voice-ai"
+              className="group block p-6 bg-white dark:bg-[#111111] rounded-xl border border-gray-200 dark:border-gray-800 hover:border-purple-500 dark:hover:border-purple-500 transition-all shadow-sm hover:shadow-md"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                  <Mic className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                </div>
+                <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-purple-500 transition-colors" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                xAGI Voice
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Experience next-gen Voice AI agents. Natural, low-latency, and intelligent.
+              </p>
+            </Link>
+
+            {/* AI News */}
+            <Link
+              href="/ai-news"
+              className="group block p-6 bg-white dark:bg-[#111111] rounded-xl border border-gray-200 dark:border-gray-800 hover:border-orange-500 dark:hover:border-orange-500 transition-all shadow-sm hover:shadow-md"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+                  <Newspaper className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                </div>
+                <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-orange-500 transition-colors" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                AI News
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Curated daily updates on Artificial Intelligence, LLMs, and tech breakthroughs.
+              </p>
+            </Link>
           </div>
         </div>
       </section>
