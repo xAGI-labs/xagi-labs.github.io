@@ -53,9 +53,29 @@ export default function AstroGeminiPrivacyPolicy() {
 
           <section id="deletion" className="scroll-mt-24">
             <h2 className="text-2xl font-semibold mb-3">6. Account Deletion</h2>
-            <p className="leading-relaxed">
-              If you wish to request the complete deletion of your account and all associated data from our systems, please contact our support team at <a href="mailto:saurav@xagi.in" className="text-blue-600 dark:text-blue-400 hover:underline">saurav@xagi.in</a>. We are committed to processing your request promptly.
-            </p>
+            <div className="space-y-4">
+              <p className="leading-relaxed">
+                We respect your right to be forgotten. If you wish to request the complete deletion of your account and all associated data from our systems, please follow these steps:
+              </p>
+
+              <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-800">
+                <h3 className="font-semibold mb-3">How to Request Deletion:</h3>
+                <ol className="list-decimal list-inside space-y-2 ml-1">
+                  <li>Send an email to our support team at <a href="mailto:saurav@xagi.in" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">saurav@xagi.in</a>.</li>
+                  <li>Use the subject line: <strong>"Account Deletion Request"</strong>.</li>
+                  <li>In the body, please include your registered name or email address to help us identify your records.</li>
+                </ol>
+              </div>
+
+              <div className="pt-2">
+                <h3 className="font-semibold mb-2">Data Handling:</h3>
+                <ul className="list-disc list-inside space-y-2 ml-1 text-gray-700 dark:text-gray-300">
+                  <li><strong>Deleted Data:</strong> We will permanently remove your account information, saved birth profiles, and any communication logs associated with your identity from our active databases.</li>
+                  <li><strong>Retained Data:</strong> We do not retain any personal data after the deletion process is complete. Some anonymized usage statistics may be kept for analytical purposes.</li>
+                  <li><strong>Retention Period:</strong> Your data is deleted immediately upon processing your request. We aim to complete all deletion requests within 7 business days.</li>
+                </ul>
+              </div>
+            </div>
           </section>
         </div>
       </main>
