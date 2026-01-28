@@ -50,6 +50,13 @@ export default function AstroGeminiPrivacyPolicy() {
               You can delete any profile or chat history directly within the app at any time, which permanently removes the data from your device.
             </p>
           </section>
+
+          <section id="deletion" className="scroll-mt-24">
+            <h2 className="text-2xl font-semibold mb-3">6. Account Deletion</h2>
+            <p className="leading-relaxed">
+              If you wish to request the complete deletion of your account and all associated data from our systems, please contact our support team at <a href="mailto:saurav@xagi.in" className="text-blue-600 dark:text-blue-400 hover:underline">saurav@xagi.in</a>. We are committed to processing your request promptly.
+            </p>
+          </section>
         </div>
       </main>
       <Footer />
