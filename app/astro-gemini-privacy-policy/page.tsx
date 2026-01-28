@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
+import DeletionForm from "@/components/astro-gemini-privacy-policy/deletion-form"
 
 export const metadata: Metadata = {
   title: "Privacy Policy - AstroGemini",
@@ -52,19 +53,14 @@ export default function AstroGeminiPrivacyPolicy() {
           </section>
 
           <section id="deletion" className="scroll-mt-24">
-            <h2 className="text-2xl font-semibold mb-3">6. Account Deletion</h2>
-            <div className="space-y-4">
+            <h2 className="text-2xl font-semibold mb-6">6. Account Deletion</h2>
+            <div className="space-y-8">
               <p className="leading-relaxed">
-                We respect your right to be forgotten. If you wish to request the complete deletion of your account and all associated data from our systems, please follow these steps:
+                We respect your right to be forgotten. If you wish to request the complete deletion of your account and all associated data from our systems, please use the form below:
               </p>
 
-              <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-800">
-                <h3 className="font-semibold mb-3">How to Request Deletion:</h3>
-                <ol className="list-decimal list-inside space-y-2 ml-1">
-                  <li>Send an email to our support team at <a href="mailto:saurav@xagi.in" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">saurav@xagi.in</a>.</li>
-                  <li>Use the subject line: <strong>"Account Deletion Request"</strong>.</li>
-                  <li>In the body, please include your registered name or email address to help us identify your records.</li>
-                </ol>
+              <div className="py-4">
+                <DeletionForm />
               </div>
 
               <div className="pt-2">
