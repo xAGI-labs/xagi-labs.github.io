@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
+import DeletionForm from "@/components/astro-gemini-privacy-policy/deletion-form"
 
 export const metadata: Metadata = {
   title: "Privacy Policy - AstroGemini",
@@ -49,6 +50,28 @@ export default function AstroGeminiPrivacyPolicy() {
             <p className="leading-relaxed">
               You can delete any profile or chat history directly within the app at any time, which permanently removes the data from your device.
             </p>
+          </section>
+
+          <section id="deletion" className="scroll-mt-24">
+            <h2 className="text-2xl font-semibold mb-6">6. Account Deletion</h2>
+            <div className="space-y-8">
+              <p className="leading-relaxed">
+                We respect your right to be forgotten. If you wish to request the complete deletion of your account and all associated data from our systems, please use the form below:
+              </p>
+
+              <div className="py-4">
+                <DeletionForm />
+              </div>
+
+              <div className="pt-2">
+                <h3 className="font-semibold mb-2">Data Handling:</h3>
+                <ul className="list-disc list-inside space-y-2 ml-1 text-gray-700 dark:text-gray-300">
+                  <li><strong>Deleted Data:</strong> We will permanently remove your account information, saved birth profiles, and any communication logs associated with your identity from our active databases.</li>
+                  <li><strong>Retained Data:</strong> We do not retain any personal data after the deletion process is complete. Some anonymized usage statistics may be kept for analytical purposes.</li>
+                  <li><strong>Retention Period:</strong> Your data is deleted immediately upon processing your request. We aim to complete all deletion requests within 7 business days.</li>
+                </ul>
+              </div>
+            </div>
           </section>
         </div>
       </main>
