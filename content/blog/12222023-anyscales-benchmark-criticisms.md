@@ -1,0 +1,10 @@
+---
+title: "12/22/2023: Anyscale's Benchmark Criticisms"
+date: "2023-12-23T01:16:52.000Z"
+description: "**Anyscale** launched their **LLMPerf leaderboard** to benchmark large language model inference performance, but it faced criticism for lacking detailed metrics..."
+original_link: "https://news.smol.ai/issues/23-12-22-ainews-12222023-anyscales-benchmark-criticisms/"
+---
+
+**Anyscale** launched their **LLMPerf leaderboard** to benchmark large language model inference performance, but it faced criticism for lacking detailed metrics like cost per token and throughput, and for comparing public LLM endpoints without accounting for batching and load. In **OpenAI Discord** discussions, users reported issues with **Bard** and preferred **Microsoft Copilot** for storytelling, noting fewer hallucinations. There was debate on the value of upgrading from **GPT-3.5** to **GPT-4**, with many finding paid AI models worthwhile for coding productivity. Bugs and performance issues with OpenAI APIs were also highlighted, including slow responses and message limits. Future AI developments like **GPT-6** and concerns about OpenAI's transparency and profitability were discussed. Prompt engineering for image generation was another active topic, emphasizing clear positive prompts and the desire for negative prompts.
+
+[Read original post](https://news.smol.ai/issues/23-12-22-ainews-12222023-anyscales-benchmark-criticisms/)

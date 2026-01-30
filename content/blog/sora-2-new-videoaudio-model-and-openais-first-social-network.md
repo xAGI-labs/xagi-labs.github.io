@@ -1,0 +1,10 @@
+---
+title: "Sora 2: new video+audio model and OpenAI's first Social Network"
+date: "2025-09-30T05:44:39.000Z"
+description: "**Sora 2** released with improvements on physical world video modeling and a new \"character consistency\" feature allowing real-world element injection from a ..."
+original_link: "https://news.smol.ai/issues/25-09-30-sora2/"
+---
+
+**Sora 2** released with improvements on physical world video modeling and a new "character consistency" feature allowing real-world element injection from a single video. The model powers a new **Sora social network** app with profiles, DMs, and viral videos, emphasizing user control over likeness use. **OpenAI** employees are actively experimenting with the model. Meanwhile, **Anthropic** launched **Claude 4.5 Sonnet** with enhanced intelligence, token efficiency, and agentic tool use, outperforming some competitors and closely tracking **GPT-5-high** on benchmarks. Ecosystem support includes LangSmith integration and strong coding/math benchmark results.
+
+[Read original post](https://news.smol.ai/issues/25-09-30-sora2/)

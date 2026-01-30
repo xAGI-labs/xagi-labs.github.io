@@ -1,0 +1,10 @@
+---
+title: "Prime Intellect's INTELLECT-2 and PRIME-RL advance distributed reinforcement learning"
+date: "2025-05-12T05:44:39.000Z"
+description: "**Prime Intellect** released **INTELLECT-2**, a decentralized GPU training and RL framework with a vision for distributed AI training overcoming colocation limi..."
+original_link: "https://news.smol.ai/issues/25-05-12-intellect-2/"
+---
+
+**Prime Intellect** released **INTELLECT-2**, a decentralized GPU training and RL framework with a vision for distributed AI training overcoming colocation limits. **ByteDance** launched **DreamO**, a unified image customization model on Hugging Face. **Qwen** released models optimized for GPTQ, GGUF, and AWQ quantization. **Gemma** surpassed 150 million downloads on Hugging Face. **Meta** released weights for the **Dynamic Byte Latent Transformer** and the **Collaborative Reasoner** framework to improve language model efficiency and reasoning. **RunwayML** introduced **Gen-4 References**, a near-realtime model requiring no fine-tuning. **Mistral AI** released **Mistral Medium 3**, a strong multimodal model, and **Le Chat Enterprise**, an agentic AI assistant for business. **Google** updated **Gemini 2.5 Pro Preview** with video understanding and UI improvements. \*"Airbnb for spare GPUs from all over the world"\* highlights the ongoing challenges and potential of distributed GPU training.
+
+[Read original post](https://news.smol.ai/issues/25-05-12-intellect-2/)

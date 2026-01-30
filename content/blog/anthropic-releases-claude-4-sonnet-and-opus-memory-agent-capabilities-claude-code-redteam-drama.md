@@ -1,0 +1,10 @@
+---
+title: "Anthropic releases Claude 4 Sonnet and Opus: Memory, Agent Capabilities, Claude Code, Redteam Drama"
+date: "2025-05-22T05:44:39.000Z"
+description: "**Anthropic** has officially released **Claude 4** with two variants: **Claude Opus 4**, a high-capability model for complex tasks priced at **$15/$75 per milli..."
+original_link: "https://news.smol.ai/issues/25-05-22-claude-4/"
+---
+
+**Anthropic** has officially released **Claude 4** with two variants: **Claude Opus 4**, a high-capability model for complex tasks priced at **$15/$75 per million tokens**, and **Claude Sonnet 4**, optimized for efficient everyday use. The release emphasizes **instruction following** and extended work sessions up to **7 hours**. Community discussions highlight concerns about **token pricing**, **token accounting transparency**, and calls for **open-sourcing Claude 3.5 Sonnet** weights to support local model development. The news also covers **Claude Code GA**, new **Agent Capabilities API**, and various livestreams and reports detailing these updates. There is notable debate around **sliding window attention** and advanced inference techniques for local deployment.
+
+[Read original post](https://news.smol.ai/issues/25-05-22-claude-4/)

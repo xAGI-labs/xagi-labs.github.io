@@ -1,0 +1,10 @@
+---
+title: "Ideogram 2 + Berkeley Function Calling Leaderboard V2"
+date: "2024-08-22T00:05:05.000Z"
+description: "**Ideogram** returns with a new image generation model featuring **color palette control**, a fully controllable API, and an iOS app, reaching a milestone of **..."
+original_link: "https://news.smol.ai/issues/24-08-21-ainews-ideogram-2-berkeley-function-calling-leaderboard-v2/"
+---
+
+**Ideogram** returns with a new image generation model featuring **color palette control**, a fully controllable API, and an iOS app, reaching a milestone of **1 billion images created**. Meanwhile, **Midjourney** released a Web UI but still lacks an API. In function calling, the **Berkeley Function Calling Leaderboard (BFCL)** updated to **BFCL V2 • Live**, adding **2251 live, user-contributed function documentation and queries** to improve evaluation quality. **GPT-4** leads the leaderboard, but the open-source **Functionary Llama 3-70B finetune** from Kai surpasses **Claude**. On AI model releases, **Microsoft** launched three **Phi-3.5** models with impressive reasoning and context window capabilities, while **Meta AI FAIR** introduced **UniBench**, a unified benchmark suite for over **50 vision-language model tasks**. **Baseten** improved **Llama 3** inference speed by up to **122%** using Medusa. A new cybersecurity benchmark, **Cyberbench**, featuring **40 CTF tasks**, was released. Additionally, **Codegen** was introduced as a tool for programmatic codebase analysis and AI-assisted development. \*"Multiple functions > parallel functions"\* was highlighted as a key insight in function calling.
+
+[Read original post](https://news.smol.ai/issues/24-08-21-ainews-ideogram-2-berkeley-function-calling-leaderboard-v2/)

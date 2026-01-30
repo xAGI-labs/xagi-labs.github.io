@@ -1,0 +1,10 @@
+---
+title: "OpenAI GPT Image-1.5 claims to beat Nano Banana Pro, #1 across all Arenas, but completely fails Vibe Checks"
+date: "2025-12-16T05:44:39.000Z"
+description: "**OpenAI** released its new image model **GPT Image 1.5**, featuring precise image editing, better instruction following, improved text and markdown rendering, ..."
+original_link: "https://news.smol.ai/issues/25-12-16-gpt-image-15/"
+---
+
+**OpenAI** released its new image model **GPT Image 1.5**, featuring precise image editing, better instruction following, improved text and markdown rendering, and faster generation up to 4×. Despite topping multiple leaderboards like **LMArena (1277)**, **Design Arena (1344)**, and **AA Arena (1272)**, user feedback from Twitter, Reddit, and Discord communities is largely negative compared to **Nano Banana Pro** by **Gemini**. Xiaomi introduced the **MiMo-V2-Flash**, a **309B MoE** model optimized for inference efficiency with **256K context window**, achieving state-of-the-art scores on SWE-Bench. The model uses Hybrid Sliding Window Attention and multi-token prediction, offering significant speedups and efficiency improvements. The timing of OpenAI's launch amid competition from Gemini and Nano Banana Pro affects user sentiment, highlighting challenges in benchmarking relevance.
+
+[Read original post](https://news.smol.ai/issues/25-12-16-gpt-image-15/)

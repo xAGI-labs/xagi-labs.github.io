@@ -1,0 +1,10 @@
+---
+title: "Claude Opus 4.5: 3rd new SOTA coding model in past week, 1/3 the price of Opus "
+date: "2025-11-24T05:44:39.000Z"
+description: "**Anthropic** launched **Claude Opus 4.5**, a new flagship model excelling in **coding, agents, and tooling** with a significant **3x price cut** compared to Op..."
+original_link: "https://news.smol.ai/issues/25-11-24-opus-45/"
+---
+
+**Anthropic** launched **Claude Opus 4.5**, a new flagship model excelling in **coding, agents, and tooling** with a significant **3x price cut** compared to Opus 4.1 and improved **token efficiency** using **76% fewer output tokens**. Opus 4.5 achieved a new **SOTA** on **SWE-bench Verified** with **80.9% accuracy**, surpassing previous models like **Gemini 3 Pro** and **GPT-5.1-Codex-Max**. The update includes advanced API features such as **effort control**, **context compaction**, and **programmatic tool calling**, improving tool accuracy and reducing token usage. Claude Code is now bundled with Claude Desktop, and new integrations like Claude for Chrome and Excel are rolling out. Benchmarks show Opus 4.5 breaking the 80% barrier on SWE-bench Verified and strong performance on ARC-AGI-2 and BrowseComp-Plus.
+
+[Read original post](https://news.smol.ai/issues/25-11-24-opus-45/)

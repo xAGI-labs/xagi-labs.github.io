@@ -1,0 +1,10 @@
+---
+title: "Mary Meeker is so back: BOND Capital AI Trends report"
+date: "2025-05-31T05:44:39.000Z"
+description: "**Mary Meeker** returns with a comprehensive **340-slide report** on the state of AI, highlighting accelerating tech cycles, compute growth, and comparisons of ..."
+original_link: "https://news.smol.ai/issues/25-05-30-mary-meeker/"
+---
+
+**Mary Meeker** returns with a comprehensive **340-slide report** on the state of AI, highlighting accelerating tech cycles, compute growth, and comparisons of **ChatGPT** to early Google and other iconic tech products. The report also covers enterprise traction and valuation of major AI companies. On Twitter, **@tri\_dao** discusses an "ideal" inference architecture featuring attention variants like **GTA**, **GLA**, and **DeepSeek MLA** with high arithmetic intensity (~256), improving efficiency and model quality. Other highlights include the release of **4-bit DWQ of DSR1 Qwen3 8B** on Hugging Face, **AnthropicAI**'s open-source interpretability tools for LLMs, and discussions on transformer training and abstractions by various researchers.
+
+[Read original post](https://news.smol.ai/issues/25-05-30-mary-meeker/)

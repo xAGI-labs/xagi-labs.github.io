@@ -1,0 +1,10 @@
+---
+title: "ChatGPT Codex, OpenAI's first cloud SWE agent"
+date: "2025-05-16T05:44:39.000Z"
+description: "**OpenAI** launched **Codex**, a cloud-based software engineering agent powered by **codex-1** (an optimized version of **OpenAI o3**) available in research pre..."
+original_link: "https://news.smol.ai/issues/25-05-16-codex/"
+---
+
+**OpenAI** launched **Codex**, a cloud-based software engineering agent powered by **codex-1** (an optimized version of **OpenAI o3**) available in research preview for Pro, Enterprise, and Team ChatGPT users, featuring parallel task execution like refactoring and bug fixing. The **Codex CLI** was enhanced with quick sign-in and a new low-latency model, **codex-mini**. **Gemma 3** is highlighted as the best open model runnable on a single GPU. **Runway** released the Gen-4 References API for style transfer in generation. **Salesforce** introduced **BLIP3-o**, a unified multimodal model family using diffusion transformers for CLIP image features. The **Qwen 2.5** models (1.5B and 3B versions) were integrated into the PocketPal app with various chat templates. **Marigold IID**, a new state-of-the-art open-source depth estimation model, was released. In research, **DeepSeek** shared insights on scaling and hardware for DeepSeek-V3. **Google** unveiled **LightLab**, a diffusion-based light source control in images. **Google DeepMind's AlphaEvolve** uses **Gemini 2.0** to discover new math and reduce costs without reinforcement learning. **Omni-R1** studied audio's role in fine-tuning audio LLMs. **Qwen** proposed a parallel scaling law inspired by classifier-free guidance. **Salesforce** released **Lumina-Next** on the Qwen base, outperforming Janus-Pro. A study found LLM performance degrades in multi-turn conversations due to unreliability. **J1** is incentivizing LLM-as-a-Judge thinking via reinforcement learning. A new Qwen study correlates question and strategy similarity to predict reasoning strategies.
+
+[Read original post](https://news.smol.ai/issues/25-05-16-codex/)

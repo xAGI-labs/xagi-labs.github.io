@@ -1,0 +1,10 @@
+---
+title: "Claude 3.7 Sonnet"
+date: "2025-02-25T05:58:56.000Z"
+description: "**Anthropic** launched **Claude 3.7 Sonnet**, their most intelligent model to date featuring hybrid reasoning with two thinking modes: near-instant and extended..."
+original_link: "https://news.smol.ai/issues/25-02-24-ainews-claude-37-sonnet/"
+---
+
+**Anthropic** launched **Claude 3.7 Sonnet**, their most intelligent model to date featuring hybrid reasoning with two thinking modes: near-instant and extended step-by-step thinking. The release includes **Claude Code**, an agentic coding tool in limited preview, and supports a **128k output token capability** in beta. Claude 3.7 Sonnet performs well on coding benchmarks like **SWE-Bench Verified** and **Cognition's junior-dev eval**, and introduces advanced features such as streaming thinking, prompt caching, and tool use. The model is also benchmarked on **Pokebench**, reflecting agentic capabilities similar to the Voyager paper. The launch is accompanied by extensive documentation, cookbooks, and prompting guides for extended thinking. \*"The first generally available hybrid reasoning model"\* and \*"first coding tool from Anthropic"\* were highlighted in social media announcements.
+
+[Read original post](https://news.smol.ai/issues/25-02-24-ainews-claude-37-sonnet/)

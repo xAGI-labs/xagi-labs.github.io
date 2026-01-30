@@ -1,0 +1,10 @@
+---
+title: "Black Forest Labs FLUX.2 [pro|flex|dev|klein]: near-Nano Banana quality but Open Weights"
+date: "2025-11-25T05:44:39.000Z"
+description: "**Black Forest Labs' FLUX.2** release features **Multi-Reference Support** for up to **4 Megapixel** output and up to **10 images** with consistency, including ..."
+original_link: "https://news.smol.ai/issues/25-11-25-flux2/"
+---
+
+**Black Forest Labs' FLUX.2** release features **Multi-Reference Support** for up to **4 Megapixel** output and up to **10 images** with consistency, including four form factors: Pro, Flex, Dev (32B Open Weight model), and Klein (TBA Open Weights). The new **FLUX.2 - VAE** introduces a variational autoencoder optimizing learnability, quality, and compression. Meanwhile, **Anthropic's Claude Opus 4.5** demonstrates strong performance and efficiency, scoring **70 on Artificial Analysis**, tying with **GPT-5.1 high** and trailing **Gemini 3 Pro (73)**. Opus 4.5 excels in agentic coding benchmarks and research evaluations, with notable token efficiency and reduced running costs. \*"Opus 4.5 leads Gemini 3 Pro on SWE-Bench Verified and tops the AICodeKing leaderboard,"\* and it shows strong QA and systematic review capabilities. Anthropic also released a dense prompting guide for Opus 4.5.
+
+[Read original post](https://news.smol.ai/issues/25-11-25-flux2/)

@@ -1,0 +1,10 @@
+---
+title: "GPT 5.1 in ChatGPT: No evals, but adaptive thinking and instruction following"
+date: "2025-11-12T05:44:39.000Z"
+description: "**OpenAI** launched **GPT-5.1** with improvements in conversational tone, instruction following, and adaptive reasoning. **GPT-5.0** is being sunset in 3 months..."
+original_link: "https://news.smol.ai/issues/25-11-12-gpt-51/"
+---
+
+**OpenAI** launched **GPT-5.1** with improvements in conversational tone, instruction following, and adaptive reasoning. **GPT-5.0** is being sunset in 3 months. ChatGPT introduces new tone toggles for personalization, serving over **800 million users**. **Waymo** rolls out freeway driving for public riders in major California cities, showcasing advances in autonomous driving. **Anthropic**'s Project Fetch explores LLMs as robotics copilots using **Claude**. **Perceptron** releases a new API and Python SDK for multimodal perception-action apps supporting **Isaac-0.1** and **Qwen3VL-235B**. **Code Arena** offers live coding evaluations supporting **Claude**, **GPT-5**, **GLM-4.6**, and **Gemini**. **LangChain** introduces middleware for agent governance with human-in-the-loop controls. **LlamaIndex** releases a structured extraction template for SEC filings using LlamaAgents. **NousResearch** promotes ARC Prize benchmarks for generalized intelligence evaluation.
+
+[Read original post](https://news.smol.ai/issues/25-11-12-gpt-51/)

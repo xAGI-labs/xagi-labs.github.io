@@ -1,0 +1,10 @@
+---
+title: "Qwen 3: 0.6B to 235B MoE full+base models that beat R1 and o1"
+date: "2025-04-28T05:44:39.000Z"
+description: "**Qwen 3** has been released by **Alibaba** featuring a range of models including two MoE variants, **Qwen3-235B-A22B** and **Qwen3-30B-A3B**, which demonstrate..."
+original_link: "https://news.smol.ai/issues/25-04-28-qwen-3/"
+---
+
+**Qwen 3** has been released by **Alibaba** featuring a range of models including two MoE variants, **Qwen3-235B-A22B** and **Qwen3-30B-A3B**, which demonstrate competitive performance against top models like **DeepSeek-R1**, **o1**, **o3-mini**, **Grok-3**, and **Gemini-2.5-Pro**. The models introduce an "enable\_thinking=True" mode with advanced soft switching for inference scaling. The release is notable for its Apache 2.0 license and broad inference platform support including MCP. The dataset improvements and multi-stage RL post-training contribute to performance gains. Meanwhile, **Gemini 2.5 Pro** from **Google DeepMind** shows strong coding and long-context reasoning capabilities, and **DeepSeek R2** is anticipated soon. Twitter discussions highlight Qwen3's finegrained MoE architecture, large context window, and multi-agent system applications.
+
+[Read original post](https://news.smol.ai/issues/25-04-28-qwen-3/)
