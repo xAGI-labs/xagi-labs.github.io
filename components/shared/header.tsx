@@ -49,6 +49,9 @@ export default function Header() {
             <Link href="/process" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Process
             </Link>
+            <Link href="/blog" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+              Blog
+            </Link>
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -100,6 +103,9 @@ export default function Header() {
             </Link>
             <Link href="/process" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Process
+            </Link>
+            <Link href="/blog" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              Blog
             </Link>
             <Link href="/contact" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Contact
