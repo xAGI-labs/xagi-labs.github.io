@@ -31,7 +31,7 @@ export default function ContactPage() {
             <div className="bg-white dark:bg-[#0a0a0a] rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
               <h2 className="text-3xl font-bold mb-6">Schedule Your Free Strategy Call</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-8">
-                Choose a time that works for you for a 45-minute consultation with our founding team.
+                Send us an email to schedule a 45-minute consultation with our founding team.
               </p>
 
               <div className="space-y-4 mb-8">
@@ -70,9 +70,7 @@ export default function ContactPage() {
               </div>
 
               <a
-                href="https://calendar.app.google/Nynsg8byKbhxePex5"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:saurav@xagi.in?subject=Request%20for%20Strategy%20Call"
                 className="inline-flex items-center w-full justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity"
               >
                 Book a Call

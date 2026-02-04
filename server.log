@@ -1,0 +1,11 @@
+
+> automatic-landing@0.1.0 start
+> next start
+
+  ▲ Next.js 14.2.16
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 429ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_vercel/insights/script.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
