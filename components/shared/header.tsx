@@ -43,9 +43,6 @@ export default function Header() {
             <Link href="/portfolio" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Portfolio
             </Link>
-            <Link href="/team" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-              Team
-            </Link>
             <Link href="/process" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Process
             </Link>
@@ -97,9 +94,6 @@ export default function Header() {
             </Link>
             <Link href="/portfolio" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Portfolio
-            </Link>
-            <Link href="/team" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Team
             </Link>
             <Link href="/process" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Process

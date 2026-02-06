@@ -64,11 +64,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/team" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                  Team
-                </Link>
-              </li>
-              <li>
                 <Link href="/hire-with-xAGI" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   Hire with xAGI
                 </Link>
