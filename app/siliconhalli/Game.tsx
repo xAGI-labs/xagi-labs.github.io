@@ -197,6 +197,7 @@ export default function SiliconHalli() {
   const [logs, setLogs] = useState<string[]>(["Welcome to SiliconHalli. Start coding."]);
   const [clickCount, setClickCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showIntroModal, setShowIntroModal] = useState(true);
 
   // UI State
   const [floatingTexts, setFloatingTexts] = useState<FloatingTextData[]>([]);
@@ -439,7 +440,7 @@ export default function SiliconHalli() {
         </div>
 
         {/* CENTER COLUMN: ACTION AREA */}
-        <div className="flex-1 bg-slate-900 relative flex flex-col items-center justify-center p-6 scanline">
+        <div className="flex-1 bg-slate-900 relative flex flex-col items-center justify-start pt-10 lg:pt-12 p-6 scanline">
 
           {/* Laptop Clicker */}
           <div className="relative w-full max-w-md aspect-video mb-8 group cursor-pointer" onClick={handleLaptopClick} ref={laptopRef}>
@@ -593,6 +594,58 @@ export default function SiliconHalli() {
         </div>
 
       </div>
+
+      {showIntroModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+          <div className="w-full max-w-xl bg-slate-900 border-2 border-slate-700 rounded-lg shadow-2xl p-6">
+            <h2 className="text-2xl font-black text-green-400 mb-2">Welcome to SiliconHalli</h2>
+            <p className="text-slate-300 text-sm mb-4">
+              Build your Bangalore startup from laptop hustle to IPO.
+            </p>
+
+            <div className="space-y-2 text-sm text-slate-200">
+              <p>1. Tap the laptop to earn money.</p>
+              <p>2. Buy infrastructure upgrades to increase revenue per second.</p>
+              <p>3. Raise funding rounds as valuation grows, but manage equity carefully.</p>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-slate-700 text-xs text-slate-300 space-y-1">
+              <p>
+                Want the story behind the game?{' '}
+                <Link href="/siliconhalli/about" className="text-blue-400 hover:text-blue-300 underline">
+                  Read the about page
+                </Link>
+              </p>
+              <p>
+                About me:{' '}
+                <a
+                  href="https://sauravtom.github.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 underline"
+                >
+                  sauravtom.github.io
+                </a>
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button
+                onClick={() => setShowIntroModal(false)}
+                className="px-4 py-2 bg-green-500 hover:bg-green-400 text-black font-bold rounded border border-black"
+              >
+                Start Playing
+              </button>
+              <button
+                onClick={() => setShowIntroModal(false)}
+                className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded border border-slate-500"
+              >
+                Skip
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
