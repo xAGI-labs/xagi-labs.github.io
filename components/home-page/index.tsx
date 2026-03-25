@@ -107,6 +107,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Featured Guide */}
+      <section className="py-14 border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto rounded-2xl border border-gray-200 dark:border-gray-800 p-8 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/20">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300 mb-3">
+              New from xAGI Labs
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              OpenClaw Guide (2026)
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              A detailed implementation playbook for OpenClaw, including deployment choices, model-provider
+              strategy, security hardening, and a 7-day launch checklist.
+            </p>
+            <Link
+              href="/blog/openclaw-guide-2026"
+              className="inline-flex items-center font-semibold text-blue-700 dark:text-blue-300 hover:underline"
+            >
+              Read the complete guide
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* What We Do */}
       <section className="py-20 bg-gray-50 dark:bg-[#111111]">
         <div className="container mx-auto px-4">

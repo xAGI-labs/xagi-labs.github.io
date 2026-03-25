@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown"
 import { notFound } from "next/navigation"
 import { Calendar, ArrowLeft } from "lucide-react"
 import Link from "next/link"
+import type { Metadata } from "next"
 
 interface Props {
   params: {
@@ -27,10 +28,45 @@ export async function generateMetadata({ params }: Props) {
     }
   }
 
+  const canonical = post.canonical || `https://xagi.in/blog/${post.slug}`
+  const description = post.description || "Read the latest insights from xAGI Labs."
+  const keywords =
+    Array.isArray(post.keywords)
+      ? post.keywords
+      : typeof post.keywords === "string"
+        ? post.keywords.split(",").map((keyword: string) => keyword.trim()).filter(Boolean)
+        : undefined
+
   return {
     title: `${post.title} | xAGI Labs Blog`,
-    description: post.description,
-  }
+    description,
+    keywords,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      type: "article",
+      url: canonical,
+      title: post.title,
+      description,
+      publishedTime: post.date,
+      authors: [post.author || "xAGI Labs"],
+      images: [
+        {
+          url: post.image || "/xagi-icon.png",
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description,
+      images: [post.image || "/xagi-icon.png"],
+    },
+  } satisfies Metadata
 }
 
 export default function BlogPostPage({ params }: Props) {
@@ -40,8 +76,48 @@ export default function BlogPostPage({ params }: Props) {
     notFound()
   }
 
+  const canonical = post.canonical || `https://xagi.in/blog/${post.slug}`
+  const keywords =
+    Array.isArray(post.keywords)
+      ? post.keywords
+      : typeof post.keywords === "string"
+        ? post.keywords.split(",").map((keyword: string) => keyword.trim()).filter(Boolean)
+        : []
+
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description || "Read the latest insights from xAGI Labs.",
+    datePublished: post.date,
+    dateModified: post.updatedAt || post.date,
+    author: {
+      "@type": "Organization",
+      name: post.author || "xAGI Labs",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "xAGI Labs",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://xagi.in/xagi-icon.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonical,
+    },
+    articleSection: post.category || "AI",
+    keywords: keywords.join(", "),
+    image: post.image || "https://xagi.in/xagi-icon.png",
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-[#0a0a0a]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
       <Header />
 
       <main className="flex-grow py-20">

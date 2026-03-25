@@ -54,6 +54,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/openclaw-guide-2026" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  OpenClaw Guide (2026)
+                </Link>
+              </li>
+              <li>
                 <Link href="/portfolio" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   Portfolio
                 </Link>

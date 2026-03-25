@@ -244,6 +244,16 @@ export default function ServicesPage() {
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
               Schedule a free consultation to discuss your project and explore how we can help.
             </p>
+            <p className="text-base text-gray-600 dark:text-gray-400 mb-6">
+              Want the complete roadmap first? Read our{" "}
+              <Link
+                href="/blog/openclaw-guide-2026"
+                className="font-medium text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                OpenClaw Guide (2026)
+              </Link>
+              .
+            </p>
             <Link
               href="/contact"
               className="inline-flex items-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity"

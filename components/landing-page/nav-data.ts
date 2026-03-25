@@ -6,6 +6,14 @@ import { iconColors } from "./color-utils"
 export const resourcesDropdownData: SubNavItem[][] = [
   [
     {
+      title: "OpenClaw Guide (2026)",
+      description: "Detailed setup and production playbook for OpenClaw",
+      href: "/blog/openclaw-guide-2026",
+      icon: LayoutGrid,
+      color: iconColors.resources.blog,
+      external: false,
+    },
+    {
       title: "Foundation Bubble Template",
       description: "Start your Bubble project with our foundation template",
       href: "https://bubble.io/template/foundation-by-automatic-1673596403969x408542417388568600",

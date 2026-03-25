@@ -37,12 +37,18 @@ export default function Footer() {
           Your AI-first development partner building high-quality, scalable platforms.
         </p>
 
-        <div className="mb-6">
+        <div className="mb-6 flex flex-col items-center gap-2">
           <Link
-            href="/tools/linkedin-carousel-generator"
+            href="/apps/linkedin-carousel-generator"
             className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
           >
             LinkedIn Carousel Generator
+          </Link>
+          <Link
+            href="/blog/openclaw-guide-2026"
+            className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            OpenClaw Guide (2026)
           </Link>
         </div>
 
