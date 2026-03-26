@@ -14,6 +14,14 @@ export const resourcesDropdownData: SubNavItem[][] = [
       external: false,
     },
     {
+      title: "GEO Services",
+      description: "Get listed in ChatGPT and other AI answer engines",
+      href: "/geo",
+      icon: MessageSquare,
+      color: iconColors.resources.community,
+      external: false,
+    },
+    {
       title: "Foundation Bubble Template",
       description: "Start your Bubble project with our foundation template",
       href: "https://bubble.io/template/foundation-by-automatic-1673596403969x408542417388568600",

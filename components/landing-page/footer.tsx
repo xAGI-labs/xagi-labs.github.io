@@ -50,6 +50,12 @@ export default function Footer() {
           >
             OpenClaw Guide (2026)
           </Link>
+          <Link
+            href="/geo"
+            className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            GEO Services
+          </Link>
         </div>
 
         <p className="text-sm text-gray-500 dark:text-gray-400">

@@ -64,6 +64,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/geo" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  GEO Services
+                </Link>
+              </li>
+              <li>
                 <Link href="/portfolio" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   Portfolio
                 </Link>

@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
-import { Brain, Zap, Rocket, Wrench, Bot, Target, ArrowRight, Check } from "lucide-react"
+import { Brain, Zap, Rocket, Wrench, Bot, Target, TrendingUp, ArrowRight, Check } from "lucide-react"
 
 export default function ServicesPage() {
   return (
@@ -17,7 +17,8 @@ export default function ServicesPage() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Services</h1>
             <p className="text-xl text-gray-600 dark:text-gray-400">
               End-to-End AI Product Development<br />
-              From strategy to deployment, we're your partner in building intelligence-first products.
+              From strategy to deployment, we're your partner in building intelligence-first products, including
+              OpenClaw enterprise deployments and agentic visibility optimization.
             </p>
           </div>
         </div>
@@ -201,7 +202,7 @@ export default function ServicesPage() {
           </div>
 
           {/* Model Fine-Tuning */}
-          <div className="bg-white dark:bg-[#0a0a0a] rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+          <div className="mb-16 bg-white dark:bg-[#0a0a0a] rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
             <div className="flex items-center mb-6">
               <Target className="h-10 w-10 mr-4 text-orange-600" />
               <h3 className="text-3xl font-bold">AI Model Fine-Tuning & Optimization</h3>
@@ -229,6 +230,79 @@ export default function ServicesPage() {
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 4-8 weeks</p>
                   <p className="text-2xl font-bold">$30,000 - $80,000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* OpenClaw Enterprise Deployment */}
+          <div className="mb-16 bg-white dark:bg-[#0a0a0a] rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+            <div className="flex items-center mb-6">
+              <Bot className="h-10 w-10 mr-4 text-indigo-600" />
+              <h3 className="text-3xl font-bold">OpenClaw Enterprise Deployment</h3>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="font-semibold text-lg mb-3">What You Get:</h4>
+                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> Enterprise OpenClaw architecture and deployment plan</li>
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> Cloud, private VPC, or on-prem setup with security hardening</li>
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> Model routing, tool orchestration, and workflow implementation</li>
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> Monitoring, evaluation dashboards, and incident playbooks</li>
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> Team onboarding, SOPs, and post-launch optimization support</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-lg mb-3">Ideal For:</h4>
+                <ul className="space-y-2 text-gray-600 dark:text-gray-400 mb-6">
+                  <li>• Enterprises adopting self-hosted AI agent infrastructure</li>
+                  <li>• Regulated teams requiring privacy, auditability, and control</li>
+                  <li>• Product organizations moving from managed tools to owned stack</li>
+                  <li>• Teams scaling multi-channel agent operations reliably</li>
+                </ul>
+                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 6-12 weeks</p>
+                  <p className="text-2xl font-bold">$45,000 - $140,000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Agentic Result Optimization */}
+          <div className="bg-white dark:bg-[#0a0a0a] rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+            <div className="flex items-center mb-6">
+              <TrendingUp className="h-10 w-10 mr-4 text-cyan-600" />
+              <h3 className="text-3xl font-bold">Agentic Result Optimization for D2C & Growth Teams</h3>
+            </div>
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
+              Need details? Explore our dedicated{" "}
+              <Link href="/geo" className="font-medium text-blue-600 dark:text-blue-400 hover:underline">
+                GEO Services page
+              </Link>
+              .
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="font-semibold text-lg mb-3">What You Get:</h4>
+                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> AI discovery strategy to improve presence in ChatGPT and other answer engines</li>
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> Structured content architecture for high-intent question clusters</li>
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> Technical optimization (schema, llms.txt, crawlability, and citation surfaces)</li>
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> D2C product feed and FAQ optimization for AI-assisted buying journeys</li>
+                  <li className="flex items-start"><Check className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-green-600" /> Ongoing reporting for visibility, mentions, and conversion impact</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-lg mb-3">Ideal For:</h4>
+                <ul className="space-y-2 text-gray-600 dark:text-gray-400 mb-6">
+                  <li>• D2C brands that want more qualified AI-assisted discovery traffic</li>
+                  <li>• SaaS and service companies expanding visibility beyond classic SEO</li>
+                  <li>• Teams competing for top mentions in AI chat recommendations</li>
+                  <li>• Marketing teams that need measurable AI channel growth</li>
+                </ul>
+                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 4-10 weeks</p>
+                  <p className="text-2xl font-bold">$18,000 - $60,000</p>
                 </div>
               </div>
             </div>
