@@ -1,0 +1,77 @@
+name: Bug report
+description: Report a reproducible bug in this repository
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this issue.
+
+        Please include enough detail for us to reproduce and fix quickly.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One-line description of the bug
+      placeholder: "Navbar menu closes immediately on mobile"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What is happening vs what you expected?
+      placeholder: |
+        Actual:
+        Expected:
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide minimal, numbered steps
+      placeholder: |
+        1. Go to /route
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: scope
+    attributes:
+      label: Impacted area
+      description: Route, component, script, or file path
+      placeholder: "app/page.tsx, components/shared/header.tsx"
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical (prod down / data loss)
+        - High (major functionality broken)
+        - Medium (workaround exists)
+        - Low (minor issue)
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser/OS/device/version details
+      placeholder: "Chrome 137, macOS 14, iPhone 15"
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs, screenshots, links, or relevant stack traces
+  - type: textarea
+    id: linear
+    attributes:
+      label: Linear mirror (optional)
+      description: Add the Linear issue URL/ID if you also create this there
+      placeholder: "ENG-123 https://linear.app/xagi/issue/ENG-123/..."

@@ -186,6 +186,22 @@ If you need help customizing this template:
 3. Open an issue on GitHub
 4. Contact support
 
+## Issue Workflow (GitHub + Linear)
+
+Issue templates are set up for consistent triage across both systems:
+
+- GitHub issue forms:
+  - `.github/ISSUE_TEMPLATE/bug_report.yml`
+  - `.github/ISSUE_TEMPLATE/feature_request.yml`
+- Linear mirror template:
+  - `docs/templates/linear-issue-template.md`
+
+Recommended flow:
+
+1. Create the issue in GitHub using the correct template.
+2. Create/mirror the issue in Linear using the markdown template.
+3. Add cross-links in both systems (GitHub URL in Linear, Linear ID/URL in GitHub).
+
 ## License
 
 This template is available under the MIT License. See LICENSE file for details.

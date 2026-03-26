@@ -1,0 +1,75 @@
+name: Feature request
+description: Propose a new capability or enhancement
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for product, UX, or engineering enhancements.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One-line request
+      placeholder: "Add blog post search by tags"
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why this matters
+      description: Problem/opportunity and affected users
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe expected behavior and constraints
+      placeholder: |
+        - User can ...
+        - System should ...
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other options and tradeoffs
+  - type: input
+    id: scope
+    attributes:
+      label: Scope
+      description: Routes/components/services impacted
+      placeholder: "app/blog/page.tsx, components/blog/*"
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P0 (urgent)
+        - P1 (next up)
+        - P2 (planned)
+        - P3 (backlog)
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Testable outcomes
+      placeholder: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: linear
+    attributes:
+      label: Linear mirror (optional)
+      description: Add the Linear issue URL/ID if mirrored there
+      placeholder: "ENG-456 https://linear.app/xagi/issue/ENG-456/..."
