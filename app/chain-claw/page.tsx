@@ -1,11 +1,5 @@
-import type { Metadata } from 'next'
-import ChainClawPage from '@/components/chain-claw-page'
-
-export const metadata: Metadata = {
-  title: 'Chain Claw',
-  description: 'Play Chain Claw, a classic snake-style game where your claw chain grows as you eat food.',
-}
+import { redirect } from 'next/navigation'
 
 export default function Page() {
-  return <ChainClawPage />
+  redirect('/chain-claw-game')
 }

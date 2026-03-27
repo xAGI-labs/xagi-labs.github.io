@@ -47,8 +47,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/chain-claw" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                <Link href="/chainclaw" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   Chain Claw
+                </Link>
+              </li>
+              <li>
+                <Link href="/chain-claw-game" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Chain Claw Game
                 </Link>
               </li>
               <li>

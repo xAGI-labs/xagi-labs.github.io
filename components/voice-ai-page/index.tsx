@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
@@ -136,7 +136,43 @@ const integrations = [
 
 export default function VoiceAIPage() {
   const [activeUseCase, setActiveUseCase] = useState("ecommerce")
+  const [locationLabel, setLocationLabel] = useState("India")
   const activeCase = useCases.find((uc) => uc.id === activeUseCase)
+  const locationPossessive = locationLabel.endsWith("s") ? `${locationLabel}'` : `${locationLabel}'s`
+
+  useEffect(() => {
+    let isMounted = true
+
+    fetch("https://ipapi.co/json/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!isMounted) return
+
+        const country = typeof data?.country_name === "string" ? data.country_name : ""
+        const region = typeof data?.region === "string" ? data.region : ""
+        const city = typeof data?.city === "string" ? data.city : ""
+
+        const normalizedCountry = country.trim()
+        const normalizedRegion = region.trim()
+        const normalizedCity = city.trim()
+
+        // Prefer a specific region for better locality ("Virginia"), then city, then country.
+        const resolvedLocation =
+          normalizedRegion ||
+          normalizedCity ||
+          normalizedCountry ||
+          "India"
+
+        setLocationLabel(resolvedLocation)
+      })
+      .catch(() => {
+        // Keep fallback location label if geo lookup fails.
+      })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#0a0a0a]">
@@ -151,15 +187,15 @@ export default function VoiceAIPage() {
               From xAGI Labs
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Voice AI, Built for India.
+              Voice AI, Built for {locationLabel}.
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Powering India&apos;s businesses with autonomous{" "}
+              Powering {locationPossessive} businesses with autonomous{" "}
               <strong className="text-gray-900 dark:text-white">xAGI voice agents</strong> for end-to-end customer
               service, outbound sales, recruitment, and more. Handle thousands of inbound and outbound calls every
               minute with natural, fluid, and{" "}
               <strong className="text-gray-900 dark:text-white">multilingual intelligence</strong> that truly
-              understands the Indian consumer.
+              understands local customer context.
             </p>
             <Link
               href="/contact"
@@ -209,7 +245,7 @@ export default function VoiceAIPage() {
                 Agents That Do More Than Talk
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Create xAGI voice agents for India that do more than just talk—they understand, adapt, and act. Our
+                Create xAGI voice agents for {locationLabel} that do more than just talk—they understand, adapt, and act. Our
                 agents comprehend complex context, regional accents, and speak multiple Indian languages including{" "}
                 <strong className="text-gray-900 dark:text-white">
                   Hindi, Tamil, Telugu, Bengali, Marathi, &amp; Hinglish.

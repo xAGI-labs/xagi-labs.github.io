@@ -1,24 +1,11 @@
-const ownerEl = document.getElementById('owner')
-const repoEl = document.getElementById('repo')
 const createIssueBtn = document.getElementById('createIssueBtn')
 const statusEl = document.getElementById('status')
+const REPO_OWNER = 'xaGI-labs'
+const REPO_NAME = 'xagi-labs.github.io'
 
 const setStatus = (message, isError = false) => {
   statusEl.style.color = isError ? '#b00020' : '#1f2937'
   statusEl.innerHTML = message
-}
-
-const loadSettings = async () => {
-  const { owner = '', repo = '' } = await chrome.storage.local.get(['owner', 'repo'])
-  ownerEl.value = owner
-  repoEl.value = repo
-}
-
-const saveSettings = async () => {
-  await chrome.storage.local.set({
-    owner: ownerEl.value.trim(),
-    repo: repoEl.value.trim(),
-  })
 }
 
 const getActiveTab = async () => {
@@ -84,22 +71,13 @@ const openIssue = async () => {
     createIssueBtn.disabled = true
     setStatus('Opening prefilled issue page...')
 
-    await saveSettings()
-
-    const owner = ownerEl.value.trim()
-    const repo = repoEl.value.trim()
-
-    if (!owner || !repo) {
-      throw new Error('Owner and repo are required.')
-    }
-
     const tab = await getActiveTab()
     if (!tab?.url) {
       throw new Error('Could not read current tab URL.')
     }
 
     const fields = buildIssueFieldsFromUrl(tab)
-    const issueUrl = createPrefilledIssueUrl(owner, repo, fields)
+    const issueUrl = createPrefilledIssueUrl(REPO_OWNER, REPO_NAME, fields)
 
     await chrome.tabs.create({ url: issueUrl })
     setStatus(`Opened: <a href="${issueUrl}" target="_blank">Prefilled GitHub issue</a>`)
@@ -111,4 +89,3 @@ const openIssue = async () => {
 }
 
 createIssueBtn.addEventListener('click', openIssue)
-void loadSettings()
