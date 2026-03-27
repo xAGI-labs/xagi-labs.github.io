@@ -30,7 +30,7 @@ const OPPOSITE_DIRECTION: Record<Direction, Direction> = {
   right: 'left',
 }
 
-const FOOD_EMOJIS = ['🐟', '🦐', '🐚']
+const FOOD_EMOJIS = ['🐟']
 
 const samePosition = (a: Position, b: Position) => a.x === b.x && a.y === b.y
 

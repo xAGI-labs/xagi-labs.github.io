@@ -110,6 +110,7 @@ export default function ChainClawPage() {
           className="grid w-full max-w-[540px] overflow-hidden rounded-lg border border-gray-300 bg-gray-100 dark:border-gray-700 dark:bg-gray-900"
           style={{
             gridTemplateColumns: `repeat(${gameState.gridSize}, minmax(0, 1fr))`,
+            gridTemplateRows: `repeat(${gameState.gridSize}, minmax(0, 1fr))`,
             aspectRatio: '1 / 1',
           }}
           role="img"
@@ -122,7 +123,7 @@ export default function ChainClawPage() {
             const isSnake = snakeCells.has(key)
             const isFood = gameState.food.x === x && gameState.food.y === y
 
-            const cellClassName = 'flex items-center justify-center border border-black/5 text-base leading-none dark:border-white/5 sm:text-lg'
+            const cellClassName = 'flex h-full w-full items-center justify-center overflow-hidden border border-black/5 text-[16px] leading-none dark:border-white/5 sm:text-[18px]'
             const cellContent = isSnake ? '🦀' : isFood ? gameState.foodEmoji : ''
 
             return <div className={cellClassName} key={key}>{cellContent}</div>
