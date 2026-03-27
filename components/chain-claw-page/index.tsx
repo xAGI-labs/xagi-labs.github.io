@@ -10,7 +10,7 @@ import {
 } from '@/lib/chain-claw-game'
 
 const GRID_SIZE = 16
-const TICK_MS = 140
+const TICK_MS = 220
 
 const KEY_DIRECTION_MAP: Record<string, Direction> = {
   ArrowUp: 'up',
@@ -84,7 +84,7 @@ export default function ChainClawPage() {
         <header className="w-full rounded-lg border border-gray-200 p-4 dark:border-gray-800">
           <h1 className="text-2xl font-semibold">Chain Claw</h1>
           <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            Collect food to grow your claw chain. Avoid walls and yourself.
+            Collect seafood to grow your claw chain. You wrap through walls, but avoid your own claws.
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
             <span className="rounded-md bg-gray-100 px-2 py-1 dark:bg-gray-800">Score: {gameState.score}</span>
@@ -122,22 +122,17 @@ export default function ChainClawPage() {
             const isSnake = snakeCells.has(key)
             const isFood = gameState.food.x === x && gameState.food.y === y
 
-            let cellClassName = 'border border-black/5 dark:border-white/5 bg-transparent'
-            if (isSnake) {
-              cellClassName = 'border border-black/5 dark:border-white/5 bg-black dark:bg-white'
-            }
-            if (isFood) {
-              cellClassName = 'border border-black/5 dark:border-white/5 bg-red-500'
-            }
+            const cellClassName = 'flex items-center justify-center border border-black/5 text-base leading-none dark:border-white/5 sm:text-lg'
+            const cellContent = isSnake ? '🦀' : isFood ? gameState.foodEmoji : ''
 
-            return <div className={cellClassName} key={key} />
+            return <div className={cellClassName} key={key}>{cellContent}</div>
           })}
         </div>
 
         <div className="w-full rounded-lg border border-gray-200 p-4 text-sm dark:border-gray-800">
           <p>
             Controls: Arrow keys or WASD. Press <span className="font-semibold">P</span> or space to pause,{' '}
-            <span className="font-semibold">R</span> to restart.
+            <span className="font-semibold">R</span> to restart. Crossing an edge wraps you to the other side.
           </p>
         </div>
 

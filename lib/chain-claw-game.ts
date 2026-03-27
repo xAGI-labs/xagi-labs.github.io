@@ -10,6 +10,7 @@ export interface GameState {
   snake: Position[]
   direction: Direction
   food: Position
+  foodEmoji: string
   score: number
   gameOver: boolean
   paused: boolean
@@ -29,14 +30,22 @@ const OPPOSITE_DIRECTION: Record<Direction, Direction> = {
   right: 'left',
 }
 
+const FOOD_EMOJIS = ['🐟', '🦐', '🐚']
+
 const samePosition = (a: Position, b: Position) => a.x === b.x && a.y === b.y
 
-const isInsideGrid = (position: Position, gridSize: number) => {
-  return position.x >= 0 && position.x < gridSize && position.y >= 0 && position.y < gridSize
+const wrapPosition = (position: Position, gridSize: number): Position => {
+  const x = ((position.x % gridSize) + gridSize) % gridSize
+  const y = ((position.y % gridSize) + gridSize) % gridSize
+  return { x, y }
 }
 
 const randomInt = (max: number, randomFn: () => number) => {
   return Math.floor(randomFn() * max)
+}
+
+const pickFoodEmoji = (randomFn: () => number = Math.random) => {
+  return FOOD_EMOJIS[randomInt(FOOD_EMOJIS.length, randomFn)]
 }
 
 export const getEmptyCells = (gridSize: number, snake: Position[]) => {
@@ -89,6 +98,7 @@ export const createInitialState = (
     snake,
     direction: 'right',
     food,
+    foodEmoji: pickFoodEmoji(randomFn),
     score: 0,
     gameOver: false,
     paused: false,
@@ -142,17 +152,11 @@ export const stepGame = (
     x: head.x + movement.x,
     y: head.y + movement.y,
   }
+  const wrappedHead = wrapPosition(nextHead, state.gridSize)
 
-  if (!isInsideGrid(nextHead, state.gridSize)) {
-    return {
-      ...state,
-      gameOver: true,
-    }
-  }
-
-  const willGrow = samePosition(nextHead, state.food)
+  const willGrow = samePosition(wrappedHead, state.food)
   const collisionBody = willGrow ? state.snake : state.snake.slice(0, -1)
-  const hasSelfCollision = collisionBody.some((segment) => samePosition(segment, nextHead))
+  const hasSelfCollision = collisionBody.some((segment) => samePosition(segment, wrappedHead))
 
   if (hasSelfCollision) {
     return {
@@ -161,7 +165,7 @@ export const stepGame = (
     }
   }
 
-  const nextSnake = [nextHead, ...state.snake]
+  const nextSnake = [wrappedHead, ...state.snake]
   if (!willGrow) {
     nextSnake.pop()
   }
@@ -188,6 +192,7 @@ export const stepGame = (
     ...state,
     snake: nextSnake,
     food: nextFood,
+    foodEmoji: pickFoodEmoji(randomFn),
     score: state.score + 1,
   }
 }
