@@ -115,17 +115,17 @@ export default function HomePage() {
               New from xAGI Labs
             </p>
             <h2 className="text-2xl md:text-3xl font-bold mb-3">
-              OpenClaw Guide (2026)
+              OpenClaw Enterprise
             </h2>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              A detailed implementation playbook for OpenClaw, including deployment choices, model-provider
-              strategy, security hardening, and a 7-day launch checklist.
+              A production-focused page for teams evaluating OpenClaw with enterprise expectations around security,
+              deployment choices, provider strategy, and operational readiness.
             </p>
             <Link
-              href="/blog/openclaw-guide-2026"
+              href="/openclaw-enterprise"
               className="inline-flex items-center font-semibold text-blue-700 dark:text-blue-300 hover:underline"
             >
-              Read the complete guide
+              Explore the enterprise page
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>
