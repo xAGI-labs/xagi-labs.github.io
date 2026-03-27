@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import {
   ArrowRight,
   BadgeCheck,
@@ -122,19 +123,19 @@ export default function OpenClawEnterprisePage() {
       <main>
         <section className="relative overflow-hidden border-b border-gray-200 dark:border-gray-800">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.12),_transparent_38%),radial-gradient(circle_at_80%_20%,_rgba(16,185,129,0.12),_transparent_28%),linear-gradient(to_bottom,_rgba(255,255,255,1),_rgba(248,250,252,0.92))] dark:bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_32%),radial-gradient(circle_at_80%_20%,_rgba(16,185,129,0.14),_transparent_24%),linear-gradient(to_bottom,_rgba(10,10,10,1),_rgba(10,10,10,0.94))]" />
-          <div className="relative container mx-auto px-4 py-20 md:py-28">
-            <div className="mx-auto max-w-6xl">
+          <div className="relative container mx-auto px-4 py-16 md:py-24">
+            <div className="mx-auto max-w-7xl">
               <div className="mb-6 inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 dark:border-blue-900/60 dark:bg-blue-950/30 dark:text-blue-300">
                 <ShieldCheck className="mr-2 h-4 w-4" />
                 OpenClaw Guide (2026)
               </div>
 
-              <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-                <div>
-                  <h1 className="max-w-4xl text-5xl font-bold leading-tight tracking-tight text-gray-950 dark:text-white md:text-7xl">
+              <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center xl:gap-14">
+                <div className="max-w-3xl">
+                  <h1 className="max-w-3xl text-5xl font-bold leading-[0.95] tracking-tight text-gray-950 dark:text-white md:text-7xl">
                     From Zero to Production with OpenClaw.
                   </h1>
-                  <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-600 dark:text-gray-400 md:text-xl">
+                  <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400 md:text-xl">
                     A practical guide for teams who want more than hype: architecture, deployment choices, provider
                     strategy, channel rollout, security hardening, and the path to production readiness.
                   </p>
@@ -156,16 +157,24 @@ export default function OpenClawEnterprisePage() {
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-gray-200 bg-white/85 p-6 shadow-sm backdrop-blur dark:border-gray-800 dark:bg-[#101010]/90">
-                  <div className="flex items-center justify-between border-b border-gray-200 pb-4 dark:border-gray-800">
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
-                        What You&apos;ll Learn
-                      </p>
-                      <h2 className="mt-2 text-2xl font-bold">The production questions this guide answers</h2>
-                    </div>
+                <div className="w-full max-w-[680px] rounded-[2rem] border border-gray-200 bg-white/85 p-4 shadow-sm backdrop-blur lg:ml-auto dark:border-gray-800 dark:bg-[#101010]/90">
+                  <div className="overflow-hidden rounded-[1.5rem] border border-gray-200 bg-black dark:border-gray-700">
+                    <Image
+                      src="/images/openclaw-guide-hero.png"
+                      alt="Zero to Production OpenClaw guide hero artwork"
+                      width={1366}
+                      height={768}
+                      priority
+                      className="h-auto w-full"
+                    />
                   </div>
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <div className="mt-4">
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
+                      What You&apos;ll Learn
+                    </p>
+                    <h2 className="mt-2 text-2xl font-bold">The production questions this guide answers</h2>
+                  </div>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     {[
                       "What OpenClaw is, and what it is not",
                       "When to choose OpenClaw over managed assistants",
@@ -184,7 +193,7 @@ export default function OpenClawEnterprisePage() {
                 </div>
               </div>
 
-              <div className="mt-12 grid gap-4 rounded-3xl border border-gray-200 bg-white/80 p-6 backdrop-blur dark:border-gray-800 dark:bg-[#0f0f0f]/85 md:grid-cols-4">
+              <div className="mt-10 grid gap-4 rounded-3xl border border-gray-200 bg-white/80 p-6 backdrop-blur dark:border-gray-800 dark:bg-[#0f0f0f]/85 md:grid-cols-2 xl:grid-cols-4">
                 <div>
                   <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Target buyer</p>
                   <p className="mt-2 text-lg font-semibold">Builders planning real OpenClaw deployment decisions</p>
