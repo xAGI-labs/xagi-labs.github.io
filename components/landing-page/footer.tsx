@@ -39,6 +39,12 @@ export default function Footer() {
 
         <div className="mb-6 flex flex-col items-center gap-2">
           <Link
+            href="/call-center-ai"
+            className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            Call Center AI
+          </Link>
+          <Link
             href="/apps/linkedin-carousel-generator"
             className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
           >

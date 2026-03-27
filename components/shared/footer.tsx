@@ -37,6 +37,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/call-center-ai" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Call Center AI
+                </Link>
+              </li>
+              <li>
                 <Link href="/apps/linkedin-carousel-generator" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   LinkedIn Carousel Generator
                 </Link>
@@ -76,6 +81,11 @@ export default function Footer() {
               <li>
                 <Link href="/services" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/call-center-ai" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Call Center AI
                 </Link>
               </li>
               <li>

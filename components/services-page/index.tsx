@@ -29,6 +29,25 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-4xl font-bold mb-16 text-center">Service Offerings</h2>
 
+          <div className="mb-16 bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/40 rounded-2xl p-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div>
+                <h3 className="text-2xl font-bold mb-2">Featured Offering: Call Center AI</h3>
+                <p className="text-gray-600 dark:text-gray-400 max-w-3xl">
+                  Deploy a production-ready AI contact center for inbound and outbound voice operations, structured
+                  case capture, multilingual conversations, human handoff, and real-time monitoring.
+                </p>
+              </div>
+              <Link
+                href="/call-center-ai"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity"
+              >
+                Explore Call Center AI
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
           {/* AI Strategy & Consulting */}
           <div className="mb-16 bg-white dark:bg-[#0a0a0a] rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
             <div className="flex items-center mb-6">
@@ -57,7 +76,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 2-4 weeks</p>
-                  <p className="text-2xl font-bold">Starting at $15,000</p>
                 </div>
               </div>
             </div>
@@ -91,7 +109,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 4-6 weeks</p>
-                  <p className="text-2xl font-bold">$25,000 - $50,000</p>
                 </div>
               </div>
             </div>
@@ -127,7 +144,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 12-16 weeks</p>
-                  <p className="text-2xl font-bold">$80,000 - $200,000</p>
                 </div>
               </div>
             </div>
@@ -161,7 +177,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 6-10 weeks</p>
-                  <p className="text-2xl font-bold">$40,000 - $100,000</p>
                 </div>
               </div>
             </div>
@@ -195,7 +210,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 8-12 weeks</p>
-                  <p className="text-2xl font-bold">$60,000 - $150,000</p>
                 </div>
               </div>
             </div>
@@ -229,7 +243,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 4-8 weeks</p>
-                  <p className="text-2xl font-bold">$30,000 - $80,000</p>
                 </div>
               </div>
             </div>
@@ -262,7 +275,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 6-12 weeks</p>
-                  <p className="text-2xl font-bold">$45,000 - $140,000</p>
                 </div>
               </div>
             </div>
@@ -302,7 +314,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Timeline: 4-10 weeks</p>
-                  <p className="text-2xl font-bold">$18,000 - $60,000</p>
                 </div>
               </div>
             </div>

@@ -31,6 +31,9 @@ export default function Header() {
             <Link href="/voice-ai" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               xAGI voice
             </Link>
+            <Link href="/call-center-ai" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+              Call Center AI
+            </Link>
             <Link href="/ai-news" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               AI News
             </Link>
@@ -82,6 +85,9 @@ export default function Header() {
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <Link href="/voice-ai" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               xAGI voice
+            </Link>
+            <Link href="/call-center-ai" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              Call Center AI
             </Link>
             <Link href="/ai-news" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               AI News

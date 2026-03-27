@@ -6,11 +6,31 @@ import { notFound } from "next/navigation"
 import { Calendar, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import Image from "next/image"
 
 interface Props {
   params: {
     slug: string
   }
+}
+
+const notionFallbackCovers = [
+  "/images/blog/notion-covers/cover-01.png",
+  "/images/blog/notion-covers/cover-02.png",
+  "/images/blog/notion-covers/cover-03.png",
+  "/images/blog/notion-covers/cover-04.png",
+  "/images/blog/notion-covers/cover-05.png",
+  "/images/blog/notion-covers/cover-06.png",
+  "/images/blog/notion-covers/cover-07.png",
+  "/images/blog/notion-covers/cover-08.png",
+]
+
+function getFallbackCover(slug: string) {
+  let hash = 0
+  for (let i = 0; i < slug.length; i++) {
+    hash = (hash * 31 + slug.charCodeAt(i)) >>> 0
+  }
+  return notionFallbackCovers[hash % notionFallbackCovers.length]
 }
 
 export async function generateStaticParams() {
@@ -30,6 +50,7 @@ export async function generateMetadata({ params }: Props) {
 
   const canonical = post.canonical || `https://xagi.in/blog/${post.slug}`
   const description = post.description || "Read the latest insights from xAGI Labs."
+  const postImage = post.image || getFallbackCover(post.slug)
   const keywords =
     Array.isArray(post.keywords)
       ? post.keywords
@@ -53,7 +74,7 @@ export async function generateMetadata({ params }: Props) {
       authors: [post.author || "xAGI Labs"],
       images: [
         {
-          url: post.image || "/xagi-icon.png",
+          url: postImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -64,7 +85,7 @@ export async function generateMetadata({ params }: Props) {
       card: "summary_large_image",
       title: post.title,
       description,
-      images: [post.image || "/xagi-icon.png"],
+      images: [postImage],
     },
   } satisfies Metadata
 }
@@ -77,6 +98,7 @@ export default function BlogPostPage({ params }: Props) {
   }
 
   const canonical = post.canonical || `https://xagi.in/blog/${post.slug}`
+  const postImage = post.image || getFallbackCover(post.slug)
   const keywords =
     Array.isArray(post.keywords)
       ? post.keywords
@@ -109,7 +131,7 @@ export default function BlogPostPage({ params }: Props) {
     },
     articleSection: post.category || "AI",
     keywords: keywords.join(", "),
-    image: post.image || "https://xagi.in/xagi-icon.png",
+    image: postImage.startsWith("http") ? postImage : `https://xagi.in${postImage}`,
   }
 
   return (
@@ -140,6 +162,17 @@ export default function BlogPostPage({ params }: Props) {
                     {new Date(post.date).toLocaleDateString()}
                   </time>
                 </div>
+              </div>
+
+              <div className="mb-10">
+                <Image
+                  src={postImage}
+                  alt={post.title}
+                  width={1536}
+                  height={1024}
+                  className="w-full h-auto rounded-xl border border-gray-200 dark:border-gray-800"
+                  priority
+                />
               </div>
 
               <ReactMarkdown>{post.content}</ReactMarkdown>

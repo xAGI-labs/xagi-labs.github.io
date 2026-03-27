@@ -1,4 +1,4 @@
-import { ImageIcon, LayoutGrid, MessageSquare } from "lucide-react"
+import { Headset, ImageIcon, LayoutGrid, MessageSquare } from "lucide-react"
 import type { SubNavItem } from "./nav-dropdown"
 import { iconColors } from "./color-utils"
 
@@ -19,6 +19,14 @@ export const resourcesDropdownData: SubNavItem[][] = [
       href: "/geo",
       icon: MessageSquare,
       color: iconColors.resources.community,
+      external: false,
+    },
+    {
+      title: "Call Center AI",
+      description: "Enterprise voice automation offering by XAGI Labs",
+      href: "/call-center-ai",
+      icon: Headset,
+      color: iconColors.resources.blog,
       external: false,
     },
     {
