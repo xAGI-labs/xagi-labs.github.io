@@ -55,11 +55,6 @@ const useCases = [
   'Founders → delegate entire workstreams',
 ]
 
-const sectionFade: Record<string, any> = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
-
 export default function ChainClawLandingPage() {
   const reduceMotion = useReducedMotion()
 
@@ -73,8 +68,7 @@ export default function ChainClawLandingPage() {
 
         <section className="px-4 pb-16 pt-20 md:pb-24 md:pt-28">
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+            initial={false}
             transition={{ duration: 0.55, ease: 'easeOut' }}
             className="mx-auto max-w-6xl"
           >
@@ -113,13 +107,7 @@ export default function ChainClawLandingPage() {
         </section>
 
         <section className="px-4 py-16 md:py-20">
-          <motion.div
-            initial={reduceMotion ? false : 'hidden'}
-            whileInView={reduceMotion ? undefined : 'visible'}
-            viewport={{ once: true, amount: 0.2 }}
-            variants={sectionFade}
-            className="mx-auto max-w-5xl"
-          >
+          <div className="mx-auto max-w-5xl">
             <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl">Work is broken. AI tools didn’t fix it.</h2>
             <p className="mt-6 text-lg leading-relaxed text-[#5f4632] dark:text-[#dfc2aa]">
               Companies today are drowning in tools — CRMs, dashboards, copilots — all waiting for humans to tell them what to
@@ -136,40 +124,28 @@ export default function ChainClawLandingPage() {
             <p className="mt-6 text-lg leading-relaxed text-[#5f4632] dark:text-[#dfc2aa]">
               AI didn’t remove the work. It just made you responsible for more of it.
             </p>
-          </motion.div>
+          </div>
         </section>
 
         <section className="px-4 py-16 md:py-20">
-          <motion.div
-            initial={reduceMotion ? false : 'hidden'}
-            whileInView={reduceMotion ? undefined : 'visible'}
-            viewport={{ once: true, amount: 0.2 }}
-            variants={sectionFade}
-            className="mx-auto max-w-5xl rounded-3xl border border-[#2c1a10]/15 bg-white/50 p-8 dark:border-white/15 dark:bg-white/5 md:p-10"
-          >
+          <div className="mx-auto max-w-5xl rounded-3xl border border-[#2c1a10]/15 bg-white/50 p-8 dark:border-white/15 dark:bg-white/5 md:p-10">
             <h2 className="text-3xl font-extrabold md:text-4xl">The future isn’t AI tools. It’s AI teams.</h2>
             <p className="mt-5 text-lg leading-relaxed text-[#5f4632] dark:text-[#dfc2aa]">
               What if instead of using AI… you could deploy a team of AI agents that actually owns the work?
             </p>
             <p className="mt-4 text-xl font-bold text-[#1f140b] dark:text-[#ffe6cf]">Not suggestions. Not drafts. Execution.</p>
-          </motion.div>
+          </div>
         </section>
 
         <section className="px-4 py-16 md:py-20">
-          <motion.div
-            initial={reduceMotion ? false : 'hidden'}
-            whileInView={reduceMotion ? undefined : 'visible'}
-            viewport={{ once: true, amount: 0.2 }}
-            variants={sectionFade}
-            className="mx-auto max-w-5xl"
-          >
+          <div className="mx-auto max-w-5xl">
             <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl">Meet Chain Claw — your AI squad.</h2>
             <p className="mt-6 text-lg leading-relaxed text-[#5f4632] dark:text-[#dfc2aa]">
               Chain Claw is an AI-native operating layer where you spin up a team of specialized agents that work together toward
               a mission.
             </p>
             <p className="mt-4 text-xl font-bold text-[#1f140b] dark:text-[#ffe6cf]">You define the goal. They figure out the rest.</p>
-          </motion.div>
+          </div>
         </section>
 
         <section className="px-4 py-16 md:py-20">
@@ -179,10 +155,8 @@ export default function ChainClawLandingPage() {
               {steps.map((step, idx) => (
                 <motion.article
                   key={step.title}
-                  initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-                  whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ delay: reduceMotion ? 0 : idx * 0.1, duration: 0.45, ease: 'easeOut' }}
+                  initial={false}
+                  transition={{ delay: reduceMotion ? 0 : idx * 0.1, duration: 0.2, ease: 'easeOut' }}
                   whileHover={reduceMotion ? undefined : { y: -4, scale: 1.01 }}
                   className="rounded-2xl border border-[#2c1a10]/15 bg-white/70 p-6 dark:border-white/15 dark:bg-white/5"
                 >
@@ -201,10 +175,8 @@ export default function ChainClawLandingPage() {
               {agents.map((agent, idx) => (
                 <motion.article
                   key={agent.name}
-                  initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-                  whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ delay: reduceMotion ? 0 : idx * 0.06, duration: 0.4, ease: 'easeOut' }}
+                  initial={false}
+                  transition={{ delay: reduceMotion ? 0 : idx * 0.06, duration: 0.2, ease: 'easeOut' }}
                   whileHover={reduceMotion ? undefined : { scale: 1.02 }}
                   className="rounded-2xl border border-[#2c1a10]/15 bg-white/70 p-5 dark:border-white/15 dark:bg-white/5"
                 >
@@ -220,13 +192,7 @@ export default function ChainClawLandingPage() {
         </section>
 
         <section className="px-4 py-16 md:py-20">
-          <motion.div
-            initial={reduceMotion ? false : 'hidden'}
-            whileInView={reduceMotion ? undefined : 'visible'}
-            viewport={{ once: true, amount: 0.2 }}
-            variants={sectionFade}
-            className="mx-auto max-w-6xl"
-          >
+          <div className="mx-auto max-w-6xl">
             <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl">Not another AI tool.</h2>
             <div className="mt-8 overflow-hidden rounded-2xl border border-[#2c1a10]/20">
               <div className="grid grid-cols-2 bg-[#1e130a] text-sm font-semibold text-[#ffe8d3]">
@@ -247,7 +213,7 @@ export default function ChainClawLandingPage() {
               ))}
             </div>
             <p className="mt-6 text-2xl font-extrabold">This is not a copilot. This is an operating system.</p>
-          </motion.div>
+          </div>
         </section>
 
         <section className="px-4 py-16 md:py-20">
@@ -307,13 +273,7 @@ export default function ChainClawLandingPage() {
         </section>
 
         <section className="px-4 py-16 md:py-20">
-          <motion.div
-            initial={reduceMotion ? false : 'hidden'}
-            whileInView={reduceMotion ? undefined : 'visible'}
-            viewport={{ once: true, amount: 0.2 }}
-            variants={sectionFade}
-            className="mx-auto max-w-5xl"
-          >
+          <div className="mx-auto max-w-5xl">
             <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl">Companies won’t use AI. They’ll run on it.</h2>
             <p className="mt-6 text-lg leading-relaxed text-[#5f4632] dark:text-[#dfc2aa]">
               We believe every company will have an AI workforce operating alongside humans.
@@ -325,7 +285,7 @@ export default function ChainClawLandingPage() {
               <li>Decisions are continuously improved</li>
               <li>Companies scale without proportional headcount</li>
             </ul>
-          </motion.div>
+          </div>
         </section>
 
         <section className="px-4 pb-24 pt-12 md:pb-32">
