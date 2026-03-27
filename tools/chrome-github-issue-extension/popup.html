@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL to GitHub Issue</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 12px;
+        width: 320px;
+      }
+      h1 {
+        font-size: 16px;
+        margin: 0 0 10px;
+      }
+      label {
+        display: block;
+        font-size: 12px;
+        margin-top: 8px;
+      }
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        margin-top: 4px;
+      }
+      button {
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px;
+        border: 1px solid #111;
+        background: #111;
+        color: #fff;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      #status {
+        margin-top: 10px;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+      a {
+        color: #0a58ca;
+      }
+      .hint {
+        font-size: 11px;
+        margin-top: 10px;
+        color: #555;
+      }
+      code {
+        background: #f1f1f1;
+        padding: 1px 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create GitHub Issue</h1>
+
+    <label for="owner">Repo Owner</label>
+    <input id="owner" placeholder="xAGI-labs" />
+
+    <label for="repo">Repo Name</label>
+    <input id="repo" placeholder="xagi-labs.github.io" />
+
+    <label for="token">GitHub Token (repo scope)</label>
+    <input id="token" type="password" placeholder="ghp_..." />
+
+    <button id="createIssueBtn">Create Issue From Current URL</button>
+
+    <div id="status"></div>
+
+    <p class="hint">
+      URL params supported: <code>gh_issue_title</code>, <code>gh_issue_body</code>,
+      <code>gh_issue_labels</code> (comma-separated).
+    </p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
