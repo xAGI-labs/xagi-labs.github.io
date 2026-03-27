@@ -46,6 +46,16 @@ export default function Footer() {
                   LinkedIn Carousel Generator
                 </Link>
               </li>
+              <li>
+                <Link href="/chain-claw" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Chain Claw
+                </Link>
+              </li>
+              <li>
+                <Link href="/siliconhalli" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Silicon Halli
+                </Link>
+              </li>
             </ul>
           </div>
 
