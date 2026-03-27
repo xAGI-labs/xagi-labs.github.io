@@ -1,6 +1,5 @@
 const ownerEl = document.getElementById('owner')
 const repoEl = document.getElementById('repo')
-const tokenEl = document.getElementById('token')
 const createIssueBtn = document.getElementById('createIssueBtn')
 const statusEl = document.getElementById('status')
 
@@ -10,17 +9,15 @@ const setStatus = (message, isError = false) => {
 }
 
 const loadSettings = async () => {
-  const { owner = '', repo = '', token = '' } = await chrome.storage.local.get(['owner', 'repo', 'token'])
+  const { owner = '', repo = '' } = await chrome.storage.local.get(['owner', 'repo'])
   ownerEl.value = owner
   repoEl.value = repo
-  tokenEl.value = token
 }
 
 const saveSettings = async () => {
   await chrome.storage.local.set({
     owner: ownerEl.value.trim(),
     repo: repoEl.value.trim(),
-    token: tokenEl.value.trim(),
   })
 }
 
@@ -29,11 +26,11 @@ const getActiveTab = async () => {
   return tabs[0]
 }
 
-const buildIssuePayloadFromUrl = (tab) => {
+const buildIssueFieldsFromUrl = (tab) => {
   const pageUrl = tab?.url || ''
   const pageTitle = tab?.title || 'Untitled Page'
-  const url = new URL(pageUrl)
-  const params = url.searchParams
+  const page = new URL(pageUrl)
+  const params = page.searchParams
 
   const title =
     params.get('gh_issue_title') ||
@@ -57,10 +54,13 @@ const buildIssuePayloadFromUrl = (tab) => {
     .split(',')
     .map((label) => label.trim())
     .filter(Boolean)
+    .join(',')
 
   const body = [
     `Source URL: ${pageUrl}`,
     `Source Title: ${pageTitle}`,
+    `Source Host: ${page.host}`,
+    `Captured At: ${new Date().toISOString()}`,
     '',
     'Notes:',
     details || 'No additional notes provided in URL parameters.',
@@ -69,19 +69,28 @@ const buildIssuePayloadFromUrl = (tab) => {
   return { title, body, labels }
 }
 
-const createIssue = async () => {
+const createPrefilledIssueUrl = (owner, repo, fields) => {
+  const base = `https://github.com/${owner}/${repo}/issues/new`
+  const query = new URLSearchParams({
+    title: fields.title,
+    body: fields.body,
+    labels: fields.labels,
+  })
+  return `${base}?${query.toString()}`
+}
+
+const openIssue = async () => {
   try {
     createIssueBtn.disabled = true
-    setStatus('Creating issue...')
+    setStatus('Opening prefilled issue page...')
 
     await saveSettings()
 
     const owner = ownerEl.value.trim()
     const repo = repoEl.value.trim()
-    const token = tokenEl.value.trim()
 
-    if (!owner || !repo || !token) {
-      throw new Error('Owner, repo, and token are required.')
+    if (!owner || !repo) {
+      throw new Error('Owner and repo are required.')
     }
 
     const tab = await getActiveTab()
@@ -89,31 +98,17 @@ const createIssue = async () => {
       throw new Error('Could not read current tab URL.')
     }
 
-    const payload = buildIssuePayloadFromUrl(tab)
+    const fields = buildIssueFieldsFromUrl(tab)
+    const issueUrl = createPrefilledIssueUrl(owner, repo, fields)
 
-    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/vnd.github+json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    })
-
-    const result = await response.json()
-
-    if (!response.ok) {
-      throw new Error(result?.message || 'GitHub API request failed.')
-    }
-
-    setStatus(`Issue created: <a href="${result.html_url}" target="_blank">#${result.number}</a>`)
+    await chrome.tabs.create({ url: issueUrl })
+    setStatus(`Opened: <a href="${issueUrl}" target="_blank">Prefilled GitHub issue</a>`)
   } catch (error) {
-    setStatus(error.message || 'Failed to create issue.', true)
+    setStatus(error.message || 'Failed to open prefilled issue page.', true)
   } finally {
     createIssueBtn.disabled = false
   }
 }
 
-createIssueBtn.addEventListener('click', createIssue)
+createIssueBtn.addEventListener('click', openIssue)
 void loadSettings()

@@ -1,6 +1,6 @@
 # URL to GitHub Issue (Chrome Extension)
 
-This extension creates a GitHub issue from the current tab.
+This extension opens a prefilled GitHub issue page from the current tab.
 
 ## Setup
 
@@ -10,7 +10,8 @@ This extension creates a GitHub issue from the current tab.
 4. Open the extension popup and fill:
    - Repo Owner
    - Repo Name
-   - GitHub token (`repo` scope)
+
+No GitHub token is required.
 
 ## URL Parameters
 
@@ -21,11 +22,15 @@ If present in the page URL, these are used:
 
 Fallback behavior:
 - Title defaults to `[Blog] <current page title>`
-- Body includes source URL and page title
+- Body includes source URL, page title, source host, and capture timestamp
 - Label defaults to `blog-from-issue`
 
 ## Example URL
 
 `https://example.com/article?gh_issue_title=Agentic+RAG+Patterns&gh_issue_body=Turn+this+into+a+tutorial&gh_issue_labels=blog-from-issue,content`
 
-When you click **Create Issue From Current URL**, it opens an issue in your configured repo.
+When you click **Open Prefilled GitHub Issue**, it opens:
+
+`https://github.com/<owner>/<repo>/issues/new?...`
+
+Then just click **Submit new issue** on GitHub.

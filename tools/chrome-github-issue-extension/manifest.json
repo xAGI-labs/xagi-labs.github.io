@@ -2,9 +2,8 @@
   "manifest_version": 3,
   "name": "URL to GitHub Issue",
   "version": "1.0.0",
-  "description": "Create a GitHub issue from the current tab URL parameters.",
+  "description": "Open a prefilled GitHub issue from the current tab URL parameters.",
   "permissions": ["storage", "tabs"],
-  "host_permissions": ["https://api.github.com/*"],
   "action": {
     "default_title": "Create GitHub Issue",
     "default_popup": "popup.html"
