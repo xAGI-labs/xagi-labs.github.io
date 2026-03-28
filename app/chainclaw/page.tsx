@@ -8,6 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return <ChainClawLandingPage />
+  return <ChainClawLandingPage heroImageSrc="/images/chainclaw/chainclaw.png" />
 }
-

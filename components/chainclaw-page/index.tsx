@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
 import Header from '@/components/shared/header'
 import Footer from '@/components/shared/footer'
@@ -55,7 +56,15 @@ const useCases = [
   'Founders → delegate entire workstreams',
 ]
 
-export default function ChainClawLandingPage() {
+type ProductLandingProps = {
+  productName?: string
+  heroImageSrc?: string
+}
+
+export default function ChainClawLandingPage({
+  productName = 'Chain Claw',
+  heroImageSrc = '/images/chainclaw/chainclaw.png',
+}: ProductLandingProps) {
   const reduceMotion = useReducedMotion()
 
   return (
@@ -80,7 +89,7 @@ export default function ChainClawLandingPage() {
               Run your company with an AI workforce.
             </h1>
             <p className="mt-6 max-w-3xl text-[clamp(1.1rem,2.2vw,1.5rem)] font-medium text-[#4d3624] dark:text-[#f1d5bc]">
-              Chain Claw turns AI into a self-organizing squad that plans, executes, and ships work — continuously.
+              {productName} turns AI into a self-organizing squad that plans, executes, and ships work — continuously.
             </p>
             <p className="mt-3 text-lg text-[#6a4e39] dark:text-[#dcb79c]">
               Stop prompting tools. Start deploying outcomes.
@@ -103,6 +112,16 @@ export default function ChainClawLandingPage() {
             <p className="mt-4 text-sm text-[#765a45] dark:text-[#c9a98f]">
               Bring your own ClaudeCode API key — or we’ll provide one free during pilot.
             </p>
+            <div className="mt-10 overflow-hidden rounded-2xl border border-[#2c1a10]/15 bg-black/5 dark:border-white/10 dark:bg-white/5">
+              <Image
+                src={heroImageSrc}
+                alt={`${productName} hero visual`}
+                width={960}
+                height={768}
+                className="h-auto w-full"
+                priority
+              />
+            </div>
           </motion.div>
         </section>
 
@@ -139,9 +158,9 @@ export default function ChainClawLandingPage() {
 
         <section className="px-4 py-16 md:py-20">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl">Meet Chain Claw — your AI squad.</h2>
+            <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl">Meet {productName} — your AI squad.</h2>
             <p className="mt-6 text-lg leading-relaxed text-[#5f4632] dark:text-[#dfc2aa]">
-              Chain Claw is an AI-native operating layer where you spin up a team of specialized agents that work together toward
+              {productName} is an AI-native operating layer where you spin up a team of specialized agents that work together toward
               a mission.
             </p>
             <p className="mt-4 text-xl font-bold text-[#1f140b] dark:text-[#ffe6cf]">You define the goal. They figure out the rest.</p>
@@ -197,7 +216,7 @@ export default function ChainClawLandingPage() {
             <div className="mt-8 overflow-hidden rounded-2xl border border-[#2c1a10]/20">
               <div className="grid grid-cols-2 bg-[#1e130a] text-sm font-semibold text-[#ffe8d3]">
                 <div className="px-4 py-3">Traditional AI</div>
-                <div className="px-4 py-3">Chain Claw</div>
+                <div className="px-4 py-3">{productName}</div>
               </div>
               {[
                 ['Prompt-based', 'Mission-driven'],
@@ -255,7 +274,7 @@ export default function ChainClawLandingPage() {
               <p className="mt-2 text-3xl font-black">$0 for your first month</p>
               <ul className="mt-4 space-y-2 text-[#5f4632] dark:text-[#dfc2aa]">
                 <li>Unlimited agents</li>
-                <li>Full Chain Claw system access</li>
+                <li>Full {productName} system access</li>
                 <li>Mission control dashboard</li>
                 <li>Guided onboarding</li>
               </ul>
@@ -279,7 +298,7 @@ export default function ChainClawLandingPage() {
               We believe every company will have an AI workforce operating alongside humans.
             </p>
             <p className="mt-4 text-xl font-semibold">Not as assistants. Not as tools. But as operators.</p>
-            <p className="mt-4 text-lg leading-relaxed text-[#5f4632] dark:text-[#dfc2aa]">Chain Claw is building the system where:</p>
+            <p className="mt-4 text-lg leading-relaxed text-[#5f4632] dark:text-[#dfc2aa]">{productName} is building the system where:</p>
             <ul className="mt-4 space-y-2 text-lg font-semibold">
               <li>Work is continuously executed</li>
               <li>Decisions are continuously improved</li>
