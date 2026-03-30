@@ -28,7 +28,7 @@ export default function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/chainclaw" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+            <Link href="/autoclaw" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Chain Claw
             </Link>
             <Link href="/ai-news" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
@@ -77,7 +77,7 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a]">
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <Link href="/chainclaw" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/autoclaw" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Chain Claw
             </Link>
             <Link href="/ai-news" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
