@@ -70,7 +70,7 @@ export default function ContactPage() {
               </div>
 
               <a
-                href="https://calendar.app.google/bzNANp4hAzDfBNbQA"
+                href="https://calendar.app.google/94mtSE2aw7RnSWhj8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center w-full justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity"
