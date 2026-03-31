@@ -8,5 +8,12 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return <ChainClawLandingPage productName="AutoClaw" heroImageSrc="/images/chainclaw/autoclaw.png" />
+  return (
+    <ChainClawLandingPage
+      productName="AutoClaw"
+      heroImageSrc="/images/chainclaw/autoclaw.png"
+      startFreeHref="https://calendar.app.google/bzNANp4hAzDfBNbQA"
+      openStartFreeInNewTab
+    />
+  )
 }

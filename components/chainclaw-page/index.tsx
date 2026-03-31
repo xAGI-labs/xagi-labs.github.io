@@ -59,13 +59,18 @@ const useCases = [
 type ProductLandingProps = {
   productName?: string
   heroImageSrc?: string
+  startFreeHref?: string
+  openStartFreeInNewTab?: boolean
 }
 
 export default function ChainClawLandingPage({
   productName = 'Chain Claw',
   heroImageSrc = '/images/chainclaw/chainclaw.png',
+  startFreeHref = '/contact',
+  openStartFreeInNewTab = false,
 }: ProductLandingProps) {
   const reduceMotion = useReducedMotion()
+  const startFreeLinkProps = openStartFreeInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
   return (
     <div className="min-h-screen bg-[#f5efe5] text-[#1c1308] dark:bg-[#130d08] dark:text-[#f8efe3]">
@@ -96,7 +101,8 @@ export default function ChainClawLandingPage({
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href="/contact"
+                href={startFreeHref}
+                {...startFreeLinkProps}
                 className="group inline-flex items-center gap-2 rounded-xl bg-[#1d1208] px-6 py-3 text-base font-semibold text-white transition-transform duration-200 hover:scale-[1.03] dark:bg-[#fff2e6] dark:text-[#1d1208]"
               >
                 Start Free — $0 for your first month
@@ -279,7 +285,8 @@ export default function ChainClawLandingPage({
                 <li>Guided onboarding</li>
               </ul>
               <Link
-                href="/contact"
+                href={startFreeHref}
+                {...startFreeLinkProps}
                 className="mt-6 inline-flex items-center rounded-xl bg-[#1f130a] px-6 py-3 font-semibold text-white transition-transform duration-200 hover:scale-[1.03] dark:bg-white dark:text-[#1f130a]"
               >
                 Start Free Now
@@ -312,7 +319,8 @@ export default function ChainClawLandingPage({
             <h2 className="text-4xl font-black tracking-tight md:text-5xl">Deploy your AI squad.</h2>
             <p className="mt-4 text-xl text-white/90">Define your mission. Let your agents handle the rest.</p>
             <Link
-              href="/contact"
+              href={startFreeHref}
+              {...startFreeLinkProps}
               className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-[#2b170f] transition-transform duration-200 hover:scale-[1.03]"
             >
               Start Free — $0 for your first month
