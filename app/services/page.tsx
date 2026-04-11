@@ -1,9 +1,12 @@
 import ServicesPage from "@/components/services-page"
 
 export const metadata = {
-  title: "Services - xAGI Labs",
+  title: "Services",
   description:
-    "End-to-end AI product development services including OpenClaw enterprise deployment, agentic result optimization, and AI visibility growth on ChatGPT and other answer engines.",
+    "AI/ML and platform engineering consulting: strategy, prototypes, production delivery, agents and OpenClaw, voice AI, model tuning, and integrations. Milestone-based engagements with clear deliverables for startups and enterprise teams.",
+  alternates: {
+    canonical: "https://xagi.in/services",
+  },
 }
 
 export default function Services() {

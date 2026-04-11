@@ -1,7 +1,7 @@
 {
-  "name": "xAGI Labs - AI-First Development Agency",
+  "name": "xAGI Labs - AI/ML and Platform Engineering Consulting",
   "short_name": "xAGI Labs",
-  "description": "Transform your vision into intelligence-first products. We build production-ready AI systems from prototypes to full-scale applications.",
+  "description": "AI/ML and platform engineering consulting for production systems, agent workflows, voice AI, and applied machine learning.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

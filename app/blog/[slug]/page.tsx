@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props) {
         : undefined
 
   return {
-    title: `${post.title} | xAGI Labs Blog`,
+    title: post.title,
     description,
     keywords,
     alternates: {

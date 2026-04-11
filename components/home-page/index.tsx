@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Brain, Zap, Rocket, Users, TrendingUp, Award, Gamepad2, Mic, Newspaper } from "lucide-react"
+import { ArrowRight, Brain, Zap, Rocket, Users, TrendingUp, Award, Gamepad2, Mic, Newspaper, BookOpen } from "lucide-react"
 import Header from "../shared/header"
 import Footer from "../shared/footer"
 
@@ -15,17 +15,22 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight pb-2 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
-              Autonomous GTM and AI Product Engineering That Ships
+              AI/ML and Platform Engineering Consulting That Ships
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8">
-              xAGI Labs builds AutoClaw for outbound automation across email and LinkedIn, plus production AI systems for growth and operations teams.
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-6">
+              xAGI Labs helps teams design, build, deploy, and harden AI systems. We work across applied ML,
+              agent workflows, voice AI, data and platform engineering, and production rollout.
+            </p>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
+              If you need execution depth rather than a slide deck, we pair with your product, GTM, or operations
+              leads and ship systems you can run after the engagement.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/autoclaw"
+                href="/services"
                 className="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity inline-flex items-center justify-center"
               >
-                Explore AutoClaw
+                Explore Services
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
@@ -39,7 +44,7 @@ export default function HomePage() {
                 href="/portfolio"
                 className="px-8 py-4 border-2 border-gray-300 dark:border-gray-700 rounded-lg font-semibold hover:border-gray-400 dark:hover:border-gray-600 transition-colors inline-flex items-center justify-center"
               >
-                View Our Work
+                View Case Studies
               </Link>
             </div>
           </div>
@@ -88,7 +93,7 @@ export default function HomePage() {
                 xAGI Voice
               </h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Experience next-gen Voice AI agents. Natural, low-latency, and intelligent.
+                Production voice AI systems for support, intake, outbound workflows, and multilingual call operations.
               </p>
             </Link>
 
@@ -139,13 +144,121 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Use cases & kickoff — depth for SEO / intent */}
+      <section className="py-16 border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Use cases we ship most often</h2>
+          <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+            These are representative problems. Each engagement is scoped to your stack, compliance needs, and how your team works.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8 mb-14">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-6 bg-white dark:bg-[#0a0a0a]">
+              <h3 className="text-xl font-bold mb-2">Voice AI and contact centers</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-3">
+                Inbound and outbound voice with human handoff, call summaries, CRM writes, and guardrails for regulated or high-stakes flows.
+              </p>
+              <Link href="/voice-ai" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                Voice AI offering
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+            <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-6 bg-white dark:bg-[#0a0a0a]">
+              <h3 className="text-xl font-bold mb-2">GTM research and outbound quality</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-3">
+                Account-level research, ICP filtering, and personalized outreach across email and LinkedIn when you care about reply quality over blast volume.
+              </p>
+              <Link href="/autoclaw" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                xAGI AutoClaw product
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+            <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-6 bg-white dark:bg-[#0a0a0a]">
+              <h3 className="text-xl font-bold mb-2">Agents, tools, and workflow automation</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-3">
+                Orchestration, tool use, evaluations, and production deployment patterns for internal copilots and customer-facing assistants.
+              </p>
+              <Link href="/openclaw-deployment-security" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                Deployment and security
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+            <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-6 bg-white dark:bg-[#0a0a0a]">
+              <h3 className="text-xl font-bold mb-2">Cost and quality for high-volume LLM workloads</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-3">
+                Fine-tuning and routing strategies that cut token spend while keeping output quality acceptable for your product surface.
+              </p>
+              <Link href="/token-save" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                Token Save
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 p-8 bg-gray-50 dark:bg-[#111111]">
+            <h2 className="text-2xl font-bold mb-4 text-center">How an engagement usually starts</h2>
+            <ol className="max-w-2xl mx-auto space-y-3 text-gray-600 dark:text-gray-400 list-decimal list-inside">
+              <li>A short discovery call to align on workflows, constraints, and success metrics.</li>
+              <li>A focused technical review of data, APIs, and rollout boundaries.</li>
+              <li>A written proposal with milestones, deliverables, and a realistic timeline.</li>
+            </ol>
+            <p className="text-center mt-6 text-gray-600 dark:text-gray-400">
+              <Link href="/process" className="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                See the full delivery process
+              </Link>
+              {" · "}
+              <Link href="/contact" className="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                Book a strategy session
+              </Link>
+            </p>
+          </div>
+
+          <div className="mt-14">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <BookOpen className="h-6 w-6 text-blue-600" />
+              <h2 className="text-2xl font-bold">Guides and deep dives</h2>
+            </div>
+            <p className="text-center text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+              Long-form writeups our team publishes for implementation-minded readers.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link
+                href="/blog/openclaw-for-gtm"
+                className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-800 text-sm font-medium hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+              >
+                OpenClaw for GTM
+              </Link>
+              <Link
+                href="/blog/from-vapi-to-livekit-hard-won-lessons-building-production-voice-ai-agents"
+                className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-800 text-sm font-medium hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+              >
+                Production voice AI lessons
+              </Link>
+              <Link
+                href="/ai-sdr-alternatives"
+                className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-800 text-sm font-medium hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+              >
+                AI SDR alternatives
+              </Link>
+              <Link
+                href="/blog"
+                className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-800 text-sm font-medium hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+              >
+                All posts
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* What We Do */}
       <section className="py-20 bg-gray-50 dark:bg-[#111111]">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">What We Do</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              We're more than a consultancy—we're a product studio and AI research lab. We build production-ready AI systems, publish cutting-edge research, and create products that push the boundaries of what's possible with intelligence.
+              We are a consulting partner for AI/ML and platform engineering work. That includes system design,
+              platform architecture, model behavior, workflow automation, rollout planning, and the engineering work
+              required to make AI useful in production.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -153,21 +266,21 @@ export default function HomePage() {
               <Brain className="h-12 w-12 mb-4 text-blue-600" />
               <h3 className="text-2xl font-bold mb-3">AI Strategy & Architecture</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Define your AI capability, design intelligent systems, and architect solutions that create lasting competitive advantage
+                Clarify where AI creates leverage, choose the right architecture, and define a delivery path that can survive contact with production.
               </p>
             </div>
             <div className="p-8 bg-white dark:bg-[#0a0a0a] rounded-xl border border-gray-200 dark:border-gray-800">
               <Zap className="h-12 w-12 mb-4 text-yellow-600" />
               <h3 className="text-2xl font-bold mb-3">Rapid AI Development</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Full-stack AI applications with modern frameworks, LLMs, and agentic systems—from prototype to production in weeks
+                Build applied ML systems, agent workflows, and product features from prototype to production with the surrounding platform work included.
               </p>
             </div>
             <div className="p-8 bg-white dark:bg-[#0a0a0a] rounded-xl border border-gray-200 dark:border-gray-800">
               <Rocket className="h-12 w-12 mb-4 text-purple-600" />
               <h3 className="text-2xl font-bold mb-3">Intelligence Integration</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Embed AI agents, workflows, and automation into your existing products and operations
+                Integrate AI into existing products, operations, and data systems with observability, controls, and rollout plans.
               </p>
             </div>
           </div>
@@ -179,6 +292,62 @@ export default function HomePage() {
               Explore Our Services
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Who We Help */}
+      <section className="py-20 border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="max-w-3xl mx-auto text-center mb-14">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Who We Help</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                xAGI Labs works best with teams that already know AI matters and need a partner who can turn
+                that urgency into reliable systems, measurable workflow improvements, and products that hold up in
+                production.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-8">
+                <h3 className="text-2xl font-bold mb-3">Founders and GTM Teams</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-5">
+                  Teams building AI features or modernizing growth workflows use xAGI when they need both applied AI
+                  thinking and real engineering delivery. AutoClaw is xAGI&apos;s own GTM product—one toolchain we can deploy,
+                  customize, and integrate into broader consulting engagements.
+                </p>
+                <Link href="/autoclaw" className="inline-flex items-center font-semibold hover:underline">
+                  About xAGI AutoClaw
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+
+              <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-8">
+                <h3 className="text-2xl font-bold mb-3">Operations and Support Leaders</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-5">
+                  Companies modernizing voice workflows, collections, support, or intake use xAGI to design voice AI
+                  systems with human handoff, structured data capture, observability, and multilingual support.
+                </p>
+                <Link href="/call-center-ai" className="inline-flex items-center font-semibold hover:underline">
+                  Explore Call Center AI
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+
+              <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-8">
+                <h3 className="text-2xl font-bold mb-3">Product and Engineering Teams</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-5">
+                  Teams that need ML systems, agent platforms, data and platform engineering, or production hardening
+                  use xAGI as an execution-heavy consulting partner for architecture, integrations, deployment, and
+                  iteration after launch.
+                </p>
+                <Link href="/services" className="inline-flex items-center font-semibold hover:underline">
+                  Review Services
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -203,6 +372,47 @@ export default function HomePage() {
             <div className="text-center">
               <div className="text-5xl font-bold mb-2">1</div>
               <div className="text-gray-600 dark:text-gray-400">Successful Acquisition</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why xAGI */}
+      <section className="py-20 bg-gray-50 dark:bg-[#111111]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="max-w-3xl mx-auto text-center mb-14">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Why Teams Choose xAGI</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                The common thread across xAGI consulting engagements is practical execution. We do not stop at a
+                strategy deck, model demo, or benchmark screenshot. We help teams decide what to build, ship the
+                first useful system, and improve it with real production feedback.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a] p-8">
+                <h3 className="text-2xl font-bold mb-4">Execution With Business Context</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  We work across product, growth, and operations use cases, so architecture decisions are tied to actual
+                  user workflows, target metrics, and rollout constraints rather than abstract AI trends.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400">
+                  That means prioritizing the workflow that creates leverage first, whether that is account research,
+                  voice automation, retrieval quality, prompt reliability, or operational observability.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a] p-8">
+                <h3 className="text-2xl font-bold mb-4">Systems Built for Production</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  Our work usually includes instrumentation, fallback paths, deployment guidance, and runbooks so teams
+                  can operate what gets shipped instead of rewriting it later.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400">
+                  If you want implementation depth, start with our <Link href="/process" className="font-semibold hover:underline">delivery process</Link> or read the <Link href="/blog/openclaw-guide-2026" className="font-semibold hover:underline">OpenClaw Guide</Link> to see the level of detail we bias toward.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -262,11 +472,11 @@ export default function HomePage() {
                 <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                   <strong>Tech Stack:</strong> Computer Vision, TensorFlow, React Native
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-sm text-gray-600 dark:text-gray-400">
                   <strong>Outcome:</strong> Successfully acquired by a leading e-commerce platform
-                </div>
               </div>
             </div>
+          </div>
           </div>
           <div className="text-center">
             <Link
@@ -286,7 +496,8 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Build Intelligence?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Whether you're exploring AI opportunities or ready to build, we're here to help you move from vision to production-ready AI systems.
+              Whether you need AI/ML consulting, platform engineering, or a partner to ship a production system,
+              we help teams move from ambiguity to something that works in the real world.
             </p>
             <Link
               href="/contact"

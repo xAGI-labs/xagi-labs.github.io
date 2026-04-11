@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "https://xagi.in/token-save",
   },
   openGraph: {
-    title: "Token Save by xAGI Labs",
+    title: "Token Save | Slash AI Token Costs by 90-99%",
     description:
       "Reduce proprietary AI API spend by up to 99% while maintaining output quality through custom open-weight migration.",
     url: "https://xagi.in/token-save",
@@ -29,13 +29,13 @@ export const metadata: Metadata = {
         url: "/xagi-icon.png",
         width: 1200,
         height: 630,
-        alt: "Token Save by xAGI Labs",
+        alt: "Token Save — reduce AI token spend with open-weight models",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Token Save by xAGI Labs",
+    title: "Token Save | Slash AI Token Costs by 90-99%",
     description:
       "Slash AI token costs by 90-99% with fine-tuned open-weight infrastructure built for your product.",
     images: ["/xagi-icon.png"],
@@ -58,42 +58,10 @@ const serviceSchema = {
     "xAGI Labs migrates high-volume AI workloads from proprietary APIs to fine-tuned open-weight models such as Qwen and Mistral to reduce token costs while maintaining quality.",
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Will quality drop after migrating to open-weight models?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The migration is benchmarked against your current production quality baseline. Shadow testing is used before full cutover to preserve output quality.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How much can token costs be reduced?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Typical migrations target 90 to 99 percent cost reduction depending on workload profile, quality constraints, and traffic distribution.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can EU data residency requirements be supported?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Mistral-based pathways and EU-aligned infrastructure options are supported for sovereignty-sensitive workloads.",
-      },
-    },
-  ],
-}
-
 export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <TokenSavePage />
     </>
   )

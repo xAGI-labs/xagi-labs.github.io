@@ -1,175 +1,166 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
+import { fetchPortfolioData } from '@/utils/csv-parser'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://xagi.in'
 
-  // Static pages with their priorities and change frequencies
   const staticPages = [
     {
       url: baseUrl,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/portfolio`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/research-papers`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/process`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/team`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/chat`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/voice-ai`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/autoclaw`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/autoclaw/faq`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/ai-sdr-alternatives`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/openclaw-deployment-security`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/call-center-ai`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/ai-agents-erp`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/ai-events`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/apps/linkedin-carousel-generator`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/siliconhalli`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/siliconhalli/about`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
       url: `${baseUrl}/hire-with-xAGI`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/ai-cto`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/astro-gemini-privacy-policy`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/geo`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/token-save`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/tutor`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/chainclaw`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/chain-claw-game`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
   ]
 
-  // Portfolio project pages
-  const portfolioSlugs = [
-    'sample-saas-platform',
-    'ecommerce-marketplace',
-    'ai-content-generator',
-    'fintech-dashboard',
-    'healthcare-platform',
-    'blockchain-analytics',
-  ]
-
-  const portfolioPages = portfolioSlugs.map((slug) => ({
-    url: `${baseUrl}/portfolio/${slug}`,
-    lastModified: new Date(),
+  const portfolioItems = await fetchPortfolioData()
+  const portfolioPages = portfolioItems.map((item) => ({
+    url: `${baseUrl}/portfolio/${item.slug}`,
+    lastModified: new Date(item.sortOrder),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 
-  // Blog posts
   const posts = getAllPosts()
   const blogPages = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,

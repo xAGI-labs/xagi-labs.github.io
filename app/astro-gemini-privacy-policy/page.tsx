@@ -6,6 +6,9 @@ import DeletionForm from "@/components/astro-gemini-privacy-policy/deletion-form
 export const metadata: Metadata = {
   title: "Privacy Policy - AstroGemini",
   description: "Privacy Policy for AstroGemini - Vedic Astrology App",
+  alternates: {
+    canonical: "https://xagi.in/astro-gemini-privacy-policy",
+  },
 }
 
 export default function AstroGeminiPrivacyPolicy() {

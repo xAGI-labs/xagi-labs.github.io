@@ -41,19 +41,6 @@ const faqs = [
   },
 ]
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((item) => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.answer,
-    },
-  })),
-}
-
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -89,7 +76,6 @@ export const metadata: Metadata = {
 export default function AutoClawFaqPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-[#0a0a0a]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
 
       <Header />

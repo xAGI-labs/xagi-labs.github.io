@@ -3,8 +3,11 @@ import ChatInterface from '@/components/chat-page'
 import Header from '@/components/shared/header'
 
 export const metadata: Metadata = {
-  title: 'Chat - xAGI Labs',
+  title: 'Chat',
   description: 'AI-powered chat interface',
+  alternates: {
+    canonical: 'https://xagi.in/chat',
+  },
 }
 
 export default function ChatPage() {
