@@ -2,14 +2,15 @@ import type { Metadata } from 'next'
 import ChainClawLandingPage from '@/components/chainclaw-page'
 
 export const metadata: Metadata = {
-  title: 'AutoClaw — AI Workforce Operating System',
+  title: 'AutoClaw Implementation Consulting',
   description:
-    'AutoClaw helps GTM teams run autonomous prospect research and personalized outreach across email and LinkedIn.',
+    'xAGI helps GTM and operations teams implement the AutoClaw product (xAGI Labs trade name) for prospect research, outreach automation, workflow orchestration, and production-grade agent operations.',
   keywords: [
     'AutoClaw',
-    'OpenClaw for GTM',
-    'AI SDR alternative',
-    'autonomous sales agents',
+    'AutoClaw consulting',
+    'GTM automation consulting',
+    'AI SDR implementation',
+    'agent workflow deployment',
     'email and LinkedIn outreach automation',
     'AI lead research',
   ],
@@ -17,9 +18,9 @@ export const metadata: Metadata = {
     canonical: 'https://xagi.in/autoclaw',
   },
   openGraph: {
-    title: 'AutoClaw — AI Workforce Operating System',
+    title: 'AutoClaw Implementation Consulting',
     description:
-      'AutoClaw helps GTM teams run autonomous prospect research and personalized outreach across email and LinkedIn.',
+      'xAGI helps GTM and operations teams implement the AutoClaw product (xAGI Labs trade name) for prospect research, outreach automation, workflow orchestration, and production-grade agent operations.',
     url: 'https://xagi.in/autoclaw',
     siteName: 'xAGI Labs',
     type: 'website',
@@ -28,15 +29,15 @@ export const metadata: Metadata = {
         url: '/images/chainclaw/autoclaw.png',
         width: 1200,
         height: 630,
-        alt: 'AutoClaw for GTM',
+        alt: 'xAGI AutoClaw — GTM workflow product',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AutoClaw — AI Workforce Operating System',
+    title: 'AutoClaw Implementation Consulting',
     description:
-      'AutoClaw helps GTM teams run autonomous prospect research and personalized outreach across email and LinkedIn.',
+      'xAGI helps GTM and operations teams implement the AutoClaw product (xAGI Labs trade name) for prospect research, outreach automation, workflow orchestration, and production-grade agent operations.',
     images: ['/images/chainclaw/autoclaw.png'],
   },
 }

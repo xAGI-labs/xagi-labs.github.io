@@ -28,7 +28,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 2,
     type: "text",
     title:
-      "We're a digital-forward agency focused on delivering unsurpassed designs & known for innovative use of technology.",
+      "We help teams design, build, and ship digital products with strong engineering, sharp UX, and practical AI integration.",
     size: "large",
     categories: ["all"],
     label: "ABOUT US",
@@ -68,7 +68,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 6,
     type: "video",
-    title: "Agency Reel of 2023",
+    title: "Project Reel of 2023",
     subtitle: "Our best work from the past year",
     image: "/agency-projects-thumbnail.png",
     link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",

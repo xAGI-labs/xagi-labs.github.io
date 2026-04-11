@@ -1,3 +1,6 @@
+import { readFile } from "fs/promises"
+import path from "path"
+
 export interface PortfolioItem {
   slug: string
   title: string
@@ -19,17 +22,11 @@ export async function fetchPortfolioData(): Promise<PortfolioItem[]> {
   }
 
   try {
-    // Use local sample file as primary source for template
-    const response = await fetch("/data/portfolio-sample.csv", {
-      // Add cache: 'no-store' for server components to always fetch fresh data
-      cache: typeof window === "undefined" ? "no-store" : "default",
-    })
+    const csvText =
+      typeof window === "undefined"
+        ? await readFile(path.join(process.cwd(), "public", "data", "portfolio-sample.csv"), "utf8")
+        : await fetchPortfolioCsvFromPublicDir()
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch portfolio CSV: ${response.status}`)
-    }
-
-    const csvText = await response.text()
     const parsedData = parseCSV(csvText)
 
     // Cache the data on the client side
@@ -43,6 +40,18 @@ export async function fetchPortfolioData(): Promise<PortfolioItem[]> {
     // Return fallback sample data if CSV fails to load
     return getFallbackPortfolioData()
   }
+}
+
+async function fetchPortfolioCsvFromPublicDir(): Promise<string> {
+  const response = await fetch("/data/portfolio-sample.csv", {
+    cache: "default",
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch portfolio CSV: ${response.status}`)
+  }
+
+  return response.text()
 }
 
 // Fallback data in case CSV file fails to load

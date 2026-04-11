@@ -2,9 +2,12 @@ import type { Metadata } from 'next'
 import ChainClawLandingPage from '@/components/chainclaw-page'
 
 export const metadata: Metadata = {
-  title: 'Chain Claw — AI Workforce Operating System',
+  title: 'Chain Claw Capability Spotlight',
   description:
-    'Chain Claw turns AI into a self-organizing squad that plans, executes, and ships work continuously.',
+    'xAGI uses Chain Claw as part of consulting-led workflow automation, agent deployment, and operational system design.',
+  alternates: {
+    canonical: 'https://xagi.in/chainclaw',
+  },
 }
 
 export default function Page() {

@@ -13,14 +13,34 @@ export default function Footer() {
               <span className="text-xl font-bold">xAGI Labs</span>
             </Link>
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-              Product Studio & AI Research Lab
+              AI/ML and Platform Engineering Consulting
             </p>
           </div>
 
-          {/* Products */}
+          {/* Capabilities */}
           <div>
-            <h4 className="font-semibold mb-4">Products</h4>
+            <h4 className="font-semibold mb-4">Capabilities</h4>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>
+                <Link href="/services" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  AI/ML Consulting
+                </Link>
+              </li>
+              <li>
+                <Link href="/process" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Delivery Process
+                </Link>
+              </li>
+              <li>
+                <Link href="/portfolio" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/autoclaw" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  AutoClaw
+                </Link>
+              </li>
               <li>
                 <Link href="/tutor" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   AI Tutor
@@ -44,11 +64,6 @@ export default function Footer() {
               <li>
                 <Link href="/apps/linkedin-carousel-generator" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   LinkedIn Carousel Generator
-                </Link>
-              </li>
-              <li>
-                <Link href="/chainclaw" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                  Chain Claw
                 </Link>
               </li>
               <li>
@@ -90,7 +105,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/portfolio" className="hover:text-gray-900 dark:hover:text-white transition-colors">
-                  Portfolio
+                  Case Studies
                 </Link>
               </li>
               <li>

@@ -1,8 +1,11 @@
 import ProcessPage from "@/components/process-page"
 
 export const metadata = {
-  title: "Process - xAGI Labs",
+  title: "Process",
   description: "Our proven process from idea to production",
+  alternates: {
+    canonical: "https://xagi.in/process",
+  },
 }
 
 export default function Process() {

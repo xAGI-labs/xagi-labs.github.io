@@ -6,6 +6,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About SiliconHalli - The Bangalore Startup Simulator',
   description: 'Learn about the origin story of SiliconHalli, the satirical idle clicker game about building a startup in Bangalore.',
+  alternates: {
+    canonical: 'https://xagi.in/siliconhalli/about',
+  },
 };
 
 export default function AboutPage() {

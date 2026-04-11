@@ -1,8 +1,13 @@
-import HirePage from "@/components/hire-page"
+import type { Metadata } from 'next'
+import HirePage from '@/components/hire-page'
 
-export const metadata = {
-  title: "Hire Developers - xAGI Labs",
-  description: "Hire skilled AI engineers and developers on contract, full-time, or part-time basis with a risk-free trial.",
+export const metadata: Metadata = {
+  title: 'Embedded AI and Platform Engineering Teams',
+  description:
+    'Bring in xAGI for embedded AI engineering, platform engineering, delivery pods, and scoped implementation sprints.',
+  alternates: {
+    canonical: 'https://xagi.in/hire-with-xAGI',
+  },
 }
 
 export default function Hire() {

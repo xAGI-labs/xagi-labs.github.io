@@ -5,8 +5,11 @@ import Link from "next/link"
 import { Calendar } from "lucide-react"
 
 export const metadata = {
-  title: "Blog - xAGI Labs",
+  title: "Blog",
   description: "Latest updates and insights from xAGI Labs.",
+  alternates: {
+    canonical: "https://xagi.in/blog",
+  },
 }
 
 export default function BlogPage() {

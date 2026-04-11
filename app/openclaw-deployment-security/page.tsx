@@ -3,37 +3,6 @@ import Link from 'next/link'
 import Header from '@/components/shared/header'
 import Footer from '@/components/shared/footer'
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How should teams deploy OpenClaw safely?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Use isolated environments, scoped credentials, strict tool permissions, and approval gates for high-impact actions. Start in staging, then roll out production workflows gradually.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What are the most important OpenClaw security controls?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Least-privilege credentials, secret rotation, prompt-injection defenses, tool-level allowlists, audit logging, and human approval for irreversible steps are critical.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Where can I get implementation help for OpenClaw?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'xAGI Labs provides implementation support for OpenClaw and related AI workflow systems, including architecture, hardening, and production rollout.',
-      },
-    },
-  ],
-}
-
 export const metadata: Metadata = {
   title: 'OpenClaw Deployment and Security Best Practices',
   description:
@@ -52,7 +21,6 @@ export const metadata: Metadata = {
 export default function OpenClawDeploymentSecurityPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-[#0a0a0a]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
 
       <main className="flex-grow py-20">

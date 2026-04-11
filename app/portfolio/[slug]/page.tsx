@@ -1,7 +1,7 @@
 import { fetchPortfolioData } from "@/utils/csv-parser"
 import PortfolioDetailPage from "@/components/portfolio/portfolio-detail"
 import { notFound } from "next/navigation"
-import type { Metadata, ResolvingMetadata } from "next"
+import type { Metadata } from "next"
 
 interface PortfolioDetailProps {
   params: {
@@ -9,7 +9,7 @@ interface PortfolioDetailProps {
   }
 }
 
-export async function generateMetadata({ params }: PortfolioDetailProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata({ params }: PortfolioDetailProps): Promise<Metadata> {
   const portfolioData = await fetchPortfolioData()
   const project = portfolioData.find((item) => item.slug === params.slug)
 
@@ -20,10 +20,25 @@ export async function generateMetadata({ params }: PortfolioDetailProps, parent:
     }
   }
 
+  const canonical = `https://xagi.in/portfolio/${project.slug}`
+
   return {
     title: `${project.title} | Automatic Portfolio`,
     description: project.shortDescription,
+    alternates: {
+      canonical,
+    },
     openGraph: {
+      title: `${project.title} | Automatic Portfolio`,
+      description: project.shortDescription,
+      url: canonical,
+      type: "article",
+      images: [project.mainImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Automatic Portfolio`,
+      description: project.shortDescription,
       images: [project.mainImage],
     },
   }

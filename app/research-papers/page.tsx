@@ -18,12 +18,15 @@ export const metadata: Metadata = {
     "domain adaptation",
     "model optimization"
   ],
+  alternates: {
+    canonical: "https://xagi.in/research-papers",
+  },
   openGraph: {
-    title: "Research Publications | xAGI Labs",
+    title: "Research Publications",
     description: "Advancing the frontiers of AI through rigorous research. Explore our published papers on language models, multilingual AI, on-device models, and more.",
   },
   twitter: {
-    title: "Research Publications | xAGI Labs",
+    title: "Research Publications",
     description: "Advancing the frontiers of AI through rigorous research. Explore our published papers on language models, multilingual AI, on-device models, and more.",
   }
 }

@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Outfit } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
@@ -19,31 +19,27 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://xagi.in'),
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   title: {
-    default: "xAGI Labs - AI Product Studio & Research Lab",
+    default: "xAGI Labs - AI/ML and Platform Engineering Consulting",
     template: "%s | xAGI Labs"
   },
   description:
-    "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
+    "AI/ML and platform engineering consulting for teams shipping production systems, agent workflows, voice AI, data platforms, and applied machine learning products.",
   keywords: [
     "AI development",
-    "AI agency",
-    "AI research lab",
-    "AI product studio",
+    "AI consulting",
+    "machine learning consulting",
+    "platform engineering consulting",
     "artificial intelligence",
     "machine learning",
-    "AI products",
+    "ML systems",
     "LLM applications",
     "AI agents",
     "OpenAI",
     "Claude",
     "GPT-4",
-    "AI consulting",
+    "AI/ML consulting",
+    "platform engineering",
     "AI strategy",
     "custom AI solutions",
     "AI automation",
@@ -73,9 +69,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://xagi.in",
     siteName: "xAGI Labs",
-    title: "xAGI Labs - AI Product Studio & Research Lab",
+    title: "xAGI Labs - AI/ML and Platform Engineering Consulting",
     description:
-      "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
+      "AI/ML and platform engineering consulting for production systems, agent workflows, voice AI, and applied machine learning.",
     images: [
       {
         url: "/xagi-icon.png",
@@ -87,9 +83,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "xAGI Labs - AI Product Studio & Research Lab",
+    title: "xAGI Labs - AI/ML and Platform Engineering Consulting",
     description:
-      "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
+      "AI/ML and platform engineering consulting for production systems, agent workflows, voice AI, and applied machine learning.",
     images: ["/xagi-icon.png"],
     creator: "@xAGILabs",
   },
@@ -104,10 +100,13 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "https://xagi.in",
-  },
   generator: 'v0.app'
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({
