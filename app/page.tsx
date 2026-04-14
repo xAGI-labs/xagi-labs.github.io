@@ -12,6 +12,17 @@ export const metadata = {
       "AI voice agents for support and high-volume call workflows with realtime conversations, human handoff, and operational control.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Voice Agents for Customer Operations | xAGI Labs",
+    description:
+      "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification with direct-demo booking.",
+    images: ["/xagi-icon.png"],
+    creator: "@xAGILabs",
+  },
+  alternates: {
+    canonical: "https://xagi.in",
+  },
 }
 
 export default function Home() {

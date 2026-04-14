@@ -1,11 +1,20 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
 import { Mail, MapPin, ArrowRight, Clock, CheckCircle } from "lucide-react"
 import { BOOKING_URL } from "@/lib/booking"
+import { buildAttributedUrl, captureAttribution, trackMarketingEvent } from "@/lib/marketing-attribution"
 
 export default function ContactPage() {
+  const [bookingHref, setBookingHref] = useState(BOOKING_URL)
+
+  useEffect(() => {
+    captureAttribution()
+    setBookingHref(buildAttributedUrl(BOOKING_URL))
+  }, [])
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#0a0a0a]">
       <Header />
@@ -70,10 +79,16 @@ export default function ContactPage() {
               </div>
 
               <a
-                href={BOOKING_URL}
+                href={bookingHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center w-full justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                onClick={() => {
+                  trackMarketingEvent("book_demo_click", {
+                    placement: "contact_page",
+                    destination: "google_calendar",
+                  })
+                }}
               >
                 Book a Call
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -92,7 +107,15 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 mr-4 text-blue-600 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <a href="mailto:saurav@xagi.in" className="text-gray-600 dark:text-gray-400 hover:underline">
+                    <a
+                      href="mailto:saurav@xagi.in"
+                      className="text-gray-600 dark:text-gray-400 hover:underline"
+                      onClick={() => {
+                        trackMarketingEvent("email_click", {
+                          placement: "contact_page_inline",
+                        })
+                      }}
+                    >
                       saurav@xagi.in
                     </a>
                   </div>
@@ -112,6 +135,11 @@ export default function ContactPage() {
               <a
                 href="mailto:saurav@xagi.in"
                 className="inline-flex items-center w-full justify-center px-8 py-4 border-2 border-gray-300 dark:border-gray-700 rounded-lg font-semibold hover:border-gray-400 dark:hover:border-gray-600 transition-colors"
+                onClick={() => {
+                  trackMarketingEvent("email_click", {
+                    placement: "contact_page_cta",
+                  })
+                }}
               >
                 Send Email
                 <Mail className="ml-2 h-5 w-5" />

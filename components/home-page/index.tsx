@@ -1,34 +1,29 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
-import {
-  ArrowRight,
-  CheckCircle2,
-  Globe,
-  Headphones,
-  Mic,
-  PhoneCall,
-  Shield,
-  Sparkles,
-  Waypoints,
-  Workflow,
-} from "lucide-react"
+import { ArrowRight, CheckCircle2, Globe, Headphones, Mic, PhoneCall, Shield, Sparkles, Waypoints, Workflow } from "lucide-react"
+import BookingCta from "@/components/home-page/booking-cta"
+import MobileBookingBar from "@/components/home-page/mobile-booking-bar"
+import PaidTrafficTracking from "@/components/home-page/paid-traffic-tracking"
+import { trackMarketingEvent } from "@/lib/marketing-attribution"
 
 const proofPoints = [
   {
-    title: "Low-latency conversations",
-    description: "Natural turn-taking with interruption handling and fast responses built for real call volumes.",
+    title: "AI call center workflows",
+    description: "Run support, collections, admissions, and outbound qualification from one voice-operations workflow.",
   },
   {
-    title: "Multilingual operations",
-    description: "Support major Indian and global languages with localized scripts, tone controls, and regional context.",
+    title: "Customer support automation",
+    description: "Handle repeat inbound queries, triage low-to-mid complexity calls, and capture structured outcomes for your team.",
+  },
+  {
+    title: "Outbound qualification",
+    description: "Pre-qualify leads, route high-intent calls to sales, and keep follow-up triggers synced to your stack.",
   },
   {
     title: "Human handoff",
-    description: "Escalate complex or high-value calls to live teams with transcript and context already attached.",
-  },
-  {
-    title: "Structured capture",
-    description: "Collect outcomes, tickets, claims, and lead data in a format your ops stack can use immediately.",
+    description: "Escalate complex conversations to live teams with the transcript, call context, and next-step intent already attached.",
   },
 ]
 
@@ -36,17 +31,17 @@ const launchSteps = [
   {
     step: "01",
     title: "Map the call workflow",
-    description: "Define intents, escalation rules, success metrics, and the data your team needs captured on every call.",
+    description: "Define intents, escalation rules, success metrics, and the fields your team needs captured on every call.",
   },
   {
     step: "02",
     title: "Connect telephony and systems",
-    description: "Hook into your phone stack, CRM, knowledge base, and workflow tools without building a new operations layer.",
+    description: "Integrate your phone stack, CRM, knowledge base, and workflow tools without creating a second operations layer.",
   },
   {
     step: "03",
     title: "Launch with monitoring",
-    description: "Start with controlled traffic, review transcripts and outcomes, then scale once the workflow is reliable.",
+    description: "Start with controlled traffic, review transcripts and outcomes, then scale once the workflow proves reliable.",
   },
 ]
 
@@ -54,7 +49,7 @@ const reliabilityPillars = [
   {
     icon: Mic,
     title: "Realtime voice stack",
-    description: "Streaming conversations, interruption handling, and smooth turn-taking across inbound and outbound flows.",
+    description: "Streaming conversations, interruption handling, and smooth turn-taking across inbound and outbound calls.",
   },
   {
     icon: Workflow,
@@ -103,17 +98,24 @@ const enterpriseSignals = [
   "Post-call summaries, action items, and case-level intelligence for QA and operations review",
 ]
 
-const integrations = [
-  "Twilio",
-  "Plivo",
-  "Exotel",
-  "Salesforce",
-  "HubSpot",
-  "Freshworks",
-  "Zoho",
-  "Zapier",
-  "Make",
-  "n8n",
+const integrations = ["Twilio", "Plivo", "Exotel", "Salesforce", "HubSpot", "Freshworks", "Zoho", "Zapier", "Make", "n8n"]
+
+const bookingSteps = [
+  "Pick a time that works for you",
+  "Bring one call workflow you want to automate",
+  "Get a practical rollout recommendation from our team",
+]
+
+const bestFit = [
+  "Support, CX, and call-center teams handling repeat inbound volume",
+  "Collections, reminders, qualification, and structured outbound workflows",
+  "Ops leaders who need speed, observability, and a clean escalation path",
+]
+
+const notFor = [
+  "Teams looking for a consumer chatbot or generic AI demo",
+  "Use cases without a clear workflow, call objective, or operational owner",
+  "Projects that only need research slides rather than production rollout",
 ]
 
 function LandingHeader() {
@@ -135,8 +137,8 @@ function LandingHeader() {
           <a href="#how-it-works" className="transition-colors hover:text-stone-950 dark:hover:text-white">
             How it works
           </a>
-          <a href="#use-cases" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Use cases
+          <a href="#fit" className="transition-colors hover:text-stone-950 dark:hover:text-white">
+            Fit
           </a>
           <a href="#trust" className="transition-colors hover:text-stone-950 dark:hover:text-white">
             Trust
@@ -150,12 +152,12 @@ function LandingHeader() {
           >
             Platform details
           </Link>
-          <Link
-            href="/contact"
+          <BookingCta
+            placement="header"
             className="inline-flex items-center gap-2 rounded-full bg-stone-950 px-4 py-2 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-700 dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white"
           >
             Book a demo
-          </Link>
+          </BookingCta>
         </div>
       </div>
     </header>
@@ -176,7 +178,15 @@ function LandingFooter() {
           <Link href="/voice-ai" className="transition-colors hover:text-stone-950 dark:hover:text-white">
             Voice platform
           </Link>
-          <Link href="/contact" className="transition-colors hover:text-stone-950 dark:hover:text-white">
+          <Link
+            href="/contact"
+            className="transition-colors hover:text-stone-950 dark:hover:text-white"
+            onClick={() => {
+              trackMarketingEvent("contact_fallback_click", {
+                placement: "footer",
+              })
+            }}
+          >
             Contact
           </Link>
           <Link href="/blog" className="transition-colors hover:text-stone-950 dark:hover:text-white">
@@ -188,49 +198,111 @@ function LandingFooter() {
   )
 }
 
+function HomePageStructuredData() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Voice agent implementation and AI call center automation",
+    name: "xAGI Voice Agents",
+    description:
+      "AI voice agents for customer support automation, collections, admissions, booking, and outbound qualification workflows.",
+    provider: {
+      "@type": "Organization",
+      name: "xAGI Labs",
+      url: "https://xagi.in",
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "Worldwide",
+    },
+    url: "https://xagi.in",
+  }
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Voice Agents for Customer Operations",
+    description:
+      "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification.",
+    url: "https://xagi.in",
+    about: {
+      "@type": "Thing",
+      name: "AI voice agents",
+    },
+  }
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+    </>
+  )
+}
+
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-950 dark:bg-[#0d0f10] dark:text-stone-100">
+    <div className="min-h-screen bg-stone-50 pb-24 text-stone-950 dark:bg-[#0d0f10] dark:text-stone-100 md:pb-0">
+      <HomePageStructuredData />
+      <PaidTrafficTracking />
       <LandingHeader />
 
       <main>
         <section className="border-b border-stone-200/70 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-14 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:px-8">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:py-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:px-8">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-stone-300 bg-stone-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300">
                 <PhoneCall className="h-3.5 w-3.5" />
                 Voice agents for customer operations
               </div>
-              <h1 className="mt-6 max-w-3xl text-5xl font-semibold leading-[0.95] tracking-tight text-stone-950 sm:text-6xl dark:text-stone-50">
-                Reliable AI voice agents for teams that run real call volume.
+              <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[0.96] tracking-tight text-stone-950 sm:text-5xl md:text-6xl dark:text-stone-50">
+                AI voice agents for customer support automation and high-volume call workflows.
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-600 dark:text-stone-300">
-                xAGI helps operations, support, and CX teams launch voice agents for inbound service, outbound
-                follow-ups, collections, admissions, booking, and qualification workflows without building a separate
+              <p className="mt-5 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg sm:leading-8 dark:text-stone-300">
+                xAGI helps operations, support, and CX teams launch reliable AI call center workflows for inbound
+                service, collections, admissions, booking, and outbound qualification without building a separate
                 call-center stack from scratch.
               </p>
 
-              <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-stone-950 px-6 py-3 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-700 dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white"
+              <div className="mt-5 rounded-2xl border border-stone-200 bg-white/80 p-4 text-sm text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300">
+                <p className="font-medium text-stone-950 dark:text-stone-100">
+                  Best for teams handling repeat support, collections, admissions, booking, and qualification calls.
+                </p>
+              </div>
+
+              <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+                <BookingCta
+                  placement="hero"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-stone-950 px-6 py-4 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-700 sm:w-auto dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white"
                 >
                   Book a demo
                   <ArrowRight className="h-4 w-4" />
-                </Link>
+                </BookingCta>
                 <Link
                   href="/voice-ai"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-stone-700 transition-colors hover:text-stone-950 dark:text-stone-300 dark:hover:text-white"
+                  className="hidden items-center gap-2 text-sm font-medium text-stone-700 transition-colors hover:text-stone-950 sm:inline-flex dark:text-stone-300 dark:hover:text-white"
                 >
                   See the full voice platform
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
 
-              <div className="mt-10 grid gap-3 text-sm text-stone-600 sm:grid-cols-3 dark:text-stone-400">
+              <div className="mt-6 rounded-3xl border border-stone-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+                <p className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
+                  What happens after you book
+                </p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {bookingSteps.map((step) => (
+                    <div key={step} className="rounded-2xl border border-stone-200 bg-stone-50 p-4 text-sm text-stone-600 dark:border-white/10 dark:bg-[#101213] dark:text-stone-300">
+                      <p>{step}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-3 text-sm text-stone-600 sm:grid-cols-3 dark:text-stone-400">
                 <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">Realtime conversations</p>
-                  <p className="mt-1">Low-latency responses with interruption handling and clean turn-taking.</p>
+                  <p className="font-medium text-stone-950 dark:text-stone-100">Low-latency conversations</p>
+                  <p className="mt-1">Realtime turn-taking with interruption handling for live customer calls.</p>
                 </div>
                 <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
                   <p className="font-medium text-stone-950 dark:text-stone-100">Operational control</p>
@@ -238,12 +310,12 @@ export default function HomePage() {
                 </div>
                 <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
                   <p className="font-medium text-stone-950 dark:text-stone-100">Stack-friendly rollout</p>
-                  <p className="mt-1">Integrates with telephony, CRM, and workflow tools your team already uses.</p>
+                  <p className="mt-1">Telephony, CRM, and workflow integrations for teams that need speed to launch.</p>
                 </div>
               </div>
             </div>
 
-            <div className="lg:pt-8">
+            <div className="lg:pt-6">
               <div className="rounded-[2rem] border border-stone-200 bg-white p-4 shadow-[0_24px_80px_-48px_rgba(0,0,0,0.45)] dark:border-white/10 dark:bg-[#141718]">
                 <div className="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-5 dark:border-white/10 dark:bg-[#101213]">
                   <div className="flex items-start justify-between gap-4">
@@ -267,9 +339,9 @@ export default function HomePage() {
                       <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Built for fluid turn-taking during live calls.</p>
                     </div>
                     <div className="rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Escalation ready</p>
-                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">Human handoff</p>
-                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Transcript, disposition, and context travel with the call.</p>
+                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Workflow proof</p>
+                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">Collections</p>
+                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Named workflow configured for reminders, outcomes, and escalation.</p>
                     </div>
                   </div>
 
@@ -338,6 +410,34 @@ export default function HomePage() {
                   <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-400">{item.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="fit" className="border-b border-stone-200/70 py-20 dark:border-white/10">
+          <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+            <div className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Who this is for</p>
+              <div className="mt-5 space-y-3">
+                {bestFit.map((item) => (
+                  <div key={item} className="flex items-start gap-3 text-sm leading-7 text-stone-600 dark:text-stone-400">
+                    <CheckCircle2 className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-600 dark:text-emerald-300" />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Not the best fit</p>
+              <div className="mt-5 space-y-3">
+                {notFor.map((item) => (
+                  <div key={item} className="flex items-start gap-3 text-sm leading-7 text-stone-600 dark:text-stone-400">
+                    <Shield className="mt-1 h-4 w-4 flex-shrink-0 text-stone-700 dark:text-stone-200" />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -481,18 +581,23 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex flex-col items-start gap-4 sm:flex-row lg:flex-col">
-                  <Link
-                    href="/contact"
+                  <BookingCta
+                    placement="final_cta"
                     className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-stone-950 transition-colors hover:bg-stone-200 dark:bg-stone-950 dark:text-stone-50 dark:hover:bg-stone-800"
                   >
                     Book a demo
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </BookingCta>
                   <Link
-                    href="/voice-ai"
+                    href="/contact"
                     className="inline-flex items-center gap-2 text-sm font-medium text-stone-300 transition-colors hover:text-white dark:text-stone-700 dark:hover:text-stone-950"
+                    onClick={() => {
+                      trackMarketingEvent("contact_fallback_click", {
+                        placement: "final_cta",
+                      })
+                    }}
                   >
-                    Explore the full voice platform
+                    Prefer email or a custom intro?
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -503,6 +608,7 @@ export default function HomePage() {
       </main>
 
       <LandingFooter />
+      <MobileBookingBar />
     </div>
   )
 }

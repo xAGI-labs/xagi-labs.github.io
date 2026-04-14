@@ -5,7 +5,7 @@ export default function StructuredData() {
     "name": "xAGI Labs",
     "url": "https://xagi.in",
     "logo": "https://xagi.in/xagi-icon.png",
-    "description": "AI-First Development Agency building production-ready AI systems",
+    "description": "Voice agent implementation partner for customer support, collections, admissions, booking, and outbound qualification workflows.",
     "email": "saurav@xagi.in",
     "address": {
       "@type": "PostalAddress",
@@ -45,16 +45,16 @@ export default function StructuredData() {
     "@type": "ProfessionalService",
     "name": "xAGI Labs",
     "url": "https://xagi.in",
-    "description": "AI-First Development Agency specializing in AI products, agents, and automation",
+    "description": "Voice agent implementation and AI call center automation for customer operations teams.",
     "priceRange": "$$$",
     "serviceType": [
-      "AI Development",
-      "AI Consulting",
-      "Machine Learning",
-      "AI Agent Development",
-      "Custom AI Solutions",
-      "LLM Applications",
-      "RAG Systems",
+      "Voice Agent Development",
+      "AI Call Center Automation",
+      "Customer Support Automation",
+      "Outbound Voice Workflows",
+      "Collections Automation",
+      "Admissions Automation",
+      "AI Operations Consulting",
       "AI Automation"
     ],
     "areaServed": {
@@ -69,24 +69,24 @@ export default function StructuredData() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "AI Product Development",
-            "description": "End-to-end AI application development from prototype to production"
+            "name": "Voice Agent Implementation",
+            "description": "End-to-end deployment of AI voice agents for high-volume call workflows"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "AI Consulting",
-            "description": "Strategic AI adoption and implementation guidance"
+            "name": "AI Call Operations Strategy",
+            "description": "Workflow design, rollout planning, and operational guidance for voice-agent deployments"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "LLM Integration",
-            "description": "Custom GPT-4, Claude, and OpenAI integrations"
+            "name": "Voice Workflow Integration",
+            "description": "CRM, telephony, knowledge-base, and automation integration for voice operations"
           }
         }
       ]
@@ -98,7 +98,7 @@ export default function StructuredData() {
     "@type": "WebSite",
     "name": "xAGI Labs",
     "url": "https://xagi.in",
-    "description": "AI-First Development Agency building production-ready AI systems",
+    "description": "Voice agents for customer support automation and high-volume call workflows",
     "publisher": {
       "@type": "Organization",
       "name": "xAGI Labs"

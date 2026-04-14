@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
 import StructuredData from "@/components/structured-data"
 import MicrosoftClarity from "@/components/microsoft-clarity"
+import GoogleTag from "@/components/google-tag"
 import GeoGreeting from "@/components/shared/GeoGreeting"
 import "@/components/landing-page/styles.css"
 import { Suspense } from "react"
@@ -20,34 +21,25 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://xagi.in'),
   title: {
-    default: "xAGI Labs - AI Product Studio & Research Lab",
+    default: "xAGI Labs - Voice Agents for Customer Operations",
     template: "%s | xAGI Labs"
   },
   description:
-    "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
+    "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification. xAGI Labs builds reliable AI call workflows with human handoff, observability, and operational control.",
   keywords: [
-    "AI development",
-    "AI agency",
-    "AI research lab",
-    "AI product studio",
-    "artificial intelligence",
-    "machine learning",
-    "AI products",
-    "LLM applications",
+    "voice agents",
+    "AI voice agents",
+    "AI call center",
+    "customer support automation",
+    "voice AI services",
+    "outbound voice AI",
+    "collections automation",
+    "admissions automation",
+    "customer operations AI",
+    "AI call workflows",
     "AI agents",
-    "OpenAI",
-    "Claude",
-    "GPT-4",
-    "AI consulting",
-    "AI strategy",
-    "custom AI solutions",
     "AI automation",
-    "RAG systems",
-    "AI integration",
-    "AI research papers",
-    "language model research",
-    "multilingual AI",
-    "on-device AI"
+    "multilingual voice AI",
   ],
   authors: [{ name: "xAGI Labs" }],
   creator: "xAGI Labs",
@@ -68,23 +60,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://xagi.in",
     siteName: "xAGI Labs",
-    title: "xAGI Labs - AI Product Studio & Research Lab",
+    title: "xAGI Labs - Voice Agents for Customer Operations",
     description:
-      "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
+      "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification with human handoff and operational control.",
     images: [
       {
         url: "/xagi-icon.png",
         width: 1200,
         height: 630,
-        alt: "xAGI Labs - AI-First Development",
+        alt: "xAGI Labs - Voice Agents for Customer Operations",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "xAGI Labs - AI Product Studio & Research Lab",
+    title: "xAGI Labs - Voice Agents for Customer Operations",
     description:
-      "AI-native product studio and research lab building the future of intelligence. We develop production-ready AI systems, publish cutting-edge research, and create innovative products.",
+      "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification with human handoff and operational control.",
     images: ["/xagi-icon.png"],
     creator: "@xAGILabs",
   },
@@ -120,6 +112,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <StructuredData />
+        <GoogleTag />
         <script
           data-goatcounter="https://xagi-labs.goatcounter.com/count"
           async
