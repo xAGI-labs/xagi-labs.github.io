@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Outfit } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
@@ -19,11 +19,6 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://xagi.in'),
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   title: {
     default: "xAGI Labs - AI Product Studio & Research Lab",
     template: "%s | xAGI Labs"
@@ -108,6 +103,12 @@ export const metadata: Metadata = {
     canonical: "https://xagi.in",
   },
   generator: 'v0.app'
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({

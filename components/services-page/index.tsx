@@ -4,6 +4,7 @@ import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
 import { Brain, Zap, Rocket, Wrench, Bot, Target, TrendingUp, ArrowRight, Check } from "lucide-react"
+import { BOOKING_URL } from "@/lib/booking"
 
 export default function ServicesPage() {
   return (
@@ -14,12 +15,28 @@ export default function ServicesPage() {
       <section className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Services</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">AI Development Services That Ship to Production</h1>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              End-to-End AI Product Development<br />
-              From strategy to deployment, we're your partner in building intelligence-first products, including
-              OpenClaw enterprise deployments and agentic visibility optimization.
+              From strategy and prototyping to voice AI, OpenClaw, and enterprise deployments, we help teams turn AI
+              priorities into reliable products and workflows.
             </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-black px-8 py-4 font-semibold text-white transition-opacity hover:opacity-90 dark:bg-white dark:text-black"
+              >
+                Book a Strategy Call
+                <ArrowRight className="h-5 w-5" />
+              </a>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-8 py-4 font-semibold transition-colors hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600"
+              >
+                View Case Studies
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -327,7 +344,7 @@ export default function ServicesPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-              Schedule a free consultation to discuss your project and explore how we can help.
+              Book a strategy call to pressure-test your roadmap, deployment path, and the fastest way to ship value.
             </p>
             <p className="text-base text-gray-600 dark:text-gray-400 mb-6">
               Want the complete roadmap first? Read our{" "}
@@ -339,13 +356,15 @@ export default function ServicesPage() {
               </Link>
               .
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg bg-black px-8 py-4 font-semibold text-white transition-opacity hover:opacity-90 dark:bg-white dark:text-black"
             >
-              Schedule Free Consultation
+              Book a Strategy Call
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

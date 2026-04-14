@@ -3,7 +3,8 @@
 import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
-import { ExternalLink, Users, TrendingUp, Award, Zap, BarChart } from "lucide-react"
+import { ExternalLink, Users, TrendingUp, Award, Zap, BarChart, ArrowRight } from "lucide-react"
+import { BOOKING_URL } from "@/lib/booking"
 
 export default function PortfolioPage() {
   const projects = [
@@ -84,11 +85,27 @@ export default function PortfolioPage() {
       <section className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Portfolio</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">AI Product Case Studies</h1>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              Products We've Built. Impact We've Delivered.<br />
-              From prediction markets to virtual fitting rooms, we've built AI products that real users love.
+              See how xAGI Labs ships AI products, automation systems, and revenue-driving tools in weeks, not quarters.
             </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-black px-8 py-4 font-semibold text-white transition-opacity hover:opacity-90 dark:bg-white dark:text-black"
+              >
+                Book a Strategy Call
+                <ArrowRight className="h-5 w-5" />
+              </a>
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-8 py-4 font-semibold transition-colors hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600"
+              >
+                View Services
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -198,14 +215,16 @@ export default function PortfolioPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Build Your Product?</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-              Let's discuss how we can help you create the next successful AI product.
+              Book a strategy call to map the fastest route from idea to shipped AI product.
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg bg-black px-8 py-4 font-semibold text-white transition-opacity hover:opacity-90 dark:bg-white dark:text-black"
             >
-              Schedule Free Consultation
-            </Link>
+              Book a Strategy Call
+            </a>
           </div>
         </div>
       </section>

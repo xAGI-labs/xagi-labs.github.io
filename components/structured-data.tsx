@@ -7,7 +7,6 @@ export default function StructuredData() {
     "logo": "https://xagi.in/xagi-icon.png",
     "description": "AI-First Development Agency building production-ready AI systems",
     "email": "saurav@xagi.in",
-    "telephone": "+1-510-000-0000",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Artistic Pl",
@@ -103,54 +102,7 @@ export default function StructuredData() {
     "publisher": {
       "@type": "Organization",
       "name": "xAGI Labs"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://xagi.in/portfolio?search={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
     }
-  }
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How long does it take to build an AI product?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We typically deliver production-ready AI systems in 4-6 weeks, from prototype to full-scale applications."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What AI technologies do you work with?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We specialize in LLMs (GPT-4, Claude, Gemini), AI Agents, RAG systems, and custom machine learning solutions using frameworks like LangChain and LlamaIndex."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you provide AI consulting services?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, we offer strategic AI consulting to help businesses identify opportunities, plan AI adoption, and implement AI solutions effectively."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What industries do you serve?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We serve various industries including SaaS, E-commerce, Healthcare, FinTech, Education, Marketing, and Government sectors."
-        }
-      }
-    ]
   }
 
   return (
@@ -166,10 +118,6 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Link to llms.txt for AI discoverability */}
       <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt - AI-readable site information" />

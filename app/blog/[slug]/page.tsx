@@ -7,6 +7,7 @@ import { Calendar, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 import Image from "next/image"
+import EditorialHandoff from "@/components/shared/editorial-handoff"
 
 interface Props {
   params: {
@@ -177,6 +178,15 @@ export default function BlogPostPage({ params }: Props) {
 
               <ReactMarkdown>{post.content}</ReactMarkdown>
             </article>
+
+            <div className="mt-12">
+              <EditorialHandoff
+                eyebrow="Turn insight into implementation"
+                title="Want help turning this idea into a production system?"
+                description="xAGI Labs helps teams scope, build, and deploy AI products, agent workflows, voice systems, and enterprise rollouts."
+                contextLine={`If this topic is relevant to your roadmap, we can translate "${post.title}" into a concrete build plan and launch path.`}
+              />
+            </div>
           </div>
         </div>
       </main>

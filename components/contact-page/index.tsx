@@ -1,9 +1,9 @@
 "use client"
 
-import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
-import { Mail, Phone, MapPin, ArrowRight, Clock, CheckCircle } from "lucide-react"
+import { Mail, MapPin, ArrowRight, Clock, CheckCircle } from "lucide-react"
+import { BOOKING_URL } from "@/lib/booking"
 
 export default function ContactPage() {
   return (
@@ -14,10 +14,10 @@ export default function ContactPage() {
       <section className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Let's Build Something Amazing</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">Book Your AI Strategy Call</h1>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              Ready to transform your AI vision into reality?<br />
-              Schedule a free 45-minute strategy call to discuss your project, or reach out directly.
+              Get practical guidance on AI products, voice systems, agent workflows, and launch priorities.<br />
+              Schedule a free 45-minute strategy call with our founding team, or reach out directly.
             </p>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function ContactPage() {
               </div>
 
               <a
-                href="https://calendar.app.google/94mtSE2aw7RnSWhj8"
+                href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center w-full justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity"

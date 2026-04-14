@@ -1,8 +1,8 @@
 import ContactPage from "@/components/contact-page"
 
 export const metadata = {
-  title: "Contact - xAGI Labs",
-  description: "Get in touch with xAGI Labs to discuss your AI project",
+  title: "Book an AI Strategy Call",
+  description: "Book a free strategy call with xAGI Labs to scope AI products, voice AI systems, agentic workflows, and enterprise deployments.",
 }
 
 export default function Contact() {

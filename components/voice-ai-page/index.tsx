@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
+import { BOOKING_URL } from "@/lib/booking"
 import {
   ArrowRight,
   Phone,
@@ -197,13 +198,26 @@ export default function VoiceAIPage() {
               <strong className="text-gray-900 dark:text-white">multilingual intelligence</strong> that truly
               understands local customer context.
             </p>
-            <Link
-              href="/contact"
+            <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+              <span className="rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm dark:bg-[#111111] dark:text-gray-300">
+                Inbound + outbound automation
+              </span>
+              <span className="rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm dark:bg-[#111111] dark:text-gray-300">
+                Hindi + regional language support
+              </span>
+              <span className="rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm dark:bg-[#111111] dark:text-gray-300">
+                Data residency and enterprise controls
+              </span>
+            </div>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-90 transition-opacity text-lg"
             >
               Book a Demo
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -369,13 +383,15 @@ export default function VoiceAIPage() {
               </div>
 
               <div className="text-center">
-                <Link
-                  href="/contact"
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 font-semibold hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
                 >
-                  Read Full Story
+                  Book a demo to see this workflow
                   <ExternalLink className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -410,13 +426,15 @@ export default function VoiceAIPage() {
               ))}
             </div>
 
-            <Link
-              href="/contact"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 font-semibold hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
             >
-              View all Integrations
+              Book an integration walkthrough
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -431,18 +449,20 @@ export default function VoiceAIPage() {
               supercharge your sales, or streamline your recruitment.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/contact"
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-700 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
               >
                 Book a Demo
                 <ArrowRight className="w-5 h-5" />
-              </Link>
+              </a>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 text-white font-semibold hover:text-purple-100 transition-colors"
               >
-                Or, explore our API Documentation
+                Need a custom deployment? Contact the team
                 <ExternalLink className="w-4 h-4" />
               </Link>
             </div>

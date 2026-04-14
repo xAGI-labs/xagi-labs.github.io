@@ -1,8 +1,8 @@
 import PortfolioPage from "@/components/portfolio-page"
 
 export const metadata = {
-  title: "Portfolio - xAGI Labs",
-  description: "Explore our AI products and successful projects - from prediction markets to virtual fitting rooms",
+  title: "AI Product Case Studies and Client Results",
+  description: "See how xAGI Labs shipped AI products, voice systems, and automation platforms that drove revenue, users, and operational gains.",
 }
 
 export default function Portfolio() {

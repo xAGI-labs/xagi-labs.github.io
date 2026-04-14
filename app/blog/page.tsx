@@ -5,8 +5,8 @@ import Link from "next/link"
 import { Calendar } from "lucide-react"
 
 export const metadata = {
-  title: "Blog - xAGI Labs",
-  description: "Latest updates and insights from xAGI Labs.",
+  title: "AI Product Engineering Insights and Playbooks",
+  description: "Practical essays, implementation guides, and field notes on AI products, agents, OpenClaw, voice AI, and shipping production systems.",
 }
 
 export default function BlogPage() {

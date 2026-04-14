@@ -1,9 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
 import { ExternalLink, Calendar, RefreshCw } from "lucide-react"
+import EditorialHandoff from "@/components/shared/editorial-handoff"
 
 interface NewsItem {
   title: string
@@ -85,12 +87,6 @@ export default function AiNewsPage() {
     (item) => !item.title.toLowerCase().includes("not much happened today")
   )
 
-  const stripHtml = (html: string) => {
-    const tmp = document.createElement("div")
-    tmp.innerHTML = html
-    return tmp.textContent || tmp.innerText || ""
-  }
-
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-[#0a0a0a]">
       <Header />
@@ -112,6 +108,25 @@ export default function AiNewsPage() {
                 <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
                 Refresh News
               </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-10">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <EditorialHandoff
+                eyebrow="What xAGI builds"
+                title="We turn fast-moving AI changes into shipped products and workflows"
+                description="Use this briefing stream to stay current, then jump into the xAGI services that help teams implement voice AI, agent workflows, outbound automation, and enterprise deployments."
+                contextLine="If a launch, benchmark, or tooling shift creates an opening for your team, book a strategy call and we’ll map the implementation path."
+                relatedLinks={[
+                  { href: "/voice-ai", label: "Voice AI for India" },
+                  { href: "/services", label: "AI development services" },
+                  { href: "/autoclaw", label: "AutoClaw" },
+                  { href: "/blog/openclaw-guide-2026", label: "OpenClaw guide" },
+                ]}
+              />
             </div>
           </div>
         </section>
@@ -190,6 +205,42 @@ export default function AiNewsPage() {
                   ))}
                 </div>
               )}
+
+              <div className="mt-12">
+                <EditorialHandoff
+                  eyebrow="Need help shipping?"
+                  title="Turn AI news into product bets your team can actually execute"
+                  description="We help founders and operators move from model updates and market noise to production roadmaps, voice AI launches, agent systems, and deployment decisions."
+                  contextLine="Keep the editorial feed lightweight, then use a strategy call when you want help prioritizing what matters for your product or GTM plan."
+                />
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/voice-ai"
+                  className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-blue-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:text-blue-300"
+                >
+                  Explore Voice AI
+                </Link>
+                <Link
+                  href="/services"
+                  className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-blue-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:text-blue-300"
+                >
+                  Explore Services
+                </Link>
+                <Link
+                  href="/autoclaw"
+                  className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-blue-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:text-blue-300"
+                >
+                  See AutoClaw
+                </Link>
+                <Link
+                  href="/blog/openclaw-guide-2026"
+                  className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-blue-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:text-blue-300"
+                >
+                  Read the OpenClaw Guide
+                </Link>
+              </div>
             </div>
           </div>
         </section>
