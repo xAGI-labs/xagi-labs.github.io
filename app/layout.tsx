@@ -7,6 +7,7 @@ import StructuredData from "@/components/structured-data"
 import MicrosoftClarity from "@/components/microsoft-clarity"
 import GoogleTag from "@/components/google-tag"
 import GeoGreeting from "@/components/shared/GeoGreeting"
+import WebMcpTools from "@/components/shared/webmcp-tools"
 import "@/components/landing-page/styles.css"
 import { Suspense } from "react"
 import "./globals.css"
@@ -122,6 +123,7 @@ export default function RootLayout({
       <body className={outfit.className}>
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <WebMcpTools />
             {children}
             <GeoGreeting />
           </ThemeProvider>
