@@ -22,6 +22,11 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Products</h4>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
+                <Link href="/ideal" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  iDeal
+                </Link>
+              </li>
+              <li>
                 <Link href="/tutor" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   AI Tutor
                 </Link>
