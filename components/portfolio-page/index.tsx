@@ -3,14 +3,13 @@
 import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
-import { ExternalLink, Users, TrendingUp, Award, Zap, BarChart, ArrowRight } from "lucide-react"
+import { Users, TrendingUp, Award, Zap, BarChart, ArrowRight } from "lucide-react"
 import { BOOKING_URL } from "@/lib/booking"
 
 export default function PortfolioPage() {
   const projects = [
     {
       name: "FavcyNavigator",
-      url: "https://favcynavigator.com",
       tagline: "AI-Powered Business Co-Pilot",
       description: "Your intelligent assistant for startup operations—automating workflows, analyzing data, and providing actionable insights.",
       users: "10,000+",
@@ -21,7 +20,6 @@ export default function PortfolioPage() {
     },
     {
       name: "StartupNalanda",
-      url: "https://startupnalanda.com",
       tagline: "AI Course Generation Platform",
       description: "Create comprehensive e-learning courses from simple prompts—democratizing educational content creation.",
       users: "5,000+ courses created",
@@ -32,7 +30,6 @@ export default function PortfolioPage() {
     },
     {
       name: "Likeo",
-      url: "https://likeo.me",
       tagline: "Virtual Fitting Rooms • Acquired ✨",
       description: "AI-powered try-on technology that reduced return rates by 35% for fashion retailers.",
       users: "50,000+ users before acquisition",
@@ -44,7 +41,6 @@ export default function PortfolioPage() {
     },
     {
       name: "PitchPerfect",
-      url: "https://pitch.favcynavigator.com",
       tagline: "AI Startup Pitch Analyzer",
       description: "AI tool that analyzes startup pitches against proven frameworks, providing detailed feedback on structure, messaging, and investor appeal.",
       users: "10,000+ pitches analyzed",
@@ -55,7 +51,6 @@ export default function PortfolioPage() {
     },
     {
       name: "Polyclone.xyz",
-      url: "https://x.com/sauraav5/status/1988542665860829672",
       tagline: "Copy Trading for Polymarket",
       description: "Built a copy-trading platform that monitors top Polymarket traders and automatically replicates their positions.",
       users: "500+ beta users",
@@ -66,7 +61,6 @@ export default function PortfolioPage() {
     },
     {
       name: "Gamenzo",
-      url: "https://gamenzo.xyz",
       tagline: "Voice-to-Game Creation",
       description: "Platform where users describe games via voice commands and AI generates playable browser-based games instantly.",
       users: "1,000+ games created",
@@ -137,14 +131,6 @@ export default function PortfolioPage() {
                         <p className="text-gray-600 dark:text-gray-400">{project.tagline}</p>
                       </div>
                     </div>
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                    >
-                      <ExternalLink className="h-5 w-5" />
-                    </a>
                   </div>
 
                   <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">
