@@ -26,6 +26,11 @@ pricing.json
 # vercel
 .vercel
 
+# cloudflare
+.open-next/
+.wrangler/
+cloudflare-env.d.ts
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
