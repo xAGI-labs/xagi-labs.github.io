@@ -9,17 +9,23 @@ import {
 } from '@/lib/agent-discovery'
 
 export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname
+
+  if (pathname === '/instaflix-privacy-policy' || pathname.startsWith('/instaflix-privacy-policy/')) {
+    const redirectUrl = request.nextUrl.clone()
+    redirectUrl.pathname = pathname.replace('/instaflix-privacy-policy', '/ramen-ai-privacy-policy')
+    return NextResponse.redirect(redirectUrl, 308)
+  }
+
   // Redirect /product to /portfolio
-  if (request.nextUrl.pathname === '/product') {
+  if (pathname === '/product') {
     return NextResponse.redirect(new URL('/portfolio', request.url))
   }
 
   // Also handle /product/ with trailing slash
-  if (request.nextUrl.pathname === '/product/') {
+  if (pathname === '/product/') {
     return NextResponse.redirect(new URL('/portfolio', request.url))
   }
-
-  const pathname = request.nextUrl.pathname
 
   if (!isDocumentRequest(pathname)) {
     return NextResponse.next()

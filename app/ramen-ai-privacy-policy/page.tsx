@@ -1,35 +1,35 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import InstaFlixLegalShell from "@/components/instaflix-legal-page/legal-shell"
+import RamenAILegalShell from "@/components/ramen-ai-legal-page/legal-shell"
 
 const supportEmail = "saurav@xagi.in"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - InstaFlix",
+  title: "Privacy Policy - Ramen AI",
   description:
-    "Privacy Policy for InstaFlix covering Firebase Auth, Cloud Firestore, Google Sign-In, RevenueCat, Google Play subscriptions, user content, and account deletion.",
+    "Privacy Policy for Ramen AI covering Firebase Auth, Cloud Firestore, Google Sign-In, RevenueCat, Google Play subscriptions, user content, and account deletion.",
   alternates: {
-    canonical: "https://xagi.in/instaflix-privacy-policy",
+    canonical: "https://xagi.in/ramen-ai-privacy-policy",
   },
 }
 
-export default function InstaFlixPrivacyPolicyPage() {
+export default function RamenAIPrivacyPolicyPage() {
   return (
-    <InstaFlixLegalShell
+    <RamenAILegalShell
       title="Privacy Policy"
-      description="This Privacy Policy explains how InstaFlix collects, uses, shares, retains, and deletes data."
+      description="This Privacy Policy explains how Ramen AI collects, uses, shares, retains, and deletes data."
     >
       <p>
-        <strong>Last updated:</strong> April 22, 2026
+        <strong>Last updated:</strong> May 17, 2026
       </p>
 
       <p>
-        This Privacy Policy applies to the InstaFlix mobile application. For privacy questions, contact us at{" "}
+        This Privacy Policy applies to the Ramen AI mobile application. For privacy questions, contact us at{" "}
         <a href={`mailto:${supportEmail}`}>{supportEmail}</a>.
       </p>
 
       <h2>1. Information We Collect</h2>
-      <p>Depending on how you use InstaFlix, we may collect the following categories of information:</p>
+      <p>Depending on how you use Ramen AI, we may collect the following categories of information:</p>
       <ul>
         <li>
           <strong>Account information:</strong> email address, authentication identifiers, Firebase user ID, Google
@@ -99,7 +99,7 @@ export default function InstaFlixPrivacyPolicyPage() {
 
       <h2>6. Data Retention</h2>
       <p>
-        We retain account and app data for as long as your account is active or as needed to provide InstaFlix. We may
+        We retain account and app data for as long as your account is active or as needed to provide Ramen AI. We may
         retain limited records after account deletion when necessary for legal, tax, accounting, security,
         fraud-prevention, dispute-resolution, or platform compliance purposes. Subscription purchase records may also be
         retained by Google Play and RevenueCat according to their own policies.
@@ -108,7 +108,7 @@ export default function InstaFlixPrivacyPolicyPage() {
       <h2>7. Account Deletion and Data Deletion</h2>
       <p>
         You may request account deletion outside the app at our{" "}
-        <Link href="/instaflix-privacy-policy/account-deletion">Account Deletion page</Link>. When we process a
+        <Link href="/ramen-ai-privacy-policy/account-deletion">Account Deletion page</Link>. When we process a
         deletion request, we delete or anonymize account information, profile information, comments, likes, and
         watch/progress data associated with the account, except for limited records we must retain for legal, security,
         fraud-prevention, billing, tax, accounting, or dispute-resolution purposes.
@@ -116,16 +116,16 @@ export default function InstaFlixPrivacyPolicyPage() {
 
       <h2>8. Subscriptions</h2>
       <p>
-        InstaFlix may offer Google Play subscriptions managed through RevenueCat and Google Play Billing. Subscription
+        Ramen AI may offer Google Play subscriptions managed through RevenueCat and Google Play Billing. Subscription
         pricing, trial availability, billing period, renewal terms, and cancellation options are shown before purchase in
         the app and/or Google Play. See our{" "}
-        <Link href="/instaflix-privacy-policy/subscription-cancellation">Subscription Cancellation Help page</Link> for
+        <Link href="/ramen-ai-privacy-policy/subscription-cancellation">Subscription Cancellation Help page</Link> for
         cancellation instructions.
       </p>
 
       <h2>9. Children</h2>
       <p>
-        InstaFlix is not intended for children under the age required by applicable law to use online services without
+        Ramen AI is not intended for children under the age required by applicable law to use online services without
         parental consent. If you believe a child has provided personal information to us, contact us and we will review
         the request.
       </p>
@@ -153,6 +153,6 @@ export default function InstaFlixPrivacyPolicyPage() {
       <p>
         Privacy contact: <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
       </p>
-    </InstaFlixLegalShell>
+    </RamenAILegalShell>
   )
 }

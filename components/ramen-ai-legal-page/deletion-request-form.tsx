@@ -4,19 +4,19 @@ import { useState } from "react"
 
 const supportEmail = "saurav@xagi.in"
 
-export default function InstaFlixDeletionRequestForm() {
+export default function RamenAIDeletionRequestForm() {
   const [email, setEmail] = useState("")
   const [confirmed, setConfirmed] = useState(false)
 
   const submitRequest = () => {
     if (!email || !confirmed) {
-      alert("Please enter the email for your InstaFlix account and confirm the deletion request.")
+      alert("Please enter the email for your Ramen AI account and confirm the deletion request.")
       return
     }
 
-    const subject = encodeURIComponent("InstaFlix Account Deletion Request")
+    const subject = encodeURIComponent("Ramen AI Account Deletion Request")
     const body = encodeURIComponent(
-      "I am requesting deletion of my InstaFlix account and associated personal data.\n\n" +
+      "I am requesting deletion of my Ramen AI account and associated personal data.\n\n" +
         `Registered email: ${email}\n\n` +
         "I understand that account data, profile data, comments, likes, and watch/progress data associated with my account will be deleted or anonymized, except for limited records retained where required for legal, security, fraud-prevention, subscription, tax, or dispute-resolution purposes."
     )
@@ -51,7 +51,7 @@ export default function InstaFlixDeletionRequestForm() {
             onChange={(event) => setConfirmed(event.target.checked)}
             className="mt-1 h-4 w-4 rounded border-gray-300"
           />
-          <span>I confirm that I want to request deletion of my InstaFlix account and associated data.</span>
+          <span>I confirm that I want to request deletion of my Ramen AI account and associated data.</span>
         </label>
 
         <button
@@ -67,7 +67,7 @@ export default function InstaFlixDeletionRequestForm() {
           <a href={`mailto:${supportEmail}`} className="font-medium underline">
             {supportEmail}
           </a>{" "}
-          directly with the subject "InstaFlix Account Deletion Request".
+          directly with the subject &quot;Ramen AI Account Deletion Request&quot;.
         </p>
       </div>
     </div>

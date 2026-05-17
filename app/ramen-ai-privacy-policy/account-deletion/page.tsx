@@ -1,36 +1,36 @@
 import type { Metadata } from "next"
-import InstaFlixDeletionRequestForm from "@/components/instaflix-legal-page/deletion-request-form"
-import InstaFlixLegalShell from "@/components/instaflix-legal-page/legal-shell"
+import RamenAIDeletionRequestForm from "@/components/ramen-ai-legal-page/deletion-request-form"
+import RamenAILegalShell from "@/components/ramen-ai-legal-page/legal-shell"
 
 export const metadata: Metadata = {
-  title: "Account Deletion - InstaFlix",
-  description: "Request deletion of your InstaFlix account and associated data outside the app.",
+  title: "Account Deletion - Ramen AI",
+  description: "Request deletion of your Ramen AI account and associated data outside the app.",
   alternates: {
-    canonical: "https://xagi.in/instaflix-privacy-policy/account-deletion",
+    canonical: "https://xagi.in/ramen-ai-privacy-policy/account-deletion",
   },
 }
 
-export default function InstaFlixAccountDeletionPage() {
+export default function RamenAIAccountDeletionPage() {
   return (
-    <InstaFlixLegalShell
+    <RamenAILegalShell
       title="Account Deletion"
-      description="Use this page to request deletion of your InstaFlix account outside the app."
+      description="Use this page to request deletion of your Ramen AI account outside the app."
     >
       <p>
-        <strong>Last updated:</strong> April 22, 2026
+        <strong>Last updated:</strong> May 17, 2026
       </p>
 
       <p>
-        If you created an InstaFlix account using Firebase email/password authentication or Google Sign-In, you can use
+        If you created a Ramen AI account using Firebase email/password authentication or Google Sign-In, you can use
         this public page to request deletion of your account and associated data.
       </p>
 
-      <InstaFlixDeletionRequestForm />
+      <RamenAIDeletionRequestForm />
 
       <h2>What We Delete</h2>
       <ul>
         <li>Your Firebase account record and app account identifiers, where technically possible.</li>
-        <li>Your profile display name, profile avatar, and profile metadata stored by InstaFlix.</li>
+        <li>Your profile display name, profile avatar, and profile metadata stored by Ramen AI.</li>
         <li>Your comments, likes, and other account-linked social activity.</li>
         <li>Your watch history, watch progress, and other account-linked viewing activity.</li>
         <li>Other Cloud Firestore records associated with your account where deletion is technically possible.</li>
@@ -54,6 +54,6 @@ export default function InstaFlixAccountDeletionPage() {
         To protect accounts from unauthorized deletion, we may ask you to verify ownership of the email address or
         account before processing the request.
       </p>
-    </InstaFlixLegalShell>
+    </RamenAILegalShell>
   )
 }

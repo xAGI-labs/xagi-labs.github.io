@@ -1,29 +1,29 @@
 import type { Metadata } from "next"
-import InstaFlixLegalShell from "@/components/instaflix-legal-page/legal-shell"
+import RamenAILegalShell from "@/components/ramen-ai-legal-page/legal-shell"
 
 const supportEmail = "saurav@xagi.in"
 
 export const metadata: Metadata = {
-  title: "Subscription Cancellation Help - InstaFlix",
-  description: "How to manage or cancel InstaFlix subscriptions purchased through Google Play.",
+  title: "Subscription Cancellation Help - Ramen AI",
+  description: "How to manage or cancel Ramen AI subscriptions purchased through Google Play.",
   alternates: {
-    canonical: "https://xagi.in/instaflix-privacy-policy/subscription-cancellation",
+    canonical: "https://xagi.in/ramen-ai-privacy-policy/subscription-cancellation",
   },
 }
 
-export default function InstaFlixSubscriptionCancellationPage() {
+export default function RamenAISubscriptionCancellationPage() {
   return (
-    <InstaFlixLegalShell
+    <RamenAILegalShell
       title="Subscription Cancellation Help"
-      description="Information about InstaFlix subscription pricing, renewals, trials, cancellation, and support."
+      description="Information about Ramen AI subscription pricing, renewals, trials, cancellation, and support."
     >
       <p>
-        <strong>Last updated:</strong> April 22, 2026
+        <strong>Last updated:</strong> May 17, 2026
       </p>
 
       <h2>Subscription Pricing</h2>
       <p>
-        InstaFlix subscription prices, billing periods, free trial availability, introductory offers, taxes, and renewal
+        Ramen AI subscription prices, billing periods, free trial availability, introductory offers, taxes, and renewal
         terms are displayed in the app and/or on Google Play before you purchase. The exact price may vary by country,
         currency, plan, taxes, and promotions.
       </p>
@@ -47,7 +47,7 @@ export default function InstaFlixSubscriptionCancellationPage() {
         <li>Tap your profile icon.</li>
         <li>Go to Payments &amp; subscriptions.</li>
         <li>Tap Subscriptions.</li>
-        <li>Select InstaFlix.</li>
+        <li>Select Ramen AI.</li>
         <li>Tap Cancel subscription and follow the instructions.</li>
       </ol>
 
@@ -66,9 +66,9 @@ export default function InstaFlixSubscriptionCancellationPage() {
 
       <h2>Subscription Support</h2>
       <p>
-        For subscription help, email <a href={`mailto:${supportEmail}`}>{supportEmail}</a>. Include your InstaFlix
+        For subscription help, email <a href={`mailto:${supportEmail}`}>{supportEmail}</a>. Include your Ramen AI
         account email and Google Play order ID if available. Do not send payment card details.
       </p>
-    </InstaFlixLegalShell>
+    </RamenAILegalShell>
   )
 }
