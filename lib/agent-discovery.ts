@@ -115,33 +115,34 @@ export function getMarkdownDocument(pathname: string) {
 
   if (normalized === '/') {
     return `---
-title: Voice Agents for Customer Operations | xAGI Labs
+title: AI Automation Systems for Operations and Growth | xAGI Labs
 url: ${SITE_ORIGIN}/
 content_signal: ${CONTENT_SIGNAL}
 ---
 
 # xAGI Labs
 
-xAGI Labs builds AI voice agents for customer operations teams.
+xAGI Labs builds production AI automation systems for operations, growth, support, and product teams.
 
 ## Core offer
 
-- Customer support automation for repeat inbound volume
-- Collections, reminders, admissions, booking, and outbound qualification workflows
-- Human handoff with transcript and context attached
-- Realtime voice stack with observability, guardrails, and workflow integrations
+- Workflow automation for repeated manual work across business systems
+- Internal AI copilots, agents, extraction flows, and decision-support tools
+- GTM automation for lead research, account scoring, outreach prep, and CRM workflows
+- Production rollout with integrations, observability, guardrails, and human review
 
 ## Best-fit teams
 
-- Support, CX, and call-center teams handling repeat inbound calls
-- Operations leaders who need structured call outcomes and clear escalation paths
-- Teams running high-volume qualification, reminders, or follow-up workflows
+- Founders, operators, and growth teams with repeated work spread across multiple tools
+- Product teams adding AI features to real customer workflows
+- Teams that need production automation rather than a generic chatbot demo
 
 ## Key links
 
 - Website: ${SITE_ORIGIN}
-- Voice platform: ${absoluteUrl('/voice-ai')}
 - Services: ${absoluteUrl('/services')}
+- AutoClaw GTM automation: ${absoluteUrl('/autoclaw')}
+- Voice AI workflows: ${absoluteUrl('/voice-ai')}
 - Contact: ${absoluteUrl('/contact')}
 - Blog: ${absoluteUrl('/blog')}
 - API docs: ${absoluteUrl(API_DOCS_PATH)}

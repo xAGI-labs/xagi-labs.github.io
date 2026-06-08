@@ -1,22 +1,22 @@
 import HomePage from "@/components/home-page"
 
 export const metadata = {
-  title: "Voice Agents for Customer Operations | xAGI Labs",
+  title: "AI Automation Systems for Operations and Growth | xAGI Labs",
   description:
-    "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification. Built for ops teams with low-latency conversations, human handoff, and structured data capture.",
+    "xAGI Labs builds production AI automation systems for operations, growth, support, and product teams. Turn manual workflows into reliable agents, copilots, and integrations.",
   keywords:
-    "voice agents, AI voice agents, call center AI, customer support automation, outbound voice AI, multilingual voice AI, operations AI, AI call workflows",
+    "AI automation, AI agents, workflow automation, business process automation, AI copilots, operations AI, growth automation, AI product engineering",
   openGraph: {
-    title: "Voice Agents for Customer Operations | xAGI Labs",
+    title: "AI Automation Systems for Operations and Growth | xAGI Labs",
     description:
-      "AI voice agents for support and high-volume call workflows with realtime conversations, human handoff, and operational control.",
+      "Production AI agents, copilots, and workflow automations for teams that need useful systems, not another generic demo.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voice Agents for Customer Operations | xAGI Labs",
+    title: "AI Automation Systems for Operations and Growth | xAGI Labs",
     description:
-      "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification with direct-demo booking.",
+      "Build reliable AI automation across operations, growth, support, and product workflows.",
     images: ["/xagi-icon.png"],
     creator: "@xAGILabs",
   },

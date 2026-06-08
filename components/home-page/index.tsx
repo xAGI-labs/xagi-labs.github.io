@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, CheckCircle2, Globe, Headphones, Mic, PhoneCall, Shield, Sparkles, Waypoints, Workflow } from "lucide-react"
+import { ArrowRight, Bot, Brain, CheckCircle2, Database, Globe, Shield, Sparkles, Waypoints, Workflow } from "lucide-react"
 import BookingCta from "@/components/home-page/booking-cta"
 import MobileBookingBar from "@/components/home-page/mobile-booking-bar"
 import PaidTrafficTracking from "@/components/home-page/paid-traffic-tracking"
@@ -10,112 +10,112 @@ import { trackMarketingEvent } from "@/lib/marketing-attribution"
 
 const proofPoints = [
   {
-    title: "AI call center workflows",
-    description: "Run support, collections, admissions, and outbound qualification from one voice-operations workflow.",
+    title: "Workflow automation",
+    description: "Turn repetitive research, data entry, routing, reporting, and follow-up into reliable AI-assisted workflows.",
   },
   {
-    title: "Customer support automation",
-    description: "Handle repeat inbound queries, triage low-to-mid complexity calls, and capture structured outcomes for your team.",
+    title: "Internal copilots",
+    description: "Give teams agents that search company knowledge, draft decisions, update systems, and keep context attached.",
   },
   {
-    title: "Outbound qualification",
-    description: "Pre-qualify leads, route high-intent calls to sales, and keep follow-up triggers synced to your stack.",
+    title: "GTM automation",
+    description: "Automate lead research, account scoring, outreach preparation, CRM hygiene, and handoffs between growth tools.",
   },
   {
-    title: "Human handoff",
-    description: "Escalate complex conversations to live teams with the transcript, call context, and next-step intent already attached.",
+    title: "AI product features",
+    description: "Embed assistants, extraction, generation, recommendations, and decision support inside the products you already ship.",
   },
 ]
 
 const launchSteps = [
   {
     step: "01",
-    title: "Map the call workflow",
-    description: "Define intents, escalation rules, success metrics, and the fields your team needs captured on every call.",
+    title: "Map the workflow",
+    description: "Find the repeated work, decision points, review rules, success metrics, and fields that need to move between systems.",
   },
   {
     step: "02",
-    title: "Connect telephony and systems",
-    description: "Integrate your phone stack, CRM, knowledge base, and workflow tools without creating a second operations layer.",
+    title: "Connect knowledge and systems",
+    description: "Integrate docs, databases, CRM, help desk, spreadsheets, APIs, and the tools your team already works inside.",
   },
   {
     step: "03",
     title: "Launch with monitoring",
-    description: "Start with controlled traffic, review transcripts and outcomes, then scale once the workflow proves reliable.",
+    description: "Start with a narrow production path, review outputs and edge cases, then expand once the automation proves useful.",
   },
 ]
 
 const reliabilityPillars = [
   {
-    icon: Mic,
-    title: "Realtime voice stack",
-    description: "Streaming conversations, interruption handling, and smooth turn-taking across inbound and outbound calls.",
+    icon: Bot,
+    title: "Agent architecture",
+    description: "Purpose-built agents with scoped tools, memory, evals, and review paths instead of one giant chatbot prompt.",
+  },
+  {
+    icon: Database,
+    title: "Knowledge and data layer",
+    description: "Ground outputs in your SOPs, docs, tables, product data, and business rules with traceable source context.",
   },
   {
     icon: Workflow,
-    title: "Knowledge and action layer",
-    description: "Ground answers in SOPs and trigger downstream actions like CRM updates, reminders, and callbacks.",
+    title: "Workflow orchestration",
+    description: "Trigger actions across CRM, support, email, spreadsheets, internal tools, and custom APIs with clear state handling.",
   },
   {
     icon: Shield,
-    title: "Guardrails and escalation",
-    description: "Policy-aware responses, confidence checks, and clean transfer to human teams when the workflow needs it.",
-  },
-  {
-    icon: Headphones,
-    title: "Observability for ops",
-    description: "Track latency, call quality, tool usage, and resolution outcomes with a workflow your QA team can review.",
+    title: "Guardrails and review",
+    description: "Use confidence checks, approval gates, audit logs, and escalation rules for work that needs human judgment.",
   },
 ]
 
 const useCases = [
   {
-    title: "Customer support and service",
-    description: "Handle routine inbound questions, triage requests, and capture clean case data without increasing headcount.",
+    title: "Lead research and outbound ops",
+    description: "Research accounts, qualify fit, draft contextual outreach, update CRM fields, and keep sales follow-up moving.",
   },
   {
-    title: "Collections and payment reminders",
-    description: "Run high-volume reminder and follow-up campaigns with a consistent script, escalation path, and outcome log.",
+    title: "Support and back-office triage",
+    description: "Classify requests, summarize history, draft replies, route exceptions, and keep internal teams aligned.",
   },
   {
-    title: "Admissions and onboarding",
-    description: "Qualify applicants, answer repeat questions, and move prospects forward with structured intake on every call.",
+    title: "Document and data extraction",
+    description: "Extract structured fields from PDFs, emails, forms, spreadsheets, and messy operational records.",
   },
   {
-    title: "Booking and confirmation flows",
-    description: "Automate appointment reminders, reservation confirmations, and status updates with voice plus follow-up messaging.",
+    title: "Reporting and decision support",
+    description: "Turn scattered data into weekly summaries, risk flags, next actions, and dashboards your team can trust.",
   },
   {
-    title: "Outbound qualification",
-    description: "Pre-qualify leads, route high-intent prospects to your team, and keep disposition data synced to your systems.",
+    title: "Product copilots and AI features",
+    description: "Add assistants, retrieval, generation, recommendations, and workflow actions directly inside your product.",
   },
 ]
 
 const enterpriseSignals = [
   "Cloud-native deployment with a path for stricter environment and data handling requirements",
-  "API-first call triggering for reminders, support workflows, campaigns, and follow-up operations",
-  "Voice + workflow integrations across telephony, CRM, help desk, and automation tools",
-  "Post-call summaries, action items, and case-level intelligence for QA and operations review",
+  "API-first automations for internal workflows, customer-facing features, and scheduled operations",
+  "Integrations across CRM, help desk, data stores, messaging, docs, spreadsheets, and automation tools",
+  "Structured logs, human review points, evals, and workflow-level observability for production use",
 ]
 
-const integrations = ["Twilio", "Plivo", "Exotel", "Salesforce", "HubSpot", "Freshworks", "Zoho", "Zapier", "Make", "n8n"]
+const integrations = ["HubSpot", "Salesforce", "Freshworks", "Zoho", "Slack", "Google Workspace", "Airtable", "Notion", "Postgres", "Zapier", "Make", "n8n"]
 
 const bookingSteps = [
   "Pick a time that works for you",
-  "Bring one call workflow you want to automate",
-  "Get a practical rollout recommendation from our team",
+  "Bring one workflow your team still handles manually",
+  "Get a practical automation plan from our team",
 ]
 
 const bestFit = [
-  "Support, CX, and call-center teams handling repeat inbound volume",
-  "Collections, reminders, qualification, and structured outbound workflows",
-  "Ops leaders who need speed, observability, and a clean escalation path",
+  "Founders, operators, and growth teams with repeated work across multiple tools",
+  "Teams that need agents, copilots, extraction, routing, or GTM automation in production",
+  "Product teams adding AI features to real customer workflows rather than demos",
 ]
 
 const notFor = [
-  "Teams looking for a consumer chatbot or generic AI demo",
-  "Use cases without a clear workflow, call objective, or operational owner",
-  "Projects that only need research slides rather than production rollout",
+  "Teams looking for a generic chatbot skin with no workflow behind it",
+  "Use cases without a clear owner, input, decision path, or success metric",
+  "Projects that only need research slides rather than a working production rollout",
 ]
 
 function LandingHeader() {
@@ -126,7 +126,7 @@ function LandingHeader() {
           <Image src="/xagi-icon.png" alt="xAGI Labs" width={28} height={28} />
           <div className="flex items-baseline gap-2">
             <span className="text-base font-semibold tracking-tight text-stone-950 dark:text-stone-100">xAGI Labs</span>
-            <span className="text-xs uppercase tracking-[0.22em] text-stone-500 dark:text-stone-400">Voice</span>
+            <span className="text-xs uppercase tracking-[0.22em] text-stone-500 dark:text-stone-400">Automation</span>
           </div>
         </Link>
 
@@ -147,10 +147,10 @@ function LandingHeader() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/voice-ai"
+            href="/services"
             className="hidden text-sm text-stone-600 transition-colors hover:text-stone-950 md:inline-flex dark:text-stone-300 dark:hover:text-white"
           >
-            Platform details
+            Services
           </Link>
           <BookingCta
             placement="header"
@@ -171,12 +171,15 @@ function LandingFooter() {
         <div>
           <p className="text-sm font-medium text-stone-950 dark:text-stone-100">xAGI Labs</p>
           <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
-            Voice agents for support, operations, and high-volume call workflows.
+            AI automation systems for operations, growth, support, and product teams.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-5 text-sm text-stone-600 dark:text-stone-400">
-          <Link href="/voice-ai" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Voice platform
+          <Link href="/services" className="transition-colors hover:text-stone-950 dark:hover:text-white">
+            Services
+          </Link>
+          <Link href="/autoclaw" className="transition-colors hover:text-stone-950 dark:hover:text-white">
+            AutoClaw
           </Link>
           <Link
             href="/contact"
@@ -202,10 +205,10 @@ function HomePageStructuredData() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: "Voice agent implementation and AI call center automation",
-    name: "xAGI Voice Agents",
+    serviceType: "AI automation implementation and AI product engineering",
+    name: "xAGI Labs AI Automation",
     description:
-      "AI voice agents for customer support automation, collections, admissions, booking, and outbound qualification workflows.",
+      "Production AI automation systems, agents, copilots, workflow integrations, and AI product features for operations and growth teams.",
     provider: {
       "@type": "Organization",
       name: "xAGI Labs",
@@ -221,13 +224,13 @@ function HomePageStructuredData() {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Voice Agents for Customer Operations",
+    name: "AI Automation Systems for Operations and Growth",
     description:
-      "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification.",
+      "Build production AI automations, agents, copilots, and workflow integrations for operations, growth, support, and product teams.",
     url: "https://xagi.in",
     about: {
       "@type": "Thing",
-      name: "AI voice agents",
+      name: "AI automation",
     },
   }
 
@@ -251,21 +254,20 @@ export default function HomePage() {
           <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:py-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:px-8">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-stone-300 bg-stone-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300">
-                <PhoneCall className="h-3.5 w-3.5" />
-                Voice agents for customer operations
+                <Brain className="h-3.5 w-3.5" />
+                AI automations for real workflows
               </div>
               <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[0.96] tracking-tight text-stone-950 sm:text-5xl md:text-6xl dark:text-stone-50">
-                AI voice agents for customer support automation and high-volume call workflows.
+                AI automation systems for the work your team still does by hand.
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg sm:leading-8 dark:text-stone-300">
-                xAGI helps operations, support, and CX teams launch reliable AI call center workflows for inbound
-                service, collections, admissions, booking, and outbound qualification without building a separate
-                call-center stack from scratch.
+                xAGI Labs helps growth, operations, support, and product teams turn repeated manual work into
+                production AI agents, copilots, and integrations that fit the systems they already use.
               </p>
 
               <div className="mt-5 rounded-2xl border border-stone-200 bg-white/80 p-4 text-sm text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300">
                 <p className="font-medium text-stone-950 dark:text-stone-100">
-                  Best for teams handling repeat support, collections, admissions, booking, and qualification calls.
+                  Best for teams with a real workflow to automate: research, routing, extraction, follow-up, reporting, or product AI.
                 </p>
               </div>
 
@@ -278,10 +280,10 @@ export default function HomePage() {
                   <ArrowRight className="h-4 w-4" />
                 </BookingCta>
                 <Link
-                  href="/voice-ai"
+                  href="/services"
                   className="hidden items-center gap-2 text-sm font-medium text-stone-700 transition-colors hover:text-stone-950 sm:inline-flex dark:text-stone-300 dark:hover:text-white"
                 >
-                  See the full voice platform
+                  Explore services
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -301,16 +303,16 @@ export default function HomePage() {
 
               <div className="mt-6 grid gap-3 text-sm text-stone-600 sm:grid-cols-3 dark:text-stone-400">
                 <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">Low-latency conversations</p>
-                  <p className="mt-1">Realtime turn-taking with interruption handling for live customer calls.</p>
+                  <p className="font-medium text-stone-950 dark:text-stone-100">Workflow design</p>
+                  <p className="mt-1">Start from the job, edge cases, owners, and handoffs before choosing the model.</p>
                 </div>
                 <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">Operational control</p>
-                  <p className="mt-1">Escalation rules, structured capture, and post-call reporting built in.</p>
+                  <p className="font-medium text-stone-950 dark:text-stone-100">System integration</p>
+                  <p className="mt-1">Connect data, docs, APIs, CRM, help desk, and internal tools without creating a shadow stack.</p>
                 </div>
                 <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">Stack-friendly rollout</p>
-                  <p className="mt-1">Telephony, CRM, and workflow integrations for teams that need speed to launch.</p>
+                  <p className="font-medium text-stone-950 dark:text-stone-100">Production monitoring</p>
+                  <p className="mt-1">Review outputs, trace decisions, and expand scope only after the workflow holds up.</p>
                 </div>
               </div>
             </div>
@@ -321,10 +323,10 @@ export default function HomePage() {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
-                        Ops console
+                        Automation console
                       </p>
                       <h2 className="mt-2 text-xl font-semibold text-stone-950 dark:text-stone-100">
-                        Voice workflow in production
+                        Workflow in production
                       </h2>
                     </div>
                     <div className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">
@@ -334,34 +336,34 @@ export default function HomePage() {
 
                   <div className="mt-6 grid gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Average latency</p>
-                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">&lt; 1s</p>
-                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Built for fluid turn-taking during live calls.</p>
+                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Review mode</p>
+                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">Human</p>
+                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Approval gates stay in place where judgment matters.</p>
                     </div>
                     <div className="rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Workflow proof</p>
-                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">Collections</p>
-                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Named workflow configured for reminders, outcomes, and escalation.</p>
+                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Workflow type</p>
+                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">GTM ops</p>
+                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Account research, enrichment, CRM updates, and drafted follow-up.</p>
                     </div>
                   </div>
 
                   <div className="mt-4 rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
                     <div className="flex items-center justify-between gap-3">
                       <p className="text-sm font-medium text-stone-950 dark:text-stone-100">Active workflow</p>
-                      <span className="text-xs text-stone-500 dark:text-stone-400">Collections follow-up</span>
+                      <span className="text-xs text-stone-500 dark:text-stone-400">Lead research to CRM</span>
                     </div>
                     <div className="mt-4 space-y-3 text-sm text-stone-600 dark:text-stone-300">
                       <div className="flex items-start gap-3">
                         <Sparkles className="mt-0.5 h-4 w-4 text-amber-600 dark:text-amber-300" />
-                        <p>Verifies caller context, balance status, and preferred language before starting the conversation.</p>
+                        <p>Finds company context, fit signals, recent activity, and the reason the account is worth pursuing.</p>
                       </div>
                       <div className="flex items-start gap-3">
                         <Waypoints className="mt-0.5 h-4 w-4 text-stone-700 dark:text-stone-200" />
-                        <p>Triggers CRM updates and reminder workflows based on call outcome and next-step intent.</p>
+                        <p>Updates CRM fields, queues a suggested next step, and routes unclear accounts for human review.</p>
                       </div>
                       <div className="flex items-start gap-3">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                        <p>Escalates exceptions to a live agent when confidence, policy, or customer tone crosses threshold.</p>
+                        <p>Logs sources, output quality, and approval state so the team can inspect what happened later.</p>
                       </div>
                     </div>
                   </div>
@@ -397,8 +399,8 @@ export default function HomePage() {
                 A practical rollout path for ops teams.
               </h2>
               <p className="mt-4 text-base leading-8 text-stone-600 dark:text-stone-400">
-                Start with a narrow workflow, connect the systems you already use, then scale once the conversation and
-                outcomes are stable.
+                Start with a narrow workflow, connect the systems you already use, then scale once outputs, reviews,
+                and business outcomes are stable.
               </p>
             </div>
 
@@ -449,11 +451,11 @@ export default function HomePage() {
                 Reliability
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                Designed for workflows that cannot fall apart mid-call.
+                Designed for workflows that cannot quietly drift or break.
               </h2>
               <p className="mt-4 text-base leading-8 text-stone-600 dark:text-stone-400">
-                The platform combines realtime conversation quality, operational control, and traceable outcomes so
-                your team can trust it in front of customers.
+                The platform combines grounded AI, tool execution, operational control, and traceable outcomes so
+                your team can trust it in front of customers and internal stakeholders.
               </p>
 
               <div className="mt-8 rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
@@ -461,19 +463,19 @@ export default function HomePage() {
                 <ul className="mt-4 space-y-3 text-sm text-stone-600 dark:text-stone-400">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Inbound and outbound call control
+                    Research, summarization, extraction, and classification
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Knowledge-grounded answers and tool-triggered workflows
+                    Knowledge-grounded outputs and tool-triggered workflows
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Structured summaries, action items, and disposition logging
+                    Structured summaries, action items, and state logging
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Escalation to live teams with context preserved
+                    Escalation to humans with context preserved
                   </li>
                 </ul>
               </div>
@@ -500,7 +502,7 @@ export default function HomePage() {
                 Use cases
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                Built for the call workflows most teams want off their backlog.
+                Built for the automations most teams keep postponing.
               </h2>
             </div>
 
@@ -572,7 +574,7 @@ export default function HomePage() {
                     Ready to launch
                   </p>
                   <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                    Put a voice workflow into production with a cleaner path to rollout.
+                    Put one AI automation into production with a cleaner path to rollout.
                   </h2>
                   <p className="mt-4 text-base leading-8 text-stone-300 dark:text-stone-700">
                     Start with one operational workflow, validate quality and outcomes, and expand once the system is
