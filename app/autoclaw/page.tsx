@@ -46,7 +46,7 @@ export default function Page() {
     <ChainClawLandingPage
       productName="AutoClaw"
       heroImageSrc="/images/chainclaw/autoclaw.png"
-      startFreeHref="https://calendar.app.google/94mtSE2aw7RnSWhj8"
+      startFreeHref="https://calendar.app.google/yYAbUMWrhogUCZBm8"
       openStartFreeInNewTab
     />
   )

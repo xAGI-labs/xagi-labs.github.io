@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from "lucide-react"
 
-const bookingHref = "https://calendar.app.google/94mtSE2aw7RnSWhj8"
+const bookingHref = "https://calendar.app.google/yYAbUMWrhogUCZBm8"
 
 const proofStats = [
   { label: "Typical Cost Reduction", value: "90-99%" },
