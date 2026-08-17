@@ -4,7 +4,7 @@ date: "2026-03-26T18:30:00.000Z"
 description: "A practical guide to running a successful AI pilot with xAGI Labs: kickoff, KPIs, timeline, limited production rollout, and expansion planning."
 keywords:
   - run ai pilot
-  - xagi labs pilot
+  - xAGI Labs pilot
   - ai pilot framework
   - voice ai pilot
   - pilot success metrics

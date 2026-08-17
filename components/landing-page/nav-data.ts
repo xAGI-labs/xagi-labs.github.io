@@ -23,7 +23,7 @@ export const resourcesDropdownData: SubNavItem[][] = [
     },
     {
       title: "Call Center AI",
-      description: "Enterprise voice automation offering by XAGI Labs",
+      description: "Enterprise voice automation offering by xAGI Labs",
       href: "/call-center-ai",
       icon: Headset,
       color: iconColors.resources.blog,
