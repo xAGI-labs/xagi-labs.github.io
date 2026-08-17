@@ -42,6 +42,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/pipekit" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Pipekit
+                </Link>
+              </li>
+              <li>
                 <Link href="/call-center-ai" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   Call Center AI
                 </Link>
