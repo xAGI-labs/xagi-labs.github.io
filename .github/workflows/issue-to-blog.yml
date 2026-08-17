@@ -61,7 +61,7 @@ description: "${excerpt.replace(/"/g, '\\"')}"
 keywords:
   - github issue
   - blog automation
-  - xagi labs
+  - xAGI Labs
 author: "xAGI Labs"
 category: "Automation"
 canonical: "https://xagi.in/blog/${path.basename(filePath, '.md')}"

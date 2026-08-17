@@ -149,10 +149,10 @@ export default function CallCenterAIPage() {
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 dark:border-blue-900/50 bg-white/80 dark:bg-[#0f1725] px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-300 mb-6">
               <PhoneCall className="h-4 w-4" />
-              XAGI Labs Business Offering
+              xAGI Labs Business Offering
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
-              Call Center AI by XAGI Labs
+              Call Center AI by xAGI Labs
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto mb-8">
               Enterprise-grade AI call center platform for inbound support, outbound campaigns, and automated case
@@ -244,7 +244,7 @@ export default function CallCenterAIPage() {
           <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a] p-8 md:p-10">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Reference Architecture We Productize</h2>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              This offering is built on a proven open-source call-center pattern and hardened by XAGI Labs for
+              This offering is built on a proven open-source call-center pattern and hardened by xAGI Labs for
               enterprise rollout, integration depth, and production operations.
             </p>
             <ul className="grid md:grid-cols-2 gap-3">
@@ -265,7 +265,7 @@ export default function CallCenterAIPage() {
               >
                 call-center-ai open-source project
               </a>
-              . XAGI Labs delivers customization, deployment, integrations, and managed operations as a commercial
+              . xAGI Labs delivers customization, deployment, integrations, and managed operations as a commercial
               offering.
             </p>
           </div>
@@ -276,7 +276,7 @@ export default function CallCenterAIPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a] p-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-              Launch Your AI Call Center with XAGI Labs
+              Launch Your AI Call Center with xAGI Labs
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
               From design to production operations, we partner with your team to deploy a measurable, secure, and
