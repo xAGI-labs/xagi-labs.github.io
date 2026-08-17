@@ -22,6 +22,26 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Products</h4>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
+                <Link href="/projects/kisspdf" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  KissPDF
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects/open-gurukul" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Open Gurukul
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects/orgpage" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Orgpage
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects/haryanvi-tts" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Haryanvi TTS
+                </Link>
+              </li>
+              <li>
                 <Link href="/ideal" className="hover:text-gray-900 dark:hover:text-white transition-colors">
                   iDeal
                 </Link>
@@ -149,7 +169,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-600 dark:text-gray-400">
-          © 2025 xAGI Labs. All rights reserved.
+          © {new Date().getFullYear()} xAGI Labs. All rights reserved.
         </div>
       </div>
     </footer>

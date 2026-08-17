@@ -16,7 +16,7 @@ import {
 } from "lucide-react"
 import Header from "@/components/shared/header"
 
-const chromeWebStoreUrl = "TODO_CHROME_WEB_STORE_URL"
+const orgpagePilotUrl = "/contact?product=orgpage"
 
 export const metadata: Metadata = {
   title: "Orgpage - Company homepage for every new tab",
@@ -129,13 +129,13 @@ export default function OrgpageLandingPage() {
                 a simple internal homepage without adopting a heavy intranet.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={chromeWebStoreUrl}
+                <Link
+                  href={orgpagePilotUrl}
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-zinc-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
                 >
-                  Get Orgpage
+                  Join the Orgpage pilot
                   <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                </a>
+                </Link>
                 <Link
                   href="/orgpage/privacy"
                   className="inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-950 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:border-white"
@@ -339,9 +339,9 @@ export default function OrgpageLandingPage() {
             <Link href="/orgpage/privacy" className="font-medium hover:text-zinc-950 dark:hover:text-white">
               Privacy Policy
             </Link>
-            <a href={chromeWebStoreUrl} className="font-medium hover:text-zinc-950 dark:hover:text-white">
-              Chrome Web Store
-            </a>
+            <Link href="/projects/orgpage" className="font-medium hover:text-zinc-950 dark:hover:text-white">
+              Project notes
+            </Link>
           </div>
         </div>
       </footer>

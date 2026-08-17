@@ -9,7 +9,7 @@ export default function ProjectNotFound() {
       <div className="container py-20 text-center">
         <h1 className="text-4xl md:text-5xl font-medium text-black dark:text-white mb-4">Project Not Found</h1>
         <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-          The project you're looking for doesn't exist or has been moved.
+          The project you’re looking for doesn’t exist or has been moved.
         </p>
         <Link
           href="/portfolio"

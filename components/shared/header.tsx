@@ -27,7 +27,7 @@ export default function Header() {
             <span className="text-xl font-bold">xAGI Labs</span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-6">
             <Link href="/autoclaw" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               AutoClaw
             </Link>
@@ -36,6 +36,9 @@ export default function Header() {
             </Link>
             <Link href="/siliconhalli" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Silicon Halli
+            </Link>
+            <Link href="/portfolio" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+              Projects
             </Link>
             <Link href="/services" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Services
@@ -65,7 +68,7 @@ export default function Header() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -75,7 +78,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a]">
+        <div className="lg:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a]">
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <Link href="/autoclaw" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               AutoClaw
@@ -85,6 +88,9 @@ export default function Header() {
             </Link>
             <Link href="/siliconhalli" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Silicon Halli
+            </Link>
+            <Link href="/portfolio" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              Projects
             </Link>
             <Link href="/services" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Services

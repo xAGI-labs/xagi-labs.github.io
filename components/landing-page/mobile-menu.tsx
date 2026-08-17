@@ -77,7 +77,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {mounted ? (
               <Image
                 src={logoSrc || "/placeholder.svg"}
-                alt="Automatic Logo"
+                alt="xAGI Labs"
                 width={150}
                 height={40}
                 className="h-8 w-auto"

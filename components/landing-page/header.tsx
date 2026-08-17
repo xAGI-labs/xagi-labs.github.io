@@ -72,7 +72,7 @@ export default function Header() {
               {mounted ? (
                 <Image
                   src={logoSrc || "/placeholder.svg"}
-                  alt="Automatic Logo"
+                  alt="xAGI Labs"
                   width={200}
                   height={50}
                   className="h-12 w-auto"
