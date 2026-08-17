@@ -24,7 +24,7 @@ export default function Footer() {
           {mounted ? (
             <Image
               src={logoSrc || "/placeholder.svg"}
-              alt="Automatic Logo"
+              alt="xAGI Labs"
               width={200}
               height={50}
               className="h-12 w-auto"
@@ -38,6 +38,12 @@ export default function Footer() {
         </p>
 
         <div className="mb-6 flex flex-col items-center gap-2">
+          <Link
+            href="/portfolio"
+            className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            Projects
+          </Link>
           <Link
             href="/call-center-ai"
             className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
@@ -65,7 +71,7 @@ export default function Footer() {
         </div>
 
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          © {new Date().getFullYear()} Automatic. All rights reserved.
+          © {new Date().getFullYear()} xAGI Labs. All rights reserved.
         </p>
       </div>
     </footer>

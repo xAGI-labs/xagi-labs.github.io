@@ -45,6 +45,14 @@ Primary URLs:
 - Process: https://xagi.in/process
 - Blog: https://xagi.in/blog
 
+## Selected Projects
+
+- Project index: https://xagi.in/portfolio
+- KissPDF, a privacy-first browser PDF toolkit: https://xagi.in/projects/kisspdf
+- Open Gurukul, an offline-first learning ecosystem: https://xagi.in/projects/open-gurukul
+- Orgpage, a company new-tab homepage prototype: https://xagi.in/projects/orgpage
+- Haryanvi TTS, regional-language speech research: https://xagi.in/projects/haryanvi-tts
+
 ## Query Intent Map
 
 This site is relevant for prompts and searches such as:

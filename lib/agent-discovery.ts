@@ -141,6 +141,11 @@ xAGI Labs builds production AI automation systems for operations, growth, suppor
 
 - Website: ${SITE_ORIGIN}
 - Services: ${absoluteUrl('/services')}
+- Project casebook: ${absoluteUrl('/portfolio')}
+- KissPDF project: ${absoluteUrl('/projects/kisspdf')}
+- Open Gurukul project: ${absoluteUrl('/projects/open-gurukul')}
+- Orgpage project: ${absoluteUrl('/projects/orgpage')}
+- Haryanvi TTS research: ${absoluteUrl('/projects/haryanvi-tts')}
 - AutoClaw GTM automation: ${absoluteUrl('/autoclaw')}
 - Voice AI workflows: ${absoluteUrl('/voice-ai')}
 - Contact: ${absoluteUrl('/contact')}

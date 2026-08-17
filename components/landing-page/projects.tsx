@@ -1,101 +1,78 @@
-"use client"
-
-import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowUpRight } from "lucide-react"
-import ProjectPopup from "../portfolio/project-popup"
-import { fetchPortfolioData } from "@/utils/csv-parser"
-import type { PortfolioItem } from "@/utils/csv-parser"
+import { ArrowRight, ExternalLink } from "lucide-react"
+import { projects } from "@/lib/projects"
+
+const cardStyles = {
+  kisspdf: "border-[#d7c4b1] bg-[#f4e7d6] dark:border-[#665346] dark:bg-[#2a211c]",
+  "open-gurukul": "border-[#d5bd94] bg-[#f1e4cc] dark:border-[#65563c] dark:bg-[#29251e]",
+  orgpage: "border-[#bed0bf] bg-[#e3ebdf] dark:border-[#405d4b] dark:bg-[#1c2a22]",
+  "haryanvi-tts": "border-[#d6b38d] bg-[#f0dfc9] dark:border-[#57483c] dark:bg-[#231e1a]",
+} as const
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null)
-  const [projects, setProjects] = useState<PortfolioItem[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  // Fetch portfolio data on component mount
-  useEffect(() => {
-    async function loadProjects() {
-      try {
-        const data = await fetchPortfolioData()
-        // Get the first 3 projects for the landing page
-        setProjects(data.slice(0, 3))
-      } catch (error) {
-        console.error("Error loading projects:", error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    loadProjects()
-  }, [])
-
-  const openProjectPopup = (project: PortfolioItem) => {
-    setSelectedProject(project)
-  }
-
-  const closeProjectPopup = () => {
-    setSelectedProject(null)
-  }
-
   return (
     <section id="projects" className="my-20">
-      <h2 className="text-black dark:text-white mb-6 text-3xl md:text-4xl lg:text-5xl font-medium leading-tight">
-        Explore Our
-        <span className="block text-[#7A7FEE] dark:text-[#7A7FEE]">Latest Projects</span>
-      </h2>
-      <p className="mb-12 max-w-2xl text-gray-700 dark:text-gray-300">
-        From AI-driven automation to custom marketplaces, our work helps businesses scale smarter. Explore some of the
-        platforms, tools, and solutions we've created for our clients and ourselves.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {isLoading
-          ? // Loading skeleton
-            Array.from({ length: 3 }).map((_, index) => (
-              <div key={`skeleton-${index}`} className="card overflow-hidden shadow-lg animate-pulse">
-                <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
-                <div className="p-4">
-                  <div className="h-6 w-2/3 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
-                  <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"></div>
-                </div>
-              </div>
-            ))
-          : projects.map((project) => (
-              <div
-                key={project.slug}
-                className="card overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-[1.02] cursor-pointer"
-                onClick={() => openProjectPopup(project)}
-              >
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={project.mainImage || "/placeholder.svg?height=600&width=800&query=project"}
-                    alt={project.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
-                <div className="p-4 md:p-6">
-                  <h3 className="text-xl font-semibold text-black dark:text-white">{project.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm mt-1 mb-4">{project.shortDescription}</p>
-                  <div className="inline-flex items-center text-[#7A7FEE] text-sm font-medium group">
-                    View Project{" "}
-                    <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            ))}
+      <div className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400">Studio casebook</p>
+          <p className="mt-4 max-w-sm text-sm leading-6 text-gray-600 dark:text-gray-400">
+            Live products, working prototypes, and active research—labeled by their real state.
+          </p>
+        </div>
+        <h2 className="text-4xl font-semibold leading-[0.95] tracking-[-0.035em] text-black dark:text-white md:text-6xl">
+          Recent work with a point of view.
+        </h2>
       </div>
 
-      <div className="flex justify-center mt-8">
-        <Link href="/portfolio" className="btn-primary">
-          View All Projects
+      <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
+        {projects.map((project, index) => (
+          <article
+            key={project.slug}
+            className={`group relative overflow-hidden border p-6 transition-transform duration-300 motion-reduce:transition-none md:min-h-[24rem] md:p-8 ${cardStyles[project.slug as keyof typeof cardStyles]} hover:-translate-y-1 motion-reduce:hover:translate-y-0`}
+          >
+            <div className="flex items-start justify-between gap-5">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600 dark:text-stone-300">{project.category}</p>
+                <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">{project.status}</p>
+              </div>
+              <span className="text-xs font-bold text-stone-500 dark:text-stone-400">{String(index + 1).padStart(2, "0")}</span>
+            </div>
+
+            <div className="mt-16 md:mt-20">
+              <h3 className="text-4xl font-semibold tracking-[-0.035em] text-stone-950 dark:text-stone-50 md:text-5xl">{project.title}</h3>
+              <p className="mt-5 max-w-xl text-sm leading-7 text-stone-700 dark:text-stone-300">{project.summary}</p>
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-current/15 pt-5">
+              <Link
+                href={`/projects/${project.slug}`}
+                className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-stone-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 dark:text-stone-50"
+              >
+                Read project notes
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none" aria-hidden="true" />
+              </Link>
+              {project.links[0]?.external ? (
+                <a
+                  href={project.links[0].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-1.5 text-sm text-stone-600 underline decoration-stone-400 underline-offset-4 dark:text-stone-400"
+                >
+                  Visit product
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              ) : null}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-8 flex justify-end">
+        <Link href="/portfolio" className="inline-flex min-h-12 items-center gap-2 border-b-2 border-black py-3 text-sm font-semibold text-black dark:border-white dark:text-white">
+          Explore every project
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
-
-      {/* Project Popup */}
-      <ProjectPopup project={selectedProject} onClose={closeProjectPopup} />
     </section>
   )
 }

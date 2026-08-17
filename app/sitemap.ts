@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
+import { projects } from '@/lib/projects'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://xagi.in'
@@ -218,21 +219,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Portfolio project pages
-  const portfolioSlugs = [
-    'sample-saas-platform',
-    'ecommerce-marketplace',
-    'ai-content-generator',
-    'fintech-dashboard',
-    'healthcare-platform',
-    'blockchain-analytics',
-  ]
-
-  const portfolioPages = portfolioSlugs.map((slug) => ({
-    url: `${baseUrl}/portfolio/${slug}`,
+  const projectPages = projects.map((project) => ({
+    url: `${baseUrl}/projects/${project.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: 0.8,
   }))
 
   // Blog posts
@@ -244,5 +235,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...portfolioPages, ...blogPages]
+  return [...staticPages, ...projectPages, ...blogPages]
 }
