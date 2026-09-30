@@ -271,5 +271,7 @@
 }
 
 .loginLink { font-size: 12px; font-weight: 600; white-space: nowrap; }
-.demoNote { margin-top: 14px; font-size: 12px; line-height: 1.7; color: var(--muted); max-width: 420px; }
+.demoNote { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; margin-top: 14px; font-size: 12px; line-height: 1.7; color: var(--muted); max-width: 420px; }
+.demoLink { display: inline-flex; align-items: center; gap: 4px; padding-block: 6px; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.demoLink:hover { color: var(--gold); }
 @media (max-width: 600px) { .loginLink { display: none; } }

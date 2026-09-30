@@ -96,7 +96,7 @@ export default function HomePage() {
                 <a href="https://app.xagi.in/demo" className={styles.button}>Try the app <ArrowUpRight size={17} /></a>
                 <BookingCta placement="hero" className={styles.textLink}>Book a discovery call <ArrowUpRight size={16} /></BookingCta>
               </div>
-              <p className={styles.demoNote}>A ready-made demo account. Sample data included. No signup needed.</p>
+              <p className={styles.demoNote}><a href="https://app.xagi.in/demo" className={styles.demoLink}>Explore demo <ArrowUpRight size={14} aria-hidden="true" /></a><span>Sample data included. No signup needed.</span></p>
               <div className={styles.heroNotes}>
                 <div><strong>Your tools.</strong><span>Connected, not replaced.</span></div>
                 <div><strong>Your rules.</strong><span>People stay in control.</span></div>
