@@ -69,7 +69,8 @@ export default function HomePage() {
             <button className={styles.iconButton} aria-label={mounted && resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"} onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}>
               {mounted && resolvedTheme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
             </button>
-            <BookingCta placement="header" className={`${styles.button} ${styles.headerCta}`}>Let’s talk <ArrowUpRight size={15} /></BookingCta>
+            <a href="https://app.xagi.in/sign-in" className={styles.loginLink}>Log in</a>
+            <a href="https://app.xagi.in/demo" className={`${styles.button} ${styles.headerCta}`}>Try the app <ArrowUpRight size={15} /></a>
             <button className={`${styles.iconButton} ${styles.menuButton}`} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="home-mobile-nav" onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <X size={23} /> : <Menu size={23} />}
             </button>
@@ -78,6 +79,8 @@ export default function HomePage() {
         {menuOpen && <nav id="home-mobile-nav" className={styles.mobileNav} aria-label="Mobile navigation" onKeyDown={(event) => { if (event.key === "Escape") setMenuOpen(false) }}>
           {navigation.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}<ArrowUpRight size={16} /></a>)}
           <Link href="/services" onClick={() => setMenuOpen(false)}>All services <ArrowUpRight size={16} /></Link>
+          <a href="https://app.xagi.in/sign-in">Log in to your workspace <ArrowUpRight size={16} /></a>
+          <a href="https://app.xagi.in/demo">Explore the demo account <ArrowUpRight size={16} /></a>
         </nav>}
       </header>
 
@@ -90,9 +93,10 @@ export default function HomePage() {
               <p className={styles.heroDescription}>An AI team for the work between the work.</p>
               <p className={styles.heroBody}>xAGI Labs builds agents that handle conversations, move opportunities forward, and connect your operations — inside the tools you already use.</p>
               <div className={styles.actions}>
-                <BookingCta placement="hero" className={styles.button}>Book a discovery call <ArrowUpRight size={17} /></BookingCta>
-                <a href="#agents" className={styles.textLink}>Meet your AI team <ArrowDown size={16} /></a>
+                <a href="https://app.xagi.in/demo" className={styles.button}>Try the app <ArrowUpRight size={17} /></a>
+                <BookingCta placement="hero" className={styles.textLink}>Book a discovery call <ArrowUpRight size={16} /></BookingCta>
               </div>
+              <p className={styles.demoNote}>A ready-made demo account. Sample data included. No signup needed.</p>
               <div className={styles.heroNotes}>
                 <div><strong>Your tools.</strong><span>Connected, not replaced.</span></div>
                 <div><strong>Your rules.</strong><span>People stay in control.</span></div>
@@ -171,7 +175,7 @@ export default function HomePage() {
       <footer className={styles.footer}>
         <div className={`${styles.container} ${styles.footerGrid}`}>
           <div><Link href="/" aria-label="xAGI Labs home"><Wordmark /></Link><p>Applied intelligence.<br />Thoughtfully built.</p></div>
-          <div><h2>EXPLORE</h2><Link href="/voice-ai">Voice AI</Link><Link href="/services">AI automation</Link><Link href="/autoclaw">AutoClaw</Link><Link href="/portfolio">Our work</Link></div>
+          <div><h2>EXPLORE</h2><a href="https://app.xagi.in/demo">Try the app</a><a href="https://app.xagi.in/sign-in">Log in</a><Link href="/voice-ai">Voice AI</Link><Link href="/services">AI automation</Link><Link href="/autoclaw">AutoClaw</Link><Link href="/portfolio">Our work</Link></div>
           <div><h2>THE LAB</h2><Link href="/process">Our approach</Link><Link href="/blog">Ideas & insights</Link><Link href="/team">About us</Link><Link href="/contact">Contact</Link></div>
           <div><h2>LET’S CONNECT</h2><a href="mailto:saurav@xagi.in">saurav@xagi.in <ArrowUpRight size={13} /></a><BookingCta placement="footer" className={styles.footerBooking}>Book a discovery call <ArrowUpRight size={13} /></BookingCta></div>
         </div>
