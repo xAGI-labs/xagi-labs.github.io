@@ -4,6 +4,9 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-05-13",
   "compatibility_flags": ["nodejs_compat"],
+  // next-themes serializes its startup function into browser JavaScript.
+  // Keep esbuild's server-only __name helper out of that serialized function.
+  "keep_names": false,
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"

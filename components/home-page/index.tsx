@@ -1,206 +1,185 @@
 "use client"
 
-import Image from "next/image"
+import { useEffect, useState } from "react"
 import Link from "next/link"
-import { ArrowRight, Bot, Brain, CheckCircle2, Database, Globe, Shield, Sparkles, Waypoints, Workflow } from "lucide-react"
+import { Cormorant_Garamond } from "next/font/google"
+import { ArrowDown, ArrowRight, ArrowUpRight, Check, Menu, Moon, Phone, Plus, Sun, Workflow, X } from "lucide-react"
+import { useTheme } from "next-themes"
 import BookingCta from "@/components/home-page/booking-cta"
-import MobileBookingBar from "@/components/home-page/mobile-booking-bar"
 import PaidTrafficTracking from "@/components/home-page/paid-traffic-tracking"
-import { trackMarketingEvent } from "@/lib/marketing-attribution"
+import styles from "./home.module.css"
 
-const proofPoints = [
-  {
-    title: "Workflow automation",
-    description: "Turn repetitive research, data entry, routing, reporting, and follow-up into reliable AI-assisted workflows.",
-  },
-  {
-    title: "Internal copilots",
-    description: "Give teams agents that search company knowledge, draft decisions, update systems, and keep context attached.",
-  },
-  {
-    title: "GTM automation",
-    description: "Automate lead research, account scoring, outreach preparation, CRM hygiene, and handoffs between growth tools.",
-  },
-  {
-    title: "AI product features",
-    description: "Embed assistants, extraction, generation, recommendations, and decision support inside the products you already ship.",
-  },
+const editorial = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-editorial",
+})
+
+const agents = [
+  { number: "01", category: "CUSTOMER EXPERIENCE", name: "Conversations", role: "VOICE & SUPPORT AGENTS", description: "Give every customer a clear next step. Handle routine questions, capture intent, and bring your team in when a conversation needs a human.", features: ["Inbound calls and customer support", "Appointment and enquiry workflows", "Context-rich handoffs to your team"], href: "/voice-ai", link: "Explore voice AI", icon: Phone },
+  { number: "02", category: "SALES & GROWTH", name: "Connections", role: "RESEARCH & FOLLOW-UP AGENTS", description: "Keep opportunities moving. Turn scattered account information into useful research, qualified leads, and follow-up your sales team can act on.", features: ["Account research and lead qualification", "CRM updates and follow-up preparation", "Review and approval before outreach"], href: "/services", link: "Explore growth automation", icon: ArrowUpRight },
+  { number: "03", category: "EVERYDAY OPERATIONS", name: "Flow", role: "WORKFLOW & KNOWLEDGE AGENTS", description: "Give repetitive work a better home. Connect documents, knowledge, and internal tools so your people can focus on the decisions that matter.", features: ["Document extraction and request routing", "Internal copilots grounded in your data", "Reporting, review queues, and audit trails"], href: "/ai-agents-erp", link: "Explore workflow automation", icon: Workflow },
 ]
 
-const launchSteps = [
-  {
-    step: "01",
-    title: "Map the workflow",
-    description: "Find the repeated work, decision points, review rules, success metrics, and fields that need to move between systems.",
-  },
-  {
-    step: "02",
-    title: "Connect knowledge and systems",
-    description: "Integrate docs, databases, CRM, help desk, spreadsheets, APIs, and the tools your team already works inside.",
-  },
-  {
-    step: "03",
-    title: "Launch with monitoring",
-    description: "Start with a narrow production path, review outputs and edge cases, then expand once the automation proves useful.",
-  },
+const examples = [
+  { label: "Voice", title: "Customer conversation", subtitle: "Voice & support agent", request: "Can I book a consultation for next week?", reply: "Of course. What day works best for you? I’ll check the available times.", result: "Intent captured", detail: "Appointment enquiry → booking workflow", icon: Phone },
+  { label: "Growth", title: "A warmer introduction", subtitle: "Research & follow-up agent", request: "Find the right context before our team follows up with this lead.", reply: "I’ve gathered the company context and prepared a follow-up for your review.", result: "Ready for review", detail: "Account research → sales review queue", icon: ArrowUpRight },
+  { label: "Operations", title: "Less work between tools", subtitle: "Workflow & knowledge agent", request: "Pull the key details from this request and send it to the right team.", reply: "The details are structured. I’ve flagged the missing information for your team.", result: "Request organised", detail: "Incoming document → operations queue", icon: Workflow },
 ]
 
-const reliabilityPillars = [
-  {
-    icon: Bot,
-    title: "Agent architecture",
-    description: "Purpose-built agents with scoped tools, memory, evals, and review paths instead of one giant chatbot prompt.",
-  },
-  {
-    icon: Database,
-    title: "Knowledge and data layer",
-    description: "Ground outputs in your SOPs, docs, tables, product data, and business rules with traceable source context.",
-  },
-  {
-    icon: Workflow,
-    title: "Workflow orchestration",
-    description: "Trigger actions across CRM, support, email, spreadsheets, internal tools, and custom APIs with clear state handling.",
-  },
-  {
-    icon: Shield,
-    title: "Guardrails and review",
-    description: "Use confidence checks, approval gates, audit logs, and escalation rules for work that needs human judgment.",
-  },
+const faqs = [
+  ["Where should we start?", "Bring one workflow your team repeats every week. We’ll map the inputs, decisions, tools, and handoffs, then agree on a focused pilot and a useful measure of success."],
+  ["Do we need to replace our existing software?", "We build around the tools you already use. During discovery, we check API access, data quality, permissions, and integration limits before confirming what can be automated."],
+  ["What happens when an agent needs help?", "We define approval and escalation rules with your team. Uncertain answers, exceptions, and sensitive actions can be routed to a person with the relevant context attached."],
+  ["Can you build something specific to our business?", "Yes. xAGI Labs builds custom AI agents, internal copilots, workflow integrations, and AI product features. The scope starts with your business process and the systems it depends on."],
+  ["How long does a rollout take, and what does it cost?", "Timing and pricing depend on the workflow, integrations, data readiness, and review requirements. We agree on scope, milestones, running costs, and success criteria before implementation."],
+  ["How do you approach data access and reliability?", "We scope access to the workflow, agree on data handling requirements, and build in logging, evaluation, and human review. Deployment and security requirements are defined with your team before launch."],
 ]
 
-const useCases = [
-  {
-    title: "Lead research and outbound ops",
-    description: "Research accounts, qualify fit, draft contextual outreach, update CRM fields, and keep sales follow-up moving.",
-  },
-  {
-    title: "Support and back-office triage",
-    description: "Classify requests, summarize history, draft replies, route exceptions, and keep internal teams aligned.",
-  },
-  {
-    title: "Document and data extraction",
-    description: "Extract structured fields from PDFs, emails, forms, spreadsheets, and messy operational records.",
-  },
-  {
-    title: "Reporting and decision support",
-    description: "Turn scattered data into weekly summaries, risk flags, next actions, and dashboards your team can trust.",
-  },
-  {
-    title: "Product copilots and AI features",
-    description: "Add assistants, retrieval, generation, recommendations, and workflow actions directly inside your product.",
-  },
-]
+const navigation = [["The AI team", "#agents"], ["How it works", "#process"], ["Integrations", "#integrations"], ["FAQ", "#faq"]]
 
-const enterpriseSignals = [
-  "Cloud-native deployment with a path for stricter environment and data handling requirements",
-  "API-first automations for internal workflows, customer-facing features, and scheduled operations",
-  "Integrations across CRM, help desk, data stores, messaging, docs, spreadsheets, and automation tools",
-  "Structured logs, human review points, evals, and workflow-level observability for production use",
-]
+function Wordmark() {
+  return <span className={styles.wordmark}>xAGI <span>LABS</span></span>
+}
 
-const integrations = ["HubSpot", "Salesforce", "Freshworks", "Zoho", "Slack", "Google Workspace", "Airtable", "Notion", "Postgres", "Zapier", "Make", "n8n"]
+export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [activeExample, setActiveExample] = useState(0)
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
+  const example = examples[activeExample]
+  const ExampleIcon = example.icon
 
-const bookingSteps = [
-  "Pick a time that works for you",
-  "Bring one workflow your team still handles manually",
-  "Get a practical automation plan from our team",
-]
+  useEffect(() => setMounted(true), [])
 
-const bestFit = [
-  "Founders, operators, and growth teams with repeated work across multiple tools",
-  "Teams that need agents, copilots, extraction, routing, or GTM automation in production",
-  "Product teams adding AI features to real customer workflows rather than demos",
-]
-
-const notFor = [
-  "Teams looking for a generic chatbot skin with no workflow behind it",
-  "Use cases without a clear owner, input, decision path, or success metric",
-  "Projects that only need research slides rather than a working production rollout",
-]
-
-function LandingHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-200/80 bg-stone-50/90 backdrop-blur dark:border-white/10 dark:bg-[#0d0f10]/90">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/xagi-icon.png" alt="xAGI Labs" width={28} height={28} />
-          <div className="flex items-baseline gap-2">
-            <span className="text-base font-semibold tracking-tight text-stone-950 dark:text-stone-100">xAGI Labs</span>
-            <span className="text-xs uppercase tracking-[0.22em] text-stone-500 dark:text-stone-400">Automation</span>
+    <div className={`${styles.page} ${editorial.variable}`}>
+      <HomePageStructuredData />
+      <PaidTrafficTracking />
+      <a className={styles.skipLink} href="#main-content">Skip to content</a>
+      <header className={styles.header}>
+        <div className={`${styles.container} ${styles.headerInner}`}>
+          <Link href="/" aria-label="xAGI Labs home"><Wordmark /></Link>
+          <nav className={styles.desktopNav} aria-label="Main navigation">
+            {navigation.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+          </nav>
+          <div className={styles.headerActions}>
+            <button className={styles.iconButton} aria-label={mounted && resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"} onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}>
+              {mounted && resolvedTheme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+            </button>
+            <BookingCta placement="header" className={`${styles.button} ${styles.headerCta}`}>Let’s talk <ArrowUpRight size={15} /></BookingCta>
+            <button className={`${styles.iconButton} ${styles.menuButton}`} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="home-mobile-nav" onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <X size={23} /> : <Menu size={23} />}
+            </button>
           </div>
-        </Link>
-
-        <nav className="hidden items-center gap-6 text-sm text-stone-600 md:flex dark:text-stone-300">
-          <a href="#proof" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Why it works
-          </a>
-          <a href="#how-it-works" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            How it works
-          </a>
-          <a href="#fit" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Fit
-          </a>
-          <a href="#trust" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Trust
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <Link
-            href="/services"
-            className="hidden text-sm text-stone-600 transition-colors hover:text-stone-950 md:inline-flex dark:text-stone-300 dark:hover:text-white"
-          >
-            Services
-          </Link>
-          <BookingCta
-            placement="header"
-            className="inline-flex items-center gap-2 rounded-full bg-stone-950 px-4 py-2 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-700 dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white"
-          >
-            Book a demo
-          </BookingCta>
         </div>
-      </div>
-    </header>
+        {menuOpen && <nav id="home-mobile-nav" className={styles.mobileNav} aria-label="Mobile navigation" onKeyDown={(event) => { if (event.key === "Escape") setMenuOpen(false) }}>
+          {navigation.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}<ArrowUpRight size={16} /></a>)}
+          <Link href="/services" onClick={() => setMenuOpen(false)}>All services <ArrowUpRight size={16} /></Link>
+        </nav>}
+      </header>
+
+      <main id="main-content">
+        <section className={styles.hero} aria-labelledby="hero-heading">
+          <div className={`${styles.container} ${styles.heroGrid}`}>
+            <div className={styles.heroCopy}>
+              <p className={styles.eyebrow}><span className={styles.statusDot} /> APPLIED AI. BUILT AROUND YOU.</p>
+              <h1 id="hero-heading">Less busywork.<br /><em>More possibility.</em></h1>
+              <p className={styles.heroDescription}>An AI team for the work between the work.</p>
+              <p className={styles.heroBody}>xAGI Labs builds agents that handle conversations, move opportunities forward, and connect your operations — inside the tools you already use.</p>
+              <div className={styles.actions}>
+                <BookingCta placement="hero" className={styles.button}>Book a discovery call <ArrowUpRight size={17} /></BookingCta>
+                <a href="#agents" className={styles.textLink}>Meet your AI team <ArrowDown size={16} /></a>
+              </div>
+              <div className={styles.heroNotes}>
+                <div><strong>Your tools.</strong><span>Connected, not replaced.</span></div>
+                <div><strong>Your rules.</strong><span>People stay in control.</span></div>
+                <div><strong>Your next step.</strong><span>Start with one workflow.</span></div>
+              </div>
+            </div>
+
+            <div className={styles.heroVisual}>
+              <div className={styles.orbit} aria-hidden="true"><span /><span /><span /></div>
+              <div className={styles.exampleCard}>
+                <div className={styles.exampleTopline}><span>xAGI IN PRACTICE</span><span>ILLUSTRATIVE WORKFLOW</span></div>
+                <div className={styles.exampleButtons} role="group" aria-label="Choose a workflow example">
+                  {examples.map((item, index) => <button key={item.label} type="button" aria-pressed={index === activeExample} onClick={() => setActiveExample(index)}>{item.label}</button>)}
+                </div>
+                <div className={styles.exampleContent} aria-live="polite" aria-atomic="true">
+                  <div className={styles.agentIdentity}><span className={styles.agentIcon}><ExampleIcon size={19} /></span><div><h2>{example.title}</h2><p>{example.subtitle}</p></div><span className={styles.smallDot} /></div>
+                  <div className={styles.wave} aria-hidden="true">{Array.from({ length: 38 }, (_, index) => <i key={index} style={{ height: `${8 + ((index * 17 + 7) % 29)}px`, animationDelay: `${index * 40}ms` }} />)}</div>
+                  <p className={styles.request}>{example.request}</p>
+                  <p className={styles.reply}>{example.reply}</p>
+                  <div className={styles.exampleResult}><span className={styles.checkIcon}><Check size={15} /></span><div><strong>{example.result}</strong><span>{example.detail}</span></div><ArrowUpRight size={16} /></div>
+                </div>
+              </div>
+              <p className={styles.visualCaption}><span /> A little less on your plate. A little more room to grow.</p>
+            </div>
+          </div>
+          <div className={styles.heroBottom}><span>BUILT FOR PEOPLE. CONNECTED TO YOUR BUSINESS.</span><a href="#agents" aria-label="Explore the AI team"><ArrowDown size={17} /></a></div>
+        </section>
+
+        <section id="agents" className={`${styles.section} ${styles.container}`}>
+          <div className={styles.sectionHeading}><p className={styles.eyebrow}>THE AI TEAM</p><h2>Different roles.<br /><em>One connected business.</em></h2><p>From the first conversation to the everyday follow-through, build an AI team around the work that matters to you.</p></div>
+          <div className={styles.agentGrid}>
+            {agents.map((agent) => <article key={agent.name} className={styles.agentCard}>
+              <div className={styles.agentCategory}><span>{agent.category}</span><span>{agent.number}</span></div>
+              <agent.icon className={styles.roleIcon} size={29} strokeWidth={1.2} />
+              <h3>{agent.name}</h3><p className={styles.agentRole}>{agent.role}</p><p className={styles.agentDescription}>{agent.description}</p>
+              <ul>{agent.features.map((feature) => <li key={feature}><ArrowRight size={14} /><span>{feature}</span></li>)}</ul>
+              <Link href={agent.href} className={styles.textLink}>{agent.link}<ArrowUpRight size={16} /></Link>
+            </article>)}
+          </div>
+        </section>
+
+        <section className={styles.manifesto}>
+          <div className={`${styles.container} ${styles.manifestoGrid}`}>
+            <div><p className={styles.eyebrow}>TECHNOLOGY WITH A HUMAN PURPOSE</p><h2>Give your people<br /><em>their time back.</em></h2></div>
+            <div><p>Your best work needs attention. The repetitive work around it shouldn’t take all of yours.</p><p>We design the workflow, connect the systems, and build in the checkpoints. Your team keeps the judgment, the relationships, and the final say.</p><Link href="/services" className={styles.textLink}>Discover what we can build <ArrowUpRight size={17} /></Link></div>
+          </div>
+        </section>
+
+        <section id="integrations" className={`${styles.section} ${styles.container} ${styles.integrationSection}`}>
+          <div><p className={styles.eyebrow}>FAMILIAR TOOLS. NEW POSSIBILITIES.</p><h2>Your business.<br /><em>Better connected.</em></h2><p>Keep the systems your team knows. We scope and build the connections your workflow needs, from your CRM to your internal knowledge.</p><p className={styles.integrationNote}>Integration availability depends on your plan, API access, and workflow requirements.</p></div>
+          <div className={styles.integrationGrid}>{["HubSpot", "Salesforce", "Zoho", "Slack", "Notion", "Google Workspace", "Airtable", "Your own API"].map((name, index) => <div key={name}><span className={styles.integrationMark} aria-hidden="true">{["H", "sf", "Z", "#", "N", "G", "A", "↗"][index]}</span><span>{name}</span></div>)}</div>
+        </section>
+
+        <section id="process" className={styles.processSection}>
+          <div className={`${styles.container} ${styles.section}`}>
+            <div className={styles.sectionHeading}><p className={styles.eyebrow}>FROM IDEA TO EVERYDAY</p><h2>Start small.<br /><em>Build something useful.</em></h2><p>A practical path from a recurring problem to an agent your team can work with.</p></div>
+            <div className={styles.steps}>{[
+              ["Find the right workflow", "Bring us the repeated task, the bottleneck, or the handoff that keeps slowing your team down."],
+              ["Connect the context", "We map your tools, business rules, data, and the moments that need a person in the loop."],
+              ["Build and test together", "Try a focused pilot against real examples. Review the outputs and edge cases before rollout."],
+              ["Launch. Learn. Improve.", "Monitor the workflow, measure what changes, and expand when the results justify it."],
+            ].map(([title, description], index) => <article key={title}><span className={styles.stepNumber}>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
+          </div>
+        </section>
+
+        <section id="faq" className={`${styles.container} ${styles.section} ${styles.faqSection}`}>
+          <div><p className={styles.eyebrow}>A FEW THINGS TO KNOW</p><h2>Good questions.<br /><em>Straight answers.</em></h2><Link href="/contact" className={styles.textLink}>Talk to a human <ArrowUpRight size={16} /></Link></div>
+          <div className={styles.faqList}>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<Plus size={19} /></summary><p>{answer}</p></details>)}</div>
+        </section>
+
+        <section className={styles.finalCta}>
+          <div className={styles.container}><p className={styles.eyebrow}>LET’S MAKE ROOM FOR WHAT’S NEXT</p><h2>What would you do<br /><em>with a little more time?</em></h2><p>Bring one workflow. We’ll explore what’s possible together.</p><div className={styles.actions}><BookingCta placement="final_cta" className={styles.button}>Book a discovery call <ArrowUpRight size={17} /></BookingCta><Link href="/contact" className={styles.textLink}>Or drop us a line <ArrowRight size={16} /></Link></div><span className={styles.ctaNote}>A conversation about your business. A practical next step.</span></div>
+        </section>
+      </main>
+
+      <footer className={styles.footer}>
+        <div className={`${styles.container} ${styles.footerGrid}`}>
+          <div><Link href="/" aria-label="xAGI Labs home"><Wordmark /></Link><p>Applied intelligence.<br />Thoughtfully built.</p></div>
+          <div><h2>EXPLORE</h2><Link href="/voice-ai">Voice AI</Link><Link href="/services">AI automation</Link><Link href="/autoclaw">AutoClaw</Link><Link href="/portfolio">Our work</Link></div>
+          <div><h2>THE LAB</h2><Link href="/process">Our approach</Link><Link href="/blog">Ideas & insights</Link><Link href="/team">About us</Link><Link href="/contact">Contact</Link></div>
+          <div><h2>LET’S CONNECT</h2><a href="mailto:saurav@xagi.in">saurav@xagi.in <ArrowUpRight size={13} /></a><BookingCta placement="footer" className={styles.footerBooking}>Book a discovery call <ArrowUpRight size={13} /></BookingCta></div>
+        </div>
+        <div className={`${styles.container} ${styles.footerBottom}`}><span>© {new Date().getFullYear()} xAGI Labs. All rights reserved.</span><span>Built with intention. Made for people.</span></div>
+      </footer>
+    </div>
   )
 }
-
-function LandingFooter() {
-  return (
-    <footer className="border-t border-stone-200/80 py-10 dark:border-white/10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-        <div>
-          <p className="text-sm font-medium text-stone-950 dark:text-stone-100">xAGI Labs</p>
-          <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
-            AI automation systems for operations, growth, support, and product teams.
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-5 text-sm text-stone-600 dark:text-stone-400">
-          <Link href="/services" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Services
-          </Link>
-          <Link href="/autoclaw" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            AutoClaw
-          </Link>
-          <Link
-            href="/contact"
-            className="transition-colors hover:text-stone-950 dark:hover:text-white"
-            onClick={() => {
-              trackMarketingEvent("contact_fallback_click", {
-                placement: "footer",
-              })
-            }}
-          >
-            Contact
-          </Link>
-          <Link href="/blog" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Blog
-          </Link>
-        </div>
-      </div>
-    </footer>
-  )
-}
-
 function HomePageStructuredData() {
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -239,378 +218,5 @@ function HomePageStructuredData() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
     </>
-  )
-}
-
-export default function HomePage() {
-  return (
-    <div className="min-h-screen bg-stone-50 pb-24 text-stone-950 dark:bg-[#0d0f10] dark:text-stone-100 md:pb-0">
-      <HomePageStructuredData />
-      <PaidTrafficTracking />
-      <LandingHeader />
-
-      <main>
-        <section className="border-b border-stone-200/70 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:py-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:px-8">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-stone-300 bg-stone-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300">
-                <Brain className="h-3.5 w-3.5" />
-                AI automations for real workflows
-              </div>
-              <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[0.96] tracking-tight text-stone-950 sm:text-5xl md:text-6xl dark:text-stone-50">
-                AI automation systems for the work your team still does by hand.
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg sm:leading-8 dark:text-stone-300">
-                xAGI Labs helps growth, operations, support, and product teams turn repeated manual work into
-                production AI agents, copilots, and integrations that fit the systems they already use.
-              </p>
-
-              <div className="mt-5 rounded-2xl border border-stone-200 bg-white/80 p-4 text-sm text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300">
-                <p className="font-medium text-stone-950 dark:text-stone-100">
-                  Best for teams with a real workflow to automate: research, routing, extraction, follow-up, reporting, or product AI.
-                </p>
-              </div>
-
-              <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-                <BookingCta
-                  placement="hero"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-stone-950 px-6 py-4 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-700 sm:w-auto dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white"
-                >
-                  Book a demo
-                  <ArrowRight className="h-4 w-4" />
-                </BookingCta>
-                <Link
-                  href="/services"
-                  className="hidden items-center gap-2 text-sm font-medium text-stone-700 transition-colors hover:text-stone-950 sm:inline-flex dark:text-stone-300 dark:hover:text-white"
-                >
-                  Explore services
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-
-              <div className="mt-6 rounded-3xl border border-stone-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                  What happens after you book
-                </p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                  {bookingSteps.map((step) => (
-                    <div key={step} className="rounded-2xl border border-stone-200 bg-stone-50 p-4 text-sm text-stone-600 dark:border-white/10 dark:bg-[#101213] dark:text-stone-300">
-                      <p>{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-6 grid gap-3 text-sm text-stone-600 sm:grid-cols-3 dark:text-stone-400">
-                <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">Workflow design</p>
-                  <p className="mt-1">Start from the job, edge cases, owners, and handoffs before choosing the model.</p>
-                </div>
-                <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">System integration</p>
-                  <p className="mt-1">Connect data, docs, APIs, CRM, help desk, and internal tools without creating a shadow stack.</p>
-                </div>
-                <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">Production monitoring</p>
-                  <p className="mt-1">Review outputs, trace decisions, and expand scope only after the workflow holds up.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:pt-6">
-              <div className="rounded-[2rem] border border-stone-200 bg-white p-4 shadow-[0_24px_80px_-48px_rgba(0,0,0,0.45)] dark:border-white/10 dark:bg-[#141718]">
-                <div className="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-5 dark:border-white/10 dark:bg-[#101213]">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
-                        Automation console
-                      </p>
-                      <h2 className="mt-2 text-xl font-semibold text-stone-950 dark:text-stone-100">
-                        Workflow in production
-                      </h2>
-                    </div>
-                    <div className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">
-                      Live
-                    </div>
-                  </div>
-
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Review mode</p>
-                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">Human</p>
-                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Approval gates stay in place where judgment matters.</p>
-                    </div>
-                    <div className="rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Workflow type</p>
-                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">GTM ops</p>
-                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Account research, enrichment, CRM updates, and drafted follow-up.</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="text-sm font-medium text-stone-950 dark:text-stone-100">Active workflow</p>
-                      <span className="text-xs text-stone-500 dark:text-stone-400">Lead research to CRM</span>
-                    </div>
-                    <div className="mt-4 space-y-3 text-sm text-stone-600 dark:text-stone-300">
-                      <div className="flex items-start gap-3">
-                        <Sparkles className="mt-0.5 h-4 w-4 text-amber-600 dark:text-amber-300" />
-                        <p>Finds company context, fit signals, recent activity, and the reason the account is worth pursuing.</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <Waypoints className="mt-0.5 h-4 w-4 text-stone-700 dark:text-stone-200" />
-                        <p>Updates CRM fields, queues a suggested next step, and routes unclear accounts for human review.</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                        <p>Logs sources, output quality, and approval state so the team can inspect what happened later.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="proof" className="border-b border-stone-200/70 py-16 dark:border-white/10">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {proofPoints.map((point) => (
-                <div
-                  key={point.title}
-                  className="rounded-2xl border border-stone-200 bg-white p-5 transition-transform duration-200 hover:-translate-y-0.5 dark:border-white/10 dark:bg-white/5"
-                >
-                  <p className="text-base font-medium text-stone-950 dark:text-stone-100">{point.title}</p>
-                  <p className="mt-2 text-sm leading-7 text-stone-600 dark:text-stone-400">{point.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="how-it-works" className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                How it works
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                A practical rollout path for ops teams.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-stone-600 dark:text-stone-400">
-                Start with a narrow workflow, connect the systems you already use, then scale once outputs, reviews,
-                and business outcomes are stable.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {launchSteps.map((item) => (
-                <div key={item.step} className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-                  <p className="text-sm font-medium text-stone-500 dark:text-stone-400">{item.step}</p>
-                  <h3 className="mt-4 text-xl font-semibold text-stone-950 dark:text-stone-100">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-400">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="fit" className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-            <div className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Who this is for</p>
-              <div className="mt-5 space-y-3">
-                {bestFit.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-7 text-stone-600 dark:text-stone-400">
-                    <CheckCircle2 className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-600 dark:text-emerald-300" />
-                    <p>{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Not the best fit</p>
-              <div className="mt-5 space-y-3">
-                {notFor.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-7 text-stone-600 dark:text-stone-400">
-                    <Shield className="mt-1 h-4 w-4 flex-shrink-0 text-stone-700 dark:text-stone-200" />
-                    <p>{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:px-8">
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                Reliability
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                Designed for workflows that cannot quietly drift or break.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-stone-600 dark:text-stone-400">
-                The platform combines grounded AI, tool execution, operational control, and traceable outcomes so
-                your team can trust it in front of customers and internal stakeholders.
-              </p>
-
-              <div className="mt-8 rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-                <p className="text-sm font-medium text-stone-950 dark:text-stone-100">What the system handles</p>
-                <ul className="mt-4 space-y-3 text-sm text-stone-600 dark:text-stone-400">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Research, summarization, extraction, and classification
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Knowledge-grounded outputs and tool-triggered workflows
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Structured summaries, action items, and state logging
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Escalation to humans with context preserved
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              {reliabilityPillars.map((pillar) => (
-                <div key={pillar.title} className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-stone-100 dark:bg-white/10">
-                    <pillar.icon className="h-5 w-5 text-stone-700 dark:text-stone-200" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-stone-950 dark:text-stone-100">{pillar.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-stone-600 dark:text-stone-400">{pillar.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="use-cases" className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                Use cases
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                Built for the automations most teams keep postponing.
-              </h2>
-            </div>
-
-            <div className="mt-10 divide-y divide-stone-200 rounded-3xl border border-stone-200 bg-white dark:divide-white/10 dark:border-white/10 dark:bg-white/5">
-              {useCases.map((item) => (
-                <div key={item.title} className="grid gap-4 px-6 py-6 md:grid-cols-[260px_minmax(0,1fr)] md:px-8">
-                  <h3 className="text-lg font-semibold text-stone-950 dark:text-stone-100">{item.title}</h3>
-                  <p className="text-sm leading-7 text-stone-600 dark:text-stone-400">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="trust" className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-8">
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                Enterprise trust
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                Practical deployment and governance, not hand-wavy enterprise language.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-stone-600 dark:text-stone-400">
-                The rollout is designed around operational controls, integration depth, and implementation planning that
-                procurement and ops teams can actually evaluate.
-              </p>
-              <p className="mt-6 text-sm leading-7 text-stone-500 dark:text-stone-400">
-                Security, privacy, and deployment constraints are scoped during discovery and pilot planning so the
-                production setup matches the workflow and environment requirements you already operate under.
-              </p>
-            </div>
-
-            <div>
-              <div className="grid gap-4">
-                {enterpriseSignals.map((signal) => (
-                  <div key={signal} className="rounded-2xl border border-stone-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-                    <div className="flex items-start gap-3">
-                      <Globe className="mt-0.5 h-4 w-4 text-stone-700 dark:text-stone-200" />
-                      <p className="text-sm leading-7 text-stone-600 dark:text-stone-400">{signal}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-                <p className="text-sm font-medium text-stone-950 dark:text-stone-100">Common integrations</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {integrations.map((integration) => (
-                    <span
-                      key={integration}
-                      className="rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300"
-                    >
-                      {integration}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-[2rem] border border-stone-200 bg-stone-950 px-6 py-10 text-stone-50 dark:border-white/10 dark:bg-stone-100 dark:text-stone-950 sm:px-10">
-              <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-                <div className="max-w-2xl">
-                  <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-300 dark:text-stone-600">
-                    Ready to launch
-                  </p>
-                  <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                    Put one AI automation into production with a cleaner path to rollout.
-                  </h2>
-                  <p className="mt-4 text-base leading-8 text-stone-300 dark:text-stone-700">
-                    Start with one operational workflow, validate quality and outcomes, and expand once the system is
-                    doing real work for your team.
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-start gap-4 sm:flex-row lg:flex-col">
-                  <BookingCta
-                    placement="final_cta"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-stone-950 transition-colors hover:bg-stone-200 dark:bg-stone-950 dark:text-stone-50 dark:hover:bg-stone-800"
-                  >
-                    Book a demo
-                    <ArrowRight className="h-4 w-4" />
-                  </BookingCta>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-stone-300 transition-colors hover:text-white dark:text-stone-700 dark:hover:text-stone-950"
-                    onClick={() => {
-                      trackMarketingEvent("contact_fallback_click", {
-                        placement: "final_cta",
-                      })
-                    }}
-                  >
-                    Prefer email or a custom intro?
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <LandingFooter />
-      <MobileBookingBar />
-    </div>
   )
 }
