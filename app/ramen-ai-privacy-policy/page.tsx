@@ -7,7 +7,7 @@ const supportEmail = "saurav@xagi.in"
 export const metadata: Metadata = {
   title: "Privacy Policy - Ramen AI",
   description:
-    "Privacy Policy for Ramen AI covering Firebase Auth, Cloud Firestore, Google Sign-In, RevenueCat, Google Play subscriptions, user content, and account deletion.",
+    "Privacy Policy for Ramen AI covering Cloudflare-hosted accounts (version 1.3.1 and later), legacy Firebase data from older versions, RevenueCat, Apple App Store and Google Play purchases, user content, and account deletion.",
   alternates: {
     canonical: "https://xagi.in/ramen-ai-privacy-policy",
   },
@@ -20,7 +20,7 @@ export default function RamenAIPrivacyPolicyPage() {
       description="This Privacy Policy explains how Ramen AI collects, uses, shares, retains, and deletes data."
     >
       <p>
-        <strong>Last updated:</strong> May 17, 2026
+        <strong>Last updated:</strong> October 4, 2026
       </p>
 
       <p>
@@ -32,8 +32,9 @@ export default function RamenAIPrivacyPolicyPage() {
       <p>Depending on how you use Ramen AI, we may collect the following categories of information:</p>
       <ul>
         <li>
-          <strong>Account information:</strong> email address, authentication identifiers, Firebase user ID, Google
-          Sign-In identifiers, and login metadata.
+          <strong>Account information:</strong> in version 1.3.1 and later, your email address, account ID, a salted
+          password hash (we do not store your password in plain text), session records, and login metadata. Older
+          versions used Firebase user IDs, Google Sign-In identifiers, and related login metadata (see Section 3).
         </li>
         <li>
           <strong>Profile information:</strong> display name, profile avatar, and other profile details you choose to
@@ -49,7 +50,8 @@ export default function RamenAIPrivacyPolicyPage() {
         </li>
         <li>
           <strong>Subscription and purchase information:</strong> subscription status, product identifiers, renewal
-          status, entitlement status, and transaction metadata handled through RevenueCat and Google Play Billing.
+          status, entitlement status, and transaction metadata handled through RevenueCat, the Apple App Store, and
+          Google Play Billing.
         </li>
         <li>
           <strong>Technical data:</strong> device and app information necessary to operate the service, prevent abuse,
@@ -62,17 +64,21 @@ export default function RamenAIPrivacyPolicyPage() {
       <p>We collect information when you create an account, sign in, use app features, interact with content, comment, like content, maintain watch progress, subscribe, contact support, or otherwise use the app.</p>
 
       <h2>3. Services We Use</h2>
+      <p>
+        <strong>Version 1.3.1 and later:</strong> Ramen AI uses Cloudflare Workers with a SQLite-backed Durable Object to
+        provide email/password accounts and to store account IDs, salted password hashes, sessions, profile data,
+        comments, likes, and watch progress.
+      </p>
+      <p>
+        <strong>Older versions (legacy):</strong> versions before 1.3.1 used Firebase Authentication (email/password and
+        Google Sign-In) and Cloud Firestore. Accounts, passwords, users, and progress from older versions were not
+        automatically migrated to the new service, so you will need to create a new account in version 1.3.1. Legacy
+        Firebase records were not deleted by this migration; you can ask support to delete them (see Section 7).
+      </p>
       <ul>
         <li>
-          <strong>Firebase Authentication:</strong> used for email/password sign-in and Google Sign-In.
-        </li>
-        <li>
-          <strong>Cloud Firestore:</strong> used to store app data such as account-linked profile data, content
-          interactions, comments, likes, and watch/progress data.
-        </li>
-        <li>
-          <strong>RevenueCat and Google Play subscriptions:</strong> used to manage paid subscriptions, entitlements,
-          renewal state, and purchase validation.
+          <strong>RevenueCat, Apple App Store, and Google Play:</strong> used to manage paid subscriptions,
+          entitlements, renewal state, and purchase validation.
         </li>
       </ul>
 
@@ -90,8 +96,9 @@ export default function RamenAIPrivacyPolicyPage() {
       <h2>5. How We Share Information</h2>
       <p>We do not sell your personal information. We share information only as needed to operate the app:</p>
       <ul>
-        <li>With Firebase/Google services for authentication, database hosting, and app infrastructure.</li>
-        <li>With RevenueCat and Google Play to manage subscriptions, purchases, and entitlements.</li>
+        <li>With Cloudflare for backend hosting, authentication, and data storage (version 1.3.1 and later).</li>
+        <li>With Firebase/Google services, where legacy data from older versions is still stored.</li>
+        <li>With RevenueCat, the Apple App Store, and Google Play to manage subscriptions, purchases, and entitlements.</li>
         <li>With service providers that help us operate, secure, or support the app.</li>
         <li>If required by law, legal process, platform policy, fraud prevention, security, or protection of rights.</li>
         <li>With other users where you choose to make information visible, such as profile display information, likes, or comments.</li>
@@ -102,23 +109,29 @@ export default function RamenAIPrivacyPolicyPage() {
         We retain account and app data for as long as your account is active or as needed to provide Ramen AI. We may
         retain limited records after account deletion when necessary for legal, tax, accounting, security,
         fraud-prevention, dispute-resolution, or platform compliance purposes. Subscription purchase records may also be
-        retained by Google Play and RevenueCat according to their own policies.
+        retained by the Apple App Store, Google Play, and RevenueCat according to their own policies.
       </p>
 
       <h2>7. Account Deletion and Data Deletion</h2>
       <p>
-        You may request account deletion outside the app at our{" "}
-        <Link href="/ramen-ai-privacy-policy/account-deletion">Account Deletion page</Link>. When we process a
-        deletion request, we delete or anonymize account information, profile information, comments, likes, and
-        watch/progress data associated with the account, except for limited records we must retain for legal, security,
-        fraud-prevention, billing, tax, accounting, or dispute-resolution purposes.
+        <strong>In version 1.3.1 and later:</strong> go to Profile &gt; Account Settings &gt; Delete account and confirm
+        with your password. This deletes your profile, comments, likes, and watch progress, and signs out all of your
+        sessions.
+      </p>
+      <p>
+        You may also request account deletion outside the app at our{" "}
+        <Link href="/ramen-ai-privacy-policy/account-deletion">Account Deletion page</Link>, including deletion of legacy
+        Firebase records from older versions. When we process a deletion request, we delete or anonymize account
+        information, profile information, comments, likes, and watch/progress data associated with the account, except
+        for limited records we must retain for legal, security, fraud-prevention, billing, tax, accounting, or
+        dispute-resolution purposes.
       </p>
 
       <h2>8. Subscriptions</h2>
       <p>
-        Ramen AI may offer Google Play subscriptions managed through RevenueCat and Google Play Billing. Subscription
-        pricing, trial availability, billing period, renewal terms, and cancellation options are shown before purchase in
-        the app and/or Google Play. See our{" "}
+        Ramen AI may offer subscriptions through the Apple App Store and Google Play, managed through RevenueCat.
+        Subscription pricing, trial availability, billing period, renewal terms, and cancellation options are shown
+        before purchase in the app and/or the relevant store. See our{" "}
         <Link href="/ramen-ai-privacy-policy/subscription-cancellation">Subscription Cancellation Help page</Link> for
         cancellation instructions.
       </p>
@@ -138,8 +151,8 @@ export default function RamenAIPrivacyPolicyPage() {
 
       <h2>11. Your Choices</h2>
       <ul>
-        <li>You can manage your Google Play subscription through Google Play.</li>
-        <li>You can request account deletion through our public deletion page.</li>
+        <li>You can manage your subscription through the Apple App Store or Google Play.</li>
+        <li>You can delete your account in the app (version 1.3.1 and later) or request deletion through our public deletion page.</li>
         <li>You can contact us for privacy questions or support.</li>
       </ul>
 
