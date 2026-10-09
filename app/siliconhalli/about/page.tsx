@@ -155,7 +155,7 @@ export default function AboutPage() {
               <div className="bg-slate-800 p-4 rounded border border-slate-700">
                  <h3 className="font-bold text-white mb-2">Reach out</h3>
                  <div className="flex flex-col space-y-3">
-                    <a href="mailto:your-email@example.com" className="flex items-center text-slate-400 hover:text-white transition-colors">
+                    <a href="mailto:saurav@xagi.in" className="flex items-center text-slate-400 hover:text-white transition-colors">
                       <Mail size={18} className="mr-3" />
                       <span>Email</span>
                     </a>
