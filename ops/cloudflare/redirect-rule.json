@@ -1,8 +1,8 @@
 {
   "action": "redirect",
-  "description": "Move XAGI public website to GitHub Pages; preserve separate product routes",
+  "description": "Move all xagi.in public traffic to GitHub Pages without Worker invocations",
   "enabled": true,
-  "expression": "(http.host in {\"xagi.in\" \"www.xagi.in\"} and http.request.method in {\"GET\" \"HEAD\"} and not starts_with(http.request.uri.path, \"/bookreels\") and not starts_with(http.request.uri.path, \"/openmusic\") and not starts_with(http.request.uri.path, \"/simpleshot\") and not starts_with(http.request.uri.path, \"/drone-sim\") and not starts_with(http.request.uri.path, \"/ram-japa-counter\"))",
+  "expression": "(http.host in {\"xagi.in\" \"www.xagi.in\"})",
   "action_parameters": {
     "from_value": {
       "status_code": 302,
