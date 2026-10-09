@@ -5,7 +5,7 @@
   "expression": "(http.host in {\"xagi.in\" \"www.xagi.in\"})",
   "action_parameters": {
     "from_value": {
-      "status_code": 302,
+      "status_code": 301,
       "target_url": {
         "expression": "concat(\"https://xagi-labs.github.io\", http.request.uri.path)"
       },

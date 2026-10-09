@@ -47,3 +47,11 @@ Existing typography warnings for literal quotation marks remain visible in lint;
 The final scope redirects every request for xagi.in and www.xagi.in, with no product-path exceptions. Remove every Worker route on those hostnames after verifying the Pages release. Disable the retired site and support Workers on workers.dev as well. Other application subdomains remain separate.
 
 BookReels, OpenMusic, SimpleShot and Ram Japa support/legal pages are copied as static HTML. SimpleShot source-distribution archive is preserved. Drone simulation was an authenticated upstream proxy and cannot run on Pages; its replacement explicitly says it is retired. The redirect preserves paths and query strings. GitHub Pages accepts static reads; retired API writes are unsupported.
+
+## Verified cutover - 9 October 2026
+
+PR #69 merged as `8848ee1ef8aa1bbfa3e5cd1eedd7f6e5131bde9b`. GitHub Pages deployment run 37893023192 succeeded. The new main pages and migrated support/legal pages returned HTTP 200; retired chat and slide-generation API routes returned 404.
+
+Cloudflare Single Redirect is active for xagi.in and www.xagi.in with status 301, preserving paths and query strings. Verified HTTP and HTTPS apex, www, projects and every migrated product prefix. All eight Worker routes in the xagi.in zone were removed; the routes API returned an empty result. The xagi-labs workers.dev and preview endpoints are disabled. Workers and deployment history are retained for rollback. Separate application subdomains and their custom-domain bindings remain outside this cutover.
+
+This configuration removes Worker invocation from main-domain traffic. Earlier analytics remain historical usage; the cutover does not erase prior billable usage. The route backup is retained locally for recovery and excluded from the source backup.
