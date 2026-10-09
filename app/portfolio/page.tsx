@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Explore verified xAGI Labs projects across document tools, offline learning, team communication, and regional-language speech research.",
   alternates: {
-    canonical: "https://xagi.in/portfolio",
+    canonical: "https://xagi-labs.github.io/portfolio",
   },
   openGraph: {
     title: "Projects — Products, Prototypes, and Research | xAGI Labs",
     description:
       "A working casebook of xAGI Labs products, prototypes, and research—with clear project states and concrete product details.",
-    url: "https://xagi.in/portfolio",
+    url: "https://xagi-labs.github.io/portfolio",
     siteName: "xAGI Labs",
     type: "website",
   },

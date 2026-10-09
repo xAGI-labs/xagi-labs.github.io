@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Support - Ramen AI",
   description: "Support contact information for Ramen AI.",
   alternates: {
-    canonical: "https://xagi.in/ramen-ai-privacy-policy/support",
+    canonical: "https://xagi-labs.github.io/ramen-ai-privacy-policy/support",
   },
 }
 

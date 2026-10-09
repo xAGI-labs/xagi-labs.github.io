@@ -1,5 +1,5 @@
 # robots.txt for xAGI Labs
-# https://xagi.in
+# https://xagi-labs.github.io
 Content-Signal: ai-train=no, search=yes, ai-input=no
 
 User-agent: *
@@ -44,7 +44,7 @@ User-agent: Omgilibot
 Allow: /
 
 # Sitemap location
-Sitemap: https://xagi.in/sitemap.xml
+Sitemap: https://xagi-labs.github.io/sitemap.xml
 
 # LLMs.txt location
-# See https://xagi.in/llms.txt for AI-readable site information
+# See https://xagi-labs.github.io/llms.txt for AI-readable site information

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Privacy Policy for Ramen AI covering Cloudflare-hosted accounts (version 1.3.1 and later), legacy Firebase data from older versions, RevenueCat, Apple App Store and Google Play purchases, user content, and account deletion.",
   alternates: {
-    canonical: "https://xagi.in/ramen-ai-privacy-policy",
+    canonical: "https://xagi-labs.github.io/ramen-ai-privacy-policy",
   },
 }
 

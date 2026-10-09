@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     'AI lead research',
   ],
   alternates: {
-    canonical: 'https://xagi.in/autoclaw',
+    canonical: 'https://xagi-labs.github.io/autoclaw',
   },
   openGraph: {
     title: 'AutoClaw — AI Workforce Operating System',
     description:
       'AutoClaw helps GTM teams run autonomous prospect research and personalized outreach across email and LinkedIn.',
-    url: 'https://xagi.in/autoclaw',
+    url: 'https://xagi-labs.github.io/autoclaw',
     siteName: 'xAGI Labs',
     type: 'website',
     images: [

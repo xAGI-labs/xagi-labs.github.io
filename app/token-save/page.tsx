@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     "xAGI Labs token safe",
   ],
   alternates: {
-    canonical: "https://xagi.in/token-save",
+    canonical: "https://xagi-labs.github.io/token-save",
   },
   openGraph: {
     title: "Token Save by xAGI Labs",
     description:
       "Reduce proprietary AI API spend by up to 99% while maintaining output quality through custom open-weight migration.",
-    url: "https://xagi.in/token-save",
+    url: "https://xagi-labs.github.io/token-save",
     siteName: "xAGI Labs",
     type: "website",
     images: [
@@ -49,9 +49,9 @@ const serviceSchema = {
   provider: {
     "@type": "Organization",
     name: "xAGI Labs",
-    url: "https://xagi.in",
+    url: "https://xagi-labs.github.io",
   },
-  url: "https://xagi.in/token-save",
+  url: "https://xagi-labs.github.io/token-save",
   serviceType: "AI token cost optimization and model migration",
   areaServed: "Worldwide",
   description:

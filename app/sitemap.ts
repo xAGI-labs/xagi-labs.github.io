@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/blog'
 import { projects } from '@/lib/projects'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://xagi.in'
+  const baseUrl = 'https://xagi-labs.github.io'
 
   // Static pages with their priorities and change frequencies
   const staticPages = [
