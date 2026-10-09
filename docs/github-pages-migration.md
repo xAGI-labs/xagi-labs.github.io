@@ -40,3 +40,5 @@ rule cutover needs an authorized dashboard session or suitable existing access.
 Disable the new Redirect Rule and restore the previous broad Worker route to
 `xagi-labs`. Restore workers.dev only if it was previously enabled. The existing
 Worker version and source history are retained until the static cutover succeeds.
+
+Existing typography warnings for literal quotation marks remain visible in lint; they are not release-blocking errors. No runtime or security lint checks are disabled.
