@@ -3,8 +3,8 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "xAGI Labs",
-    "url": "https://xagi.in",
-    "logo": "https://xagi.in/xagi-icon.png",
+    "url": "https://xagi-labs.github.io",
+    "logo": "https://xagi-labs.github.io/xagi-icon.png",
     "description": "Voice agent implementation partner for customer support, collections, admissions, booking, and outbound qualification workflows.",
     "email": "saurav@xagi.in",
     "address": {
@@ -44,7 +44,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "xAGI Labs",
-    "url": "https://xagi.in",
+    "url": "https://xagi-labs.github.io",
     "description": "Voice agent implementation and AI call center automation for customer operations teams.",
     "priceRange": "$$$",
     "serviceType": [
@@ -97,7 +97,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "xAGI Labs",
-    "url": "https://xagi.in",
+    "url": "https://xagi-labs.github.io",
     "description": "Voice agents for customer support automation and high-volume call workflows",
     "publisher": {
       "@type": "Organization",

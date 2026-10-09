@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "Screenshot2Clipboard Support",
   description: "Support information for Screenshot2Clipboard, a macOS menu-bar app for copying screenshots directly to the clipboard.",
   alternates: {
-    canonical: "https://xagi.in/screenshot2clipboard/support",
+    canonical: "https://xagi-labs.github.io/screenshot2clipboard/support",
   },
 }
 

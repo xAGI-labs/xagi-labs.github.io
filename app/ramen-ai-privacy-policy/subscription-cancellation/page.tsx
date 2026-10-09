@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Subscription Cancellation Help - Ramen AI",
   description: "How to manage or cancel Ramen AI subscriptions purchased through Google Play.",
   alternates: {
-    canonical: "https://xagi.in/ramen-ai-privacy-policy/subscription-cancellation",
+    canonical: "https://xagi-labs.github.io/ramen-ai-privacy-policy/subscription-cancellation",
   },
 }
 

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Terms of Service - Ramen AI",
   description: "Terms of Service for Ramen AI, including accounts, comments, subscriptions, and acceptable use.",
   alternates: {
-    canonical: "https://xagi.in/ramen-ai-privacy-policy/terms",
+    canonical: "https://xagi-labs.github.io/ramen-ai-privacy-policy/terms",
   },
 }
 

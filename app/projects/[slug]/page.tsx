@@ -22,7 +22,7 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
     }
   }
 
-  const canonical = `https://xagi.in/projects/${project.slug}`
+  const canonical = `https://xagi-labs.github.io/projects/${project.slug}`
 
   return {
     title: `${project.title} — ${project.category}`,
@@ -57,11 +57,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     "@type": "CreativeWork",
     name: project.title,
     description: project.summary,
-    url: `https://xagi.in/projects/${project.slug}`,
+    url: `https://xagi-labs.github.io/projects/${project.slug}`,
     creator: {
       "@type": "Organization",
       name: "xAGI Labs",
-      url: "https://xagi.in",
+      url: "https://xagi-labs.github.io",
     },
     keywords: [project.category, ...project.stack].join(", "),
   }

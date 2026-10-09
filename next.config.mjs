@@ -1,13 +1,8 @@
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
+  output: "export",
+  trailingSlash: true,
+  images: { unoptimized: true },
+  experimental: { cpus: 2 },
 }
 
 export default nextConfig

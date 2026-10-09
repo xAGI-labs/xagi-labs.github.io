@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Privacy policy for Orgpage, the Chrome extension that turns the new tab into a customizable company homepage.",
   alternates: {
-    canonical: "https://xagi.in/orgpage/privacy",
+    canonical: "https://xagi-labs.github.io/orgpage/privacy",
   },
 }
 
@@ -217,7 +217,7 @@ export default function OrgpagePrivacyPage() {
         <br />
         xAGI Labs
         <br />
-        https://xagi.in
+        https://xagi-labs.github.io
       </p>
     </OrgpageLegalShell>
   )

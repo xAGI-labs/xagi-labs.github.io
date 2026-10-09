@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     'AI workflow hardening',
   ],
   alternates: {
-    canonical: 'https://xagi.in/openclaw-deployment-security',
+    canonical: 'https://xagi-labs.github.io/openclaw-deployment-security',
   },
 }
 

@@ -60,13 +60,13 @@ const productSchema = {
   name: 'AutoClaw',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
-  url: 'https://xagi.in/autoclaw',
+  url: 'https://xagi-labs.github.io/autoclaw',
   description:
     'AutoClaw helps GTM teams run autonomous prospect research and personalized outreach across email and LinkedIn.',
   brand: {
     '@type': 'Organization',
     name: 'xAGI Labs',
-    url: 'https://xagi.in',
+    url: 'https://xagi-labs.github.io',
   },
 }
 
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     'LinkedIn outreach automation',
   ],
   alternates: {
-    canonical: 'https://xagi.in/autoclaw/faq',
+    canonical: 'https://xagi-labs.github.io/autoclaw/faq',
   },
 }
 

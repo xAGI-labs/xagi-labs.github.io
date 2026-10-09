@@ -20,7 +20,7 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://xagi.in'),
+  metadataBase: new URL('https://xagi-labs.github.io'),
   title: {
     default: "xAGI Labs - Voice Agents for Customer Operations",
     template: "%s | xAGI Labs"
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://xagi.in",
+    url: "https://xagi-labs.github.io",
     siteName: "xAGI Labs",
     title: "xAGI Labs - Voice Agents for Customer Operations",
     description:
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://xagi.in",
+    canonical: "https://xagi-labs.github.io",
   },
   generator: 'v0.app'
 }

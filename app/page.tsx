@@ -21,7 +21,7 @@ export const metadata = {
     creator: "@xAGILabs",
   },
   alternates: {
-    canonical: "https://xagi.in",
+    canonical: "https://xagi-labs.github.io",
   },
 }
 

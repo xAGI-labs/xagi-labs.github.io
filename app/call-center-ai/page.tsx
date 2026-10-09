@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     "xAGI Labs",
   ],
   alternates: {
-    canonical: "https://xagi.in/call-center-ai",
+    canonical: "https://xagi-labs.github.io/call-center-ai",
   },
   openGraph: {
     title: "Call Center AI by xAGI Labs",
     description:
       "Enterprise call center AI offering for support, collections, claims, and customer operations with human fallback and analytics.",
-    url: "https://xagi.in/call-center-ai",
+    url: "https://xagi-labs.github.io/call-center-ai",
     siteName: "xAGI Labs",
     type: "website",
     images: [
@@ -52,9 +52,9 @@ const serviceSchema = {
   "provider": {
     "@type": "Organization",
     "name": "xAGI Labs",
-    "url": "https://xagi.in",
+    "url": "https://xagi-labs.github.io",
   },
-  "url": "https://xagi.in/call-center-ai",
+  "url": "https://xagi-labs.github.io/call-center-ai",
   "serviceType": "AI call center automation",
   "areaServed": "Worldwide",
   "description":

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Account Deletion - Ramen AI",
   description: "Request deletion of your Ramen AI account and associated data outside the app.",
   alternates: {
-    canonical: "https://xagi.in/ramen-ai-privacy-policy/account-deletion",
+    canonical: "https://xagi-labs.github.io/ramen-ai-privacy-policy/account-deletion",
   },
 }
 

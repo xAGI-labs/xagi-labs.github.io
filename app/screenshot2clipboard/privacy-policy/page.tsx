@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy for Screenshot2Clipboard",
   description: "Privacy Policy for Screenshot2Clipboard, a local macOS screenshot utility that does not collect personal data.",
   alternates: {
-    canonical: "https://xagi.in/screenshot2clipboard/privacy-policy",
+    canonical: "https://xagi-labs.github.io/screenshot2clipboard/privacy-policy",
   },
 }
 

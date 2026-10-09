@@ -1,28 +1,11 @@
 ---
 name: site-overview
-description: Summarize xAGI Labs, its main public pages, and the best links for agent-readable site context.
+description: Summarize the static xAGI Labs website and its public links.
 ---
 
-# xAGI Labs Site Overview
+# xAGI Labs website
 
-Use this skill when an agent needs quick, reliable public context about xAGI Labs.
-
-## Canonical facts
-
-- Brand: xAGI Labs
-- Domain: https://xagi.in
-- Primary offer: AI voice agents for customer operations
-- Contact page: https://xagi.in/contact
-
-## Best source order
-
-1. Read `https://xagi.in/llms.txt` for high-level site context.
-2. Read `https://xagi.in/` for the current homepage positioning.
-3. Read `https://xagi.in/services` and `https://xagi.in/process` for delivery context.
-4. Read `https://xagi.in/blog` when you need deeper implementation detail or citations.
-
-## Helpful discovery links
-
-- API docs: https://xagi.in/docs/api
-- API catalog: https://xagi.in/.well-known/api-catalog
-- Agent skills index: https://xagi.in/.well-known/agent-skills/index.json
+Read https://xagi-labs.github.io/site.md for the static overview.
+Use /projects/, /services/, /blog/ and /contact/ for the main public pages.
+The standalone chat and AI slide-generation demos are retired.
+The carousel editor runs entirely in the visitor's browser.

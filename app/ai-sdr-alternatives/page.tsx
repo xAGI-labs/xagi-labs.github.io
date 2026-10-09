@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     'AutoClaw',
   ],
   alternates: {
-    canonical: 'https://xagi.in/ai-sdr-alternatives',
+    canonical: 'https://xagi-labs.github.io/ai-sdr-alternatives',
   },
 }
 

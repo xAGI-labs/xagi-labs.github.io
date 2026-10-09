@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description:
     "Orgpage replaces Chrome's new tab page with a customizable company homepage for announcements, onboarding, links, leaderboards, shoutouts, and team updates.",
   alternates: {
-    canonical: "https://xagi.in/orgpage",
+    canonical: "https://xagi-labs.github.io/orgpage",
   },
 }
 

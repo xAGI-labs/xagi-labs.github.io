@@ -9,9 +9,10 @@ type BookingCtaProps = {
   children: ReactNode
   className: string
   placement: string
+  eventName?: string
 }
 
-export default function BookingCta({ children, className, placement }: BookingCtaProps) {
+export default function BookingCta({ children, className, placement, eventName = "book_demo_click" }: BookingCtaProps) {
   const [href, setHref] = useState(BOOKING_URL)
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function BookingCta({ children, className, placement }: BookingCt
       rel="noopener noreferrer"
       className={className}
       onClick={() => {
-        trackMarketingEvent("book_demo_click", {
+        trackMarketingEvent(eventName, {
           placement,
           destination: "google_calendar",
         })

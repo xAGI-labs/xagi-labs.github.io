@@ -58,7 +58,7 @@ export default function WebMcpTools() {
       {
         name: 'get-api-catalog',
         title: 'Get API catalog',
-        description: 'Return the public API catalog, documentation links, and health endpoint.',
+        description: 'Return the API retirement notice and static discovery links.',
         annotations: { readOnlyHint: true },
         inputSchema: {
           type: 'object',
@@ -69,7 +69,7 @@ export default function WebMcpTools() {
           apiCatalog: absoluteUrl(API_CATALOG_PATH),
           docs: absoluteUrl(API_DOCS_PATH),
           openapi: absoluteUrl('/docs/api/openapi.json'),
-          health: absoluteUrl('/api/health'),
+          runtimeApi: false,
         }),
       },
       {

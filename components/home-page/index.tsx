@@ -212,13 +212,13 @@ function HomePageStructuredData() {
     provider: {
       "@type": "Organization",
       name: "xAGI Labs",
-      url: "https://xagi.in",
+      url: "https://xagi-labs.github.io",
     },
     areaServed: {
       "@type": "Place",
       name: "Worldwide",
     },
-    url: "https://xagi.in",
+    url: "https://xagi-labs.github.io",
   }
 
   const webPageSchema = {
@@ -227,7 +227,7 @@ function HomePageStructuredData() {
     name: "AI Automation Systems for Operations and Growth",
     description:
       "Build production AI automations, agents, copilots, and workflow integrations for operations, growth, support, and product teams.",
-    url: "https://xagi.in",
+    url: "https://xagi-labs.github.io",
     about: {
       "@type": "Thing",
       name: "AI automation",
