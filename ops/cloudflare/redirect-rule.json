@@ -1,0 +1,15 @@
+{
+  "action": "redirect",
+  "description": "Move XAGI public website to GitHub Pages; preserve separate product routes",
+  "enabled": true,
+  "expression": "(http.host in {\"xagi.in\" \"www.xagi.in\"} and http.request.method in {\"GET\" \"HEAD\"} and not starts_with(http.request.uri.path, \"/bookreels\") and not starts_with(http.request.uri.path, \"/openmusic\") and not starts_with(http.request.uri.path, \"/simpleshot\") and not starts_with(http.request.uri.path, \"/drone-sim\") and not starts_with(http.request.uri.path, \"/ram-japa-counter\"))",
+  "action_parameters": {
+    "from_value": {
+      "status_code": 302,
+      "target_url": {
+        "expression": "concat(\"https://xagi-labs.github.io\", http.request.uri.path)"
+      },
+      "preserve_query_string": true
+    }
+  }
+}
