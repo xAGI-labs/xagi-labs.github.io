@@ -1,3 +1,4 @@
+import { dataGrowthPaths } from "@/lib/data-growth"
 import { canonicalUrl } from "@/lib/site"
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
@@ -196,6 +197,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const dataPages = ["ai-dataset-sourcing", "custom-ai-data-collection", "ai-dataset-licensing"].map(path => ({ url: `${baseUrl}/${path}/`, changeFrequency: "monthly" as const, priority: 0.9 }))
-  const entries = [...staticPages, ...projectPages, ...blogPages, ...dataPages].map(entry => ({ ...entry, url: canonicalUrl(entry.url) }))
+  const growthPages = dataGrowthPaths.map(path => ({ url: `${baseUrl}/${path}/`, changeFrequency: "monthly" as const, priority: 0.8 }))
+  const entries = [...staticPages, ...projectPages, ...blogPages, ...dataPages, ...growthPages].map(entry => ({ ...entry, url: canonicalUrl(entry.url) }))
   return entries.filter((entry, index) => entries.findIndex(other => other.url === entry.url) === index)
 }
