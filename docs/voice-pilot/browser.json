@@ -1,0 +1,129 @@
+{
+  "test": "mocked pilot and readiness integration",
+  "results": [
+    {
+      "path": "/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/voice-evaluation-pilot/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/speech-training-data/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/dataset-readiness-checklist/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/dataset-brief/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/data-partnerships/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/experts/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/opportunities/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/voice-ai/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/blog/132024-rip-coqui/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/projects/haryanvi-tts/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/voice-evaluation-pilot/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/speech-training-data/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/dataset-readiness-checklist/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/dataset-brief/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/data-partnerships/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/experts/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/opportunities/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/voice-ai/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/blog/132024-rip-coqui/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/projects/haryanvi-tts/",
+      "width": 390,
+      "status": 200
+    }
+  ],
+  "requests": 2,
+  "errors": [],
+  "assertions": [
+    "buyer and owner plans",
+    "coverage and rights actions",
+    "focus and invalidation",
+    "private downloadable plan",
+    "pilot CTA context",
+    "short input blocked",
+    "failure and idempotent retry",
+    "one confirmed event without private content",
+    "existing enquiry intents preserved",
+    "desktop and mobile layout"
+  ]
+}

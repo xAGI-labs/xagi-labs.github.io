@@ -9,7 +9,8 @@
     "start": "python3 -m http.server 3000 --directory out",
     "prebuild": "node scripts/fetch-mercor-opportunities.mjs",
     "test:marketing": "node scripts/test-marketing-events.mjs",
-    "test:enquiry": "node --test workers/enquiry/*.test.mjs"
+    "test:enquiry": "node --test workers/enquiry/*.test.mjs",
+    "test:readiness": "node scripts/test-data-readiness.mjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

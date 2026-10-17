@@ -1,0 +1,21 @@
+{
+  "baseline_html_checked": 1426,
+  "missing_routes": [],
+  "unexpected_visible_changes": [],
+  "intended_visible_changes": [
+    "about/index.html",
+    "data-partnerships/index.html",
+    "data-resources/index.html",
+    "dataset-brief/index.html",
+    "dataset-readiness-checklist/index.html",
+    "expert-evaluation-data/index.html",
+    "experts/index.html",
+    "index.html",
+    "multimodal-training-data/index.html",
+    "speech-training-data/index.html"
+  ],
+  "removed_sitemap_urls": [],
+  "added_sitemap_urls": [
+    "https://xagi.in/voice-evaluation-pilot/"
+  ]
+}

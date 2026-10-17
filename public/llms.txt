@@ -28,3 +28,8 @@ Existing product and engineering pages remain available. Haryanvi TTS is researc
 - [About and official profiles](https://xagi.in/about/)
 
 Public pages may be used for search and live AI grounding. Model training is disallowed by robots.txt. Dataset usage requires a separate source-specific agreement.
+
+## Voice evaluation pilots
+
+- [Regional-language voice evaluation pilot](https://xagi.in/voice-evaluation-pilot/): scope one task, representative conditions, a scoring rubric, error analysis and a targeted sourcing brief. Paid scope, source permissions, reviewer access, price and timing require confirmation.
+- [Preparation tool](https://xagi.in/dataset-readiness-checklist/): buyer and data-owner paths with local recommendations and downloadable plans; not a valuation or rights certification.

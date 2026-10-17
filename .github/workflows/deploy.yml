@@ -25,6 +25,7 @@ jobs:
       - run: npm run lint
       - run: npm run test:marketing
       - run: npm run test:enquiry
+      - run: npm run test:readiness
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
