@@ -1,1 +1,1 @@
-export const dataGrowthPaths = ["data-partnerships", "experts", "speech-training-data", "multimodal-training-data", "expert-evaluation-data", "dataset-brief", "dataset-readiness-checklist", "data-resources", "about"] as const
+export const dataGrowthPaths = ["voice-evaluation-pilot", "data-partnerships", "experts", "speech-training-data", "multimodal-training-data", "expert-evaluation-data", "dataset-brief", "dataset-readiness-checklist", "data-resources", "about"] as const

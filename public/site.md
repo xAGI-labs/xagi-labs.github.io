@@ -13,3 +13,7 @@ Company and official channels: https://xagi.in/about/
 Practical examples: https://xagi.in/data-resources/
 
 An email draft or download is not a received enquiry. Use the stated email or calendar link to contact the team.
+
+Voice evaluation pilot: https://xagi.in/voice-evaluation-pilot/
+Prepare for a voice evaluation or licensing discussion: https://xagi.in/dataset-readiness-checklist/
+A pilot is a paid scope agreed after feasibility and permissions review. No accuracy gain, stocked corpus or delivery timing is guaranteed.

@@ -4,8 +4,9 @@ import styles from "@/components/home-page/data-home.module.css"
 
 export const metadata = {"title": "AI data guides and practical tools", "description": "Prepare a better sourcing conversation with focused guides, a brief builder and a readiness checklist.", "alternates": {"canonical": "https://xagi.in/data-resources/"}, "openGraph": {"title": "AI data guides and practical tools | xAGI Labs", "description": "Prepare a better sourcing conversation with focused guides, a brief builder and a readiness checklist.", "url": "https://xagi.in/data-resources/"}}
 export default function Page() { return <DataGrowthPage title="AI data guides and practical tools" intro="Prepare a better sourcing conversation with focused guides, a brief builder and a readiness checklist."><div className={styles.resourceRows}>{[
+["00","Voice evaluation pilot","Inspect the deliverables, sample design and scoring approach for a scoped paid pilot.","/voice-evaluation-pilot/"],
 ["01","Build a dataset brief","Turn the model task, coverage and acceptance criteria into a downloadable brief.","/dataset-brief/"],
-["02","Check dataset readiness","Identify missing source, permission and quality evidence before a licensing discussion.","/dataset-readiness-checklist/"],
+["02","Check dataset readiness","Build a preparation plan for voice evaluation or dataset licensing, with specific evidence, coverage and quality actions.","/dataset-readiness-checklist/"],
 ["03","Speech & audio","Plan language coverage, recording conditions and transcript review.","/speech-training-data/"],
 ["04","Video & multimodal","Specify scenes, capture conditions, permissions and temporal quality.","/multimodal-training-data/"],
 ["05","Expert evaluation","Define reviewer criteria, rubrics and representative evaluation examples.","/expert-evaluation-data/"],
