@@ -4,6 +4,7 @@ import Footer from "@/components/shared/footer"
 import DeletionForm from "@/components/astro-gemini-privacy-policy/deletion-form"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://xagi.in/astro-gemini-privacy-policy/" },
   title: "Privacy Policy - AstroGemini",
   description: "Privacy Policy for AstroGemini - Vedic Astrology App",
 }

@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     "Codex automation directory",
   ],
   alternates: {
-    canonical: "https://xagi-labs.github.io/codex-skills",
+    canonical: "https://xagi.in/codex-skills/",
   },
   openGraph: {
     title: "Codex Skills Directory",
     description:
       "A searchable SEO directory of Codex skills from ComposioHQ's awesome-codex-skills repository.",
-    url: "https://xagi-labs.github.io/codex-skills",
+    url: "https://xagi.in/codex-skills",
     type: "website",
     images: ["/xagi-icon.png"],
   },
@@ -48,7 +48,7 @@ export default function CodexSkillsPage() {
       "@type": "ListItem",
       position: index + 1,
       name: skill.name,
-      url: `https://xagi-labs.github.io/codex-skills/${skill.slug}`,
+      url: `https://xagi.in/codex-skills/${skill.slug}`,
     })),
   }
 

@@ -20,28 +20,14 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://xagi-labs.github.io'),
+  metadataBase: new URL('https://xagi.in'),
   title: {
-    default: "xAGI Labs - Voice Agents for Customer Operations",
+    default: "xAGI Labs - AI Training Data Sourcing & Licensing",
     template: "%s | xAGI Labs"
   },
   description:
-    "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification. xAGI Labs builds reliable AI call workflows with human handoff, observability, and operational control.",
-  keywords: [
-    "voice agents",
-    "AI voice agents",
-    "AI call center",
-    "customer support automation",
-    "voice AI services",
-    "outbound voice AI",
-    "collections automation",
-    "admissions automation",
-    "customer operations AI",
-    "AI call workflows",
-    "AI agents",
-    "AI automation",
-    "multilingual voice AI",
-  ],
+    "AI training data sourcing, custom collection scoping and licensing for speech, multimodal and specialized model requirements.",
+  keywords: ["AI training data", "AI dataset sourcing", "AI dataset licensing", "custom data collection"],
   authors: [{ name: "xAGI Labs" }],
   creator: "xAGI Labs",
   publisher: "xAGI Labs",
@@ -59,25 +45,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://xagi-labs.github.io",
     siteName: "xAGI Labs",
-    title: "xAGI Labs - Voice Agents for Customer Operations",
+    title: "xAGI Labs - AI Training Data Sourcing & Licensing",
     description:
-      "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification with human handoff and operational control.",
+      "AI training data sourcing, custom collection scoping and licensing for specialized model requirements.",
     images: [
       {
         url: "/xagi-icon.png",
         width: 1200,
         height: 630,
-        alt: "xAGI Labs - Voice Agents for Customer Operations",
+        alt: "xAGI Labs - AI Training Data Sourcing & Licensing",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "xAGI Labs - Voice Agents for Customer Operations",
+    title: "xAGI Labs - AI Training Data Sourcing & Licensing",
     description:
-      "Deploy AI voice agents for support, collections, admissions, booking, and outbound qualification with human handoff and operational control.",
+      "AI training data sourcing, custom collection scoping and licensing for specialized model requirements.",
     images: ["/xagi-icon.png"],
     creator: "@xAGILabs",
   },
@@ -91,9 +76,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  alternates: {
-    canonical: "https://xagi-labs.github.io",
   },
   generator: 'v0.app'
 }

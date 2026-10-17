@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     "xAGI Labs",
   ],
   alternates: {
-    canonical: "https://xagi-labs.github.io/ideal",
+    canonical: "https://xagi.in/ideal/",
   },
   openGraph: {
     title: "iDeal | AI Deal Sourcing Engine for Private Equity",
     description:
       "Turn a private equity buy thesis into a live sourcing engine with target discovery, owner context, and partner-reviewed outreach.",
-    url: "https://xagi-labs.github.io/ideal",
+    url: "https://xagi.in/ideal",
     siteName: "xAGI Labs",
     type: "website",
     images: [
@@ -46,13 +46,13 @@ const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "iDeal",
-  url: "https://xagi-labs.github.io/ideal",
+  url: "https://xagi.in/ideal",
   description:
     "AI deal sourcing engine for private equity firms that supports target discovery, owner intelligence, and personalized outreach workflows.",
   isPartOf: {
     "@type": "WebSite",
     name: "xAGI Labs",
-    url: "https://xagi-labs.github.io",
+    url: "https://xagi.in",
   },
 }
 
@@ -62,13 +62,13 @@ const softwareSchema = {
   name: "iDeal",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
-  url: "https://xagi-labs.github.io/ideal",
+  url: "https://xagi.in/ideal",
   description:
     "An AI deal sourcing engine for private equity teams that translates a buy thesis into target discovery, owner research, outreach drafting, and response management.",
   creator: {
     "@type": "Organization",
     name: "xAGI Labs",
-    url: "https://xagi-labs.github.io",
+    url: "https://xagi.in",
   },
   audience: {
     "@type": "Audience",

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "AstroGemini Privacy Policy",
   description: "Privacy Policy for AstroGemini, including account, birth chart, chat, purchase, and deletion data.",
   alternates: {
-    canonical: "https://xagi-labs.github.io/astro-gemini/privacy",
+    canonical: "https://xagi.in/astro-gemini/privacy/",
   },
 }
 

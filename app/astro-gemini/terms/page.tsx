@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "AstroGemini Terms and Conditions",
   description: "Terms and Conditions for AstroGemini.",
   alternates: {
-    canonical: "https://xagi-labs.github.io/astro-gemini/terms",
+    canonical: "https://xagi.in/astro-gemini/terms/",
   },
 }
 

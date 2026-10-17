@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "AstroGemini helps you understand your Vedic birth chart with personalized chart insights, daily astrology context, and an AI astrology guide named Tara.",
   alternates: {
-    canonical: "https://xagi-labs.github.io/astro-gemini",
+    canonical: "https://xagi.in/astro-gemini/",
   },
 }
 

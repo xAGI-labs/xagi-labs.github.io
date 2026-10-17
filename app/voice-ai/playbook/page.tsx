@@ -45,11 +45,11 @@ export const metadata: Metadata = {
   title: "AI Voice Agent Implementation Playbook",
   description:
     "A practical playbook for planning, piloting, and scaling AI voice agents across support, collections, booking, and outbound qualification workflows.",
-  alternates: { canonical: "https://xagi-labs.github.io/voice-ai/playbook" },
+  alternates: { canonical: "https://xagi.in/voice-ai/playbook/" },
   openGraph: {
     title: "AI Voice Agent Implementation Playbook | xAGI Labs",
     description: "Workflow templates, rollout stages, and an evaluation checklist for reliable voice AI deployments.",
-    url: "https://xagi-labs.github.io/voice-ai/playbook",
+    url: "https://xagi.in/voice-ai/playbook",
     type: "website",
     images: ["/xagi-icon.png"],
   },

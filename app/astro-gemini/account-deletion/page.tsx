@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "AstroGemini Account Deletion",
   description: "Request deletion of your AstroGemini account and associated data.",
   alternates: {
-    canonical: "https://xagi-labs.github.io/astro-gemini/account-deletion",
+    canonical: "https://xagi.in/astro-gemini/account-deletion/",
   },
 }
 

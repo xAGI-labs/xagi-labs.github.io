@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     "xAGI Labs",
   ],
   alternates: {
-    canonical: "https://xagi-labs.github.io/founder-sourcing-engine",
+    canonical: "https://xagi.in/founder-sourcing-engine/",
   },
   openGraph: {
     title: "Founder Sourcing Engine | xAGI Labs",
     description:
       "A founder discovery workflow for VC firms that want to spot emerging founders before they show up in every shared spreadsheet.",
-    url: "https://xagi-labs.github.io/founder-sourcing-engine",
+    url: "https://xagi.in/founder-sourcing-engine",
     siteName: "xAGI Labs",
     type: "website",
     images: [
@@ -46,13 +46,13 @@ const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Founder Sourcing Engine",
-  url: "https://xagi-labs.github.io/founder-sourcing-engine",
+  url: "https://xagi.in/founder-sourcing-engine",
   description:
     "Founder discovery and screening workflow for VC firms using real-time founder and company signals.",
   isPartOf: {
     "@type": "WebSite",
     name: "xAGI Labs",
-    url: "https://xagi-labs.github.io",
+    url: "https://xagi.in",
   },
 }
 
@@ -62,13 +62,13 @@ const softwareSchema = {
   name: "Founder Sourcing Engine",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
-  url: "https://xagi-labs.github.io/founder-sourcing-engine",
+  url: "https://xagi.in/founder-sourcing-engine",
   description:
     "A founder sourcing workflow for venture capital firms to discover, track, and screen emerging founders with people and company signals.",
   creator: {
     "@type": "Organization",
     name: "xAGI Labs",
-    url: "https://xagi-labs.github.io",
+    url: "https://xagi.in",
   },
   audience: {
     "@type": "Audience",

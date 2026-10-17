@@ -1,219 +1,180 @@
+import { canonicalUrl } from "@/lib/site"
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
 import { projects } from '@/lib/projects'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://xagi-labs.github.io'
+  const baseUrl = 'https://xagi.in'
 
   // Static pages with their priorities and change frequencies
   const staticPages = [
     {
       url: baseUrl,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/portfolio`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/research-papers`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/process`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/team`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/chat`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
       url: `${baseUrl}/voice-ai`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/orgpage`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/orgpage/privacy`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/autoclaw`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/autoclaw/faq`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/ai-sdr-alternatives`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/openclaw-deployment-security`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/call-center-ai`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/ai-agents-erp`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/ai-events`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/apps/linkedin-carousel-generator`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/siliconhalli`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/hire-with-xAGI`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/founder-sourcing-engine`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/ideal`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/ai-cto`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/astro-gemini-privacy-policy`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/ramen-ai-privacy-policy`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/ramen-ai-privacy-policy/account-deletion`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/ramen-ai-privacy-policy/support`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/ramen-ai-privacy-policy/terms`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/ramen-ai-privacy-policy/subscription-cancellation`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/screenshot2clipboard/support`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/screenshot2clipboard/privacy-policy`,
-      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/geo`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
@@ -221,7 +182,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projectPages = projects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
@@ -235,5 +195,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...projectPages, ...blogPages]
+  const dataPages = ["ai-dataset-sourcing", "custom-ai-data-collection", "ai-dataset-licensing"].map(path => ({ url: `${baseUrl}/${path}/`, changeFrequency: "monthly" as const, priority: 0.9 }))
+  const entries = [...staticPages, ...projectPages, ...blogPages, ...dataPages].map(entry => ({ ...entry, url: canonicalUrl(entry.url) }))
+  return entries.filter((entry, index) => entries.findIndex(other => other.url === entry.url) === index)
 }

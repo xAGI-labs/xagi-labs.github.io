@@ -1,9 +1,7 @@
 # xAGI Labs
 
-Static company website, project directory, blog and product documentation.
+AI training data sourcing and licensing for specialized model requirements.
 
-- Website: https://xagi-labs.github.io/
-- Projects: https://xagi-labs.github.io/projects/
-- Contact: https://xagi-labs.github.io/contact/
+Start with a dataset brief: https://xagi.in/#dataset-brief
 
-The former chat and slide-generation API demos are retired.
+Source availability and rights are established during scoping. No catalog stock, coverage or compliance certification is implied. Existing research, blog, product and engineering pages remain available at their original paths. Former runtime API demos remain retired.
