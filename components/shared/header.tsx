@@ -37,6 +37,7 @@ export default function Header() {
             <Link href="/siliconhalli" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Silicon Halli
             </Link>
+            <Link href="/opportunities/" className="text-sm font-medium hover:opacity-70">Opportunities</Link>
             <Link href="/portfolio" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
               Projects
             </Link>
@@ -89,6 +90,7 @@ export default function Header() {
             <Link href="/siliconhalli" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Silicon Halli
             </Link>
+            <Link href="/opportunities/" className="text-sm font-medium hover:opacity-70">Opportunities</Link>
             <Link href="/portfolio" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Projects
             </Link>
