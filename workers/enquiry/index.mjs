@@ -3,7 +3,7 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{1
 const MODALITIES = ['Speech & audio', 'Video & multimodal', 'Expert & domain data', 'Other / help me scope', 'Not specified']
 const SOURCES = ['Not specified', 'Search', 'LinkedIn', 'Research or resource', 'Community or event', 'Referral', 'Other']
 const PLACEMENTS = ['home', '/dataset-brief/', '/data-partnerships/', '/experts/']
-function response(status, body) {
+export function response(status, body) {
   return Response.json(body, { status, headers: { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow', 'X-Content-Type-Options': 'nosniff' } })
 }
 export async function digest(value) {
@@ -65,11 +65,14 @@ export async function handle(request, env, deps = {}) {
   const challenge = await verification.json()
   if (challenge.success !== true || challenge.hostname !== 'xagi.in' || challenge.action !== 'dataset_enquiry') return response(400, { error: 'Please complete the security check again.' })
   // Unique insert is the send lock. An uncertain send is never automatically replayed.
-  const inserted = await env.DB.prepare('INSERT OR IGNORE INTO enquiries (receipt, fingerprint, intent, placement, modality, source, status) VALUES (?, ?, ?, ?, ?, ?, \'pending\')').bind(receipt, fingerprint, data.intent, data.placement, data.modality, data.source).run()
-  if (!inserted.meta.changes) return await existing(env.DB, data, fingerprint)
+  const insert = env.FREE_LIMITS
+    ? "INSERT OR IGNORE INTO enquiries (receipt, fingerprint, intent, placement, modality, source, status) SELECT ?, ?, ?, ?, ?, ?, 'pending' WHERE (SELECT count(*) FROM enquiries WHERE created_at >= strftime('%Y-%m-%d','now')) < 50 AND (SELECT count(*) FROM enquiries WHERE created_at >= strftime('%Y-%m-01','now')) < 1000"
+    : "INSERT OR IGNORE INTO enquiries (receipt, fingerprint, intent, placement, modality, source, status) VALUES (?, ?, ?, ?, ?, ?, 'pending')"
+  const inserted = await env.DB.prepare(insert).bind(receipt, fingerprint, data.intent, data.placement, data.modality, data.source).run()
+  if (!inserted.meta.changes) return await existing(env.DB, data, fingerprint) || response(429, { error: "The online enquiry limit has been reached. Please email saurav@xagi.in." })
   let sent
   try {
-    sent = await env.EMAIL.send({ to: 'saurav@xagi.in', from: env.FROM_EMAIL, replyTo: data.email, subject: `xAGI ${data.intent} enquiry [${receipt}]`, text: `Receipt: ${receipt}\nIntent: ${data.intent}\nReply to: ${data.email}\nPage: ${data.placement}\nModality: ${data.modality}\nFound via: ${data.source}\n\nRequirements:\n${data.details}\n\nLanguages, geography and timing:\n${data.coverage}` })
+    sent = await env.EMAIL.send({ to: 'saurav@xagi.in', from: env.FROM_EMAIL, replyTo: data.email, subject: `xAGI ${data.intent} enquiry [${receipt}]`, text: `Receipt: ${receipt}\nIntent: ${data.intent}\nReply to: ${data.email}\nPage: ${data.placement}\nModality: ${data.modality}\nFound via: ${data.source}\n\nRequirements:\n${data.details}\n\nLanguages, geography and timing:\n${data.coverage}` }, receipt)
   } catch {
     await env.DB.prepare("UPDATE enquiries SET status = 'review' WHERE receipt = ?").bind(receipt).run()
     return response(202, { confirmed: false, receipt, error: 'We could not confirm email acceptance. Please email saurav@xagi.in with this receipt.' })

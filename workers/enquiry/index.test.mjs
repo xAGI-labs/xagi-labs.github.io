@@ -78,3 +78,21 @@ test('disabled setup fails closed and oversized body cannot send', async () => {
   assert.equal((await f.send({ ...f.payload, details: 'a'.repeat(20000) })).status, 413)
   assert.equal(f.sends, 0)
 })
+
+test('free daily quota is atomic and prevents a new email', async () => {
+  const f = fixture(); f.env.FREE_LIMITS = true
+  const insert = f.sqlite.prepare("INSERT INTO enquiries(receipt,fingerprint,intent,placement,modality,source,status) VALUES (?, 'synthetic', 'buyer', 'home', 'Speech & audio', 'Not specified', 'accepted')")
+  for (let i=0;i<50;i++) insert.run(crypto.randomUUID())
+  assert.equal((await f.send()).status, 429)
+  assert.equal(f.sends, 0)
+  assert.equal(f.sqlite.prepare('SELECT count(*) AS n FROM enquiries').get().n, 50)
+})
+test('free monthly quota rejects without counting a confirmed enquiry', async () => {
+  const f = fixture(); f.env.FREE_LIMITS = true
+  // Review entries reserve sending budget without inflating confirmed counts.
+  const insert = f.sqlite.prepare("INSERT INTO enquiries(receipt,fingerprint,intent,placement,modality,source,status,created_at) VALUES (?, 'synthetic', 'buyer', 'home', 'Speech & audio', 'Not specified', 'review', strftime('%Y-%m-01T00:00:00Z','now'))")
+  for (let i=0;i<1000;i++) insert.run(crypto.randomUUID())
+  assert.equal((await f.send()).status, 429)
+  assert.equal(f.sends, 0)
+  assert.equal(f.sqlite.prepare("SELECT count(*) AS n FROM enquiries WHERE status='accepted'").get().n, 0)
+})
