@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "AstroGemini Support",
   description: "Support contact information and common questions for AstroGemini.",
   alternates: {
-    canonical: "https://xagi-labs.github.io/astro-gemini/support",
+    canonical: "https://xagi.in/astro-gemini/support/",
   },
 }
 

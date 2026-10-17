@@ -47,13 +47,13 @@ export function generateMetadata({ params }: Props): Metadata {
     description,
     keywords: skill.keywords,
     alternates: {
-      canonical: `https://xagi-labs.github.io/codex-skills/${skill.slug}`,
+      canonical: `https://xagi.in/codex-skills/${skill.slug}`,
     },
     openGraph: {
       title,
       description,
       type: "article",
-      url: `https://xagi-labs.github.io/codex-skills/${skill.slug}`,
+      url: `https://xagi.in/codex-skills/${skill.slug}`,
       images: ["/xagi-icon.png"],
     },
     twitter: {
@@ -98,14 +98,14 @@ export default function CodexSkillPage({ params }: Props) {
     "@type": "TechArticle",
     headline: `${skill.name} Codex Skill`,
     description: skill.description,
-    url: `https://xagi-labs.github.io/codex-skills/${skill.slug}`,
-    mainEntityOfPage: `https://xagi-labs.github.io/codex-skills/${skill.slug}`,
+    url: `https://xagi.in/codex-skills/${skill.slug}`,
+    mainEntityOfPage: `https://xagi.in/codex-skills/${skill.slug}`,
     about: skill.keywords,
     isBasedOn: skill.githubUrl,
     publisher: {
       "@type": "Organization",
       name: "xAGI Labs",
-      url: "https://xagi-labs.github.io",
+      url: "https://xagi.in",
     },
   }
 

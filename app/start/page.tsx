@@ -3,6 +3,7 @@ import StartProject from "@/components/landing-page/start-project"
 import Footer from "@/components/landing-page/footer"
 
 export const metadata = {
+  alternates: { canonical: "https://xagi.in/start/" },
   title: "Start Your Project | Automatic",
   description: "Get started with your next project by answering a few questions and scheduling a call with our team.",
 }

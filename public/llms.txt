@@ -1,15 +1,16 @@
 # xAGI Labs
 
-> Static website with AI automation services, project profiles, blog posts and product documentation.
+> AI training data sourcing, custom collection scoping and licensing. Source availability, volume and permitted use are established for each brief; this is not an inventory catalog.
 
-- [Home](https://xagi-labs.github.io/)
-- [Projects](https://xagi-labs.github.io/projects/)
-- [Services](https://xagi-labs.github.io/services/)
-- [Blog](https://xagi-labs.github.io/blog/)
-- [Contact](https://xagi-labs.github.io/contact/)
-- [Codex skills](https://xagi-labs.github.io/codex-skills/)
-- [Site overview](https://xagi-labs.github.io/site.md)
-- [API retirement notice](https://xagi-labs.github.io/docs/api/)
+- [Data sourcing](https://xagi.in/ai-dataset-sourcing/)
+- [Custom collection](https://xagi.in/custom-ai-data-collection/)
+- [Dataset licensing](https://xagi.in/ai-dataset-licensing/)
+- [Discuss a dataset](https://xagi.in/#dataset-brief)
+- [Projects](https://xagi.in/portfolio/)
+- [Speech research](https://xagi.in/projects/haryanvi-tts/)
+- [Blog](https://xagi.in/blog/)
+- [AI news](https://xagi.in/ai-news/)
+- [Engineering services](https://xagi.in/services/)
+- [API retirement notice](https://xagi.in/docs/api/)
 
-The chat and AI slide-generation demos are retired. There is no runtime API.
-The carousel editor works entirely in the browser, including manual editing and PDF export.
+Existing product and engineering pages remain available. Haryanvi TTS is research in progress, not proof of a licensable commercial corpus. The former chat and slide-generation APIs remain retired.

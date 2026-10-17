@@ -1,4 +1,4 @@
-export const SITE_ORIGIN = "https://xagi-labs.github.io"
+export const SITE_ORIGIN = "https://xagi.in"
 export const API_DOCS_PATH = "/docs/api"
 export const OPENAPI_PATH = "/docs/api/openapi.json"
 export const API_CATALOG_PATH = "/.well-known/api-catalog"

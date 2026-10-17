@@ -10,7 +10,7 @@ export default function PaidTrafficTracking() {
     captureAttribution()
     trackMarketingEvent("landing_page_view", {
       page: "home",
-      page_type: "voice_agents_paid_landing",
+      page_type: "ai_training_data_landing",
     })
 
     const firedMilestones = new Set<number>()

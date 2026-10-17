@@ -4,6 +4,7 @@ import { ArrowLeft, Github, Linkedin, Twitter, Mail } from 'lucide-react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://xagi.in/siliconhalli/about/" },
   title: 'About SiliconHalli - The Bangalore Startup Simulator',
   description: 'Learn about the origin story of SiliconHalli, the satirical idle clicker game about building a startup in Bangalore.',
 };

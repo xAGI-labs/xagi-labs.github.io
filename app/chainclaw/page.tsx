@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import ChainClawLandingPage from '@/components/chainclaw-page'
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://xagi.in/chainclaw/" },
   title: 'Chain Claw — AI Workforce Operating System',
   description:
     'Chain Claw turns AI into a self-organizing squad that plans, executes, and ships work continuously.',

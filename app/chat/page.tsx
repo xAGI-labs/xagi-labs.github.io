@@ -3,6 +3,7 @@ import Link from "next/link"
 import Header from "@/components/shared/header"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://xagi.in/chat/" },
   title: "Chat retired",
   description: "The standalone xAGI Labs chat demo has been retired.",
   robots: { index: false, follow: false },

@@ -1,3 +1,4 @@
+import { canonicalUrl } from "@/lib/site"
 import { getPostBySlug, getAllPosts } from "@/lib/blog"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: Props) {
     }
   }
 
-  const canonical = post.canonical || `https://xagi-labs.github.io/blog/${post.slug}`
+  const canonical = canonicalUrl(post.canonical || `/blog/${post.slug}/`)
   const description = post.description || "Read the latest insights from xAGI Labs."
   const postImage = post.image || getFallbackCover(post.slug)
   const keywords =
@@ -98,7 +99,7 @@ export default function BlogPostPage({ params }: Props) {
     notFound()
   }
 
-  const canonical = post.canonical || `https://xagi-labs.github.io/blog/${post.slug}`
+  const canonical = canonicalUrl(post.canonical || `/blog/${post.slug}/`)
   const postImage = post.image || getFallbackCover(post.slug)
   const keywords =
     Array.isArray(post.keywords)
@@ -123,7 +124,7 @@ export default function BlogPostPage({ params }: Props) {
       name: "xAGI Labs",
       logo: {
         "@type": "ImageObject",
-        url: "https://xagi-labs.github.io/xagi-icon.png",
+        url: "https://xagi.in/xagi-icon.png",
       },
     },
     mainEntityOfPage: {
@@ -132,7 +133,7 @@ export default function BlogPostPage({ params }: Props) {
     },
     articleSection: post.category || "AI",
     keywords: keywords.join(", "),
-    image: postImage.startsWith("http") ? postImage : `https://xagi-labs.github.io${postImage}`,
+    image: postImage.startsWith("http") ? postImage : `https://xagi.in${postImage}`,
   }
 
   return (

@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: "AI Voice Agents for Customer Support",
   description:
     "Deploy AI voice agents for customer support triage, repeat questions, case intake, after-hours coverage, and human handoff.",
-  alternates: { canonical: "https://xagi-labs.github.io/voice-ai/customer-support" },
+  alternates: { canonical: "https://xagi.in/voice-ai/customer-support/" },
   openGraph: {
     title: "AI Voice Agents for Customer Support | xAGI Labs",
     description: "Automate repeat support calls with grounded answers, structured case capture, QA visibility, and human handoff.",
-    url: "https://xagi-labs.github.io/voice-ai/customer-support",
+    url: "https://xagi.in/voice-ai/customer-support",
     type: "website",
     images: ["/xagi-icon.png"],
   },

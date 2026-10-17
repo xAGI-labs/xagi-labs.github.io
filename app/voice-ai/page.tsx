@@ -1,6 +1,7 @@
 import VoiceAIPage from "@/components/voice-ai-page"
 
 export const metadata = {
+  alternates: { canonical: "https://xagi.in/voice-ai/" },
   title: "Voice AI Call Center for India",
   description: "Deploy multilingual voice AI agents for inbound support, outbound sales, collections, and lead qualification in India. Built for Hindi, Tamil, Telugu, BFSI, EdTech, ecommerce, and data residency needs.",
   keywords: "voice AI, AI call center, voice agents, multilingual AI, India voice AI, customer service automation, outbound sales AI, IVR automation, conversational AI, Hindi voice bot, regional language AI, BFSI automation, EdTech voice AI",

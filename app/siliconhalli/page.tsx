@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import SiliconHalliGame from './Game';
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://xagi.in/siliconhalli/" },
   title: 'SiliconHalli - Bangalore Startup Simulator',
   description: 'Play SiliconHalli, the ultimate Bangalore startup simulator game. Build your startup, raise funding, and survive the Silk Board traffic in this addictive clicker game.',
   keywords: ['SiliconHalli', 'Bangalore Startup Game', 'Startup Simulator', 'Bangalore Tech Game', 'Clicker Game', 'React Game'],

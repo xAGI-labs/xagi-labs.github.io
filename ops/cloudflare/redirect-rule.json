@@ -1,13 +1,13 @@
 {
   "action": "redirect",
-  "description": "Move all xagi.in public traffic to GitHub Pages without Worker invocations",
+  "description": "Normalize HTTP and www to canonical HTTPS xagi.in; leave HTTPS apex on the site",
   "enabled": true,
-  "expression": "(http.host in {\"xagi.in\" \"www.xagi.in\"})",
+  "expression": "(http.host eq \"www.xagi.in\") or (http.host eq \"xagi.in\" and http.request.scheme eq \"http\")",
   "action_parameters": {
     "from_value": {
-      "status_code": 302,
+      "status_code": 301,
       "target_url": {
-        "expression": "concat(\"https://xagi-labs.github.io\", http.request.uri.path)"
+        "expression": "concat(\"https://xagi.in\", http.request.uri.path)"
       },
       "preserve_query_string": true
     }

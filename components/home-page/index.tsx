@@ -1,616 +1,79 @@
-"use client"
-
-import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Bot, Brain, CheckCircle2, Database, Globe, Shield, Sparkles, Waypoints, Workflow } from "lucide-react"
-import BookingCta from "@/components/home-page/booking-cta"
-import MobileBookingBar from "@/components/home-page/mobile-booking-bar"
-import PaidTrafficTracking from "@/components/home-page/paid-traffic-tracking"
-import { trackMarketingEvent } from "@/lib/marketing-attribution"
+import Image from "next/image"
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react"
+import BookingCta from "./booking-cta"
+import PaidTrafficTracking from "./paid-traffic-tracking"
+import DatasetBrief from "./dataset-brief"
+import styles from "./data-home.module.css"
 
-const proofPoints = [
-  {
-    title: "Workflow automation",
-    description: "Turn repetitive research, data entry, routing, reporting, and follow-up into reliable AI-assisted workflows.",
-  },
-  {
-    title: "Internal copilots",
-    description: "Give teams agents that search company knowledge, draft decisions, update systems, and keep context attached.",
-  },
-  {
-    title: "GTM automation",
-    description: "Automate lead research, account scoring, outreach preparation, CRM hygiene, and handoffs between growth tools.",
-  },
-  {
-    title: "AI product features",
-    description: "Embed assistants, extraction, generation, recommendations, and decision support inside the products you already ship.",
-  },
+const modalities = [
+  { number: "01", title: "Speech & audio", detail: "Language, accent, conversation and acoustic requirements for speech and voice models.", focus: "ASR · voice AI · evaluation" },
+  { number: "02", title: "Video & multimodal", detail: "Source access and capture specifications for visual, temporal and cross-modal learning.", focus: "Video · embodied AI · robotics" },
+  { number: "03", title: "Expert & domain data", detail: "Specialist knowledge, task definitions and review criteria for focused model capabilities.", focus: "Post-training · reasoning · evaluation" },
 ]
-
-const launchSteps = [
-  {
-    step: "01",
-    title: "Map the workflow",
-    description: "Find the repeated work, decision points, review rules, success metrics, and fields that need to move between systems.",
-  },
-  {
-    step: "02",
-    title: "Connect knowledge and systems",
-    description: "Integrate docs, databases, CRM, help desk, spreadsheets, APIs, and the tools your team already works inside.",
-  },
-  {
-    step: "03",
-    title: "Launch with monitoring",
-    description: "Start with a narrow production path, review outputs and edge cases, then expand once the automation proves useful.",
-  },
+const steps = [
+  ["Define the signal", "Start with the model, task, coverage gaps and acceptance criteria. Agree what useful data looks like before discussing volume."],
+  ["Assess the source", "Evaluate existing assets or a custom collection route. Establish access, participant requirements and the evidence needed for rights review."],
+  ["Agree the delivery", "Scope a representative pilot, quality checks, metadata, formats and license terms before committing to a larger program."],
 ]
-
-const reliabilityPillars = [
-  {
-    icon: Bot,
-    title: "Agent architecture",
-    description: "Purpose-built agents with scoped tools, memory, evals, and review paths instead of one giant chatbot prompt.",
-  },
-  {
-    icon: Database,
-    title: "Knowledge and data layer",
-    description: "Ground outputs in your SOPs, docs, tables, product data, and business rules with traceable source context.",
-  },
-  {
-    icon: Workflow,
-    title: "Workflow orchestration",
-    description: "Trigger actions across CRM, support, email, spreadsheets, internal tools, and custom APIs with clear state handling.",
-  },
-  {
-    icon: Shield,
-    title: "Guardrails and review",
-    description: "Use confidence checks, approval gates, audit logs, and escalation rules for work that needs human judgment.",
-  },
+const faqs = [
+  ["Do you sell off-the-shelf datasets?", "Start with your requirements. Availability and commercial rights need to be established for each source. This website is not a live inventory catalog, and a modality listed here is not a promise of stock."],
+  ["Can you source a specific language or domain?", "We can discuss the requirement and assess a sourcing or collection route. Feasibility depends on source access, participant criteria, rights, quality requirements and timing. Coverage is confirmed during scoping."],
+  ["Can we review a sample?", "Include your sample and evaluation requirements in the brief. A representative sample or pilot is scoped when a suitable source and permitted use have been established; sample availability is not guaranteed."],
+  ["What does licensing cover?", "Permitted training and evaluation uses, exclusivity, redistribution, retention and other restrictions are defined for the specific source and agreement. We do not assume that publicly accessible content is commercially licensable."],
 ]
-
-const useCases = [
-  {
-    title: "Lead research and outbound ops",
-    description: "Research accounts, qualify fit, draft contextual outreach, update CRM fields, and keep sales follow-up moving.",
-  },
-  {
-    title: "Support and back-office triage",
-    description: "Classify requests, summarize history, draft replies, route exceptions, and keep internal teams aligned.",
-  },
-  {
-    title: "Document and data extraction",
-    description: "Extract structured fields from PDFs, emails, forms, spreadsheets, and messy operational records.",
-  },
-  {
-    title: "Reporting and decision support",
-    description: "Turn scattered data into weekly summaries, risk flags, next actions, and dashboards your team can trust.",
-  },
-  {
-    title: "Product copilots and AI features",
-    description: "Add assistants, retrieval, generation, recommendations, and workflow actions directly inside your product.",
-  },
-]
-
-const enterpriseSignals = [
-  "Cloud-native deployment with a path for stricter environment and data handling requirements",
-  "API-first automations for internal workflows, customer-facing features, and scheduled operations",
-  "Integrations across CRM, help desk, data stores, messaging, docs, spreadsheets, and automation tools",
-  "Structured logs, human review points, evals, and workflow-level observability for production use",
-]
-
-const integrations = ["HubSpot", "Salesforce", "Freshworks", "Zoho", "Slack", "Google Workspace", "Airtable", "Notion", "Postgres", "Zapier", "Make", "n8n"]
-
-const bookingSteps = [
-  "Pick a time that works for you",
-  "Bring one workflow your team still handles manually",
-  "Get a practical automation plan from our team",
-]
-
-const bestFit = [
-  "Founders, operators, and growth teams with repeated work across multiple tools",
-  "Teams that need agents, copilots, extraction, routing, or GTM automation in production",
-  "Product teams adding AI features to real customer workflows rather than demos",
-]
-
-const notFor = [
-  "Teams looking for a generic chatbot skin with no workflow behind it",
-  "Use cases without a clear owner, input, decision path, or success metric",
-  "Projects that only need research slides rather than a working production rollout",
-]
-
-function LandingHeader() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-stone-200/80 bg-stone-50/90 backdrop-blur dark:border-white/10 dark:bg-[#0d0f10]/90">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/xagi-icon.png" alt="xAGI Labs" width={28} height={28} />
-          <div className="flex items-baseline gap-2">
-            <span className="text-base font-semibold tracking-tight text-stone-950 dark:text-stone-100">xAGI Labs</span>
-            <span className="text-xs uppercase tracking-[0.22em] text-stone-500 dark:text-stone-400">Automation</span>
-          </div>
-        </Link>
-
-        <nav className="hidden items-center gap-6 text-sm text-stone-600 md:flex dark:text-stone-300">
-          <a href="#proof" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Why it works
-          </a>
-          <a href="#how-it-works" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            How it works
-          </a>
-          <a href="#fit" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Fit
-          </a>
-          <a href="#trust" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Trust
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <Link
-            href="/services"
-            className="hidden text-sm text-stone-600 transition-colors hover:text-stone-950 md:inline-flex dark:text-stone-300 dark:hover:text-white"
-          >
-            Services
-          </Link>
-          <BookingCta
-            placement="header"
-            className="inline-flex items-center gap-2 rounded-full bg-stone-950 px-4 py-2 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-700 dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white"
-          >
-            Book a demo
-          </BookingCta>
-        </div>
-      </div>
-    </header>
-  )
-}
-
-function LandingFooter() {
-  return (
-    <footer className="border-t border-stone-200/80 py-10 dark:border-white/10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-        <div>
-          <p className="text-sm font-medium text-stone-950 dark:text-stone-100">xAGI Labs</p>
-          <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
-            AI automation systems for operations, growth, support, and product teams.
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-5 text-sm text-stone-600 dark:text-stone-400">
-          <Link href="/services" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Services
-          </Link>
-          <Link href="/autoclaw" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            AutoClaw
-          </Link>
-          <Link
-            href="/contact"
-            className="transition-colors hover:text-stone-950 dark:hover:text-white"
-            onClick={() => {
-              trackMarketingEvent("contact_fallback_click", {
-                placement: "footer",
-              })
-            }}
-          >
-            Contact
-          </Link>
-          <Link href="/blog" className="transition-colors hover:text-stone-950 dark:hover:text-white">
-            Blog
-          </Link>
-        </div>
-      </div>
-    </footer>
-  )
-}
-
-function HomePageStructuredData() {
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: "AI automation implementation and AI product engineering",
-    name: "xAGI Labs AI Automation",
-    description:
-      "Production AI automation systems, agents, copilots, workflow integrations, and AI product features for operations and growth teams.",
-    provider: {
-      "@type": "Organization",
-      name: "xAGI Labs",
-      url: "https://xagi-labs.github.io",
-    },
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-    },
-    url: "https://xagi-labs.github.io",
-  }
-
-  const webPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "AI Automation Systems for Operations and Growth",
-    description:
-      "Build production AI automations, agents, copilots, and workflow integrations for operations, growth, support, and product teams.",
-    url: "https://xagi-labs.github.io",
-    about: {
-      "@type": "Thing",
-      name: "AI automation",
-    },
-  }
-
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
-    </>
-  )
-}
 
 export default function HomePage() {
-  return (
-    <div className="min-h-screen bg-stone-50 pb-24 text-stone-950 dark:bg-[#0d0f10] dark:text-stone-100 md:pb-0">
-      <HomePageStructuredData />
-      <PaidTrafficTracking />
-      <LandingHeader />
-
-      <main>
-        <section className="border-b border-stone-200/70 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:py-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:px-8">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-stone-300 bg-stone-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300">
-                <Brain className="h-3.5 w-3.5" />
-                AI automations for real workflows
-              </div>
-              <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[0.96] tracking-tight text-stone-950 sm:text-5xl md:text-6xl dark:text-stone-50">
-                AI automation systems for the work your team still does by hand.
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg sm:leading-8 dark:text-stone-300">
-                xAGI Labs helps growth, operations, support, and product teams turn repeated manual work into
-                production AI agents, copilots, and integrations that fit the systems they already use.
-              </p>
-
-              <div className="mt-5 rounded-2xl border border-stone-200 bg-white/80 p-4 text-sm text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300">
-                <p className="font-medium text-stone-950 dark:text-stone-100">
-                  Best for teams with a real workflow to automate: research, routing, extraction, follow-up, reporting, or product AI.
-                </p>
-              </div>
-
-              <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-                <BookingCta
-                  placement="hero"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-stone-950 px-6 py-4 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-700 sm:w-auto dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white"
-                >
-                  Book a demo
-                  <ArrowRight className="h-4 w-4" />
-                </BookingCta>
-                <Link
-                  href="/services"
-                  className="hidden items-center gap-2 text-sm font-medium text-stone-700 transition-colors hover:text-stone-950 sm:inline-flex dark:text-stone-300 dark:hover:text-white"
-                >
-                  Explore services
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-
-              <div className="mt-6 rounded-3xl border border-stone-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                  What happens after you book
-                </p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                  {bookingSteps.map((step) => (
-                    <div key={step} className="rounded-2xl border border-stone-200 bg-stone-50 p-4 text-sm text-stone-600 dark:border-white/10 dark:bg-[#101213] dark:text-stone-300">
-                      <p>{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-6 grid gap-3 text-sm text-stone-600 sm:grid-cols-3 dark:text-stone-400">
-                <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">Workflow design</p>
-                  <p className="mt-1">Start from the job, edge cases, owners, and handoffs before choosing the model.</p>
-                </div>
-                <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">System integration</p>
-                  <p className="mt-1">Connect data, docs, APIs, CRM, help desk, and internal tools without creating a shadow stack.</p>
-                </div>
-                <div className="rounded-2xl border border-stone-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                  <p className="font-medium text-stone-950 dark:text-stone-100">Production monitoring</p>
-                  <p className="mt-1">Review outputs, trace decisions, and expand scope only after the workflow holds up.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:pt-6">
-              <div className="rounded-[2rem] border border-stone-200 bg-white p-4 shadow-[0_24px_80px_-48px_rgba(0,0,0,0.45)] dark:border-white/10 dark:bg-[#141718]">
-                <div className="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-5 dark:border-white/10 dark:bg-[#101213]">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
-                        Automation console
-                      </p>
-                      <h2 className="mt-2 text-xl font-semibold text-stone-950 dark:text-stone-100">
-                        Workflow in production
-                      </h2>
-                    </div>
-                    <div className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">
-                      Live
-                    </div>
-                  </div>
-
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Review mode</p>
-                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">Human</p>
-                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Approval gates stay in place where judgment matters.</p>
-                    </div>
-                    <div className="rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                      <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Workflow type</p>
-                      <p className="mt-2 text-3xl font-semibold text-stone-950 dark:text-stone-100">GTM ops</p>
-                      <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">Account research, enrichment, CRM updates, and drafted follow-up.</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 rounded-2xl border border-stone-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="text-sm font-medium text-stone-950 dark:text-stone-100">Active workflow</p>
-                      <span className="text-xs text-stone-500 dark:text-stone-400">Lead research to CRM</span>
-                    </div>
-                    <div className="mt-4 space-y-3 text-sm text-stone-600 dark:text-stone-300">
-                      <div className="flex items-start gap-3">
-                        <Sparkles className="mt-0.5 h-4 w-4 text-amber-600 dark:text-amber-300" />
-                        <p>Finds company context, fit signals, recent activity, and the reason the account is worth pursuing.</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <Waypoints className="mt-0.5 h-4 w-4 text-stone-700 dark:text-stone-200" />
-                        <p>Updates CRM fields, queues a suggested next step, and routes unclear accounts for human review.</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                        <p>Logs sources, output quality, and approval state so the team can inspect what happened later.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="proof" className="border-b border-stone-200/70 py-16 dark:border-white/10">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {proofPoints.map((point) => (
-                <div
-                  key={point.title}
-                  className="rounded-2xl border border-stone-200 bg-white p-5 transition-transform duration-200 hover:-translate-y-0.5 dark:border-white/10 dark:bg-white/5"
-                >
-                  <p className="text-base font-medium text-stone-950 dark:text-stone-100">{point.title}</p>
-                  <p className="mt-2 text-sm leading-7 text-stone-600 dark:text-stone-400">{point.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="how-it-works" className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                How it works
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                A practical rollout path for ops teams.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-stone-600 dark:text-stone-400">
-                Start with a narrow workflow, connect the systems you already use, then scale once outputs, reviews,
-                and business outcomes are stable.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {launchSteps.map((item) => (
-                <div key={item.step} className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-                  <p className="text-sm font-medium text-stone-500 dark:text-stone-400">{item.step}</p>
-                  <h3 className="mt-4 text-xl font-semibold text-stone-950 dark:text-stone-100">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-400">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="fit" className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-            <div className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Who this is for</p>
-              <div className="mt-5 space-y-3">
-                {bestFit.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-7 text-stone-600 dark:text-stone-400">
-                    <CheckCircle2 className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-600 dark:text-emerald-300" />
-                    <p>{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Not the best fit</p>
-              <div className="mt-5 space-y-3">
-                {notFor.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-7 text-stone-600 dark:text-stone-400">
-                    <Shield className="mt-1 h-4 w-4 flex-shrink-0 text-stone-700 dark:text-stone-200" />
-                    <p>{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:px-8">
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                Reliability
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                Designed for workflows that cannot quietly drift or break.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-stone-600 dark:text-stone-400">
-                The platform combines grounded AI, tool execution, operational control, and traceable outcomes so
-                your team can trust it in front of customers and internal stakeholders.
-              </p>
-
-              <div className="mt-8 rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-                <p className="text-sm font-medium text-stone-950 dark:text-stone-100">What the system handles</p>
-                <ul className="mt-4 space-y-3 text-sm text-stone-600 dark:text-stone-400">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Research, summarization, extraction, and classification
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Knowledge-grounded outputs and tool-triggered workflows
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Structured summaries, action items, and state logging
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                    Escalation to humans with context preserved
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              {reliabilityPillars.map((pillar) => (
-                <div key={pillar.title} className="rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-stone-100 dark:bg-white/10">
-                    <pillar.icon className="h-5 w-5 text-stone-700 dark:text-stone-200" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-stone-950 dark:text-stone-100">{pillar.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-stone-600 dark:text-stone-400">{pillar.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="use-cases" className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                Use cases
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                Built for the automations most teams keep postponing.
-              </h2>
-            </div>
-
-            <div className="mt-10 divide-y divide-stone-200 rounded-3xl border border-stone-200 bg-white dark:divide-white/10 dark:border-white/10 dark:bg-white/5">
-              {useCases.map((item) => (
-                <div key={item.title} className="grid gap-4 px-6 py-6 md:grid-cols-[260px_minmax(0,1fr)] md:px-8">
-                  <h3 className="text-lg font-semibold text-stone-950 dark:text-stone-100">{item.title}</h3>
-                  <p className="text-sm leading-7 text-stone-600 dark:text-stone-400">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="trust" className="border-b border-stone-200/70 py-20 dark:border-white/10">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-8">
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                Enterprise trust
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl dark:text-stone-100">
-                Practical deployment and governance, not hand-wavy enterprise language.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-stone-600 dark:text-stone-400">
-                The rollout is designed around operational controls, integration depth, and implementation planning that
-                procurement and ops teams can actually evaluate.
-              </p>
-              <p className="mt-6 text-sm leading-7 text-stone-500 dark:text-stone-400">
-                Security, privacy, and deployment constraints are scoped during discovery and pilot planning so the
-                production setup matches the workflow and environment requirements you already operate under.
-              </p>
-            </div>
-
-            <div>
-              <div className="grid gap-4">
-                {enterpriseSignals.map((signal) => (
-                  <div key={signal} className="rounded-2xl border border-stone-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-                    <div className="flex items-start gap-3">
-                      <Globe className="mt-0.5 h-4 w-4 text-stone-700 dark:text-stone-200" />
-                      <p className="text-sm leading-7 text-stone-600 dark:text-stone-400">{signal}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 rounded-3xl border border-stone-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-                <p className="text-sm font-medium text-stone-950 dark:text-stone-100">Common integrations</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {integrations.map((integration) => (
-                    <span
-                      key={integration}
-                      className="rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-300"
-                    >
-                      {integration}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-[2rem] border border-stone-200 bg-stone-950 px-6 py-10 text-stone-50 dark:border-white/10 dark:bg-stone-100 dark:text-stone-950 sm:px-10">
-              <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-                <div className="max-w-2xl">
-                  <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-300 dark:text-stone-600">
-                    Ready to launch
-                  </p>
-                  <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                    Put one AI automation into production with a cleaner path to rollout.
-                  </h2>
-                  <p className="mt-4 text-base leading-8 text-stone-300 dark:text-stone-700">
-                    Start with one operational workflow, validate quality and outcomes, and expand once the system is
-                    doing real work for your team.
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-start gap-4 sm:flex-row lg:flex-col">
-                  <BookingCta
-                    placement="final_cta"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-stone-950 transition-colors hover:bg-stone-200 dark:bg-stone-950 dark:text-stone-50 dark:hover:bg-stone-800"
-                  >
-                    Book a demo
-                    <ArrowRight className="h-4 w-4" />
-                  </BookingCta>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-stone-300 transition-colors hover:text-white dark:text-stone-700 dark:hover:text-stone-950"
-                    onClick={() => {
-                      trackMarketingEvent("contact_fallback_click", {
-                        placement: "final_cta",
-                      })
-                    }}
-                  >
-                    Prefer email or a custom intro?
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <LandingFooter />
-      <MobileBookingBar />
-    </div>
-  )
+  const schema = { "@context": "https://schema.org", "@type": "Service", name: "AI training data sourcing and licensing", serviceType: ["AI dataset sourcing", "Custom AI data collection", "AI dataset licensing"], url: "https://xagi.in/", provider: { "@type": "Organization", name: "xAGI Labs", url: "https://xagi.in/" }, description: "Requirements-led sourcing, collection scoping and licensing for specialized AI training data.", areaServed: "Worldwide" }
+  return <div className={styles.page}>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <PaidTrafficTracking />
+    <a className={styles.skip} href="#main-content">Skip to content</a>
+    <header className={styles.header}><div className={styles.wrap}>
+      <Link href="/" className={styles.brand} aria-label="xAGI Labs home"><Image src="/xagi-icon.png" width={30} height={30} alt="" /><span>xAGI Labs<span className={styles.brandNote}>DATA ACQUISITION & LICENSING</span></span></Link>
+      <nav className={styles.nav} aria-label="Main navigation"><a href="#modalities">Data</a><a href="#process">Our approach</a><a href="#quality">Quality & rights</a><Link href="/blog/">Research & insights</Link></nav>
+      <a href="#dataset-brief" className={styles.headerCta}>Discuss your dataset <ArrowUpRight size={16} aria-hidden="true" /></a>
+    </div></header>
+    <main id="main-content">
+      <section className={`${styles.wrap} ${styles.hero}`} aria-labelledby="hero-heading">
+        <div><p className={styles.eyebrow}>AI TRAINING DATA. SOURCED WITH PURPOSE.</p>
+          <h1 id="hero-heading">The right data.<br /><span>For your next model.</span></h1>
+          <p className={styles.lead}>Source, commission and license specialized data for the capabilities you want to build.</p>
+          <p className={styles.intro}>xAGI Labs works with AI teams to turn a model requirement into a defined sourcing brief — across speech, video, multimodal and expert data.</p>
+          <div className={styles.actions}><a href="#dataset-brief" className={styles.primary}>Discuss your dataset <ArrowUpRight size={18} aria-hidden="true" /></a><a href="#process" className={styles.textLink}>See how we work <ArrowDown size={16} aria-hidden="true" /></a></div>
+          <p className={styles.heroNote}>Requirements first. Source availability and rights confirmed during scoping.</p>
+        </div>
+        <aside className={styles.briefSheet} aria-label="Dataset scoping framework">
+          <div className={styles.sheetTop}><span>THE SOURCING BRIEF</span><span>01 — 04</span></div>
+          <h2>Better data starts<br />with a better question.</h2>
+          <div className={styles.signal} aria-hidden="true">{Array.from({ length: 46 }, (_, i) => <i key={i} style={{ height: `${12 + ((i * 19 + 11) % 60)}px` }} />)}</div>
+          <dl>{[["Model & task", "What should the model learn?"], ["Coverage", "Which people, places and conditions?"], ["Quality", "How will you accept or reject it?"], ["Rights", "What uses must the license permit?"]].map(([a,b]) => <div key={a}><dt>{a}</dt><dd>{b}</dd></div>)}</dl>
+          <p>A scoping framework, not a dataset listing.</p>
+        </aside>
+      </section>
+      <div className={styles.audience}><div className={styles.wrap}><span>BUILT AROUND YOUR MODEL</span><p>Frontier AI labs <span> / </span> Speech & voice teams <span> / </span> Multimodal & robotics <span> / </span> Enterprise AI</p></div></div>
+      <section id="modalities" className={`${styles.wrap} ${styles.section}`}>
+        <div className={styles.sectionHeading}><p className={styles.eyebrow}>THE DATA YOU NEED</p><h2>Start with the gap.<br /><span>Then find the source.</span></h2><p>Different models need different signals. We scope the modality, coverage and collection conditions against your task.</p></div>
+        <div className={styles.modalities}>{modalities.map(m => <article key={m.number}><span className={styles.number}>{m.number}</span><div><h3>{m.title}</h3><p>{m.detail}</p></div><span className={styles.focus}>{m.focus}</span></article>)}</div>
+        <p className={styles.note}>These are sourcing areas, not a stocked catalog. Access, volume, timing and permitted use are evaluated for each brief.</p>
+        <Link href="/ai-dataset-sourcing/" className={styles.textLink}>Explore dataset sourcing <ArrowRight size={17} aria-hidden="true" /></Link>
+      </section>
+      <section id="process" className={styles.process}><div className={`${styles.wrap} ${styles.section}`}>
+        <div className={styles.sectionHeading}><p className={styles.eyebrow}>FROM REQUIREMENT TO DATA PROGRAM</p><h2>A clear brief.<br /><span>A considered sourcing route.</span></h2></div>
+        <ol className={styles.steps}>{steps.map(([title,body],i) => <li key={title}><span>0{i+1}</span><div><h3>{title}</h3><p>{body}</p></div></li>)}</ol>
+        <div className={styles.processLinks}><Link href="/custom-ai-data-collection/">Custom collection <ArrowUpRight size={16} aria-hidden="true" /></Link><Link href="/ai-dataset-licensing/">Licensing approach <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
+      </div></section>
+      <section id="quality" className={`${styles.wrap} ${styles.section} ${styles.quality}`}>
+        <div><p className={styles.eyebrow}>EVIDENCE BEFORE ASSUMPTIONS</p><h2>Quality and rights<br /><span>belong in the brief.</span></h2><p className={styles.intro}>Useful training data needs more than a file transfer. Make the source, the checks and the permitted use part of the conversation from the start.</p><Link href="/ai-dataset-licensing/" className={styles.textLink}>Review the licensing questions <ArrowRight size={17} aria-hidden="true" /></Link></div>
+        <dl className={styles.qualityList}>{[["Provenance", "Source identity, collection context and the evidence available for review."], ["Quality criteria", "Coverage, annotation guidelines, rejection rules and representative evaluation samples."], ["Usage scope", "Training and evaluation rights, restrictions, exclusivity and retention requirements."], ["Delivery", "Formats, metadata, acceptance checks and the scope of a pilot."]].map(([a,b]) => <div key={a}><dt>{a}</dt><dd>{b}</dd></div>)}</dl>
+      </section>
+      <section className={`${styles.wrap} ${styles.research}`}><p className={styles.eyebrow}>FROM THE LAB</p><div><h2>Technical work.<br />Clear limits.</h2><p>Our Haryanvi speech research explores transcript audits and reproducible training workflows. It is research in progress, not a commercial corpus listing or a claim of production readiness.</p><Link href="/projects/haryanvi-tts/" className={styles.textLink}>Read the speech research <ArrowUpRight size={17} aria-hidden="true" /></Link></div></section>
+      <section id="dataset-brief" className={styles.contactSection}><div className={`${styles.wrap} ${styles.section} ${styles.contactGrid}`}>
+        <div><p className={styles.eyebrow}>YOUR NEXT DATASET</p><h2>Tell us what<br /><span>your model needs.</span></h2><p className={styles.intro}>Share the task, coverage and constraints. Start a conversation about the right sourcing route.</p><BookingCta placement="data_brief" eventName="dataset_discussion_click" className={styles.textLink}>Prefer a call? Book a discussion <ArrowUpRight size={16} aria-hidden="true" /></BookingCta></div>
+        <DatasetBrief />
+      </div></section>
+      <section className={`${styles.wrap} ${styles.section} ${styles.faq}`}><div><p className={styles.eyebrow}>BEFORE WE TALK</p><h2>A few useful<br />questions.</h2></div><div>{faqs.map(([q,a]) => <details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
+    </main>
+    <footer className={styles.footer}><div className={styles.wrap}><div><Link href="/" className={styles.footerBrand}>xAGI Labs</Link><p>AI training data sourcing & licensing.</p><a href="mailto:saurav@xagi.in">saurav@xagi.in <ArrowUpRight size={14} aria-hidden="true" /></a></div><nav aria-label="Data services"><span>DATA SERVICES</span><Link href="/ai-dataset-sourcing/">Dataset sourcing</Link><Link href="/custom-ai-data-collection/">Custom collection</Link><Link href="/ai-dataset-licensing/">Data licensing</Link></nav><nav aria-label="Research and existing work"><span>EXPLORE THE LAB</span><Link href="/blog/">Blog & insights</Link><Link href="/ai-news/">AI news</Link><Link href="/portfolio/">Projects</Link><Link href="/voice-ai/">Voice AI</Link><Link href="/services/">Engineering services</Link><Link href="/autoclaw/">AutoClaw</Link></nav></div><div className={`${styles.wrap} ${styles.footerBottom}`}><span>© {new Date().getFullYear()} xAGI Labs</span><span>Specific requirements. Thoughtful sourcing.</span></div></footer>
+  </div>
 }

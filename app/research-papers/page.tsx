@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import ResearchPage from "@/components/research-page"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://xagi.in/research-papers/" },
   title: "Research Publications",
   description: "Advancing the frontiers of AI through rigorous research. Explore our published papers on language models, multilingual AI, on-device models, and more.",
   keywords: [

@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Calendar } from "lucide-react"
 
 export const metadata = {
+  alternates: { canonical: "https://xagi.in/blog/" },
   title: "AI Product Engineering Insights and Playbooks",
   description: "Practical essays, implementation guides, and field notes on AI products, agents, OpenClaw, voice AI, and shipping production systems.",
 }
