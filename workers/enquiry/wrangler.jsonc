@@ -8,8 +8,7 @@
   "vars": { "ENABLED": "false", "FROM_EMAIL": "enquiries@notify.xagi.in" },
   "durable_objects": { "bindings": [{ "name": "LEADS", "class_name": "EnquiryLedger" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["EnquiryLedger"] }],
-  "rules": [{ "type": "Text", "globs": ["**/*.sql"], "fallthrough": false }],
-  "triggers": { "crons": ["17 3 * * *"] }
+  "rules": [{ "type": "Text", "globs": ["**/*.sql"], "fallthrough": false }]
   // Add only after configuration and delivery verification:
   // "routes": [{ "pattern": "xagi.in/api/dataset-enquiry*", "zone_name": "xagi.in" }]
 }

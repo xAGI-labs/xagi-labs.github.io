@@ -100,7 +100,9 @@ receipt, keyed fingerprint, allowlisted metadata, timestamps, status and provide
 message ID; it does not store contact addresses, briefs, coverage or raw IPs.
 Email content is sent to Resend and received in Zoho, with visitor email only as
 Reply-To. The recipient and sender are server-controlled. No request body or
-credential is logged. Expired hashed rate buckets are cleaned daily.
+credential is logged. Expired hashed rate buckets are cleaned by the object's daily alarm, not a
+Worker cron. This account's five free cron slots are already used; no existing
+schedule is changed or additional slot required.
 
 A unique SQL insert is the send lock. The same receipt and content returns its
 original result without resending; changed content returns a conflict. Resend

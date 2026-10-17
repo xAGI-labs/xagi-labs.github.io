@@ -10,6 +10,9 @@ export class EnquiryLedger extends DurableObject {
     // Synchronous SQLite initialization completes before request handling.
     ctx.storage.sql.exec(schema)
     this.db = sqliteAdapter(ctx.storage.sql)
+    ctx.blockConcurrencyWhile(async () => {
+      if (await ctx.storage.getAlarm() === null) await ctx.storage.setAlarm(Date.now() + 86400000)
+    })
   }
   async fetch(request) {
     try { return await handle(request, { ...this.env, DB: this.db, EMAIL: resendEmail(this.env), FREE_LIMITS: true }) }
@@ -21,6 +24,7 @@ export class EnquiryLedger extends DurableObject {
       definition: 'Validated enquiries accepted by the email provider; not proof of inbox placement or sales qualification.',
       totalConfirmed: sql.exec("SELECT count(*) AS count FROM enquiries WHERE status='accepted' AND is_test=0").one().count,
       groupLimit: 1000,
+      cleanupAlarmScheduled: (await this.ctx.storage.getAlarm()) !== null,
       confirmed: sql.exec("SELECT date(accepted_at) AS day, intent, placement, modality, source, count(*) AS count FROM enquiries WHERE status='accepted' AND is_test=0 GROUP BY day,intent,placement,modality,source ORDER BY day DESC LIMIT 1000").toArray(),
       review: sql.exec("SELECT receipt, status, created_at FROM enquiries WHERE status!='accepted' AND is_test=0 ORDER BY created_at DESC LIMIT 50").toArray(),
     }
@@ -28,6 +32,10 @@ export class EnquiryLedger extends DurableObject {
   async markTest(receipt) {
     this.ctx.storage.sql.exec('UPDATE enquiries SET is_test=1 WHERE receipt=?', receipt)
     return { changed: this.ctx.storage.sql.exec('SELECT changes() AS changes').one().changes }
+  }
+  async alarm() {
+    await this.cleanup()
+    await this.ctx.storage.setAlarm(Date.now() + 86400000)
   }
   async cleanup() {
     this.ctx.storage.sql.exec('DELETE FROM rate_limits WHERE expires < ?', Math.floor(Date.now() / 1000))
@@ -61,5 +69,4 @@ export default {
     if (request.headers.get('Origin') !== 'https://xagi.in') return response(403, { error: 'Please submit from xagi.in.' })
     return env.LEADS.getByName('xagi-enquiries-v1').fetch(request)
   },
-  async scheduled(_event, env) { if (env.LEADS) await env.LEADS.getByName('xagi-enquiries-v1').cleanup() },
 }

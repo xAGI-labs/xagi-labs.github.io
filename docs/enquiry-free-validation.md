@@ -32,3 +32,9 @@ Cloudflare Free limits are account-wide; the service also reserves no more than
 50 new sends/day and 1,000/month. Provider acceptance, actual inbox arrival,
 confirmed ledger counts and qualified sales leads remain distinct states.
 Zoho receiving, website DNS proxy/TLS, and certificate maintenance are unchanged.
+
+Cloudflare accepted the disabled Worker upload and SQLite-backed Durable Object
+binding on the existing Free account. The initial cleanup cron was rejected
+because all five free cron slots were occupied. Cleanup now uses the object's
+private daily alarm; no existing schedule or account plan is changed. The local
+runtime test also verifies that this alarm is scheduled.

@@ -17,6 +17,7 @@ assert get('/report')[0] == 401
 assert get('/report', 'wrong')[0] == 401
 status, report = get('/report', 'local-synthetic-report-token')
 assert status == 200 and report['totalConfirmed'] == 0 and report['confirmed'] == [] and report['review'] == [], report
+assert report['cleanupAlarmScheduled'] is True
 assert get('/mark-test?receipt=not-a-receipt', 'local-synthetic-report-token', 'POST')[0] == 400
 assert get('/mark-test?receipt=00000000-0000-4000-8000-000000000000', 'local-synthetic-report-token', 'POST') == (200, {'changed': 0})
 assert get('')[0] == 503
