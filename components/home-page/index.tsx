@@ -176,7 +176,7 @@ export default function HomePage() {
         <div className={`${styles.container} ${styles.footerGrid}`}>
           <div><Link href="/" aria-label="xAGI Labs home"><Wordmark /></Link><p>Applied intelligence.<br />Thoughtfully built.</p></div>
           <div><h2>EXPLORE</h2><a href="https://app.xagi.in/demo">Try the app</a><a href="https://app.xagi.in/sign-in">Log in</a><Link href="/voice-ai">Voice AI</Link><Link href="/services">AI automation</Link><Link href="/autoclaw">AutoClaw</Link><Link href="/portfolio">Our work</Link></div>
-          <div><h2>THE LAB</h2><Link href="/process">Our approach</Link><Link href="/blog">Ideas & insights</Link><Link href="/team">About us</Link><Link href="/contact">Contact</Link></div>
+          <div><h2>THE LAB</h2><Link href="/opportunities">Mercor opportunities</Link><Link href="/process">Our approach</Link><Link href="/blog">Ideas & insights</Link><Link href="/team">About us</Link><Link href="/contact">Contact</Link></div>
           <div><h2>LET’S CONNECT</h2><a href="mailto:saurav@xagi.in">saurav@xagi.in <ArrowUpRight size={13} /></a><BookingCta placement="footer" className={styles.footerBooking}>Book a discovery call <ArrowUpRight size={13} /></BookingCta></div>
         </div>
         <div className={`${styles.container} ${styles.footerBottom}`}><span>© {new Date().getFullYear()} xAGI Labs. All rights reserved.</span><span>Built with intention. Made for people.</span></div>
