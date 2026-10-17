@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Outfit } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Analytics } from "@vercel/analytics/react"
 import StructuredData from "@/components/structured-data"
 import MicrosoftClarity from "@/components/microsoft-clarity"
 import GoogleTag from "@/components/google-tag"
@@ -109,7 +108,6 @@ export default function RootLayout({
             {children}
             <GeoGreeting />
           </ThemeProvider>
-          <Analytics />
           <MicrosoftClarity />
         </Suspense>
       </body>

@@ -1,6 +1,6 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+/* Utilities are emitted once by app/globals.css; keep the existing theme cascade. */
 
 :root {
   --background: #ffffff;

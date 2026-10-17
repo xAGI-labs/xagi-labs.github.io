@@ -1,21 +1,16 @@
 domain: xagi.in
 name: xAGI Labs
-description: "xAGI Labs is an AI product studio. Our core GTM product, AutoClaw,
-  helps teams run autonomous outbound and go-to-market workflows: it researches
-  ideal customers, finds intent signals, and executes personalized outreach
-  across email and LinkedIn. We also build voice AI and custom AI automation
-  systems for operations and growth teams."
+description: "AI training data sourcing, custom collection scoping and licensing for speech, multimodal and domain-specific model tasks. Availability and rights are confirmed per project; not an inventory catalog."
 competitors:
-  - domain: clawgtm.com
-  - domain: artisan.co
-  - domain: 11x.ai
+  - domain: datavendor.ai
+  - domain: micro1.ai
 providers:
   - id: openai
     model: gpt-5.4
 analysis:
   provider: openai
   model: gpt-5.4
-query_limit: 100
+query_limit: 12
 db_path: ./goose-aeo.db
 queries_backup: ./queries.json
-budget_limit_usd: null
+budget_limit_usd: 5

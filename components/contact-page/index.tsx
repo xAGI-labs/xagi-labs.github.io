@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import Header from "@/components/shared/header"
 import Footer from "@/components/shared/footer"
 import { Mail, MapPin, ArrowRight, Clock, CheckCircle } from "lucide-react"
@@ -32,6 +33,14 @@ export default function ContactPage() {
         </div>
       </section>
 
+      <section className="py-12 border-y border-gray-200 dark:border-gray-800" aria-labelledby="data-contact-heading">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 id="data-contact-heading" className="text-3xl font-bold mb-4">Discuss an AI dataset</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">For training data sourcing, collection or licensing, prepare the model task, coverage, quality checks and intended use. Source availability and rights are assessed per project.</p>
+          <div className="flex flex-wrap gap-6"><Link href="/dataset-brief/" className="underline font-semibold">Build a dataset brief →</Link><Link href="/data-partnerships/" className="underline">Discuss a data source →</Link><Link href="/experts/" className="underline">Introduce domain expertise →</Link></div>
+          <p className="mt-4 text-sm">For product engineering, voice systems or other existing work, use the calendar or email below.</p>
+        </div>
+      </section>
       {/* Contact Options */}
       <section className="py-20 bg-gray-50 dark:bg-[#111111]">
         <div className="container mx-auto px-4 max-w-6xl">

@@ -14,3 +14,17 @@
 - [API retirement notice](https://xagi.in/docs/api/)
 
 Existing product and engineering pages remain available. Haryanvi TTS is research in progress, not proof of a licensable commercial corpus. The former chat and slide-generation APIs remain retired.
+
+## Data programs and practical resources
+
+- [Speech and audio](https://xagi.in/speech-training-data/)
+- [Video and multimodal](https://xagi.in/multimodal-training-data/)
+- [Expert evaluation](https://xagi.in/expert-evaluation-data/)
+- [Data partnerships](https://xagi.in/data-partnerships/)
+- [For experts](https://xagi.in/experts/)
+- [Build a dataset brief](https://xagi.in/dataset-brief/)
+- [Readiness checklist](https://xagi.in/dataset-readiness-checklist/)
+- [Guides and tools](https://xagi.in/data-resources/)
+- [About and official profiles](https://xagi.in/about/)
+
+Public pages may be used for search and live AI grounding. Model training is disallowed by robots.txt. Dataset usage requires a separate source-specific agreement.

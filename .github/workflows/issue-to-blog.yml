@@ -7,8 +7,9 @@ on:
 jobs:
   create-blog-post:
     if: >-
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association) && (
       contains(join(github.event.issue.labels.*.name, ','), 'blog-from-issue') ||
-      startsWith(github.event.issue.title, '[Blog]')
+      startsWith(github.event.issue.title, '[Blog]'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -55,31 +56,31 @@ jobs:
             const sourceLink = issue.html_url
 
             const content = `---
-title: "${cleanTitle.replace(/"/g, '\\"')}"
-date: "${now}"
-description: "${excerpt.replace(/"/g, '\\"')}"
-keywords:
-  - github issue
-  - blog automation
-  - xAGI Labs
-author: "xAGI Labs"
-category: "Automation"
-canonical: "https://xagi.in/blog/${path.basename(filePath, '.md')}"
----
+            title: "${cleanTitle.replace(/"/g, '\\"')}"
+            date: "${now}"
+            description: "${excerpt.replace(/"/g, '\\"')}"
+            keywords:
+              - github issue
+              - blog automation
+              - xAGI Labs
+            author: "xAGI Labs"
+            category: "Automation"
+            canonical: "https://xagi.in/blog/${path.basename(filePath, '.md')}"
+            ---
 
-# ${cleanTitle}
+            # ${cleanTitle}
 
-This post was generated from GitHub issue [#${issue.number}](${sourceLink}).
+            This post was generated from GitHub issue [#${issue.number}](${sourceLink}).
 
-## Source Context
+            ## Source Context
 
-- Issue: ${sourceLink}
-- Created by: @${issue.user?.login || 'unknown'}
+            - Issue: ${sourceLink}
+            - Created by: @${issue.user?.login || 'unknown'}
 
-## Draft Notes
+            ## Draft Notes
 
-${issueBody || 'No body content was provided in the issue.'}
-`
+            ${issueBody || 'No body content was provided in the issue.'}
+            `
 
             fs.writeFileSync(filePath, content, 'utf8')
             core.setOutput('file_path', path.relative(process.env.GITHUB_WORKSPACE, filePath))

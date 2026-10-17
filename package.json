@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "next build && node scripts/protect-react-html.mjs",
     "dev": "next dev",
     "lint": "next lint",
     "start": "python3 -m http.server 3000 --directory out",
-    "prebuild": "node scripts/fetch-mercor-opportunities.mjs"
+    "prebuild": "node scripts/fetch-mercor-opportunities.mjs",
+    "test:marketing": "node scripts/test-marketing-events.mjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

@@ -1,0 +1,39 @@
+{
+  "environment": "AWS localhost HTTP static preview; synthetic mobile; not field CWV or production HTTP comparison",
+  "runs": [
+    {
+      "run": "previous export, isolated",
+      "performance": 73.0,
+      "LCP_ms": 4210.343,
+      "TBT_ms": 340,
+      "CLS": 0,
+      "warnings": []
+    },
+    {
+      "run": "first changes, before CSS deduplication",
+      "performance": 76.0,
+      "LCP_ms": 4434.0151,
+      "TBT_ms": 208,
+      "CLS": 0,
+      "warnings": []
+    },
+    {
+      "run": "CSS deduplication, concurrent style sweep",
+      "performance": 57.99999999999999,
+      "LCP_ms": 8612.830250062729,
+      "TBT_ms": 494,
+      "CLS": 0,
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ]
+    },
+    {
+      "run": "final isolated repeat",
+      "performance": 80.0,
+      "LCP_ms": 3984.889,
+      "TBT_ms": 235.5,
+      "CLS": 0,
+      "warnings": []
+    }
+  ]
+}
