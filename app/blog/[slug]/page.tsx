@@ -161,7 +161,7 @@ export default function BlogPostPage({ params }: Props) {
                 <div className="flex items-center text-gray-500">
                   <Calendar className="w-4 h-4 mr-2" />
                   <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString()}
+                    {new Date(post.date).toLocaleDateString("en-US", { timeZone: "UTC", year: "numeric", month: "long", day: "numeric" })}
                   </time>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function BlogPostPage({ params }: Props) {
                 />
               </div>
 
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              <ReactMarkdown components={{ h1: ({ children }) => <h2>{children}</h2> }}>{post.content}</ReactMarkdown>
             </article>
 
             <div className="mt-12">

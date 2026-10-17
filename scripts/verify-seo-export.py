@@ -59,6 +59,18 @@ for f in (baseline.rglob('*.html') if baseline else []):
    before_text=before_text.replace(marker, "");after_text=after_text.replace(marker, "")
   before_text=" ".join(before_text.split());after_text=" ".join(after_text.split())
  if before_text!=after_text:legacy_changed.append(key)
+# Keep explicit search/retrieval permissions and the no-training policy consistent.
+from urllib.robotparser import RobotFileParser
+rp=RobotFileParser();rp.parse((out/'robots.txt').read_text().splitlines())
+for bot in ['Googlebot','Bingbot','OAI-SearchBot','ChatGPT-User','Claude-SearchBot','Claude-User','PerplexityBot']:
+ if not rp.can_fetch(bot,'https://xagi.in/speech-training-data/') or not rp.can_fetch(bot,'https://xagi.in/_next/static/example.js'):errors.append(('public crawl access',bot))
+for bot in ['GPTBot','ClaudeBot','CCBot']:
+ if rp.can_fetch(bot,'https://xagi.in/'):errors.append(('training policy',bot))
+for key in parsed:
+ html=(out/key).read_text()
+ if '<!--email_off-->' not in html or '<!--/email_off-->' not in html:errors.append(('missing Cloudflare React protection',key))
+for file in ['data/speech-datasheet-example.md','data/evaluation-rubric-example.md','data/haryanvi-research-methodology.md']:
+ if not (out/file).is_file():errors.append(('missing evidence download',file))
 result={'sitemap_count':len(urls),'sitemap_unique':len(set(urls)),'canonical_mismatches':canonical_mismatches,'errors':errors,'legacy_routes_checked':checked,'legacy_missing':legacy_missing,'legacy_visible_content_changed':legacy_changed}
 print(json.dumps(result,indent=2));Path('/tmp/xagi-export-verification.json').write_text(json.dumps(result,indent=2))
 if errors or canonical_mismatches or legacy_missing or legacy_changed:sys.exit(1)

@@ -24,6 +24,7 @@ declare global {
   interface Window {
     dataLayer?: Array<Record<string, unknown>>
     gtag?: (...args: unknown[]) => void
+    goatcounter?: { count?: (event: { path: string; title: string; event: boolean; referrer: string }) => void }
   }
 }
 
@@ -44,7 +45,8 @@ function readStoredAttribution(): AttributionPayload {
     return {}
   }
 
-  const raw = window.sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY)
+  let raw: string | null = null
+  try { raw = window.sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY) } catch { return {} }
 
   if (!raw) {
     return {}
@@ -88,7 +90,7 @@ export function captureAttribution(): AttributionPayload {
     }
   }
 
-  window.sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(next))
+  try { window.sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(next)) } catch { /* Attribution is optional; never block a CTA. */ }
   return next
 }
 
@@ -122,10 +124,16 @@ export function trackMarketingEvent(
     return
   }
 
-  const attribution = captureAttribution()
-  const eventPayload = {
-    ...params,
-    ...attribution,
+  const isDataEvent = /^(data_intake_|dataset_|data_readiness_)/.test(eventName)
+  // Data enquiry text and arbitrary URL/referrer parameters must never enter analytics.
+  const safeParams = Object.fromEntries(
+    Object.entries(params).filter(([key]) => ["intent", "placement", "modality", "destination"].includes(key)),
+  )
+  const eventPayload = isDataEvent ? safeParams : { ...params, ...captureAttribution() }
+  if (isDataEvent && window.goatcounter?.count) {
+    try {
+      window.goatcounter.count({ path: `${eventName}:${safeParams.intent || "buyer"}:${safeParams.placement || "unknown"}`, title: eventName, event: true, referrer: "" })
+    } catch { /* Analytics availability must not affect the brief. */ }
   }
 
   window.dataLayer = window.dataLayer || []

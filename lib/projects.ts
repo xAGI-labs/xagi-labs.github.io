@@ -251,12 +251,12 @@ export const projects: ProjectProfile[] = [
       },
     ],
     evidence: [
-      { value: "2,768", label: "metadata-linked recordings audited" },
-      { value: "15/15", label: "observed local workflow checks" },
+      { value: "Audit", label: "metadata reconciliation workflow; public item-level results not released" },
+      { value: "Gates", label: "bounded workflow checks; not a quality benchmark" },
       { value: "T4", label: "accessible Colab training target" },
     ],
     stack: ["Python", "PyTorch", "IndicF5", "Hugging Face", "Google Colab", "FFmpeg", "Dataset audit tooling"],
-    links: [],
+    links: [{ label: "Methodology and evidence limits", href: "/data/haryanvi-research-methodology.md" }],
     cta: {
       label: "Discuss regional-language voice AI",
       href: "/contact?project=haryanvi-tts",

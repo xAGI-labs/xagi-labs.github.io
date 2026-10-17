@@ -1,0 +1,25 @@
+{
+  "baseline_html_checked": 1424,
+  "missing_routes": [],
+  "unexpected_visible_changes": [],
+  "intended_visible_changes": [
+    "contact/index.html",
+    "data-partnerships/index.html",
+    "data-resources/index.html",
+    "dataset-brief/index.html",
+    "dataset-readiness-checklist/index.html",
+    "expert-evaluation-data/index.html",
+    "experts/index.html",
+    "index.html",
+    "multimodal-training-data/index.html",
+    "portfolio/haryanvi-tts/index.html",
+    "projects/haryanvi-tts/index.html",
+    "speech-training-data/index.html",
+    "team/index.html",
+    "voice-ai/index.html"
+  ],
+  "removed_sitemap_urls": [],
+  "added_sitemap_urls": [
+    "https://xagi.in/about/"
+  ]
+}
