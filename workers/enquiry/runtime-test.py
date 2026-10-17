@@ -15,6 +15,7 @@ def get(path, auth=None, method='GET'):
 
 assert get('/report')[0] == 401
 assert get('/report', 'wrong')[0] == 401
+assert get('/delivery-test', 'wrong', 'POST')[0] == 401
 status, report = get('/report', 'local-synthetic-report-token')
 assert status == 200 and report['totalConfirmed'] == 0 and report['confirmed'] == [] and report['review'] == [], report
 assert report['cleanupAlarmScheduled'] is True

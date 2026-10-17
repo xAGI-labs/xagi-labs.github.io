@@ -36,11 +36,12 @@ Verified on 2026-10-17 against the providers' primary documentation:
 ## Activation prerequisites
 
 1. Connect a Resend Free account and verify a dedicated **sending subdomain**,
-   such as `notify.xagi.in`. Review the provider's exact DNS record values.
+   `m.xagi.in`, which is already verified in this workspace. No new DNS records
+   are needed for this existing sender. For a future new domain, Review the provider's exact DNS record values.
    Add only its dedicated DKIM TXT / sending-return-path records. Do not replace
    Zoho's root MX/SPF/DKIM, existing DMARC policy, website A/CNAME records or proxy
    settings. No certificate work is involved. Sender becomes
-   `enquiries@notify.xagi.in`; recipient stays `saurav@xagi.in`.
+   `enquiries@m.xagi.in`; recipient stays `saurav@xagi.in`.
 2. Create a sending-only Resend API key restricted to that verified domain.
    Enter it directly with `wrangler secret put RESEND_API_KEY --config
    workers/enquiry/wrangler.jsonc`. Never paste credentials into chat, code,
@@ -143,3 +144,17 @@ For rollback, disable the frontend variable and rebuild, or deploy backend
 delete the Durable Object migration/namespace. Never use `deleted_classes` as a
 routine rollback: it destroys data. Preserve email draft/download fallback. DNS,
 certificates and SEO routes do not participate in this rollback.
+
+The operator can run `python3 scripts/connect-enquiry-resend.py` from the Mac.
+It prompts with hidden input and forwards the key directly to Wrangler secret
+storage on the existing AWS host; it never writes the key to disk or Git.
+The script expects the dedicated task checkout documented above.
+
+`POST /api/dataset-enquiry/delivery-test` is a bearer-authenticated operator
+diagnostic. It uses server-fixed synthetic content addressed only to
+`saurav@xagi.in`, intentionally skips CAPTCHA for this operator diagnostic,
+uses the real provider/ledger path and marks its receipt as a test before
+returning. It can test mail delivery while public sending is disabled. It is
+not proof that the public challenge or browser flow was tested. Ordinary
+submissions still require Turnstile and all other checks; no public request
+can set the internal test flag or choose a diagnostic recipient/body.

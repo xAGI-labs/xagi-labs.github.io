@@ -29,6 +29,20 @@ export class EnquiryLedger extends DurableObject {
       review: sql.exec("SELECT receipt, status, created_at FROM enquiries WHERE status!='accepted' AND is_test=0 ORDER BY created_at DESC LIMIT 50").toArray(),
     }
   }
+  async deliveryTest() {
+    // Fixed synthetic operator diagnostic only. No visitor input is accepted.
+    const receipt = crypto.randomUUID()
+    const request = new Request('https://xagi.in/api/dataset-enquiry', {
+      method: 'POST', headers: { Origin: 'https://xagi.in', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ receipt, email: 'saurav@xagi.in', intent: 'buyer', placement: 'home', source: 'Other', modality: 'Not specified', website: '', token: 'operator-controlled-test', details: 'SYNTHETIC DELIVERY TEST — not a customer enquiry or commercial lead. Verifies notification delivery and durable receipts only.' }),
+    })
+    const result = await handle(request, { ...this.env, ENABLED: 'true', DB: this.db, EMAIL: resendEmail(this.env), FREE_LIMITS: true }, {
+      // Only this bearer-authenticated, fixed-content diagnostic skips CAPTCHA.
+      fetch: async () => Response.json({ success: true, hostname: 'xagi.in', action: 'dataset_enquiry' }),
+    })
+    await this.markTest(receipt)
+    return { ...(await result.json()), status: result.status, isTest: true }
+  }
   async markTest(receipt) {
     this.ctx.storage.sql.exec('UPDATE enquiries SET is_test=1 WHERE receipt=?', receipt)
     return { changed: this.ctx.storage.sql.exec('SELECT changes() AS changes').one().changes }
@@ -51,9 +65,14 @@ export default {
   async fetch(request, env) {
     const path = new URL(request.url).pathname
     if (!env.LEADS) return response(503, { error: 'Enquiries are unavailable. Please email saurav@xagi.in.' })
-    if (path === '/api/dataset-enquiry/report' || path === '/api/dataset-enquiry/mark-test') {
+    if (path === '/api/dataset-enquiry/report' || path === '/api/dataset-enquiry/mark-test' || path === '/api/dataset-enquiry/delivery-test') {
       if (!await admin(request, env)) return response(401, { error: 'Unauthorized' })
       const ledger = env.LEADS.getByName('xagi-enquiries-v1')
+      if (path.endsWith('/delivery-test') && request.method === 'POST') {
+        if (!env.RESEND_API_KEY) return response(503, { error: 'Sending credential is not connected' })
+        const result = await ledger.deliveryTest()
+        return response(result.status, result)
+      }
       if (path.endsWith('/report') && request.method === 'GET') return response(200, await ledger.report())
       if (path.endsWith('/mark-test') && request.method === 'POST') {
         const receipt = new URL(request.url).searchParams.get('receipt') || ''
