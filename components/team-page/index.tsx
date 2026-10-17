@@ -10,16 +10,16 @@ export default function TeamPage() {
     {
       name: "Saurav Kumar",
       role: "Chief Executive Officer & Co-Founder",
-      bio: "Product visionary and technical architect with a proven track record of launching successful AI-first products. Led development of 5+ products reaching 15,000+ combined users.",
+      bio: "Co-founder focused on product direction, technical architecture and AI product development.",
       portfolio: "https://sauravtom.github.io/",
-      achievements: ["Built FavcyNavigator to 10K+ users", "Advised 20+ startups on AI strategy"]
+      achievements: ["Product development", "AI strategy and technical scoping"]
     },
     {
       name: "Udit Kumar",
       role: "Chief Technology Officer & Co-Founder",
-      bio: "Systems architect specializing in scalable AI infrastructure and intelligent agent frameworks. Expert in building production-grade AI systems that handle millions of requests.",
+      bio: "Co-founder focused on AI infrastructure, systems architecture and agent frameworks.",
       portfolio: "https://uditkumar01.vercel.app/",
-      achievements: ["Architected infrastructure serving 25K+ users", "Built custom LLM fine-tuning pipelines", "Reduced AI inference costs by 60%"]
+      achievements: ["AI infrastructure", "LLM fine-tuning workflows", "Inference engineering"]
     }
   ]
 
@@ -72,7 +72,7 @@ export default function TeamPage() {
                 <p className="text-blue-600 font-semibold mb-4">{leader.role}</p>
                 <p className="text-gray-700 dark:text-gray-300 mb-6">{leader.bio}</p>
                 <div className="mb-4">
-                  <h4 className="font-semibold mb-2">Notable Achievements:</h4>
+                  <h4 className="font-semibold mb-2">Areas of work:</h4>
                   <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
                     {leader.achievements.map((achievement, i) => (
                       <li key={i}>• {achievement}</li>
@@ -157,24 +157,10 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-20 bg-gray-50 dark:bg-[#111111]">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">Our Collective Strengths</h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="text-5xl font-bold mb-2">9</div>
-              <div className="text-gray-600 dark:text-gray-400">Products Launched</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold mb-2">25,000+</div>
-              <div className="text-gray-600 dark:text-gray-400">Users Served</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold mb-2">$550K+</div>
-              <div className="text-gray-600 dark:text-gray-400">Revenue Generated</div>
-            </div>
-          </div>
+      <section className="py-12 bg-gray-50 dark:bg-[#111111]">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl font-bold mb-4">Explore the work</h2>
+          <p>See our <Link href="/projects/" className="underline">project notes</Link> for the scope and status of individual workstreams, and <Link href="/about/" className="underline">About xAGI</Link> for official company channels. Project-specific evidence and limitations belong with each project.</p>
         </div>
       </section>
 

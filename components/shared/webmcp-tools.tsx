@@ -45,9 +45,12 @@ export default function WebMcpTools() {
         execute: () => ({
           name: 'xAGI Labs',
           website: SITE_ORIGIN,
-          summary: 'xAGI Labs builds AI voice agents for customer operations workflows.',
+          summary: 'xAGI Labs scopes AI training data sourcing, custom collection and licensing. Source availability and rights are confirmed per project.',
           primaryLinks: {
             home: SITE_ORIGIN,
+            dataBrief: absoluteUrl('/dataset-brief/'),
+            dataResources: absoluteUrl('/data-resources/'),
+            company: absoluteUrl('/about/'),
             contact: absoluteUrl('/contact'),
             services: absoluteUrl('/services'),
             blog: absoluteUrl('/blog'),

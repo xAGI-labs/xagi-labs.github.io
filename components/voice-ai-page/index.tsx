@@ -470,7 +470,7 @@ export default function VoiceAIPage() {
         </div>
       </section>
 
-      <Footer />
+      <section className="py-12 border-t border-gray-200 dark:border-gray-800" aria-labelledby="speech-data-heading"><div className="container mx-auto px-4 max-w-4xl"><h2 id="speech-data-heading" className="text-3xl font-bold mb-4">Need data to evaluate your voice system?</h2><p className="mb-4">Define language, accent, acoustic conditions and acceptance checks before sourcing a speech pilot.</p><a className="underline font-semibold" href="/speech-training-data/">Explore speech training and evaluation data →</a></div></section><Footer />
     </div>
   )
 }
