@@ -92,3 +92,8 @@ The generated banner master is provided for the user to upload personally. Linke
 ## Deliberate limits
 
 More keywords in the company name do not guarantee maximum SEO. Keep xAGI Data Labs consistent across future assets while retaining xAGI Labs as an alias. No paid upgrade, outreach, invitation or announcement was made as part of this research. Signed-out visibility and AI crawling remain subject to LinkedIn's access controls; the owned website is the more controllable source for publicly accessible information.
+
+
+## Later authorised company post
+
+After this research and profile update, the user explicitly requested changing the company logo to match the website and creating a company post. The logo was saved and the post was published and verified. See COMPANY_BRANDING_AND_POST.md and COMPANY_POST_2026-10-17.md. The earlier no-post execution statements describe the preceding research phase.
