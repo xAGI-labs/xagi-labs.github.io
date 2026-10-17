@@ -24,9 +24,12 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run test:marketing
+      - run: npm run test:enquiry
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+          NEXT_PUBLIC_ENQUIRY_ENABLED: ${{ vars.NEXT_PUBLIC_ENQUIRY_ENABLED }}
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
       - name: Verify canonical sitemap and structured data
         run: python3 scripts/verify-seo-export.py
       - run: touch out/.nojekyll

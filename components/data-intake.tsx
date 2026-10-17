@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import EnquirySubmit, { onlineEnquiriesEnabled } from "@/components/enquiry-submit"
 import { trackMarketingEvent } from "@/lib/marketing-attribution"
 import styles from "@/components/home-page/data-home.module.css"
 
@@ -17,7 +18,7 @@ export default function DataIntake({ intent = "buyer", placement }: { intent?: I
     const a = document.createElement("a"); a.href = url; a.download = `xagi-${intent}-brief.md`; a.click(); URL.revokeObjectURL(url)
     event("download"); setStatus("Brief downloaded. It has not been sent to xAGI.")
   }
-  return <div className={styles.briefForm}>
+  return <div className={styles.briefForm} data-clarity-mask="true">
     <h2>{labels[intent]}</h2>
     <p>{intent === "expert" ? "This is an introduction of interest, not an application to an advertised job. No work or pay is promised." : "Start with a description. Availability, rights and commercial terms are reviewed individually."}</p>
     <label htmlFor="intake-details">{intent === "buyer" ? "What should the model learn, and how will you evaluate the data?" : intent === "partner" ? "What data do you control, and what rights can you establish?" : "What is your expertise and relevant experience?"}</label>
@@ -26,7 +27,8 @@ export default function DataIntake({ intent = "buyer", placement }: { intent?: I
     <input id="intake-coverage" maxLength={250} value={coverage} onChange={e => setCoverage(e.target.value)} />
     <label htmlFor="intake-source">How did you find us?</label>
     <select id="intake-source" value={source} onChange={e => setSource(e.target.value)}>{["Not specified", "Search", "LinkedIn", "Research or resource", "Community or event", "Referral", "Other"].map(s => <option key={s}>{s}</option>)}</select>
-    <p id="intake-privacy">Do not include personal records, confidential data, credentials or raw files. Text stays in this browser until you download it or choose to send an email from your mail app.</p>
+    <p id="intake-privacy">Do not include personal records, confidential data, credentials or raw files. {onlineEnquiriesEnabled ? "Use Send enquiry to submit to xAGI, or download a copy or send from your email app." : "Text stays in this browser until you download it or choose to send an email from your mail app."}</p>
+    {onlineEnquiriesEnabled && <EnquirySubmit intent={intent} placement={placement} details={details} coverage={coverage} source={source} />}
     <a className={styles.primary} href={`mailto:saurav@xagi.in?subject=${encodeURIComponent(labels[intent])}&body=${encodeURIComponent(text)}`} onClick={() => { event("email_draft"); setStatus("Review and send the draft in your email app. If it did not open, email saurav@xagi.in.") }}>Open email draft ↗</a>
     <button className={styles.toolButton} type="button" onClick={download}>Download brief instead</button>
     <p role="status">{status || "Nothing is submitted automatically. Email drafts and downloads are not completed submissions."}</p>
