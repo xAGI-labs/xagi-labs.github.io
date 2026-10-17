@@ -8,7 +8,7 @@ const labels = { buyer: "Scope my dataset", partner: "Discuss a data partnership
 export default function DataIntake({ intent = "buyer", placement }: { intent?: Intent; placement: string }) {
   const [details, setDetails] = useState("")
   const [coverage, setCoverage] = useState("")
-  const [source, setSource] = useState("Search")
+  const [source, setSource] = useState("Not specified")
   const [status, setStatus] = useState("")
   const text = `xAGI Labs — ${labels[intent]}\n\n${intent === "buyer" ? "Model task and acceptance criteria" : intent === "partner" ? "Source description and authority to license" : "Domain and relevant experience"}:\n${details}\n\nLanguages, geography and timing:\n${coverage}\n\nFound via: ${source}\nPage: https://xagi.in${placement}\n\nPlease discuss feasibility and next steps before any data transfer.`
   function event(action: string) { trackMarketingEvent(`data_intake_${action}`, { intent, placement }) }
@@ -25,7 +25,7 @@ export default function DataIntake({ intent = "buyer", placement }: { intent?: I
     <label htmlFor="intake-coverage">Languages, geography and timing</label>
     <input id="intake-coverage" maxLength={250} value={coverage} onChange={e => setCoverage(e.target.value)} />
     <label htmlFor="intake-source">How did you find us?</label>
-    <select id="intake-source" value={source} onChange={e => setSource(e.target.value)}>{["Search", "LinkedIn", "Research or resource", "Community or event", "Referral", "Other"].map(s => <option key={s}>{s}</option>)}</select>
+    <select id="intake-source" value={source} onChange={e => setSource(e.target.value)}>{["Not specified", "Search", "LinkedIn", "Research or resource", "Community or event", "Referral", "Other"].map(s => <option key={s}>{s}</option>)}</select>
     <p id="intake-privacy">Do not include personal records, confidential data, credentials or raw files. Text stays in this browser until you download it or choose to send an email from your mail app.</p>
     <a className={styles.primary} href={`mailto:saurav@xagi.in?subject=${encodeURIComponent(labels[intent])}&body=${encodeURIComponent(text)}`} onClick={() => { event("email_draft"); setStatus("Review and send the draft in your email app. If it did not open, email saurav@xagi.in.") }}>Open email draft ↗</a>
     <button className={styles.toolButton} type="button" onClick={download}>Download brief instead</button>
