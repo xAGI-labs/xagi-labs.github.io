@@ -13,3 +13,9 @@ The supplied listing had no referral code. The owner’s signed-in Mercor dashbo
 Run `npm run lint` and `npm run build` on the existing AWS host. Review `/opportunities` at desktop and mobile widths; exercise search, domain/residence filters, clear filters, sort, show more, empty results, and application URLs. Listing pay uses the source frequency; hourly and per-task amounts are never ranked as equivalent. Residence and work-location restrictions remain visible. No public JobPosting schema is emitted for this third-party directory.
 
 Deploy only a reviewed source tree: this local checkout contains extensive unrelated pre-existing work. A backup branch containing this task alone is not a backup or deployment of those other changes.
+
+## Verified 17 October 2026
+
+On AWS: `npm run lint`, `npm run build` (1,418 routes), and `python3 scripts/verify-seo-export.py` passed. Existing lint warnings remain outside this feature. The build refreshed 299 public listings. In Chrome, verified the original English/Malay listing and its full referral URL, search, empty state, clear filters, 30-to-60 pagination, title sort, 36 engineering results, one explicit India residence result, and referral parameters on every visible outbound application link. Desktop and 390px mobile layouts were reviewed; mobile document width matched the viewport (390px). Screenshots are in `docs/screenshots/mercor-desktop.png` and `docs/screenshots/mercor-mobile.png`.
+
+GitHub Pages permits deployments only from `main`. Publishing requires the pull request to be merged by the owner; this task does not merge or change deployment permissions. Referral payouts and credited conversions have not been tested.
