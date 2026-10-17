@@ -30,7 +30,7 @@ export default function HomePage() {
     <PaidTrafficTracking />
     <a className={styles.skip} href="#main-content">Skip to content</a>
     <header className={styles.header}><div className={styles.wrap}>
-      <Link href="/" className={styles.brand} aria-label="xAGI Labs home"><Image src="/xagi-icon.png" width={30} height={30} alt="" /><span>xAGI Labs<span className={styles.brandNote}>DATA ACQUISITION & LICENSING</span></span></Link>
+      <Link href="/" className={styles.brand}><Image src="/xagi-icon.png" width={30} height={30} alt="" /><span>xAGI Labs<span className={styles.brandNote}>DATA ACQUISITION & LICENSING</span></span></Link>
       <nav className={styles.nav} aria-label="Main navigation"><a href="#modalities">Data</a><a href="#process">Our approach</a><a href="#quality">Quality & rights</a><Link href="/blog/">Research & insights</Link></nav>
       <a href="#dataset-brief" className={styles.headerCta}>Discuss your dataset <ArrowUpRight size={16} aria-hidden="true" /></a>
     </div></header>

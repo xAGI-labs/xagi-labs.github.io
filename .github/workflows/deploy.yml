@@ -2,6 +2,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,11 +26,14 @@ jobs:
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+      - name: Verify canonical sitemap and structured data
+        run: python3 scripts/verify-seo-export.py
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
