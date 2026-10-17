@@ -8,6 +8,7 @@ const assert = require('node:assert/strict')
     const errors = []; const requests = []; let mode = 'failure'
     const page = await context.newPage()
     page.on('pageerror', e => errors.push(e.message))
+    page.on('console', message => { if (message.type() === 'error' && /Minified React|Hydration|hydrating/i.test(message.text())) errors.push(message.text()) })
     await page.route('**/*', async route => {
       const url = route.request().url()
       if (url.startsWith('https://challenges.cloudflare.com/turnstile/v0/api.js')) return route.fulfill({ contentType: 'application/javascript', body: 'window.turnstile={render(el,opts){window.testChallenge=opts.callback;opts.callback("synthetic-browser-token");return "test-widget"},remove(){},reset(){window.testChallenge("synthetic-browser-token")}}' })

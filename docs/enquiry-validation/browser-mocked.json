@@ -1,0 +1,17 @@
+{
+  "test": "mocked browser integration",
+  "routes": 5,
+  "width": 390,
+  "requests": 2,
+  "confirmedEvents": 1,
+  "errors": [],
+  "assertions": [
+    "invalid input blocked",
+    "failure retains text and emits no conversion",
+    "retry keeps receipt",
+    "confirmed event has no contact or brief",
+    "success button disabled",
+    "mobile no overflow",
+    "legacy opportunities route preserved"
+  ]
+}

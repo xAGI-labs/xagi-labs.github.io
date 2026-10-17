@@ -1,0 +1,52 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "canonical": "https://xagi.in/"
+  },
+  {
+    "path": "/dataset-brief/",
+    "status": 200,
+    "canonical": "https://xagi.in/dataset-brief/"
+  },
+  {
+    "path": "/data-partnerships/",
+    "status": 200,
+    "canonical": "https://xagi.in/data-partnerships/"
+  },
+  {
+    "path": "/experts/",
+    "status": 200,
+    "canonical": "https://xagi.in/experts/"
+  },
+  {
+    "path": "/opportunities/",
+    "status": 200,
+    "canonical": "https://xagi.in/opportunities/"
+  },
+  {
+    "path": "/voice-ai/",
+    "status": 200,
+    "canonical": "https://xagi.in/voice-ai/"
+  },
+  {
+    "path": "/projects/haryanvi-tts/",
+    "status": 200,
+    "canonical": "https://xagi.in/projects/haryanvi-tts/"
+  },
+  {
+    "path": "/blog/",
+    "status": 200,
+    "canonical": "https://xagi.in/blog/"
+  },
+  {
+    "path": "/ai-news/",
+    "status": 200,
+    "canonical": "https://xagi.in/ai-news/"
+  },
+  {
+    "path": "/openmusic/privacy/",
+    "status": 200,
+    "canonical": "https://xagi.in/openmusic/privacy"
+  }
+]
