@@ -1,129 +1,143 @@
-# Dataset enquiry delivery and lead receipts
+# Free enquiry delivery and confirmed-lead ledger
 
-The static website submits JSON to a single Cloudflare Worker route. The email
-recipient is fixed to `saurav@xagi.in`; the visitor's email is Reply-To only.
-Buyer, partner and expert enquiries remain distinguishable. Downloads and email
-drafts remain available and do not count as submissions.
+The GitHub Pages frontend stays static. A narrowly scoped Cloudflare Workers
+Free endpoint sends notifications through Resend Free to `saurav@xagi.in`, which
+continues receiving mail in Zoho. A SQLite-backed Durable Object owns the ledger;
+there is no D1 database, paid Email Sending binding, or new server requirement.
 
-## Current rollout gate
+## Current state
 
-This implementation is disabled by default. No new endpoint has been deployed.
-On 2026-10-17 Cloudflare's dashboard required Workers Paid to enable Email
-Sending; its API returned Unauthorized. Creating a dedicated D1 database also
-failed because this account has reached the Free plan database limit. Do not
-purchase an upgrade, reuse another product's database, or enable Email Routing
-as a workaround without authorization. The owner verified `saurav@xagi.in` on 2026-10-17, confirmed through
-the destination-address API. The owner then requested implementation only,
-with sending left disabled. No paid upgrade or backend deployment is authorized.
+Prepared, disabled by default, and not activated on the website. The owner must
+connect a sending credential before real notification delivery can be verified.
+The recipient mailbox was verified during PR 75, but that Cloudflare verification
+is not a Resend sender verification or proof of end-to-end delivery.
 
-The existing Zoho root MX records, website DNS proxy, SSL mode, GitHub origin
-certificate and existing Worker routes must remain unchanged. Certificate
-maintenance is a separate task.
+No website page, metadata, canonical, sitemap, existing Worker route, Zoho MX,
+website DNS proxy, TLS mode or certificate configuration changes are needed.
+Certificate maintenance remains a separate operation.
 
-## Provision and release
+## Why this can remain free
 
-1. Resolve the sending-service and database account gates. With an approved
-   Workers plan, provision `xagi-enquiry-leads` using `wrangler d1 create`.
-   Add its returned ID as the `DB` binding in `wrangler.jsonc`. Do not guess IDs.
-2. Review Email Sending onboarding records before applying. It uses a dedicated
-   `cf-bounce` sender/bounce subdomain, distinct from Email Routing's root MX.
-   Preserve Zoho MX/SPF/DKIM and existing DMARC policy. If onboarding proposes
-   overwriting them, stop and resolve the conflict. Verify the sending domain
-   and fixed destination address. Do not enable inbound Email Routing.
-3. Create a managed Turnstile widget restricted to `xagi.in`, with no clearance
-   grant. Keep the secret off Git, logs and public build variables. The sitekey
-   is public. The backend checks hostname and `dataset_enquiry` action.
-4. Apply `schema.sql` with `wrangler d1 execute xagi-enquiry-leads --remote
-   --file workers/enquiry/schema.sql`. Store `TURNSTILE_SECRET` and a random
-   32-byte `HASH_SECRET` with `wrangler secret put --config
-   workers/enquiry/wrangler.jsonc`. Never commit `.dev.vars` or `.env` files.
-5. Add only the route `xagi.in/api/dataset-enquiry*`; the Worker itself accepts
-   only the exact path with optional trailing slash. Never add a catch-all
-   route or modify existing OpenMusic routes. Keep `workers_dev` and previews
-   disabled. Set `ENABLED=true` only when bindings and email setup are verified.
-6. Run an explicitly labeled synthetic test through the endpoint. Verify its
-   email reaches `saurav@xagi.in`, verify the receipt in D1, repeat the identical
-   request and confirm one email/row. Mark that receipt `is_test=1` through an
-   authenticated D1 update before reporting commercial counts. Test challenge,
-   validation, origin, rate-limit and delivery-failure cases without sending
-   real enquiries. Never use Turnstile test keys in production.
-7. Set repository Actions variables `NEXT_PUBLIC_ENQUIRY_ENABLED=true` and
-   `NEXT_PUBLIC_TURNSTILE_SITE_KEY` to the production public sitekey only after
-   the endpoint passes the delivery test. Obtain merge approval for the PR.
-   The existing Pages workflow publishes frontend changes after merge.
-8. Verify homepage, `/dataset-brief/`, `/data-partnerships/`, `/experts/`,
-   `/opportunities/`, representative existing SEO pages and the sitemap live.
-   Submit a labeled live test; verify recipient delivery and receipt, and
-   exclude that test from reports as above. Do not describe deployment or a
-   mocked email response as proof of actual inbox delivery.
+Verified on 2026-10-17 against the providers' primary documentation:
 
-Official references: [send bindings](https://developers.cloudflare.com/email-service/configuration/send-bindings/),
-[domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/),
-[pricing](https://developers.cloudflare.com/email-service/platform/pricing/),
-[Turnstile verification](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
+- [Workers Free supports SQLite-backed Durable Objects](https://developers.cloudflare.com/durable-objects/platform/pricing/),
+  including 100,000 requests/day, 100,000 written rows/day and 5 GB total storage.
+  Exceeding Free limits causes failures rather than paid overages. These are
+  account-wide allowances and may be shared with other applications.
+- [Resend Free](https://resend.com/pricing) includes 3,000 emails/month and 100/day.
+  Use an explicitly Free account/workspace, without paid overages. Existing
+  provider usage can consume some of that allowance.
+- This service additionally caps new sending reservations at 50/day and
+  1,000/month, atomically in SQLite. Pending, failed/uncertain and test sends all
+  reserve budget. Hitting a limit retains the direct-email fallback and does
+  not report success. These caps do not constitute an account-wide billing cap
+  for unrelated services; do not upgrade either account or enable overages.
 
-## What counts as a confirmed lead
+## Activation prerequisites
 
-`enquiries.status='accepted'` is recorded after the sending binding resolves.
-It means a validated enquiry's notification was accepted by the email service.
-It does not prove mailbox placement, buyer qualification, permission to market,
-or revenue. The authoritative count is D1, independent of ad blockers. Query
-`report.sql` using authenticated Wrangler D1 access. There is no public report
-or list endpoint. Separate buyer/partner/expert counts; exclude synthetic tests.
+1. Connect a Resend Free account and verify a dedicated **sending subdomain**,
+   such as `notify.xagi.in`. Review the provider's exact DNS record values.
+   Add only its dedicated DKIM TXT / sending-return-path records. Do not replace
+   Zoho's root MX/SPF/DKIM, existing DMARC policy, website A/CNAME records or proxy
+   settings. No certificate work is involved. Sender becomes
+   `enquiries@notify.xagi.in`; recipient stays `saurav@xagi.in`.
+2. Create a sending-only Resend API key restricted to that verified domain.
+   Enter it directly with `wrangler secret put RESEND_API_KEY --config
+   workers/enquiry/wrangler.jsonc`. Never paste credentials into chat, code,
+   screenshots, CLI flags or GitHub. Do not use a mailbox's normal password.
+3. Create a managed Turnstile widget restricted to `xagi.in`, action
+   `dataset_enquiry`, with no clearance grant. Its public sitekey is separate
+   from the private secret. Store the secret as `TURNSTILE_SECRET` using Wrangler.
+4. Generate independent random secrets `HASH_SECRET` and `REPORT_TOKEN` outside
+   Git and store them using Wrangler secret input. The report token belongs only
+   to the operator; it must never be included in frontend build variables.
+5. The config declares a new SQLite Durable Object migration and pins a runtime
+   compatibility date supported by the installed AWS toolchain. Keep `ENABLED`
+   false, `workers_dev` false, previews disabled, and no public route until ready.
+   `wrangler deploy --dry-run --config workers/enquiry/wrangler.jsonc` verifies
+   bundling; an actual deployment is a separate step and must remain on Free.
+6. Add only `xagi.in/api/dataset-enquiry*` after bindings/secrets are ready. Never
+   add a site-wide catch-all or alter OpenMusic routes. The public submission
+   handler accepts only the exact base path with optional trailing slash.
+7. Enable the backend and submit an explicitly labeled synthetic enquiry using
+   the production challenge. Verify the receipt, the provider's accepted result,
+   and actual arrival in the Zoho inbox. Replay the same receipt/content and
+   confirm there is one email and one ledger row. Disable analytics during this
+   test; mark the receipt as a test through the authenticated admin endpoint.
+8. Obtain merge approval for the prepared backend changes. Only after the
+   sending test passes, set Actions variables `NEXT_PUBLIC_ENQUIRY_ENABLED=true`
+   and `NEXT_PUBLIC_TURNSTILE_SITE_KEY` to the production sitekey and publish the
+   approved static site. Test all four enquiry pages, existing SEO routes,
+   mobile layout, error recovery and the sitemap. Do not claim that a mocked
+   success or successful build proves email delivery.
 
-The optional `dataset_enquiry_confirmed` browser event fires once per mounted
-form after a matching server receipt. Clicks, CAPTCHA success, downloads, drafts,
-errors and pending receipts do not fire it. Browser analytics can be blocked or
-forged and must not replace the D1 ledger. No email, brief, coverage, raw IP,
-query string or referrer is sent with this event.
+## Private reports and test exclusion
 
-The ledger retains only receipt, keyed fingerprint, intent, allowlisted page,
-modality/source, timestamps, status and provider message ID. The email and
-brief exist in the notification, not in D1 or application logs. Enquiry text is
-not logged. Rate limiting uses a secret-derived IP hash, rotates hourly, and
-expired buckets are removed daily. Keep database/admin access restricted to
-operators; do not export lead contents into GitHub evidence.
+`GET /api/dataset-enquiry/report` requires `Authorization: Bearer <REPORT_TOKEN>`.
+It returns total confirmed non-test enquiries, up to 1,000 grouped rows by day,
+intent, placement, modality/source, plus up to 50 pending/review receipts. There
+is no email address or brief text in the database/report. Requests without the
+secret are rejected before waking the Durable Object.
 
-## Retries and failures
+`POST /api/dataset-enquiry/mark-test?receipt=<UUID>` requires the same operator
+credential and sets `is_test=1`. There is no public caller-controlled test flag.
+A missing receipt returns `changed:0`; an existing receipt returns `changed:1`.
+Do not put the admin token in query strings or frontend JavaScript. Use a secure
+operator client that reads the token from secret storage, not a literal shell
+argument. Keep report outputs private and never commit real lead contents.
 
-The random receipt is an idempotency key. A unique D1 insert is the send lock;
-replays with the same content return the original acknowledgement without
-another send. Changed content with the same receipt returns 409. If a send or
-its acknowledgement is uncertain, the receipt stays `pending` or `review` and
-never automatically resends. The UI preserves the visitor's text, shows the
-reference and offers direct email. Across a full reload the receipt is lost;
-the UI asks the visitor to retain it after an uncertain response. Do not claim
-exactly-once delivery across different receipts or separate enquiries.
+## Confirmation, privacy and retry semantics
 
-Reconcile pending/review rows against provider activity using the receipt in
-the subject and the destination inbox. Only after evidence of provider
-acceptance should an operator mark a row accepted, recording provider ID and
-acceptance timestamp. Never turn failed notifications into confirmed leads to
-make a dashboard look complete. Do not silently replay an uncertain send.
+The durable ledger is authoritative; optional browser analytics are supplemental.
+A confirmed enquiry is a validated request whose notification was accepted by
+Resend and acknowledged in SQLite. It is not proof of inbox placement, a
+qualified sales lead, permission to market or revenue. Actual delivery must be
+verified separately. Tests and draft/download actions are excluded from counts.
 
-## Rollback
+Validation, strict origin, body/field limits, honeypot, Turnstile hostname/action
+checks and IP-derived rate limits run before sending. The ledger stores a random
+receipt, keyed fingerprint, allowlisted metadata, timestamps, status and provider
+message ID; it does not store contact addresses, briefs, coverage or raw IPs.
+Email content is sent to Resend and received in Zoho, with visitor email only as
+Reply-To. The recipient and sender are server-controlled. No request body or
+credential is logged. Expired hashed rate buckets are cleaned daily.
 
-Disable `NEXT_PUBLIC_ENQUIRY_ENABLED` and rebuild/publish the approved static
-site to restore the original draft/download flow. For an incident, set Worker
-`ENABLED=false` and deploy; the form reports unavailable and retains email
-fallback. Preserve the database and receipts. Do not roll back DNS, TLS,
-certificates, SEO routes, sitemap, or unrelated Worker deployments.
+A unique SQL insert is the send lock. The same receipt and content returns its
+original result without resending; changed content returns a conflict. Resend
+also receives a [provider idempotency key](https://resend.com/docs/dashboard/emails/idempotency-keys),
+which it retains for 24 hours. The durable SQL record is the long-term replay
+protection. An uncertain send/ack remains pending or review and is never
+silently retried. A user can retain the receipt and contact `saurav@xagi.in`;
+the email subject contains the same reference. Reconcile against the provider
+and mailbox before changing ledger state. Never label a failure as a lead.
 
-## Validation
+## Zoho alternative
 
-`npm run test:enquiry` uses Node's built-in SQLite (Node 22.13+ or 24) with the
-actual schema and controlled email/challenge adapters. It covers concurrent
-duplicate requests, receipt/content conflicts, uncertain delivery, lost DB
-acknowledgements, invalid CAPTCHA hostname/action, hostile origin, spam,
-header injection, field/body limits, rate limits and disabled configuration.
-Run `npm run test:marketing`, `npm run lint`, `npm run build` and
-`python3 scripts/verify-seo-export.py` on AWS. Verify a build with the feature
-enabled using test sitekeys only in a private test environment; the default
-release build must keep it disabled until production setup passes.
+[Zoho documents SMTP for eligible free accounts](https://www.zoho.com/mail/help/zoho-smtp.html).
+Use the account's own server/datacenter settings and an app password when
+required. Direct Zoho SMTP needs an authenticated TLS-capable mail transport,
+such as a small relay on the existing AWS host; the current prepared adapter
+uses Resend HTTPS. Zoho mailbox receiving alone does not grant an SMTP or API
+credential. Do not assume a particular account has access or reuse another
+project's secrets. Zoho may be selected instead once the owner connects the
+appropriate credential securely; that adapter needs its own delivery test.
 
-The browser harness `scripts/test-enquiry-browser.cjs` tests the enabled static
-export served at `http://127.0.0.1:3327`. Use the existing AWS Playwright
-installation via `PLAYWRIGHT_MODULE_PATH` and its installed Chromium via
-`PLAYWRIGHT_CHROMIUM_EXECUTABLE`. It mocks Turnstile and the submission endpoint,
-sends no email, and is not proof of production delivery. It checks validation,
-failure recovery, receipt reuse, conversion privacy and five mobile routes.
+## Tests and rollback
+
+`npm run test:enquiry` covers the core receipt flow, SQLite adapter, fixed-recipient
+Resend request, provider idempotency key, malformed/rejected responses, daily and
+monthly budgets, validation, spam/rate controls and uncertain-send behaviour.
+
+On AWS, run the installed `wrangler dev --config workers/enquiry/wrangler.jsonc
+--local --ip 127.0.0.1 --port 8795 --var REPORT_TOKEN:local-synthetic-report-token`.
+Then `python3 workers/enquiry/runtime-test.py` exercises the real local workerd
+SQLite Durable Object: schema initialization, private report, authorization,
+test-marking validation and disabled submission. This uses a public synthetic
+local-test token only. It sends no email and is not production-delivery evidence.
+Stop the task-owned dev process afterward.
+
+For rollback, disable the frontend variable and rebuild, or deploy backend
+`ENABLED=false` immediately. Keep receipts and storage for reconciliation; do not
+delete the Durable Object migration/namespace. Never use `deleted_classes` as a
+routine rollback: it destroys data. Preserve email draft/download fallback. DNS,
+certificates and SEO routes do not participate in this rollback.
