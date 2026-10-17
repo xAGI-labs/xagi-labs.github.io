@@ -2,7 +2,7 @@
   "action": "redirect",
   "description": "Normalize HTTP and www to canonical HTTPS xagi.in; leave HTTPS apex on the site",
   "enabled": true,
-  "expression": "(http.host eq \"www.xagi.in\") or (http.host eq \"xagi.in\" and http.request.scheme eq \"http\")",
+  "expression": "(http.host eq \"www.xagi.in\") or (http.host eq \"xagi.in\" and not ssl)",
   "action_parameters": {
     "from_value": {
       "status_code": 301,
