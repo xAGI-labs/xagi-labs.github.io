@@ -66,7 +66,7 @@ export default function TutorPage() {
       </section>
 
       {/* Features / Solution Section */}
-      <section className="py-20 px-4 bg-gray-50 dark:bg-gray-900">
+      <section id="how-it-works" className="py-20 px-4 bg-gray-50 dark:bg-gray-900 scroll-mt-24">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">The AI Tutor Difference</h2>
@@ -183,10 +183,10 @@ export default function TutorPage() {
             Schedule Your Demo
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
-          <Link href="#" className="inline-flex items-center font-semibold text-blue-600 hover:underline">
+          <a href="#how-it-works" className="inline-flex items-center font-semibold text-blue-600 hover:underline">
             Or, see how it works
             <ChevronRight className="ml-1 h-5 w-5" />
-          </Link>
+          </a>
         </div>
       </section>
       </div>
