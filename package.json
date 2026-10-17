@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "python3 -m http.server 3000 --directory out"
+    "start": "python3 -m http.server 3000 --directory out",
+    "prebuild": "node scripts/fetch-mercor-opportunities.mjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
